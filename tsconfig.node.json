@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node20/tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "checkJs": true,
+    "allowJs": true
+  },
+  "include": [
+    "eslint.config.js"
+  ]
+}

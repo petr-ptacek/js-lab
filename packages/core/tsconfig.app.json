@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "composite": true,
     "target": "ES2022",
+    "composite": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "lib": [
@@ -10,12 +10,17 @@
     ],
     "strict": true,
     "skipLibCheck": true,
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true,
-    "noEmit": false,
+    "noEmit": true,
     "verbatimModuleSyntax": true,
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "importsNotUsedAsValues": "error",
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "src"

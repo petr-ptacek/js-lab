@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node20/tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "noEmit": true
+  },
+  "include": [
+    "vite.config.ts"
+  ]
+}

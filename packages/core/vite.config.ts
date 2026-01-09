@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from "vite";
 import { URL, fileURLToPath } from "node:url";
 import dtsPlugin from "vite-plugin-dts";
@@ -26,4 +27,8 @@ export default defineConfig({
       ],
     }),
   ],
+  test: {
+    environment: "node",
+    include: ["src/**/*.test.ts"],
+  },
 });

@@ -1,0 +1,37 @@
+{
+  "name": "@petr-ptacek/vue-ecosystem",
+  "author": "Petr Ptacek <petr.ptacek99@gmail.com>",
+  "description": "Ecosystem of Vue.js composables, components, and shared tooling.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
+    "test": "pnpm -r test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petr-ptacek/vue-ecosystem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/petr-ptacek/vue-ecosystem/issues"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "monorepo",
+    "composables",
+    "components",
+    "ui",
+    "utils",
+    "playground"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/petr-ptacek/vue-ecosystem#readme",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.0.0"
+}

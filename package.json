@@ -7,11 +7,15 @@
   "scripts": {
     "build": "pnpm -r build",
     "build:core": "pnpm --filter @petr-ptacek/vue-core build",
-    "typecheck": "pnpm -r typecheck",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "pnpm -r format",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "eslint --fix"
+    ]
   },
   "repository": {
     "type": "git",
@@ -49,6 +53,8 @@
     "eslint-plugin-vitest": "^0.5.4",
     "eslint-plugin-vue": "^10.6.2",
     "globals": "^17.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "typescript": "^5.9.3",
     "vitest": "^4.0.16",
     "vue-eslint-parser": "^10.2.0"

@@ -37,5 +37,10 @@
   "devDependencies": {
     "@tsconfig/node20": "^20.1.8",
     "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:rolldown-vite@7.2.5"
+    }
   }
 }

@@ -3,6 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/petr-ptacek/vue-ecosystem.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/petr-ptacek/vue-ecosystem",
   "files": [
     "dist"
   ],
@@ -19,10 +25,20 @@
     "build": "vite build"
   },
   "peerDependencies": {
-    "vue": "^3.4.0"
+    "vue": "^3.4.0",
+    "@vueuse/core": "^14.0.0"
   },
   "devDependencies": {
+    "@vueuse/core": "^14.0.0",
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4"
+  },
+  "peerDependenciesMeta": {
+    "@vueuse/core": {
+      "optional": false
+    }
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

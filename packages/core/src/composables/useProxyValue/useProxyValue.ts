@@ -6,31 +6,41 @@ import type { UseProxyValueOptions, UseProxyValueReturn } from "./types";
 
 /**
  * Creates a proxy value with an internal buffer that can be
- * manually or automatically applied back to a source ref.
+ * manually or automatically synchronized back to a source ref.
  *
  * This composable is useful for controlled inputs, forms, and components
  * that need a temporary (staged) value before committing changes.
  *
  * ## Behavior
  * - If `sourceValue.value` is `undefined`, the `defaultValue` is used.
- * - `null` is treated as a valid value.
- * - Changes are written to an internal buffer first.
- * - Calling `apply()` syncs the buffer back to `sourceValue`
+ * - `defaultValue` may be provided as a value or a factory function.
+ * - `null` is treated as a valid value and will not trigger the default.
+ * - All changes are written to an internal buffer first.
+ * - Calling `apply()` commits the buffer back to `sourceValue`
  *   (only if `sourceValue.value` is not `undefined`).
- * - Calling `reset()` restores the buffer from `sourceValue`
- *   or falls back to `defaultValue` when `sourceValue.value` is `undefined`.
+ * - Calling `reset()` discards staged changes and restores the buffer
+ *   from `sourceValue`, or from `defaultValue` when `sourceValue.value`
+ *   is `undefined`.
+ *
+ * ## State model
+ * - `buffer` holds the mutable, staged value.
+ * - `value` acts as a proxy combining `buffer` and `sourceValue`.
+ * - `isApplied` indicates whether the buffer is currently synchronized
+ *   with the source value.
  *
  * ## Debouncing
- * - `debouncedValue` debounces writes to the buffer.
+ * - `debouncedValue` debounces writes to the buffer (useful for inputs).
  * - `applyDebounced()` debounces committing the buffer to the source.
  *
  * @typeParam TValue - Type of the proxied value
  *
- * @param sourceValue - Source ref acting as the external value (e.g. v-model)
- * @param defaultValue - Fallback value used when `sourceValue.value` is `undefined`
+ * @param sourceValue - Source ref acting as the external value (e.g. `v-model`)
+ * @param defaultValue - Fallback value or factory used when
+ *   `sourceValue.value` is `undefined`
  * @param options - Configuration options
  *
- * @param options.autoApply - Whether changes should be applied automatically (default: `true`)
+ * @param options.autoApply - Whether changes should be applied automatically
+ *   (default: `true`)
  * @param options.debounce - Debounce delay (ms) for `debouncedValue`
  * @param options.applyDebounce - Debounce delay (ms) for `applyDebounced`
  *
@@ -39,6 +49,7 @@ import type { UseProxyValueOptions, UseProxyValueReturn } from "./types";
  * - `debouncedValue` – Debounced version of `value`
  * - `buffer` – Internal mutable buffer holding staged changes
  * - `isApplied` – Readonly ref indicating whether the buffer is in sync
+ *   with the source value
  * - `apply()` – Commits the buffer to the source value
  * - `applyDebounced()` – Debounced version of `apply`
  * - `reset()` – Resets the buffer from the source value or `defaultValue`
@@ -53,7 +64,7 @@ import type { UseProxyValueOptions, UseProxyValueReturn } from "./types";
  *   isApplied,
  *   apply,
  *   reset,
- * } = useProxyValue(model, "")
+ * } = useProxyValue(model, () => "")
  *
  * value.value = "world" // buffer updated
  * isApplied.value === false
@@ -64,11 +75,14 @@ import type { UseProxyValueOptions, UseProxyValueReturn } from "./types";
  */
 export function useProxyValue<TValue>(
   sourceValue: Ref<TValue | undefined>,
-  defaultValue: TValue,
+  defaultValue: (TValue | (() => TValue)),
   options: UseProxyValueOptions = {},
 ): UseProxyValueReturn<TValue> {
   const autoApply = options.autoApply ?? true;
-  const internalValue = shallowRef<TValue>(isUndefined(sourceValue.value) ? defaultValue : sourceValue.value);
+  const internalValue = shallowRef<TValue>(isUndefined(sourceValue.value) ?
+                                           resolveDefaultValue() :
+                                           sourceValue.value,
+  );
   const isApplied = shallowRef(!isUndefined(sourceValue.value));
 
   const value = computed<TValue>({
@@ -101,16 +115,23 @@ export function useProxyValue<TValue>(
 
   watch(sourceValue, (v) => {
     if (isUndefined(v)) {
-      internalValue.value = defaultValue;
+      internalValue.value = resolveDefaultValue();
+      isApplied.value = false;
     } else {
       internalValue.value = v as TValue;
       isApplied.value = true;
     }
   });
 
+  function resolveDefaultValue(): TValue {
+    return typeof defaultValue === "function"
+           ? (defaultValue as () => TValue)()
+           : defaultValue;
+  }
+
   function reset() {
     internalValue.value = isUndefined(sourceValue.value)
-                          ? defaultValue
+                          ? resolveDefaultValue()
                           : sourceValue.value;
 
     isApplied.value = !isUndefined(sourceValue.value);
@@ -119,6 +140,7 @@ export function useProxyValue<TValue>(
   function apply() {
     if (!isUndefined(sourceValue.value)) {
       sourceValue.value = internalValue.value;
+      isApplied.value = true;
     }
   }
 

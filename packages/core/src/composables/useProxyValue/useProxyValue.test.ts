@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { ref, nextTick } from "vue";
 import { useProxyValue } from "./useProxyValue";
+import { expectTypeOf } from "vitest";
 
 describe("useProxyValue", () => {
   it("uses defaultValue when sourceValue is undefined", () => {
@@ -26,7 +27,9 @@ describe("useProxyValue", () => {
   it("writes to buffer when value is changed", () => {
     const source = ref<string | undefined>("initial");
 
-    const { value, buffer, isApplied } = useProxyValue(source, "default", { autoApply: false });
+    const { value, buffer, isApplied } = useProxyValue(source, "default", {
+      autoApply: false,
+    });
 
     value.value = "changed";
 
@@ -62,7 +65,7 @@ describe("useProxyValue", () => {
     expect(source.value).toBe("changed");
   });
 
-  it("reset restores buffer from sourceValue", async () => {
+  it("reset restores buffer from sourceValue", () => {
     const source = ref<string | undefined>("initial");
 
     const { value, buffer, reset, isApplied } = useProxyValue(source, "default", {
@@ -160,5 +163,95 @@ describe("useProxyValue", () => {
     apply();
 
     expect(source.value).toBeUndefined();
+  });
+
+  it("resolves defaultValue from factory function", () => {
+    const source = ref<string | undefined>(undefined);
+    const factory = vi.fn(() => "lazy-default");
+
+    const { value, buffer } = useProxyValue(source, factory);
+
+    expect(value.value).toBe("lazy-default");
+    expect(buffer.value).toBe("lazy-default");
+    expect(factory).toHaveBeenCalledTimes(1);
+  });
+
+  it("reset re-evaluates lazy defaultValue", () => {
+    const source = ref<string | undefined>(undefined);
+    const factory = vi.fn()
+                      .mockReturnValueOnce("first")
+                      .mockReturnValueOnce("second");
+
+    const { buffer, reset } = useProxyValue(source, factory, {
+      autoApply: false,
+    });
+
+    expect(buffer.value).toBe("first");
+
+    reset();
+    expect(buffer.value).toBe("second");
+  });
+
+  it("treats null as a valid value", () => {
+    const source = ref<string | null | undefined>(null);
+
+    const { value, buffer, isApplied } = useProxyValue(source, "default");
+
+    expect(value.value).toBeNull();
+    expect(buffer.value).toBeNull();
+    expect(isApplied.value).toBe(true);
+  });
+
+  it("reset uses latest sourceValue after external change", async () => {
+    const source = ref<string | undefined>("initial");
+
+    const { buffer, reset } = useProxyValue(source, "default", {
+      autoApply: false,
+    });
+
+    source.value = "external";
+    await nextTick();
+
+    buffer.value = "changed";
+    reset();
+
+    expect(buffer.value).toBe("external");
+  });
+
+  it("sets isApplied back to true after apply", () => {
+    const source = ref<string | undefined>("initial");
+
+    const { value, isApplied, apply } = useProxyValue(source, "default", {
+      autoApply: false,
+    });
+
+    value.value = "changed";
+    expect(isApplied.value).toBe(false);
+
+    apply();
+    expect(isApplied.value).toBe(true);
+  });
+
+  it("apply after reset keeps source unchanged", () => {
+    const source = ref<string | undefined>("initial");
+
+    const { reset, apply } = useProxyValue(source, "default", {
+      autoApply: false,
+    });
+
+    reset();
+    apply();
+
+    expect(source.value).toBe("initial");
+  });
+
+  it("exposes correct public API types", () => {
+    const source = ref<string | undefined>("test");
+
+    const api = useProxyValue(source, "default");
+
+    expectTypeOf(api.value.value).toBeString();
+    expectTypeOf(api.buffer.value).toBeString();
+    expectTypeOf(api.isApplied.value).toBeBoolean();
   });
 });

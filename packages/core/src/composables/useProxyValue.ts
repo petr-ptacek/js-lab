@@ -1,5 +1,5 @@
 import { useDebounceFn } from "@vueuse/core";
-import type { Ref } from "vue";
+import type { ComputedRef, Ref } from "vue";
 import { isUndefined } from "../utils";
 
 import { computed, readonly, shallowRef, watch } from "vue";
@@ -10,55 +10,72 @@ export type UseProxyValueOptions = {
   applyDebounce?: number;
 };
 
-export function useProxyValue<T>(
-  modelValue: Ref<T | undefined>,
-  defaultValue: T,
-  options: UseProxyValueOptions = {},
-) {
-  const _autoApply = options.autoApply ?? true;
-  const internalValue = shallowRef<T>(isUndefined(modelValue.value) ? defaultValue : modelValue.value);
-  const isApplied = shallowRef(!isUndefined(modelValue.value));
+export type UseProxyValueReturn<T> = {
+  value: ComputedRef<T>;
+  debouncedValue: ComputedRef<T>;
+  buffer: Ref<T>;
+  isApplied: Readonly<Ref<boolean>>;
+  apply: () => void;
+  applyDebounced: () => void;
+};
 
-  const value = computed<T>({
+export function useProxyValue<TValue>(
+  sourceValue: Ref<TValue | undefined>,
+  defaultValue: TValue,
+  options: UseProxyValueOptions = {},
+): UseProxyValueReturn<TValue> {
+  const autoApply = options.autoApply ?? true;
+  const internalValue = shallowRef<TValue>(isUndefined(sourceValue.value) ? defaultValue : sourceValue.value);
+  const isApplied = shallowRef(!isUndefined(sourceValue.value));
+
+  const value = computed<TValue>({
     get: () => {
-      if (!isApplied.value || isUndefined(modelValue.value)) {
+      if (!isApplied.value || isUndefined(sourceValue.value)) {
         return internalValue.value;
       }
 
-      return modelValue.value as T;
+      return sourceValue.value as TValue;
     },
-    set: (val: T) => {
+    set: (val: TValue) => {
       internalValue.value = val;
       isApplied.value = false;
-      if (_autoApply) {
+      if (autoApply) {
         apply();
       }
     },
   });
 
-  const setDebounced = useDebounceFn((val: T) => {
+  const setDebounced = useDebounceFn((val: TValue) => {
     value.value = val;
   }, options.debounce ?? 0);
 
-  const debouncedValue = computed<T>({
+  const debouncedValue = computed<TValue>({
     get: () => value.value,
-    set: (val: T) => {
+    set: (val: TValue) => {
       setDebounced(val);
     },
   });
 
-  watch(modelValue, (v) => {
+  watch(sourceValue, (v) => {
     if (isUndefined(v)) {
       internalValue.value = defaultValue;
     } else {
-      internalValue.value = v as T;
+      internalValue.value = v as TValue;
       isApplied.value = true;
     }
   });
 
+  function reset() {
+    internalValue.value = isUndefined(sourceValue.value)
+                          ? defaultValue
+                          : sourceValue.value;
+
+    isApplied.value = !isUndefined(sourceValue.value);
+  }
+
   function apply() {
-    if (!isUndefined(modelValue.value)) {
-      modelValue.value = internalValue.value;
+    if (!isUndefined(sourceValue.value)) {
+      sourceValue.value = internalValue.value;
     }
   }
 
@@ -67,7 +84,7 @@ export function useProxyValue<T>(
   return {
     value,
     debouncedValue,
-    internalValue,
+    buffer: internalValue,
     isApplied: readonly(isApplied),
     apply,
     applyDebounced,

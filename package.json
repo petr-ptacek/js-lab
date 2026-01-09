@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm -r build",
+    "build:core": "pnpm --filter @petr-ptacek/vue-core build",
     "typecheck": "pnpm -r typecheck",
     "lint": "pnpm -r lint",
     "format": "pnpm -r format",

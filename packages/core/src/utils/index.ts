@@ -1,1 +1,1 @@
-export * from "./type-checkers";
+export * from "./is-what";

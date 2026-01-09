@@ -13,7 +13,6 @@
     "noEmit": true,
     "verbatimModuleSyntax": true,
     "useDefineForClassFields": true,
-    "importsNotUsedAsValues": "error",
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {

@@ -149,6 +149,17 @@ export default defineConfig([
     },
     rules: {
       ...vitest.configs.recommended.rules,
+
+      "vitest/expect-expect": [
+        "error",
+        {
+          assertFunctionNames: [
+            "expect",
+            "expectTypeOf",
+          ],
+        },
+      ],
+
       /* testy mohou být volnější */
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-non-null-assertion": "off",

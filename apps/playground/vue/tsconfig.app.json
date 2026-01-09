@@ -13,8 +13,22 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    /*Paths*/
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@petr-ptacek/vue-core": [
+        "../../../packages/core/src"
+      ]
+    }
   },
+  "references": [
+    {
+      "path": "../../../packages/core"
+    }
+  ],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",

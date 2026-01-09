@@ -1,21 +1,16 @@
 import { defineConfig } from "vite";
-import path from "node:path";
+import { URL, fileURLToPath } from "node:url";
 import dtsPlugin from "vite-plugin-dts";
 
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
+      entry: fileURLToPath(new URL("src/index.ts", import.meta.url)),
       fileName: "index",
       formats: ["es"],
     },
     rollupOptions: {
       external: ["vue"],
-    },
-  },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
     },
   },
   plugins: [

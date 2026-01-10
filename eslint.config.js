@@ -173,6 +173,15 @@ export default defineConfig([
     },
   },
 
+  /* TS Overloads */
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    rules: {
+      "no-redeclare": "off",
+      "@typescript-eslint/no-redeclare": "error",
+    },
+  },
+
   /* ------------------------------------------------------------------ *
    * Prettier (vypnutí stylistických pravidel)
    * ------------------------------------------------------------------ */

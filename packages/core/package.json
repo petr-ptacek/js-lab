@@ -25,9 +25,11 @@
       "import": "./dist/index.js"
     }
   },
+  "dependencies": {
+    "@vueuse/core": "^14.0.0"
+  },
   "sideEffects": false,
   "peerDependencies": {
-    "@vueuse/core": "^14.0.0",
     "vue": "^3.4.0"
   },
   "devDependencies": {
@@ -35,11 +37,6 @@
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4",
     "vue": "^3.5.26"
-  },
-  "peerDependenciesMeta": {
-    "@vueuse/core": {
-      "optional": false
-    }
   },
   "engines": {
     "node": ">=22"

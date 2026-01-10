@@ -11,7 +11,7 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: ["vue", "@vueuse/core"],
+      external: ["vue"],
     },
   },
   plugins: [

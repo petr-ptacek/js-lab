@@ -65,6 +65,12 @@ importers:
       '@petr-ptacek/vue-core':
         specifier: workspace:*
         version: link:../../../packages/core
+      '@petr-ptacek/vue-ui':
+        specifier: workspace:*
+        version: link:../../../packages/ui
+      '@vueuse/core':
+        specifier: ^14.1.0
+        version: 14.1.0(vue@3.5.26(typescript@5.9.3))
       vue:
         specifier: ^3.5.24
         version: 3.5.26(typescript@5.9.3)
@@ -86,10 +92,11 @@ importers:
         version: 3.2.2(typescript@5.9.3)
 
   packages/core:
-    devDependencies:
+    dependencies:
       '@vueuse/core':
         specifier: ^14.0.0
         version: 14.1.0(vue@3.5.26(typescript@5.9.3))
+    devDependencies:
       vite:
         specifier: ^7.3.1
         version: 7.3.1(@types/node@24.10.4)(yaml@2.8.2)
@@ -100,7 +107,36 @@ importers:
         specifier: ^3.5.26
         version: 3.5.26(typescript@5.9.3)
 
-  packages/ui: {}
+  packages/ui:
+    dependencies:
+      '@petr-ptacek/vue-core':
+        specifier: workspace:*
+        version: link:../core
+      '@vueuse/core':
+        specifier: ^14.0.0
+        version: 14.1.0(vue@3.5.26(typescript@5.9.3))
+    devDependencies:
+      '@types/node':
+        specifier: ^24.10.1
+        version: 24.10.4
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.1
+        version: 6.0.3(vite@7.3.1(@types/node@24.10.4)(yaml@2.8.2))(vue@3.5.26(typescript@5.9.3))
+      '@vue/tsconfig':
+        specifier: ^0.8.1
+        version: 0.8.1(typescript@5.9.3)(vue@3.5.26(typescript@5.9.3))
+      vite:
+        specifier: ^7.2.4
+        version: 7.3.1(@types/node@24.10.4)(yaml@2.8.2)
+      vite-plugin-dts:
+        specifier: ^4.5.4
+        version: 4.5.4(@types/node@24.10.4)(rollup@4.55.1)(typescript@5.9.3)(vite@7.3.1(@types/node@24.10.4)(yaml@2.8.2))
+      vue:
+        specifier: ^3.5.26
+        version: 3.5.26(typescript@5.9.3)
+      vue-tsc:
+        specifier: ^3.1.4
+        version: 3.2.2(typescript@5.9.3)
 
 packages:
 

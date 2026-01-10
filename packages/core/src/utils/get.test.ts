@@ -71,4 +71,35 @@ describe("get", () => {
     expect(get(obj, "b", true)).toBe(false);
     expect(get(obj, "c", "x")).toBe("");
   });
+
+  it("supports array index in path", () => {
+    const obj = {
+      a: [{ b: "x" }],
+    } as const;
+
+    expect(get(obj, "a.0.b")).toBe("x");
+  });
+
+  it("returns undefined for invalid array index", () => {
+    const obj = {
+      a: [{ b: "x" }],
+    } as const;
+
+    expect(get(obj, "a.1.b")).toBeUndefined();
+    expect(get(obj, "a.foo.b" as any)).toBeUndefined();
+  });
+
+  it("supports array index at root", () => {
+    const obj = [{ a: 1 }, { a: 2 }] as const;
+
+    expect(get(obj, "0.a")).toBe(1);
+    expect(get(obj, "1.a")).toBe(2);
+  });
+
+  it("returns undefined for invalid root index", () => {
+    const obj = [{ a: 1 }] as const;
+
+    expect(get(obj, "1.a")).toBeUndefined();
+    expect(get(obj, "foo" as any)).toBeUndefined();
+  });
 });

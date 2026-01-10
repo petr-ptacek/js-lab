@@ -1,6 +1,6 @@
 import { fileURLToPath, URL } from "node:url";
 
-import vue from "@vitejs/plugin-vue";
+import vue              from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
 
 // https://vite.dev/config/
@@ -13,6 +13,9 @@ export default defineConfig({
       ),
       "@petr-ptacek/vue-core": fileURLToPath(
         new URL("../../../packages/core/src", import.meta.url),
+      ),
+      "@petr-ptacek/vue-ui": fileURLToPath(
+        new URL("../../../packages/ui/src", import.meta.url),
       ),
     },
   },

@@ -21,12 +21,18 @@
       ],
       "@petr-ptacek/vue-core": [
         "../../../packages/core/src"
+      ],
+      "@petr-ptacek/vue-ui": [
+        "../../../packages/ui/src"
       ]
     }
   },
   "references": [
     {
       "path": "../../../packages/core"
+    },
+    {
+      "path": "../../../packages/ui"
     }
   ],
   "include": [

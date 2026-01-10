@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { sum } from "@petr-ptacek/vue-core";
-import { shallowRef } from "vue";
+import { add }             from "@petr-ptacek/vue-core";
+import { ButtonComponent } from "@petr-ptacek/vue-ui";
+import { shallowRef }      from "vue";
 
 const result = shallowRef(0);
 
 function makeSum() {
-  result.value = sum(result.value, 2);
+  result.value = add(result.value, 2);
 }
 </script>
 
@@ -13,6 +14,6 @@ function makeSum() {
   <div>
     sum is: {{ result }}
 
-    <button @click="makeSum">Add</button>
+    <ButtonComponent @click="makeSum">Add</ButtonComponent>
   </div>
 </template>

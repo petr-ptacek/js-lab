@@ -47,6 +47,10 @@ export function get<
   defaultValue: D,
 ): Exclude<PathValue<T, P>, undefined> | D;
 export function get(obj: object, path: string, defaultValue?: unknown) {
+  function isIndex(key: string): boolean {
+    return key !== "" && !Number.isNaN(Number(key));
+  }
+
   const result = path
     .split(".")
     .reduce<unknown>(
@@ -73,11 +77,4 @@ export function get(obj: object, path: string, defaultValue?: unknown) {
     );
 
   return typeof result === "undefined" ? defaultValue : result;
-}
-
-
-/* Helpers */
-
-function isIndex(key: string): boolean {
-  return key !== "" && !Number.isNaN(Number(key));
 }

@@ -1,9 +1,9 @@
-import { useDebounceFn } from "@vueuse/core";
-import type { Ref } from "vue";
+import { useDebounceFn }                         from "@vueuse/core";
+import type { Ref }                              from "vue";
 import { computed, readonly, shallowRef, watch } from "vue";
 
 import type { UseProxyValueOptions, UseProxyValueReturn } from "./types";
-import { isUndefined } from "../../utils";
+import { isUndefined }                                    from "../../utils";
 
 /**
  * Creates a proxy value with an internal buffer that can be
@@ -17,7 +17,7 @@ import { isUndefined } from "../../utils";
  * - `defaultValue` may be provided as a value or a factory function.
  * - `null` is treated as a valid value and will not trigger the default.
  * - All changes are written to an internal buffer first.
- * - Calling `apply()` commits the buffer back to `sourceValue`
+ * - Calling `sync()` commits the buffer back to `sourceValue`
  *   (only if `sourceValue.value` is not `undefined`).
  * - Calling `reset()` discards staged changes and restores the buffer
  *   from `sourceValue`, or from `defaultValue` when `sourceValue.value`
@@ -26,34 +26,46 @@ import { isUndefined } from "../../utils";
  * ## State model
  * - `buffer` holds the mutable, staged value.
  * - `value` acts as a proxy combining `buffer` and `sourceValue`.
- * - `isApplied` indicates whether the buffer is currently synchronized
+ * - `isSynced` indicates whether the buffer is currently synchronized
  *   with the source value.
+ *
+ * ## Auto sync
+ * - When auto sync is enabled, changes to `value` are immediately
+ *   synchronized back to `sourceValue`.
+ * - Auto sync can be toggled at runtime using `enableAutoSync()`
+ *   and `disableAutoSync()`.
+ * - `isAutoSync` exposes the current auto sync state as a readonly ref.
+ * - Manual calls to `sync()` always work, regardless of auto sync state.
  *
  * ## Debouncing
  * - `debouncedValue` debounces writes to the buffer (useful for inputs).
- * - `applyDebounced()` debounces committing the buffer to the source.
+ * - `syncDebounced()` debounces committing the buffer to the source.
  *
  * @typeParam TValue - Type of the proxied value
  *
- * @param sourceValue - Source ref acting as the external value (e.g. `v-model`)
+ * @param sourceValue - Source ref acting as the external value
+ *   (e.g. `v-model`)
  * @param defaultValue - Fallback value or factory used when
  *   `sourceValue.value` is `undefined`
  * @param options - Configuration options
  *
- * @param options.autoApply - Whether changes should be applied automatically
- *   (default: `true`)
+ * @param options.autoSync - Whether changes should be synchronized
+ *   automatically (default: `true`)
  * @param options.debounce - Debounce delay (ms) for `debouncedValue`
- * @param options.applyDebounce - Debounce delay (ms) for `applyDebounced`
+ * @param options.syncDebounce - Debounce delay (ms) for `syncDebounced`
  *
  * @returns An object containing:
  * - `value` – Computed ref that proxies the source value with buffering
  * - `debouncedValue` – Debounced version of `value`
  * - `buffer` – Internal mutable buffer holding staged changes
- * - `isApplied` – Readonly ref indicating whether the buffer is in sync
+ * - `isSynced` – Readonly ref indicating whether the buffer is in sync
  *   with the source value
- * - `apply()` – Commits the buffer to the source value
- * - `applyDebounced()` – Debounced version of `apply`
+ * - `isAutoSync` – Readonly ref indicating whether auto sync is enabled
+ * - `sync()` – Commits the buffer to the source value
+ * - `syncDebounced()` – Debounced version of `sync`
  * - `reset()` – Resets the buffer from the source value or `defaultValue`
+ * - `enableAutoSync()` – Enables automatic synchronization
+ * - `disableAutoSync()` – Disables automatic synchronization
  *
  * @example
  * ```ts
@@ -62,16 +74,48 @@ import { isUndefined } from "../../utils";
  * const {
  *   value,
  *   buffer,
- *   isApplied,
- *   apply,
+ *   isSynced,
+ *   isAutoSync,
+ *   sync,
  *   reset,
+ *   disableAutoSync,
+ *   enableAutoSync,
  * } = useProxyValue(model, () => "")
  *
- * value.value = "world" // buffer updated
- * isApplied.value === false
+ * // --- initial state ---
+ * model.value === "hello"
+ * isSynced.value === true
  *
- * reset() // buffer restored from model ("hello")
- * apply() // model.value === "hello"
+ * // --- staged change (autoSync enabled) ---
+ * value.value = "world"
+ * model.value === "world"
+ * isSynced.value === true
+ *
+ * // --- disable auto sync ---
+ * disableAutoSync()
+ *
+ * value.value = "manual"
+ * model.value === "world"
+ * isSynced.value === false
+ *
+ * // --- manual commit ---
+ * sync()
+ * model.value === "manual"
+ * isSynced.value === true
+ *
+ * // --- enable auto sync again ---
+ * enableAutoSync()
+ *
+ * value.value = "auto"
+ * model.value === "auto"
+ * isSynced.value === true
+ *
+ * // --- staged change with autoSync disabled again ---
+ * disableAutoSync()
+ *
+ * value.value = "world"
+ * model.value === "auto"
+ * isSynced.value === false
  * ```
  */
 export function useProxyValue<TValue>(
@@ -79,16 +123,16 @@ export function useProxyValue<TValue>(
   defaultValue: (TValue | (() => TValue)),
   options: UseProxyValueOptions = {},
 ): UseProxyValueReturn<TValue> {
-  const autoApply = options.autoApply ?? true;
+  const autoSync = shallowRef(options.autoSync ?? true);
   const internalValue = shallowRef<TValue>(isUndefined(sourceValue.value) ?
                                            resolveDefaultValue() :
                                            sourceValue.value,
   );
-  const isApplied = shallowRef(!isUndefined(sourceValue.value));
+  const isSynced = shallowRef(!isUndefined(sourceValue.value));
 
   const value = computed<TValue>({
     get: () => {
-      if (!isApplied.value || isUndefined(sourceValue.value)) {
+      if ( !isSynced.value || isUndefined(sourceValue.value) ) {
         return internalValue.value;
       }
 
@@ -96,9 +140,9 @@ export function useProxyValue<TValue>(
     },
     set: (val: TValue) => {
       internalValue.value = val;
-      isApplied.value = false;
-      if (autoApply) {
-        apply();
+      isSynced.value = false;
+      if ( autoSync.value ) {
+        sync();
       }
     },
   });
@@ -115,12 +159,12 @@ export function useProxyValue<TValue>(
   });
 
   watch(sourceValue, (v) => {
-    if (isUndefined(v)) {
+    if ( isUndefined(v) ) {
       internalValue.value = resolveDefaultValue();
-      isApplied.value = false;
+      isSynced.value = false;
     } else {
       internalValue.value = v as TValue;
-      isApplied.value = true;
+      isSynced.value = true;
     }
   });
 
@@ -135,25 +179,36 @@ export function useProxyValue<TValue>(
                           ? resolveDefaultValue()
                           : sourceValue.value;
 
-    isApplied.value = !isUndefined(sourceValue.value);
+    isSynced.value = !isUndefined(sourceValue.value);
   }
 
-  function apply() {
-    if (!isUndefined(sourceValue.value)) {
+  function enableAutoSync() {
+    autoSync.value = true;
+  }
+
+  function disableAutoSync() {
+    autoSync.value = false;
+  }
+
+  function sync() {
+    if ( !isUndefined(sourceValue.value) ) {
       sourceValue.value = internalValue.value;
-      isApplied.value = true;
+      isSynced.value = true;
     }
   }
 
-  const applyDebounced = useDebounceFn(apply, options.applyDebounce ?? 0);
+  const syncDebounced = useDebounceFn(sync, options.syncDebounce ?? 0);
 
   return {
     value,
     debouncedValue,
     buffer: internalValue,
-    isApplied: readonly(isApplied),
-    apply,
+    isSynced: readonly(isSynced),
+    isAutoSync: readonly(autoSync),
+    sync,
     reset,
-    applyDebounced,
+    syncDebounced,
+    disableAutoSync,
+    enableAutoSync,
   };
 }

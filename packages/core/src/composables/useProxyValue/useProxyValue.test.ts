@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import { expectTypeOf } from "vitest";
-import { ref, nextTick } from "vue";
+import { expectTypeOf }             from "vitest";
+import { ref, nextTick }            from "vue";
 
 import { useProxyValue } from "./useProxyValue";
 
@@ -8,42 +8,42 @@ describe("useProxyValue", () => {
   it("uses defaultValue when sourceValue is undefined", () => {
     const source = ref<string | undefined>(undefined);
 
-    const { value, buffer, isApplied } = useProxyValue(source, "default");
+    const { value, buffer, isSynced } = useProxyValue(source, "default");
 
     expect(value.value).toBe("default");
     expect(buffer.value).toBe("default");
-    expect(isApplied.value).toBe(false);
+    expect(isSynced.value).toBe(false);
   });
 
   it("uses sourceValue when defined", () => {
     const source = ref<string | undefined>("initial");
 
-    const { value, buffer, isApplied } = useProxyValue(source, "default");
+    const { value, buffer, isSynced } = useProxyValue(source, "default");
 
     expect(value.value).toBe("initial");
     expect(buffer.value).toBe("initial");
-    expect(isApplied.value).toBe(true);
+    expect(isSynced.value).toBe(true);
   });
 
   it("writes to buffer when value is changed", () => {
     const source = ref<string | undefined>("initial");
 
-    const { value, buffer, isApplied } = useProxyValue(source, "default", {
-      autoApply: false,
+    const { value, buffer, isSynced } = useProxyValue(source, "default", {
+      autoSync: false,
     });
 
     value.value = "changed";
 
     expect(buffer.value).toBe("changed");
     expect(source.value).toBe("initial");
-    expect(isApplied.value).toBe(false);
+    expect(isSynced.value).toBe(false);
   });
 
-  it("auto-applies changes when autoApply is true", () => {
+  it("auto-applies changes when autoSync is true", () => {
     const source = ref<string | undefined>("initial");
 
     const { value } = useProxyValue(source, "default", {
-      autoApply: true,
+      autoSync: true,
     });
 
     value.value = "changed";
@@ -51,43 +51,43 @@ describe("useProxyValue", () => {
     expect(source.value).toBe("changed");
   });
 
-  it("does not auto-apply when autoApply is false", () => {
+  it("does not auto-apply when autoSync is false", () => {
     const source = ref<string | undefined>("initial");
 
-    const { value, apply } = useProxyValue(source, "default", {
-      autoApply: false,
+    const { value, sync } = useProxyValue(source, "default", {
+      autoSync: false,
     });
 
     value.value = "changed";
 
     expect(source.value).toBe("initial");
 
-    apply();
+    sync();
     expect(source.value).toBe("changed");
   });
 
   it("reset restores buffer from sourceValue", () => {
     const source = ref<string | undefined>("initial");
 
-    const { value, buffer, reset, isApplied } = useProxyValue(source, "default", {
-      autoApply: false,
+    const { value, buffer, reset, isSynced } = useProxyValue(source, "default", {
+      autoSync: false,
     });
 
     value.value = "changed";
     expect(buffer.value).toBe("changed");
-    expect(isApplied.value).toBe(false);
+    expect(isSynced.value).toBe(false);
 
     reset();
 
     expect(buffer.value).toBe("initial");
-    expect(isApplied.value).toBe(true);
+    expect(isSynced.value).toBe(true);
   });
 
   it("reset uses defaultValue when sourceValue is undefined", () => {
     const source = ref<string | undefined>(undefined);
 
     const { value, buffer, reset } = useProxyValue(source, "default", {
-      autoApply: false,
+      autoSync: false,
     });
 
     value.value = "changed";
@@ -99,13 +99,13 @@ describe("useProxyValue", () => {
   it("reacts to external sourceValue changes", async () => {
     const source = ref<string | undefined>("initial");
 
-    const { buffer, isApplied } = useProxyValue(source, "default");
+    const { buffer, isSynced } = useProxyValue(source, "default");
 
     source.value = "external";
     await nextTick();
 
     expect(buffer.value).toBe("external");
-    expect(isApplied.value).toBe(true);
+    expect(isSynced.value).toBe(true);
   });
 
   it("debouncedValue debounces writes to buffer", async () => {
@@ -115,7 +115,7 @@ describe("useProxyValue", () => {
 
     const { debouncedValue, buffer } = useProxyValue(source, "default", {
       debounce: 100,
-      autoApply: false,
+      autoSync: false,
     });
 
     debouncedValue.value = "debounced";
@@ -130,18 +130,18 @@ describe("useProxyValue", () => {
     vi.useRealTimers();
   });
 
-  it("applyDebounced debounces committing buffer to source", async () => {
+  it("syncDebounced debounces committing buffer to source", async () => {
     vi.useFakeTimers();
 
     const source = ref<string | undefined>("initial");
 
-    const { value, applyDebounced } = useProxyValue(source, "default", {
-      autoApply: false,
-      applyDebounce: 100,
+    const { value, syncDebounced } = useProxyValue(source, "default", {
+      autoSync: false,
+      syncDebounce: 100,
     });
 
     value.value = "changed";
-    applyDebounced();
+    syncDebounced();
 
     expect(source.value).toBe("initial");
 
@@ -153,15 +153,15 @@ describe("useProxyValue", () => {
     vi.useRealTimers();
   });
 
-  it("apply does nothing when sourceValue is undefined", () => {
+  it("sync does nothing when sourceValue is undefined", () => {
     const source = ref<string | undefined>(undefined);
 
-    const { value, apply } = useProxyValue(source, "default", {
-      autoApply: false,
+    const { value, sync } = useProxyValue(source, "default", {
+      autoSync: false,
     });
 
     value.value = "changed";
-    apply();
+    sync();
 
     expect(source.value).toBeUndefined();
   });
@@ -184,7 +184,7 @@ describe("useProxyValue", () => {
                       .mockReturnValueOnce("second");
 
     const { buffer, reset } = useProxyValue(source, factory, {
-      autoApply: false,
+      autoSync: false,
     });
 
     expect(buffer.value).toBe("first");
@@ -196,18 +196,18 @@ describe("useProxyValue", () => {
   it("treats null as a valid value", () => {
     const source = ref<string | null | undefined>(null);
 
-    const { value, buffer, isApplied } = useProxyValue(source, "default");
+    const { value, buffer, isSynced } = useProxyValue(source, "default");
 
     expect(value.value).toBeNull();
     expect(buffer.value).toBeNull();
-    expect(isApplied.value).toBe(true);
+    expect(isSynced.value).toBe(true);
   });
 
   it("reset uses latest sourceValue after external change", async () => {
     const source = ref<string | undefined>("initial");
 
     const { buffer, reset } = useProxyValue(source, "default", {
-      autoApply: false,
+      autoSync: false,
     });
 
     source.value = "external";
@@ -219,29 +219,29 @@ describe("useProxyValue", () => {
     expect(buffer.value).toBe("external");
   });
 
-  it("sets isApplied back to true after apply", () => {
+  it("sets isSynced back to true after sync", () => {
     const source = ref<string | undefined>("initial");
 
-    const { value, isApplied, apply } = useProxyValue(source, "default", {
-      autoApply: false,
+    const { value, isSynced, sync } = useProxyValue(source, "default", {
+      autoSync: false,
     });
 
     value.value = "changed";
-    expect(isApplied.value).toBe(false);
+    expect(isSynced.value).toBe(false);
 
-    apply();
-    expect(isApplied.value).toBe(true);
+    sync();
+    expect(isSynced.value).toBe(true);
   });
 
-  it("apply after reset keeps source unchanged", () => {
+  it("sync after reset keeps source unchanged", () => {
     const source = ref<string | undefined>("initial");
 
-    const { reset, apply } = useProxyValue(source, "default", {
-      autoApply: false,
+    const { reset, sync } = useProxyValue(source, "default", {
+      autoSync: false,
     });
 
     reset();
-    apply();
+    sync();
 
     expect(source.value).toBe("initial");
   });
@@ -253,6 +253,132 @@ describe("useProxyValue", () => {
 
     expectTypeOf(api.value.value).toBeString();
     expectTypeOf(api.buffer.value).toBeString();
-    expectTypeOf(api.isApplied.value).toBeBoolean();
+    expectTypeOf(api.isSynced.value).toBeBoolean();
+    expectTypeOf(api.disableAutoSync).toBeFunction();
+    expectTypeOf(api.enableAutoSync).toBeFunction();
+  });
+
+  it("does not sync automatically when autoSync is disabled", () => {
+    const source = ref<string | undefined>("initial");
+
+    const {
+      value,
+      buffer,
+      isSynced,
+      disableAutoSync,
+    } = useProxyValue(source, "default");
+
+    disableAutoSync();
+
+    value.value = "changed";
+
+    expect(buffer.value).toBe("changed");
+    expect(source.value).toBe("initial");
+    expect(isSynced.value).toBe(false);
+  });
+
+  it("syncs automatically again after autoSync is re-enabled", () => {
+    const source = ref<string | undefined>("initial");
+
+    const {
+      value,
+      buffer,
+      isSynced,
+      disableAutoSync,
+      enableAutoSync,
+    } = useProxyValue(source, "default");
+
+    disableAutoSync();
+    value.value = "changed";
+
+    expect(source.value).toBe("initial");
+    expect(isSynced.value).toBe(false);
+
+    enableAutoSync();
+    value.value = "changed-again";
+
+    expect(source.value).toBe("changed-again");
+    expect(buffer.value).toBe("changed-again");
+    expect(isSynced.value).toBe(true);
+  });
+
+  it("manual sync works even when autoSync is disabled", () => {
+    const source = ref<string | undefined>("initial");
+
+    const {
+      value,
+      sync,
+      isSynced,
+      disableAutoSync,
+    } = useProxyValue(source, "default");
+
+    disableAutoSync();
+
+    value.value = "changed";
+    expect(isSynced.value).toBe(false);
+
+    sync();
+
+    expect(source.value).toBe("changed");
+    expect(isSynced.value).toBe(true);
+  });
+
+  it("disableAutoSync does not affect external sourceValue updates", async () => {
+    const source = ref<string | undefined>("initial");
+
+    const {
+      buffer,
+      isSynced,
+      disableAutoSync,
+    } = useProxyValue(source, "default");
+
+    disableAutoSync();
+
+    source.value = "external";
+    await nextTick();
+
+    expect(buffer.value).toBe("external");
+    expect(isSynced.value).toBe(true);
+  });
+
+  it("exposes reactive autoSync state", () => {
+    const source = ref<string | undefined>("initial");
+
+    const {
+      isAutoSync,
+      disableAutoSync,
+      enableAutoSync,
+    } = useProxyValue(source, "default");
+
+    expect(isAutoSync.value).toBe(true);
+
+    disableAutoSync();
+    expect(isAutoSync.value).toBe(false);
+
+    enableAutoSync();
+    expect(isAutoSync.value).toBe(true);
+  });
+
+  it("concrete usage", async () => {
+    const model = ref<string | undefined>("hello");
+
+    const {
+      value,
+      buffer,
+      isSynced,
+      sync,
+      reset,
+    } = useProxyValue(model, () => "");
+
+    expect(value.value).toBe("hello");
+
+    value.value = "world";
+    expect(model.value).toBe("world");
+    expect(isSynced.value).toBe(true);
+
+
+    reset();
+    expect(value.value).toBe("world");
+    expect(isSynced.value).toBe(true);
   });
 });

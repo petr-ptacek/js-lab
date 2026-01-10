@@ -56,7 +56,7 @@ export function get(obj: object, path: string, defaultValue?: unknown) {
         }
 
         if ( isArray(acc) ) {
-          if ( isIndex(key) ) {
+          if ( !isIndex(key) ) {
             return undefined;
           }
 

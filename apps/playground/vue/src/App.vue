@@ -11,9 +11,11 @@ function makeSum() {
 </script>
 
 <template>
-  <div>
-    sum is: {{ result }}
+  <div class="bg-green-200">
+    <div>
+      sum is: {{ result }}
 
-    <ButtonComponent @click="makeSum">Add</ButtonComponent>
+      <ButtonComponent @click="makeSum">Add</ButtonComponent>
+    </div>
   </div>
 </template>

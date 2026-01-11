@@ -1,8 +1,9 @@
 import { URL, fileURLToPath } from "node:url";
 
-import vuePlugin        from "@vitejs/plugin-vue";
-import { defineConfig } from "vite";
-import dtsPlugin        from "vite-plugin-dts";
+import tailwindcssPlugin from "@tailwindcss/vite";
+import vuePlugin         from "@vitejs/plugin-vue";
+import { defineConfig }  from "vite";
+import dtsPlugin         from "vite-plugin-dts";
 
 export default defineConfig({
   build: {
@@ -11,11 +12,27 @@ export default defineConfig({
       fileName: "index",
       formats: ["es"],
     },
+    cssCodeSplit: false,
     rollupOptions: {
       external: ["vue"],
+      output: {
+        assetFileNames: (assetInfo) => {
+          if (
+            assetInfo.type === "asset" &&
+            assetInfo.originalFileNames?.some((name) =>
+              name.endsWith(".css"),
+            )
+          ) {
+            return "style.css";
+          }
+
+          return "[name][extname]";
+        },
+      },
     },
   },
   plugins: [
+    tailwindcssPlugin(),
     vuePlugin(),
     dtsPlugin({
       entryRoot: "src",

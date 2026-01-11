@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <button class="ui-button" @click="$emit('click')">
+  <button data-variant="secondary" class="ui-button" @click="$emit('click')">
     <slot>{{ message}}</slot>
   </button>
 </template>

@@ -4,6 +4,7 @@ import { computed, useTemplateRef, watch } from "vue";
 
 import type { UiResizeContainerModalValue, UiResizeContainerProps } from "../types";
 import { clampPercentWithLimits, normalizeSizeToPercent }           from "../utils";
+import { useResizeActions }                                         from "./useResizeActions.ts";
 import { useResizeDrag }                                            from "./useResizeDrag.ts";
 import { useResizeSizes }                                           from "./useResizeSizes";
 import { useResizeValue }                                           from "./useResizeValue.ts";
@@ -60,6 +61,16 @@ export function useController(options: UseControllerOptions) {
     isDragging,
   });
 
+  const { isCollapsed, collapse, toggle, isExpanded, expand } = useResizeActions({
+    containerSize,
+    currentPercent,
+    minSize: computed(() => options.props.minSize),
+    maxSize: computed(() => options.props.maxSize),
+    onChange: (percent) => {
+      options.modelValue.value = `${percent}%`;
+    },
+  });
+
   // při startu dragu
   watch(isDragging, (dragging) => {
     if ( !dragging ) {
@@ -92,5 +103,13 @@ export function useController(options: UseControllerOptions) {
     betaStyle,
 
     onPointerDown,
+
+    isDragging,
+    isCollapsed,
+    isExpanded,
+
+    collapse,
+    expand,
+    toggle,
   };
 }

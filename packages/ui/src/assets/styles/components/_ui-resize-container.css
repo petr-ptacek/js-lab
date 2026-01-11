@@ -14,8 +14,20 @@
   @apply relative flex-shrink-0;
 }
 
+/* =========================
+   RESIZER WRAPPER (PASIVNÍ)
+   ========================= */
 .ui-resize-container__resizer {
-  @apply absolute bg-transparent;
+  @apply relative w-full h-full bg-transparent;
+  pointer-events: none;
+}
+
+/* =========================
+   DRAG HANDLE (AKTIVNÍ)
+   ========================= */
+.ui-resize-container__handle {
+  @apply absolute inset-0 bg-transparent;
+  pointer-events: auto;
   touch-action: none;
 
   transition: width 150ms ease,
@@ -27,15 +39,25 @@
   }
 }
 
-/*VERTICAL*/
+/* =========================
+   ACTION BUTTONS
+   ========================= */
+.ui-resize-container__actions {
+  @apply absolute top-1/2 -translate-y-1/2 flex gap-1;
+  pointer-events: auto;
+}
+
+/* =========================
+   VERTICAL
+   ========================= */
 .ui-resize-container[data-orientation="vertical"] {
   .ui-resize-container__divider {
     @apply w-px h-full;
   }
 
-  .ui-resize-container__resizer {
+  .ui-resize-container__handle {
     cursor: col-resize;
-    @apply top-0 left-1/2 h-full w-2 -translate-x-1/2;
+    @apply left-1/2 top-0 h-full w-2 -translate-x-1/2;
 
     &:hover {
       @apply w-3;
@@ -43,7 +65,9 @@
   }
 }
 
-/*HORIZONTAL*/
+/* =========================
+   HORIZONTAL
+   ========================= */
 .ui-resize-container[data-orientation="horizontal"] {
   .ui-resize-container__content {
     @apply flex-col;
@@ -53,9 +77,9 @@
     @apply h-px w-full;
   }
 
-  .ui-resize-container__resizer {
+  .ui-resize-container__handle {
     cursor: row-resize;
-    @apply left-0 top-1/2 w-full h-2 -translate-y-1/2;
+    @apply top-1/2 left-0 w-full h-2 -translate-y-1/2;
 
     &:hover {
       @apply h-3;

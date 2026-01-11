@@ -45,6 +45,10 @@ const {
   betaStyle,
   alphaStyle,
   onPointerDown,
+  expand,
+  collapse,
+  isExpanded,
+  isCollapsed,
 } = useController({
   modelValue: mv,
   props,
@@ -59,6 +63,8 @@ defineSlots<UiResizeContainerSlots>();
     :data-orientation="orientation"
     :data-origin="origin"
     :data-animatable="animatable"
+    :data-collapsed="isCollapsed"
+    :data-expanded="isExpanded"
   >
     <div
       class="ui-resize-container__content"
@@ -77,10 +83,28 @@ defineSlots<UiResizeContainerSlots>();
         class="ui-resize-container__divider"
         ref="divider"
       >
-        <div
-          class="ui-resize-container__resizer"
-          @pointerdown="onPointerDown"
-        >
+        <div class="ui-resize-container__resizer">
+          <div
+            class="ui-resize-container__handle"
+            @pointerdown="onPointerDown"
+          ></div>
+
+          <div class="ui-resize-container__actions">
+            <button
+              @click="collapse"
+              :disabled="isCollapsed"
+            >
+              −
+            </button>
+
+            <button
+              @click="expand"
+              :disabled="isExpanded"
+            >
+              +
+            </button>
+          </div>
+
         </div>
       </div>
 

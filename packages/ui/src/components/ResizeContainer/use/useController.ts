@@ -3,8 +3,10 @@ import type { Ref }                        from "vue";
 import { computed, useTemplateRef, watch } from "vue";
 
 import type { UiResizeContainerModalValue, UiResizeContainerProps } from "../types";
+import { clampPercentWithLimits, normalizeSizeToPercent }           from "../utils";
 import { useResizeDrag }                                            from "./useResizeDrag.ts";
 import { useResizeSizes }                                           from "./useResizeSizes";
+import { useResizeValue }                                           from "./useResizeValue.ts";
 
 export type UseControllerOptions = {
   modelValue: Ref<UiResizeContainerModalValue>;
@@ -13,44 +15,82 @@ export type UseControllerOptions = {
 
 export function useController(options: UseControllerOptions) {
   // Content
-  const contentEl = useTemplateRef<HTMLDivElement>("content");
-  const contentSize = useElementSize(contentEl);
+  const containerEl = useTemplateRef<HTMLDivElement>("content");
+  const containerElSize = useElementSize(containerEl);
 
   // Orientation
   const isOrientationVertical = computed(() => options.props.orientation === "vertical");
   // const isOrientationHorizontal = computed(() => options.props.orientation === "horizontal");
 
-  const contentSizeByOrientation = computed(() => {
+
+  const containerSize = computed(() => {
     return isOrientationVertical.value ?
-           contentSize.width.value :
-           contentSize.height.value;
+           containerElSize.width.value :
+           containerElSize.height.value;
+  });
+
+  const currentPercent = computed(() => {
+    return normalizeSizeToPercent(
+      options.modelValue.value,
+      containerSize.value,
+      {
+        minSize: options.props.minSize,
+        maxSize: options.props.maxSize,
+      },
+    );
   });
 
   const { alphaStyle, betaStyle } = useResizeSizes({
     modelValue: options.modelValue,
-    containerSize: contentSizeByOrientation,
-    origin: computed(() => options.props.origin),
+    containerSize,
+    origin: computed(() => options.props.origin!),
     minSize: computed(() => options.props.minSize),
     maxSize: computed(() => options.props.maxSize),
   });
 
-  const { deltaPx, onLostPointerCapture, onPointerDown } = useResizeDrag({
-    orientation: () => options.props.orientation,
-    disabled: () => !options.props.resizeable,
+  const { deltaPx, onPointerDown, isDragging } = useResizeDrag({
+    orientation: computed(() => options.props.orientation!),
+    disabled: computed(() => !options.props.resizeable),
   });
 
-  watch(deltaPx, v => {
-    console.log("deltaPx", v);
+  const { nextPercent, setStartPercent } = useResizeValue({
+    deltaPx,
+    containerSize,
+    origin: computed(() => options.props.origin!),
+    isDragging,
+  });
+
+  // při startu dragu
+  watch(isDragging, (dragging) => {
+    if ( !dragging ) {
+      setStartPercent(0);
+      return;
+    }
+
+    setStartPercent(currentPercent.value);
+  });
+
+  // při pohybu
+  watch(nextPercent, (value) => {
+    if ( !isDragging.value ) return;
+    if ( !containerSize.value ) return;
+
+    const clamped = clampPercentWithLimits(
+      value,
+      containerSize.value,
+      {
+        minSize: options.props.minSize,
+        maxSize: options.props.maxSize,
+      },
+    );
+
+    options.modelValue.value = `${clamped}%`;
   });
 
   return {
     alphaStyle,
     betaStyle,
 
-    onLostPointerCapture,
     onPointerDown,
   };
 }
-
-
-

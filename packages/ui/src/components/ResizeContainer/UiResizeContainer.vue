@@ -45,7 +45,6 @@ const {
   betaStyle,
   alphaStyle,
   onPointerDown,
-  onLostPointerCapture
 } = useController({
   modelValue: mv,
   props,
@@ -81,7 +80,6 @@ defineSlots<UiResizeContainerSlots>();
         <div
           class="ui-resize-container__resizer"
           @pointerdown="onPointerDown"
-          @lostpointercapture="onLostPointerCapture"
         >
         </div>
       </div>

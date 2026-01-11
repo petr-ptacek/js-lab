@@ -1,20 +1,22 @@
 <script setup lang="ts">
-import { UiResizeContainer } from "@petr-ptacek/vue-ui";
-import { shallowRef }        from "vue";
+import { UiResizeContainer, UiResizeContainerSection } from "@petr-ptacek/vue-ui";
+import { shallowRef }                                  from "vue";
 
-const t = shallowRef(400);
+const t = shallowRef(500);
 </script>
 
 <template>
   <div class="bg-green-200 h-screen w-screen">
-    <UiResizeContainer orientation="vertical" v-model="t" default-value="20%">
+    <UiResizeContainer orientation="vertical" v-model="t">
       <template #alpha>
-        <div class="h-full w-full bg-blue-600 flex items-center justify-center font-bold text-2xl">
-          {{ t }}
-        </div>
+        <UiResizeContainerSection class="bg-red-400">
+          <p>lorem</p>
+        </UiResizeContainerSection>
       </template>
       <template #beta>
-        <div class="h-full w-full bg-green-600"></div>
+        <UiResizeContainerSection class="bg-blue-400">
+
+        </UiResizeContainerSection>
       </template>
     </UiResizeContainer>
   </div>

@@ -1,9 +1,13 @@
 .ui-resize-container {
-  @apply w-full h-full;
+  @apply w-full h-full overflow-hidden;
 }
 
 .ui-resize-container__content {
   @apply w-full h-full flex;
+}
+
+.ui-resize-container__section {
+  @apply min-w-0 min-h-0;
 }
 
 .ui-resize-container__divider {

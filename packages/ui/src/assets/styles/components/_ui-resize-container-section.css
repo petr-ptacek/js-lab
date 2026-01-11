@@ -1,0 +1,11 @@
+.ui-resize-container-section {
+  @apply w-full h-full min-w-0 min-h-0;
+}
+
+.ui-resize-container-section[data-scrollable="true"] {
+  @apply overflow-auto;
+}
+
+.ui-resize-container-section[data-scrollable="false"] {
+  @apply overflow-hidden;
+}

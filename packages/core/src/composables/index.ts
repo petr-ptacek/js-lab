@@ -1,1 +1,2 @@
-export * from "./useProxyValue"
+export * from "./useProxyValue";
+export * from "./usePointerDrag";

@@ -1,4 +1,4 @@
 /*COMPONENTS*/
 @layer components {
-  @import "./_button.css";
+  @import "./_ui-resize-container.css";
 }

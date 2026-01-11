@@ -7,3 +7,5 @@ export * from "./isValidDate";
 export * from "./isObject";
 export * from "./isArray";
 export * from "./isEmptyArray";
+export * from "./isString";
+export * from "./isEmptyString";

@@ -9,9 +9,6 @@
     },
     {
       "path": "./packages/ui"
-    },
-    {
-      "path": "./apps/playground/vue"
     }
   ]
 }

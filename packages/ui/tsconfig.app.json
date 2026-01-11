@@ -6,14 +6,25 @@
       "vite/client"
     ],
     "composite": true,
+    /*Paths*/
+    "paths": {
+      "@petr-ptacek/vue-core": [
+        "../core/src"
+      ]
+    },
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
+    "noUncheckedSideEffectImports": true
   },
+  "references": [
+    {
+      "path": "../core"
+    }
+  ],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",

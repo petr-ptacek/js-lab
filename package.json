@@ -1,6 +1,9 @@
 {
   "name": "@petr-ptacek/vue-ecosystem",
-  "author": "Petr Ptacek <petr.ptacek99@gmail.com>",
+  "author": {
+    "name": "Petr Ptáček",
+    "email": "petr.ptacek99@gmail.com"
+  },
   "description": "Ecosystem of Vue.js composables, components, and shared tooling.",
   "private": true,
   "type": "module",
@@ -27,6 +30,7 @@
   },
   "keywords": [
     "vue",
+    "js",
     "vue3",
     "monorepo",
     "composables",

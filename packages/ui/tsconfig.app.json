@@ -9,7 +9,7 @@
     /*Paths*/
     "paths": {
       "@petr-ptacek/vue-core": [
-        "../core/src"
+        "../core/src/index.ts"
       ]
     },
     /* Linting */

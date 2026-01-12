@@ -3,7 +3,7 @@ import { type Ref } from "vue";
 export type UsePointerDragOptions = {
   disabled?: Ref<boolean>;
 
-  onStart?: (e: PointerEvent) => void;
+  onStart?: (e: PointerEvent) => (void | false);
   onMove?: (e: PointerEvent) => void;
   onEnd?: (e: PointerEvent) => void;
 };

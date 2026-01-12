@@ -14,16 +14,17 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
     /*Paths*/
     "paths": {
       "@/*": [
         "src/*"
       ],
       "@petr-ptacek/vue-core": [
-        "../../../packages/core/src"
+        "../../../packages/core/src/index.ts"
       ],
       "@petr-ptacek/vue-ui": [
-        "../../../packages/ui/src"
+        "../../../packages/ui/src/index.ts"
       ]
     }
   },

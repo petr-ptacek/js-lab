@@ -13,13 +13,7 @@
     "noEmit": true,
     "verbatimModuleSyntax": true,
     "useDefineForClassFields": true,
-    "esModuleInterop": true,
-    "baseUrl": ".",
-    "paths": {
-      "@petr-ptacek/vue-core": [
-        "../core/src"
-      ]
-    }
+    "esModuleInterop": true
   },
   "include": [
     "src"

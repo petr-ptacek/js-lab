@@ -1,5 +1,5 @@
-import { usePointerDrag }                 from "@petr-ptacek/vue-core";
-import { readonly, type Ref, shallowRef } from "vue";
+import { usePointerDrag } from "@petr-ptacek/vue-core";
+import { readonly, type Ref, shallowRef, watch, computed } from "vue";
 
 import type { OrientationValue } from "../types";
 
@@ -9,29 +9,21 @@ export type UseResizeOptions = {
 };
 
 export function useResizeDrag(options: UseResizeOptions) {
-  const startPos = shallowRef(0);
   const deltaPx = shallowRef(0);
 
-  const { onPointerDown, isDragging } = usePointerDrag({
+  const axis = computed(() =>
+    options.orientation.value === "vertical" ? "x" : "y",
+  );
+
+  const { onPointerDown, isDragging, deltaX, deltaY } = usePointerDrag({
     disabled: options.disabled,
-    onStart: (e) => {
-      e.preventDefault();
+    threshold: 4,
+    lockAxisAfterThreshold: true,
+    axis,
+  });
 
-      startPos.value =
-        options.orientation.value === "vertical"
-        ? e.clientX
-        : e.clientY;
-
-      deltaPx.value = 0;
-    },
-    onMove: (e) => {
-      const current =
-        options.orientation.value === "vertical"
-        ? e.clientX
-        : e.clientY;
-
-      deltaPx.value = current - startPos.value;
-    },
+  watch([deltaX, deltaY], () => {
+    deltaPx.value = axis.value === "x" ? deltaX.value : deltaY.value;
   });
 
   return {

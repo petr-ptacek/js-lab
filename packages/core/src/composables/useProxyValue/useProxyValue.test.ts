@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import { expectTypeOf }             from "vitest";
-import { ref, nextTick }            from "vue";
+import { expectTypeOf } from "vitest";
+import { ref, nextTick } from "vue";
 
 import { useProxyValue } from "./useProxyValue";
 
@@ -364,9 +364,7 @@ describe("useProxyValue", () => {
 
     const {
       value,
-      buffer,
       isSynced,
-      sync,
       reset,
     } = useProxyValue(model, () => "");
 

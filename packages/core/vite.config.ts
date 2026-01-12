@@ -1,7 +1,6 @@
 import { URL, fileURLToPath } from "node:url";
 
 import { defineConfig } from "vite";
-import dtsPlugin        from "vite-plugin-dts";
 
 export default defineConfig({
   build: {
@@ -14,17 +13,4 @@ export default defineConfig({
       external: ["vue"],
     },
   },
-  plugins: [
-    dtsPlugin({
-      entryRoot: "src",
-      outDir: "dist",
-      insertTypesEntry: true,
-      tsconfigPath: "tsconfig.app.json",
-      exclude: [
-        "vite.config.ts",
-        "**/*.config.ts",
-        "**/*.config.js",
-      ],
-    }),
-  ],
 });

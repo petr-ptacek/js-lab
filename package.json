@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm -r build",
-    "build:core": "pnpm --filter @petr-ptacek/vue-core build",
+    "build:packages": "pnpm -r --filter \"./packages/**\" build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "pnpm -r test",

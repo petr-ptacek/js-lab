@@ -11,10 +11,10 @@
     "emitDeclarationOnly": true,
     "rootDir": "src",
     "outDir": "dist",
-    "noEmit": false
+    "noEmit": false,
   },
   "include": [
-    "src",
+    "src"
   ],
   "exclude": [
     "**/__tests__/**",

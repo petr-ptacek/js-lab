@@ -8,11 +8,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "pnpm -r build",
-    "build:packages": "pnpm -r --filter \"./packages/**\" build",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "test": "pnpm -r test",
+    "type-check:packages": "pnpm -r --filter \"./packages/**\" run type-check",
+    "test:packages": "pnpm -r --filter \"./packages/**\" run test",
+    "build:packages": "pnpm -r --filter \"./packages/**\" run build",
+    "build:types": "vue-tsc -b ./tsconfig.types.json",
+    "verify": "pnpm run type-check:packages && pnpm run test:packages",
+    "build": "pnpm run verify && pnpm run build:packages && pnpm run build:types",
+    "dev:playground": "pnpm --dir apps/playground/vue run dev",
     "prepare": "husky",
     "clean": "pnpm -r exec -- rm -rf rimraf node_modules & rm -rf node_modules"
   },
@@ -62,6 +64,7 @@
     "lint-staged": "^16.2.7",
     "typescript": "^5.9.3",
     "vitest": "^4.0.16",
-    "vue-eslint-parser": "^10.2.0"
+    "vue-eslint-parser": "^10.2.0",
+    "vue-tsc": "^3.1.4"
   }
 }

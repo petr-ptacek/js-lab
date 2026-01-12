@@ -7,8 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "build:types": "vue-tsc -b ./tsconfig.types.json",
-    "type-check": "vue-tsc -p ./tsconfig.app.json --noEmit",
-    "type-watch": "vue-tsc -p ./tsconfig.app.json --noEmit --watch"
+    "type-check": "vue-tsc -p ./tsconfig.ide.json --noEmit",
+    "type-watch": "vue-tsc -p ./tsconfig.ide.json --noEmit --watch",
+    "test": "",
+    "coverage": ""
   },
   "repository": {
     "type": "git",

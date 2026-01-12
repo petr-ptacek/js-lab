@@ -5,13 +5,15 @@ import type { DragAxis, EventData, UsePointerDragOptions, UsePointerDragReturn }
 export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerDragReturn {
   // Defaults vars
   const isDisabled = computed(() => !!toValue(options.disabled));
-  const axis = computed<DragAxis>(() => options.axis ?? "both");
-  const threshold = computed(() => Math.max(0, options.threshold ?? 0));
-  const lockAxisAfterThreshold = computed(() => options.lockAxisAfterThreshold ?? false);
+  const axis = computed<DragAxis>(() => toValue(options.axis) ?? "both");
+  const threshold = computed(() => Math.max(0, toValue(options.threshold) ?? 0));
+  const lockAxisAfterThreshold = computed(() => toValue(options.lockAxisAfterThreshold) ?? false);
   const invertAxis = computed<DragAxis | null>(() => {
-    if (options.invertAxis === true) return "both";
-    if (options.invertAxis === false || options.invertAxis == null) return null;
-    return options.invertAxis;
+    const ivAx = toValue(options.invertAxis);
+
+    if (ivAx === true) return "both";
+    if (ivAx === false || ivAx == null) return null;
+    return ivAx;
   });
 
   // Internal vars

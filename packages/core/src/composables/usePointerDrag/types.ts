@@ -6,18 +6,18 @@ import { type MaybeRef, type Ref } from "vue";
 
 export type UsePointerDragOptions = {
   disabled?: MaybeRef<boolean>;
-  axis?: DragAxis;
-  threshold?: number;
+  axis?: MaybeRef<DragAxis>;
+  threshold?: MaybeRef<number>;
 
   /**
    * možnost obrátit směr delty na určité ose
    */
-  invertAxis?: DragAxis | boolean;
+  invertAxis?: MaybeRef<DragAxis | boolean>;
 
   /**
    * automatické zamčení osy pohybu poté, co uživatel jasně naznačí směr dragu
    * */
-  lockAxisAfterThreshold?: boolean;
+  lockAxisAfterThreshold?: MaybeRef<boolean>;
 
   onStart?: (e: EventData) => (void | false);
   onMove?: (e: EventData) => void;

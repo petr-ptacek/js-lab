@@ -6,7 +6,7 @@
       "vite/client"
     ],
     "composite": true,
-    /*Paths*/
+    "baseUrl": ".",
     "paths": {
       "@petr-ptacek/vue-core": [
         "../core/src/index.ts"

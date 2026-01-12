@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useProxyValue, isUndefined } from "@petr-ptacek/vue-core";
-import { computed }                   from "vue";
+import { computed } from "vue";
 
 import type {
   UiResizeContainerEmits,
   UiResizeContainerModalValue,
   UiResizeContainerProps,
   UiResizeContainerSlots,
-}                        from "./types";
+} from "./types";
 import { useController } from "./use/useController.ts";
 
 
@@ -30,7 +30,7 @@ const emit = defineEmits<UiResizeContainerEmits>();
 const { value: mv } = useProxyValue<UiResizeContainerModalValue>(computed({
     get: () => props.modelValue,
     set: (value) => {
-      if ( isUndefined(value) ) return;
+      if (isUndefined(value)) return;
       emit("update:modelValue", value);
     },
   }),

@@ -28,17 +28,8 @@
       ]
     }
   },
-  "references": [
-    {
-      "path": "../../../packages/core"
-    },
-    {
-      "path": "../../../packages/ui"
-    }
-  ],
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
+    "src",
+    "../../../packages/*/src"
   ]
 }

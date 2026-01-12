@@ -8,6 +8,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test": "",
     "type-check:packages": "pnpm -r --filter \"./packages/**\" run type-check",
     "test:packages": "pnpm -r --filter \"./packages/**\" run test",
     "build:packages": "pnpm -r --filter \"./packages/**\" run build",

@@ -1,9 +1,9 @@
 import { URL, fileURLToPath } from "node:url";
 
 import tailwindcssPlugin from "@tailwindcss/vite";
-import vuePlugin         from "@vitejs/plugin-vue";
-import { defineConfig }  from "vite";
-import dtsPlugin         from "vite-plugin-dts";
+import vuePlugin from "@vitejs/plugin-vue";
+import { defineConfig } from "vite";
+// import dtsPlugin         from "vite-plugin-dts";
 
 export default defineConfig({
   build: {
@@ -34,16 +34,16 @@ export default defineConfig({
   plugins: [
     tailwindcssPlugin(),
     vuePlugin(),
-    dtsPlugin({
-      entryRoot: "src",
-      outDir: "dist",
-      insertTypesEntry: true,
-      tsconfigPath: "tsconfig.app.json",
-      exclude: [
-        "vite.config.ts",
-        "**/*.config.ts",
-        "**/*.config.js",
-      ],
-    }),
+    // dtsPlugin({
+    //   entryRoot: "src",
+    //   outDir: "dist",
+    //   insertTypesEntry: true,
+    //   tsconfigPath: "tsconfig.app.json",
+    //   exclude: [
+    //     "vite.config.ts",
+    //     "**/*.config.ts",
+    //     "**/*.config.js",
+    //   ],
+    // }),
   ],
 });

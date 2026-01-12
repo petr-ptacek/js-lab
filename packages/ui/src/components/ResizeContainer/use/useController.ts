@@ -4,10 +4,10 @@ import { computed, useTemplateRef, watch } from "vue";
 
 import type { UiResizeContainerModalValue, UiResizeContainerProps } from "../types";
 import { clampPercentWithLimits, normalizeSizeToPercent }           from "../utils";
-import { useResizeActions }                                         from "./useResizeActions.ts";
-import { useResizeDrag }                                            from "./useResizeDrag.ts";
+import { useResizeActions }                                         from "./useResizeActions";
+import { useResizeDrag }                                            from "./useResizeDrag";
 import { useResizeSizes }                                           from "./useResizeSizes";
-import { useResizeValue }                                           from "./useResizeValue.ts";
+import { useResizeValue }                                           from "./useResizeValue";
 
 export type UseControllerOptions = {
   modelValue: Ref<UiResizeContainerModalValue>;

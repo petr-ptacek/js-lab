@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.ide.tsbuildinfo",
+    "paths": {
+      "@petr-ptacek/vue-core": [
+        "../core/src/index.ts"
+      ]
+    }
+  },
+  "references": [
+    {
+      "path": "../core"
+    }
+  ],
+  "include": [
+    "src"
+  ]
+}

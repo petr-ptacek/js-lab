@@ -8,7 +8,7 @@ import type {
   UiResizeContainerProps,
   UiResizeContainerSlots,
 } from "./types";
-import { useController } from "./use/useController.ts";
+import { useController } from "./use/useController";
 
 
 const props = withDefaults(

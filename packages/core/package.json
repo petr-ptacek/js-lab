@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:types": "tsc -b ./tsconfig.types.json",
-    "type-check": "tsc -p ./tsconfig.app.json --noEmit",
-    "type-watch": "tsc -p ./tsconfig.app.json --noEmit --watch",
+    "build:types": "tsc -b ./tsconfig.app.json",
+    "type-check": "tsc -b ./tsconfig.app.json",
+    "type-watch": "tsc -b ./tsconfig.app.json --watch",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },

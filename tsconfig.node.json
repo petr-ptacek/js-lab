@@ -3,7 +3,9 @@
   "compilerOptions": {
     "composite": true,
     "checkJs": true,
-    "allowJs": true
+    "allowJs": true,
+    "noEmit": true,
+    "resolveJsonModule": true
   },
   "include": [
     "eslint.config.js"

@@ -1,8 +1,8 @@
 {
-  "extends": "./tsconfig.base.json",
+  "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "composite": true,
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.ide.tsbuildinfo",
+    "noEmit": true,
     "baseUrl": ".",
     "paths": {
       "@petr-ptacek/vue-core": [

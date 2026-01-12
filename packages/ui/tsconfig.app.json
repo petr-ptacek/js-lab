@@ -4,24 +4,12 @@
     "../../tsconfig.base.json"
   ],
   "compilerOptions": {
-    "composite": true,
     "lib": [
       "ESNext",
       "DOM"
     ],
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "types": [
       "vite/client"
     ]
-  },
-  "references": [
-    {
-      "path": "../core"
-    }
-  ],
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
-  ]
+  }
 }

@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "pnpm -r test",
-    "prepare": "husky"
+    "prepare": "husky",
+    "clean": "pnpm -r exec -- rm -rf rimraf node_modules & rm -rf node_modules"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [

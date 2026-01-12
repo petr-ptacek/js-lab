@@ -7,7 +7,7 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
   const isDisabled = computed(() => !!toValue(options.disabled));
   const axis = computed<DragAxis>(() => toValue(options.axis) ?? "both");
   const threshold = computed(() => Math.max(0, toValue(options.threshold) ?? 0));
-  const lockAxisAfterThreshold = computed(() => toValue(options.lockAxisAfterThreshold) ?? false);
+  const lockAxisAfterThreshold = computed(() => !!toValue(options.lockAxisAfterThreshold));
   const invertAxis = computed<DragAxis | null>(() => {
     const ivAx = toValue(options.invertAxis);
 

@@ -1,14 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { eachValue } from "./eachValue";
+import type { DescribeIsOptions, IsFn } from "./types";
 
-type IsFn<T> = (value: unknown) => value is T;
-
-interface DescribeIsOptions<T> {
-  valid: readonly T[];
-  invalid?: readonly unknown[];
-  typeTest?: (value: T) => void;
-}
 
 export function describeIs<T>(name: string, isFn: IsFn<T>, options: DescribeIsOptions<T>) {
   const { invalid = [], typeTest, valid = [] } = options;

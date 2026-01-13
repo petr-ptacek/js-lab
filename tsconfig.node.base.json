@@ -1,6 +1,14 @@
 {
-  "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
+    "lib": [
+      "es2023"
+    ],
+    "module": "nodenext",
+    "target": "es2022",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
     "composite": true,
     "checkJs": true,
     "allowJs": true,

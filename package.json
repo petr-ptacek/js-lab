@@ -26,10 +26,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/petr-ptacek/vue-ecosystem.git"
+    "url": "git+https://github.com/petr-ptacek/js-lab.git"
   },
   "bugs": {
-    "url": "https://github.com/petr-ptacek/vue-ecosystem/issues"
+    "url": "https://github.com/petr-ptacek/js-lab/issues"
   },
   "keywords": [
     "vue",
@@ -43,7 +43,7 @@
     "playground"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/petr-ptacek/vue-ecosystem#readme",
+  "homepage": "https://github.com/petr-ptacek/js-lab#readme",
   "engines": {
     "node": ">=22"
   },

@@ -1,2 +1,3 @@
-# vue-ecosystem
-Ecosystem of Vue.js composables, components, etc.
+# JS-Lab
+
+Place for developing and playing with JavaScript world.

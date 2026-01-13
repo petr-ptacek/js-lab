@@ -14,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/petr-ptacek/vue-ecosystem.git",
+    "url": "https://github.com/petr-ptacek/js-lab",
     "directory": "packages/ui"
   },
-  "homepage": "https://github.com/petr-ptacek/vue-ecosystem",
+  "homepage": "https://github.com/petr-ptacek/ja-lab",
   "files": [
     "dist"
   ],

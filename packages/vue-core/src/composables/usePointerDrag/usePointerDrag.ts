@@ -3,7 +3,10 @@ import { computed, onBeforeUnmount, readonly, shallowRef, toValue } from "vue";
 import type { DragAxis, EventData, UsePointerDragOptions, UsePointerDragReturn } from "./types";
 
 export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerDragReturn {
-  // Defaults vars
+  /****************************
+   * Defaults vars
+   ***************************/
+
   const isDisabled = computed(() => !!toValue(options.disabled));
   const axis = computed<DragAxis>(() => toValue(options.axis) ?? "both");
   const threshold = computed(() => Math.max(0, toValue(options.threshold) ?? 0));
@@ -16,7 +19,9 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
     return ivAx;
   });
 
-  // Internal vars
+  /*********************
+   Internal vars
+   *******************/
   const isDragging = shallowRef(false);
   const activePointerId = shallowRef<number | null>(null);
   const captureEl = shallowRef<HTMLElement | null>(null);
@@ -27,6 +32,15 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
   const startY = shallowRef(0);
   const deltaX = shallowRef(0);
   const deltaY = shallowRef(0);
+
+  /*******************
+   * LOGIC
+   *******************/
+  onBeforeUnmount(() => cleanup());
+
+  /***************
+   * FUNCTIONS
+   ****************/
 
   function onPointerDown(e: PointerEvent) {
     if (
@@ -176,8 +190,6 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
     deltaX.value = 0;
     deltaY.value = 0;
   }
-
-  onBeforeUnmount(() => cleanup());
 
   return {
     onPointerDown,

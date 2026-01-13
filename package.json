@@ -4,7 +4,7 @@
     "name": "Petr Ptáček",
     "email": "petr.ptacek99@gmail.com"
   },
-  "description": "Ecosystem of Vue.js composables, components, and shared tooling.",
+  "description": "Place for developing and playing with JavaScript world.",
   "private": true,
   "type": "module",
   "scripts": {

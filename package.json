@@ -8,11 +8,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "",
     "type-check:packages": "pnpm -r --filter \"./packages/**\" run type-check",
     "test:packages": "pnpm -r --filter \"./packages/**\" run test",
     "build:packages": "pnpm -r --filter \"./packages/**\" run build",
     "build:types": "vue-tsc -b ./tsconfig.types.json",
+    "test": "pnpm run test:packages",
     "verify": "pnpm run type-check:packages && pnpm run test:packages",
     "build": "pnpm run verify && pnpm run build:packages && pnpm run build:types",
     "dev:playground": "pnpm --dir apps/playground/vue run dev",

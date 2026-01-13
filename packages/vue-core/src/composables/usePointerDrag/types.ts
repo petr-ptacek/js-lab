@@ -30,10 +30,13 @@ export type UsePointerDragReturn = {
 
   axis: Readonly<Ref<DragAxis>>;
   invertAxis: Readonly<Ref<DragAxis | null>>;
+  direction: Readonly<Ref<DragDirection>>;
   startX: Readonly<Ref<number>>;
   startY: Readonly<Ref<number>>;
   deltaX: Readonly<Ref<number>>;
   deltaY: Readonly<Ref<number>>;
+  velocityX: Readonly<Ref<number>>;
+  velocityY: Readonly<Ref<number>>;
 }
 
 /*******************
@@ -42,10 +45,14 @@ export type UsePointerDragReturn = {
 
 export type DragAxis = "x" | "y" | "both";
 
+export type DragDirection = "left" | "right" | "top" | "bottom" | null;
+
 export type EventData = {
   evt: PointerEvent;
   startX: number;
   startY: number;
   deltaX: number;
   deltaY: number;
+  velocityX: number;
+  velocityY: number;
 }

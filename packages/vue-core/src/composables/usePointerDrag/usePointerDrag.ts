@@ -1,6 +1,7 @@
 import { computed, onBeforeUnmount, readonly, shallowRef, toValue } from "vue";
 
-import type { DragAxis, EventData, UsePointerDragOptions, UsePointerDragReturn } from "./types";
+import type { DragAxis, UsePointerDragOptions, UsePointerDragReturn } from "./types";
+import { useDragAxisLock, useDragDelta, useDragDirection, useDragThreshold, useDragVelocity } from "./use";
 
 export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerDragReturn {
   /****************************
@@ -25,13 +26,16 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
   const isDragging = shallowRef(false);
   const activePointerId = shallowRef<number | null>(null);
   const captureEl = shallowRef<HTMLElement | null>(null);
-  const thresholdPassed = shallowRef(false);
-  const lockedAxis = shallowRef<"x" | "y" | null>(null);
 
   const startX = shallowRef(0);
   const startY = shallowRef(0);
-  const deltaX = shallowRef(0);
-  const deltaY = shallowRef(0);
+
+  const axisLock = useDragAxisLock(axis, lockAxisAfterThreshold);
+  const delta = useDragDelta(axis, invertAxis, axisLock.locked);
+  const thresholdCtrl = useDragThreshold(axis, threshold);
+  const direction = useDragDirection();
+  const velocity = useDragVelocity();
+
 
   /*******************
    * LOGIC
@@ -49,14 +53,21 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
       !e.currentTarget
     ) return;
 
-    const target = e.currentTarget as HTMLElement;
 
     startX.value = e.clientX;
     startY.value = e.clientY;
 
-    if (options.onStart?.(createEventData(e)) === false) return;
+    if (options.onStart?.({
+      evt: e,
+      startX: startX.value,
+      startY: startY.value,
+      deltaX: 0,
+      deltaY: 0,
+      velocityX: 0,
+      velocityY: 0,
+    }) === false) return;
 
-    // Logic
+    const target = e.currentTarget as HTMLElement;
 
     captureEl.value = target;
     activePointerId.value = e.pointerId;
@@ -74,11 +85,27 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
   function onPointerMove(e: PointerEvent) {
     if (!isDragging.value || activePointerId.value !== e.pointerId) return;
 
-    const data = createEventData(e);
-    deltaX.value = data.deltaX;
-    deltaY.value = data.deltaY;
+    delta.update(startX.value, startY.value, e);
 
-    options.onMove?.(data);
+    if (!thresholdCtrl.check(delta.absX.value, delta.absY.value)) {
+      direction.update(0, 0);
+      velocity.reset();
+      return;
+    }
+
+    axisLock.update(delta.absX.value, delta.absY.value);
+    direction.update(delta.deltaX.value, delta.deltaY.value);
+    velocity.update(delta.deltaX.value, delta.deltaY.value, e.timeStamp);
+
+    options.onMove?.({
+      evt: e,
+      startX: startX.value,
+      startY: startY.value,
+      deltaX: delta.deltaX.value,
+      deltaY: delta.deltaY.value,
+      velocityX: velocity.vx.value,
+      velocityY: velocity.vy.value,
+    });
   }
 
   function onPointerUp(e: PointerEvent) {
@@ -94,83 +121,23 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
   function endDrag(e: PointerEvent) {
     if (!isDragging.value) return;
 
-    const data = createEventData(e);
-    deltaX.value = data.deltaX;
-    deltaY.value = data.deltaY;
-
     isDragging.value = false;
-    options.onEnd?.(data);
-    cleanup();
-  }
-
-  function createEventData(e: PointerEvent): EventData {
-    const delta = computeDelta(e);
-
-    return {
+    options.onEnd?.({
       evt: e,
       startX: startX.value,
       startY: startY.value,
-      deltaX: delta.deltaX,
-      deltaY: delta.deltaY,
-    };
-  }
-
-  function computeDelta(e: PointerEvent) {
-    const rawDeltaX = e.clientX - startX.value;
-    const rawDeltaY = e.clientY - startY.value;
-
-    const absX = Math.abs(rawDeltaX);
-    const absY = Math.abs(rawDeltaY);
-
-    if (!thresholdPassed.value && threshold.value > 0) {
-      let passed = false;
-
-      if (axis.value === "x") {
-        passed = absX >= threshold.value;
-      } else if (axis.value === "y") {
-        passed = absY >= threshold.value;
-      } else {
-        passed = Math.max(absX, absY) >= threshold.value;
-      }
-
-      if (!passed) {
-        return { deltaX: 0, deltaY: 0 };
-      }
-
-      thresholdPassed.value = true;
-    }
-
-    if (
-      thresholdPassed.value &&
-      lockAxisAfterThreshold.value &&
-      axis.value === "both" &&
-      lockedAxis.value === null
-    ) {
-      lockedAxis.value = absX > absY ? "x" : "y";
-    }
-
-    const effectiveAxis = lockedAxis.value ?? axis.value;
-    let deltaX = effectiveAxis === "y" ? 0 : rawDeltaX;
-    let deltaY = effectiveAxis === "x" ? 0 : rawDeltaY;
-
-    if (invertAxis.value === "x" || invertAxis.value === "both") {
-      deltaX = -deltaX;
-    }
-    if (invertAxis.value === "y" || invertAxis.value === "both") {
-      deltaY = -deltaY;
-    }
-
-    return {
-      deltaX,
-      deltaY,
-    };
+      deltaX: delta.deltaX.value,
+      deltaY: delta.deltaY.value,
+      velocityX: velocity.vx.value,
+      velocityY: velocity.vy.value,
+    });
+    cleanup();
   }
 
   function cleanup() {
     window.removeEventListener("pointermove", onPointerMove);
     window.removeEventListener("pointerup", onPointerUp);
     window.removeEventListener("pointercancel", onPointerUp);
-
 
     if (captureEl.value && activePointerId.value !== null) {
       try {
@@ -182,13 +149,13 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
 
     captureEl.value = null;
     activePointerId.value = null;
-    thresholdPassed.value = false;
-    lockedAxis.value = null;
+    isDragging.value = false;
 
-    startX.value = 0;
-    startY.value = 0;
-    deltaX.value = 0;
-    deltaY.value = 0;
+    thresholdCtrl.reset();
+    axisLock.reset();
+    direction.reset();
+    velocity.reset();
+    delta.reset();
   }
 
   return {
@@ -196,10 +163,13 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
     isDragging: readonly(isDragging),
 
     axis: readonly(axis),
+    direction: readonly(direction.direction),
     invertAxis: readonly(invertAxis),
     startX: readonly(startX),
     startY: readonly(startY),
-    deltaX: readonly(deltaX),
-    deltaY: readonly(deltaY),
+    deltaX: readonly(delta.deltaX),
+    deltaY: readonly(delta.deltaY),
+    velocityX: readonly(velocity.vx),
+    velocityY: readonly(velocity.vy),
   };
 }

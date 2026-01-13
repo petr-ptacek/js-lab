@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:types": "vue-tsc -b ./tsconfig.build.json",
-    "type-check": "vue-tsc -b ./tsconfig.build.json",
-    "type-watch": "vue-tsc -b ./tsconfig.build.json --watch",
+    "build:types": "vue-tsc -b ./tsconfig.app.json",
+    "type-check": "vue-tsc -b ./tsconfig.app.json",
+    "type-watch": "vue-tsc -b ./tsconfig.app.json --watch",
     "test": "",
     "coverage": ""
   },

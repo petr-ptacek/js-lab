@@ -1,25 +1,25 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "module": "ESNext",
     "moduleDetection": "force",
     "lib": [
       "ES2022"
     ],
     "target": "ES2022",
-    "module": "ESNext",
     /* Linting */
-    "strict": true,
     "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noUncheckedSideEffectImports": true,
     "verbatimModuleSyntax": true,
     "useDefineForClassFields": true,
     "esModuleInterop": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
     "forceConsistentCasingInFileNames": true,
-    "libReplacement": false,
-    "noUncheckedIndexedAccess": true
+    "libReplacement": false
   }
 }

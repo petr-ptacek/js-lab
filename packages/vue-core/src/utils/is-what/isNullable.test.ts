@@ -1,6 +1,6 @@
 import { expectTypeOf } from "vitest";
-import { describeIs }   from "./utils";
-import { isNullable }   from "../isNullable";
+import { describeIs }   from "./test-utils";
+import { isNullable }   from "./isNullable";
 
 describeIs<null | undefined>("isNullable", isNullable, {
   valid: [

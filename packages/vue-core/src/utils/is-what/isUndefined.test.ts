@@ -1,6 +1,6 @@
 import { expectTypeOf } from "vitest";
-import { describeIs }   from "./utils";
-import { isUndefined }  from "../isUndefined";
+import { describeIs }   from "./test-utils";
+import { isUndefined }  from "./isUndefined";
 
 describeIs<undefined>("isUndefined", isUndefined, {
   valid: [
@@ -17,6 +17,6 @@ describeIs<undefined>("isUndefined", isUndefined, {
     Symbol(),
   ],
   typeTest: (value) => {
-    expectTypeOf(value).toEqualTypeOf(undefined);
+    expectTypeOf(value).toEqualTypeOf<undefined>();
   },
 });

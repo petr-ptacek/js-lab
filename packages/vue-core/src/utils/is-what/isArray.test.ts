@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { isArray } from "../isArray";
+import { isArray } from "./isArray";
 
 describe("isArray", () => {
   it("should return true if the value is []", () => {

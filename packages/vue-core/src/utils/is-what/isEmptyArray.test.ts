@@ -1,6 +1,6 @@
 import { expectTypeOf } from "vitest";
-import { isEmptyArray } from "../isEmptyArray";
-import { describeIs }   from "./utils";
+import { isEmptyArray } from "./isEmptyArray";
+import { describeIs }   from "./test-utils";
 
 describeIs<unknown[]>("isEmptyArray", isEmptyArray, {
   valid: [

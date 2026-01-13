@@ -1,6 +1,6 @@
 import { expectTypeOf } from "vitest";
-import { describeIs }   from "./utils";
-import { isNumber }     from "../isNumber";
+import { describeIs }   from "./test-utils";
+import { isNumber }     from "./isNumber";
 
 describeIs<number>("isNumber", isNumber, {
   valid: [
@@ -10,9 +10,9 @@ describeIs<number>("isNumber", isNumber, {
     0,
     Number.EPSILON,
     Number.MAX_SAFE_INTEGER,
+    NaN,
   ],
   invalid: [
-    NaN,
     undefined,
     null,
     "",

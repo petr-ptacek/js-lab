@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
 
-import { eachValue }            from "./eachValue";
+import { eachValue } from "./eachValue";
 
 type IsFn<T> = (value: unknown) => value is T;
 
 interface DescribeIsOptions<T> {
-  valid: unknown[];
-  invalid: unknown[];
+  valid: readonly T[];
+  invalid?: readonly unknown[];
   typeTest?: (value: T) => void;
 }
 
@@ -15,25 +15,25 @@ export function describeIs<T>(name: string, isFn: IsFn<T>, options: DescribeIsOp
 
   describe(name, () => {
     it.each(eachValue(valid))(
-      "returns true for %o",
+      "returns true for valid value %o",
       (testedValue) => {
         expect(isFn(testedValue)).toBe(true);
       },
     );
 
     it.each(eachValue(invalid))(
-      "returns false for %o",
+      "returns false for invalid value %o",
       (testedValue) => {
         expect(isFn(testedValue)).toBe(false);
       },
     );
 
-    if ( typeTest ) {
+    if (typeTest) {
       it("narrows type correctly", () => {
-        for ( const value of valid ) {
+        for (const value of valid) {
           const unknownValue: unknown = value;
 
-          if ( isFn(unknownValue) ) {
+          if (isFn(unknownValue)) {
             typeTest(unknownValue);
           }
         }

@@ -1,6 +1,6 @@
 import { expectTypeOf } from "vitest";
-import { describeIs }   from "./utils";
-import { isNull }       from "../isNull";
+import { describeIs }   from "./test-utils";
+import { isNull }       from "./isNull";
 
 describeIs<null>("isNull", isNull, {
   valid: [
@@ -17,6 +17,6 @@ describeIs<null>("isNull", isNull, {
     Symbol(),
   ],
   typeTest: (value) => {
-    expectTypeOf(value).toEqualTypeOf(null);
+    expectTypeOf(value).toEqualTypeOf<null>();
   },
 });

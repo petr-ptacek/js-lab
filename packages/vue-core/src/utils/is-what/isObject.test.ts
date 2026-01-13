@@ -1,6 +1,6 @@
 import { expectTypeOf } from "vitest";
-import { describeIs }   from "./utils";
-import { isObject }     from "../isObject";
+import { describeIs }   from "./test-utils";
+import { isObject }     from "./isObject";
 
 describeIs<Record<string, any>>("isObject", isObject, {
   valid: [

@@ -1,6 +1,6 @@
 import { expectTypeOf } from "vitest";
-import { describeIs }   from "./utils";
-import { isDate }       from "../isDate";
+import { describeIs }   from "./test-utils";
+import { isDate }       from "./isDate";
 
 describeIs<Date>("isDate", isDate, {
   valid: [

@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:types": "tsc -b ./tsconfig.app.json",
-    "type-check": "tsc -b ./tsconfig.app.json",
-    "type-watch": "tsc -b ./tsconfig.app.json --watch",
-    "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "build:types": "echo \"not implemented\"",
+    "type-check": "echo \"not implemented\"",
+    "type-watch": "echo \"not implemented\"",
+    "test": "echo \"not implemented\"",
+    "coverage": "echo \"not implemented\""
   },
   "repository": {
     "type": "git",

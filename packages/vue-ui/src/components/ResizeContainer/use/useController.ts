@@ -1,13 +1,13 @@
-import { useElementSize } from "@vueuse/core";
-import type { Ref } from "vue";
+import { useElementSize }                   from "@vueuse/core";
+import type { Ref }                         from "vue";
 import { computed, useTemplateRef, watch } from "vue";
 
 import type { UiResizeContainerModalValue, UiResizeContainerProps } from "../types";
-import { clampPercentWithLimits, normalizeSizeToPercent } from "../utils";
-import { useResizeActions } from "./useResizeActions";
-import { useResizeDrag } from "./useResizeDrag";
-import { useResizeSizes } from "./useResizeSizes";
-import { useResizeValue } from "./useResizeValue";
+import { clampPercentWithLimits, normalizeSizeToPercent }           from "../utils";
+import { useResizeActions }                                         from "./useResizeActions";
+import { useResizeDrag }                                            from "./useResizeDrag";
+import { useResizeSizes }                                           from "./useResizeSizes";
+import { useResizeValue }                                           from "./useResizeValue";
 
 export type UseControllerOptions = {
   modelValue: Ref<UiResizeContainerModalValue>;
@@ -21,8 +21,6 @@ export function useController(options: UseControllerOptions) {
 
   // Orientation
   const isOrientationVertical = computed(() => options.props.orientation === "vertical");
-  // const isOrientationHorizontal = computed(() => options.props.orientation === "horizontal");
-
 
   const containerSize = computed(() => {
     return isOrientationVertical.value ?
@@ -40,6 +38,8 @@ export function useController(options: UseControllerOptions) {
       },
     );
   });
+
+  // watchEffect(() => console.log(currentPercent.value));
 
   const { alphaStyle, betaStyle } = useResizeSizes({
     modelValue: options.modelValue,
@@ -73,7 +73,7 @@ export function useController(options: UseControllerOptions) {
 
   // při startu dragu
   watch(isDragging, (dragging) => {
-    if (!dragging) {
+    if ( !dragging ) {
       setStartPercent(0);
       return;
     }
@@ -83,8 +83,8 @@ export function useController(options: UseControllerOptions) {
 
   // při pohybu
   watch(nextPercent, (value) => {
-    if (!isDragging.value) return;
-    if (!containerSize.value) return;
+    if ( !isDragging.value ) return;
+    if ( !containerSize.value ) return;
 
     const clamped = clampPercentWithLimits(
       value,
@@ -94,7 +94,6 @@ export function useController(options: UseControllerOptions) {
         maxSize: options.props.maxSize,
       },
     );
-
     options.modelValue.value = `${clamped}%`;
   });
 

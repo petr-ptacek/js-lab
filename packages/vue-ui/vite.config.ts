@@ -1,11 +1,18 @@
-import { URL, fileURLToPath } from "node:url";
+import { fileURLToPath, URL } from "node:url";
 
-import tailwindcssPlugin from "@tailwindcss/vite";
-import vuePlugin from "@vitejs/plugin-vue";
-import { defineConfig } from "vite";
-// import dtsPlugin         from "vite-plugin-dts";
+import tailwindcssPlugin      from "@tailwindcss/vite";
+import vuePlugin              from "@vitejs/plugin-vue";
+import { defineConfig }       from "vite";
+
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@petr-ptacek/vue-core": fileURLToPath(
+        new URL("../vue-core/src", import.meta.url),
+      ),
+    },
+  },
   build: {
     lib: {
       entry: fileURLToPath(new URL("src/index.ts", import.meta.url)),
@@ -34,16 +41,5 @@ export default defineConfig({
   plugins: [
     tailwindcssPlugin(),
     vuePlugin(),
-    // dtsPlugin({
-    //   entryRoot: "src",
-    //   outDir: "dist",
-    //   insertTypesEntry: true,
-    //   tsconfigPath: "tsconfig.app.json",
-    //   exclude: [
-    //     "vite.config.ts",
-    //     "**/*.config.ts",
-    //     "**/*.config.js",
-    //   ],
-    // }),
   ],
 });

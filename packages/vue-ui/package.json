@@ -9,7 +9,7 @@
     "build:types": "vue-tsc -b ./tsconfig.app.json",
     "type-check": "vue-tsc -b ./tsconfig.app.json",
     "type-watch": "vue-tsc -b ./tsconfig.app.json --watch",
-    "test": "",
+    "test": "vitest",
     "coverage": ""
   },
   "repository": {
@@ -49,7 +49,7 @@
     "@types/node": "^24.10.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
-    "vite": "^7.2.4",
+    "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4",
     "vue": "^3.5.26",
     "vue-tsc": "^3.1.4"

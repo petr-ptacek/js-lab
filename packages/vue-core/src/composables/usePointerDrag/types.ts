@@ -27,6 +27,7 @@ export type UsePointerDragOptions = {
 export type UsePointerDragReturn = {
   onPointerDown: (e: PointerEvent) => void;
   isDragging: Readonly<Ref<boolean>>;
+  isPressed: Readonly<Ref<boolean>>;
 
   axis: Readonly<Ref<DragAxis>>;
   invertAxis: Readonly<Ref<DragAxis | null>>;

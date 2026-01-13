@@ -24,6 +24,7 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
    Internal vars
    *******************/
   const isDragging = shallowRef(false);
+  const isPressed = shallowRef(false);
   const activePointerId = shallowRef<number | null>(null);
   const captureEl = shallowRef<HTMLElement | null>(null);
 
@@ -71,7 +72,7 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
 
     captureEl.value = target;
     activePointerId.value = e.pointerId;
-    isDragging.value = true;
+    isPressed.value = true;
 
     target.setPointerCapture(e.pointerId);
 
@@ -83,7 +84,7 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
   }
 
   function onPointerMove(e: PointerEvent) {
-    if (!isDragging.value || activePointerId.value !== e.pointerId) return;
+    if (!isPressed.value || activePointerId.value !== e.pointerId) return;
 
     delta.update(startX.value, startY.value, e);
 
@@ -91,6 +92,10 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
       direction.update(0, 0);
       velocity.reset();
       return;
+    }
+
+    if (!isDragging.value) {
+      isDragging.value = true;
     }
 
     axisLock.update(delta.absX.value, delta.absY.value);
@@ -119,18 +124,25 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
   }
 
   function endDrag(e: PointerEvent) {
-    if (!isDragging.value) return;
+    if (!isPressed.value) return;
 
+    const wasDragging = isDragging.value;
+
+    isPressed.value = false;
     isDragging.value = false;
-    options.onEnd?.({
-      evt: e,
-      startX: startX.value,
-      startY: startY.value,
-      deltaX: delta.deltaX.value,
-      deltaY: delta.deltaY.value,
-      velocityX: velocity.vx.value,
-      velocityY: velocity.vy.value,
-    });
+
+    if (wasDragging) {
+      options.onEnd?.({
+        evt: e,
+        startX: startX.value,
+        startY: startY.value,
+        deltaX: delta.deltaX.value,
+        deltaY: delta.deltaY.value,
+        velocityX: velocity.vx.value,
+        velocityY: velocity.vy.value,
+      });
+    }
+
     cleanup();
   }
 
@@ -150,6 +162,7 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
     captureEl.value = null;
     activePointerId.value = null;
     isDragging.value = false;
+    isPressed.value = false;
 
     thresholdCtrl.reset();
     axisLock.reset();
@@ -161,6 +174,7 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
   return {
     onPointerDown,
     isDragging: readonly(isDragging),
+    isPressed: readonly(isPressed),
 
     axis: readonly(axis),
     direction: readonly(direction.direction),

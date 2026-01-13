@@ -17,7 +17,7 @@
     "build": "pnpm run verify && pnpm run build:packages && pnpm run build:types",
     "dev:playground": "pnpm --dir apps/playground/vue run dev",
     "prepare": "husky",
-    "clean": "pnpm -r exec -- rm -rf rimraf node_modules & rm -rf node_modules"
+    "clean": "pnpm -r exec -- rm -rf node_modules & rm -rf node_modules"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [

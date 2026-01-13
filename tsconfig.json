@@ -5,10 +5,10 @@
       "path": "./tsconfig.node.json"
     },
     {
-      "path": "./packages/core"
+      "path": "./packages/vue-core"
     },
     {
-      "path": "./packages/ui"
+      "path": "./packages/vue-ui"
     }
   ]
 }

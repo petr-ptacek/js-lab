@@ -23,7 +23,7 @@
   },
   "references": [
     {
-      "path": "../core/tsconfig.app.json"
+      "path": "../vue-core/tsconfig.app.json"
     }
   ],
   "include": [

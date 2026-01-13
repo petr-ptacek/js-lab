@@ -15,7 +15,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/petr-ptacek/js-lab.git",
-    "directory": "packages/core"
+    "directory": "packages/vue-core"
   },
   "homepage": "https://github.com/petr-ptacek/js-lab",
   "files": [

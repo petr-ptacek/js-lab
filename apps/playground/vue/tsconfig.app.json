@@ -21,10 +21,10 @@
         "src/*"
       ],
       "@petr-ptacek/vue-core": [
-        "../../../packages/core/src/index.ts"
+        "../../../packages/vue-core/src/index.ts"
       ],
       "@petr-ptacek/vue-ui": [
-        "../../../packages/ui/src/index.ts"
+        "../../../packages/vue-ui/src/index.ts"
       ]
     }
   },

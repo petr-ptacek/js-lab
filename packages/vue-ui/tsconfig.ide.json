@@ -5,13 +5,13 @@
     "baseUrl": ".",
     "paths": {
       "@petr-ptacek/vue-core": [
-        "../core/src/index.ts"
+        "../vue-core/src/index.ts"
       ]
     }
   },
   "references": [
     {
-      "path": "../core"
+      "path": "../vue-core"
     }
   ],
   "include": [

@@ -24,6 +24,10 @@ export type UiResizeContainerProps = {
   orientation?: OrientationValue;
   origin?: OriginValue;
 
+  showGrip?: boolean;
+
+  rememberSize?: boolean;
+
   /**
    * to the origin
    **/

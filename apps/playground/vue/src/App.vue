@@ -7,7 +7,7 @@ const t = shallowRef(500);
 
 <template>
   <div class="bg-green-200 h-screen w-screen">
-    <UiResizeContainer orientation="vertical" origin="alpha" v-model="t">
+    <UiResizeContainer v-model="t">
       <template #alpha>
         <UiResizeContainerSection class="bg-red-400">
           <p>lorem</p>

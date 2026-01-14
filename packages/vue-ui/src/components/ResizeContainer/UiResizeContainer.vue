@@ -16,7 +16,7 @@ const props = withDefaults(
   {
     modelValue: undefined,
     orientation: "vertical",
-    origin: "beta",
+    origin: "alpha",
     resizeable: true,
     collapsible: true,
     expandable: true,

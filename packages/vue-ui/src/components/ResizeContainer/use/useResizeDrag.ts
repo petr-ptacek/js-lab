@@ -15,7 +15,7 @@ export function useResizeDrag(options: UseResizeOptions) {
     options.orientation.value === "vertical" ? "x" : "y",
   );
 
-  const { onPointerDown, isDragging, deltaX, deltaY } = usePointerDrag({
+  const { onPointerDown, isDragging, deltaX, deltaY, isPressed } = usePointerDrag({
     disabled: options.disabled,
     threshold: 4,
     lockAxisAfterThreshold: true,
@@ -29,6 +29,7 @@ export function useResizeDrag(options: UseResizeOptions) {
   return {
     onPointerDown,
     isDragging,
+    isPressed,
     deltaPx: readonly(deltaPx),
   };
 }

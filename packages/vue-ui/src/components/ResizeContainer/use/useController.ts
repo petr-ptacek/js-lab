@@ -49,7 +49,11 @@ export function useController(options: UseControllerOptions) {
     maxSize: computed(() => options.props.maxSize),
   });
 
-  const { deltaPx, onPointerDown, isDragging } = useResizeDrag({
+  const {
+    deltaPx,
+    onPointerDown,
+    isDragging,
+  } = useResizeDrag({
     orientation: computed(() => options.props.orientation!),
     disabled: computed(() => !options.props.resizeable),
   });
@@ -73,9 +77,14 @@ export function useController(options: UseControllerOptions) {
   });
 
   // při startu dragu
-  watch(isDragging, (dragging) => {
-    if (dragging) {
+  watch(isDragging, (dragging, wasDragging) => {
+    if (dragging && !wasDragging) {
+      // drag start
       setStartPercent(currentPercent.value);
+    }
+
+    if (!dragging && wasDragging) {
+      // drag end
       setLastRestoredPercent(currentPercent.value);
     }
   });

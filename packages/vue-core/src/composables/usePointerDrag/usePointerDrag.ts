@@ -136,8 +136,8 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
 
     const wasDragging = isDragging.value;
 
-    isPressed.value = false;
     isDragging.value = false;
+    isPressed.value = false;
 
     if (wasDragging) {
       options.onEnd?.({

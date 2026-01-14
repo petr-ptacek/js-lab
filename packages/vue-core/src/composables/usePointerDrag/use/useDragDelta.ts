@@ -28,7 +28,7 @@ import type { DragAxis } from "../types";
 export function useDragDelta(
   axis: Ref<DragAxis>,
   invertAxis: Ref<DragAxis | null>,
-  lockedAxis: Ref<"x" | "y" | null>,
+  lockedAxis: Ref<Extract<DragAxis, "x" | "y"> | null>,
 ) {
   const rawX = shallowRef(0);
   const rawY = shallowRef(0);

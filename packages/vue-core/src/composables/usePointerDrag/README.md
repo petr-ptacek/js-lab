@@ -159,6 +159,7 @@ All callbacks receive the same event shape:
 const {
   onPointerDown,
   isDragging,
+  isPressed,
 
   axis,
   direction,

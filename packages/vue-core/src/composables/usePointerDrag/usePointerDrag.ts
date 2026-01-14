@@ -5,7 +5,7 @@ import { useDragAxisLock, useDragDelta, useDragDirection, useDragThreshold, useD
 
 export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerDragReturn {
   /****************************
-   * Defaults vars
+   * Default vars
    ***************************/
 
   const isDisabled = computed(() => !!toValue(options.disabled));
@@ -83,6 +83,10 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
     target.addEventListener("lostpointercapture", onLostPointerCapture);
   }
 
+  /**
+   * PUBLIC FN
+   * */
+
   function onPointerMove(e: PointerEvent) {
     if (!isPressed.value || activePointerId.value !== e.pointerId) return;
 
@@ -112,6 +116,10 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
       velocityY: velocity.vy.value,
     });
   }
+
+  /**
+   * INTERNAL FN
+   * */
 
   function onPointerUp(e: PointerEvent) {
     if (activePointerId.value !== e.pointerId) return;

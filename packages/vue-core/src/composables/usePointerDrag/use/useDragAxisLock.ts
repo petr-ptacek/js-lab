@@ -25,7 +25,7 @@ export function useDragAxisLock(
   axis: Ref<DragAxis>,
   enabled: Ref<boolean>,
 ) {
-  const locked = shallowRef<"x" | "y" | null>(null);
+  const locked = shallowRef<Extract<DragAxis, "x" | "y"> | null>(null);
 
   function update(absX: number, absY: number) {
     if (!enabled.value || axis.value !== "both" || locked.value) return;

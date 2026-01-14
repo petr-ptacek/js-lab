@@ -1,12 +1,9 @@
 {
-  "name": "storybook",
+  "name": "@petr-ptacek/storybook",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -15,22 +12,19 @@
     "vue": "^3.5.24"
   },
   "devDependencies": {
-    "@types/node": "^24.10.1",
-    "@vitejs/plugin-vue": "^6.0.1",
-    "@vue/tsconfig": "^0.8.1",
-    "typescript": "~5.9.3",
-    "vite": "^7.2.4",
-    "vue-tsc": "^3.1.4",
-    "storybook": "^10.1.11",
-    "@storybook/vue3-vite": "^10.1.11",
     "@chromatic-com/storybook": "^5.0.0",
-    "@storybook/addon-vitest": "^10.1.11",
     "@storybook/addon-a11y": "^10.1.11",
     "@storybook/addon-docs": "^10.1.11",
     "@storybook/addon-onboarding": "^10.1.11",
-    "eslint-plugin-storybook": "^10.1.11",
-    "playwright": "^1.57.0",
-    "@vitest/browser-playwright": "^4.0.17",
-    "@vitest/coverage-v8": "^4.0.17"
+    "@storybook/addon-vitest": "^10.1.11",
+    "@storybook/vue3-vite": "^10.1.11",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/node": "^24.10.1",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/tsconfig": "^0.8.1",
+    "storybook": "^10.1.11",
+    "tailwindcss": "4",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4"
   }
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UiResizeContainer, UiResizeContainerSection } from "@petr-ptacek/vue-ui";
-import { shallowRef } from "vue";
+import { UiResizeContainer, UiResizeContainerSection } from "@petr-ptacek/vue-core";
+import { shallowRef }                                  from "vue";
 
 const t = shallowRef(500);
 </script>

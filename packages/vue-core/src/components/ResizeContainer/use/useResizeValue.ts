@@ -1,4 +1,4 @@
-import { toPercentage }                   from "@petr-ptacek/vue-core";
+import { toPercentage }                   from "@petr-ptacek/js-core";
 import { computed, type Ref, shallowRef } from "vue";
 
 import type { OriginValue } from "../types";

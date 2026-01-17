@@ -65,12 +65,12 @@ importers:
 
   apps/playground/vue:
     dependencies:
+      '@petr-ptacek/js-core':
+        specifier: workspace:*
+        version: link:../../../packages/js-core
       '@petr-ptacek/vue-core':
         specifier: workspace:*
         version: link:../../../packages/vue-core
-      '@petr-ptacek/vue-ui':
-        specifier: workspace:*
-        version: link:../../../packages/vue-ui
       '@vueuse/core':
         specifier: ^14.1.0
         version: 14.1.0(vue@3.5.26(typescript@5.9.3))
@@ -102,9 +102,9 @@ importers:
 
   apps/storybook:
     dependencies:
-      '@petr-ptacek/vue-ui':
+      '@petr-ptacek/vue-core':
         specifier: workspace:^
-        version: link:../../packages/vue-ui
+        version: link:../../packages/vue-core
       vue:
         specifier: ^3.5.24
         version: 3.5.26(typescript@5.9.3)
@@ -160,22 +160,9 @@ importers:
 
   packages/vue-core:
     dependencies:
-      '@vueuse/core':
-        specifier: ^14.0.0
-        version: 14.1.0(vue@3.5.26(typescript@5.9.3))
-    devDependencies:
-      vite:
-        specifier: ^7.3.1
-        version: 7.3.1(@types/node@24.10.8)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
-      vue:
-        specifier: ^3.5.26
-        version: 3.5.26(typescript@5.9.3)
-
-  packages/vue-ui:
-    dependencies:
-      '@petr-ptacek/vue-core':
+      '@petr-ptacek/js-core':
         specifier: workspace:*
-        version: link:../vue-core
+        version: link:../js-core
       '@vueuse/core':
         specifier: ^14.0.0
         version: 14.1.0(vue@3.5.26(typescript@5.9.3))

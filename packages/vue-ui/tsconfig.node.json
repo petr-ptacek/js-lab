@@ -1,7 +1,0 @@
-{
-  "extends": "../../tsconfig.node.base.json",
-  "include": [
-    "vite.config.ts",
-    "vitest.config.ts"
-  ]
-}

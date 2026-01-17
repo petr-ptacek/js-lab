@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { isUndefined, useProxyValue } from "@petr-ptacek/vue-core";
-import { computed } from "vue";
+import { isUndefined }   from "@petr-ptacek/js-core";
+import { computed }      from "vue";
 
 import type {
   UiResizeContainerEmits,
   UiResizeContainerModalValue,
   UiResizeContainerProps,
   UiResizeContainerSlots,
-} from "./types";
+}                        from "./types";
+import { useProxyValue } from "../../composables";
 import { useController } from "./use/useController";
 
 
@@ -23,7 +24,7 @@ const props = withDefaults(
     animatable: true,
     defaultValue: "50%",
     showGrip: false,
-    rememberSize: true
+    rememberSize: true,
   },
 );
 
@@ -32,7 +33,7 @@ const emit = defineEmits<UiResizeContainerEmits>();
 const { value: mv } = useProxyValue<UiResizeContainerModalValue>(computed({
     get: () => props.modelValue,
     set: (value) => {
-      if (isUndefined(value)) return;
+      if ( isUndefined(value) ) return;
       emit("update:modelValue", value);
     },
   }),

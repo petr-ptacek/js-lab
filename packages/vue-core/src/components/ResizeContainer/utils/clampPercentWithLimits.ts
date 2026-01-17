@@ -1,4 +1,4 @@
-import { clamp, isUndefined, toPercentage } from "@petr-ptacek/vue-core";
+import { clamp, isUndefined, toPercentage } from "@petr-ptacek/js-core";
 
 import type { SizeValue } from "../types";
 import { sizeValueToPx }  from "./sizeValueToPx";

@@ -1,4 +1,4 @@
-import { UiResizeContainer, UiResizeContainerSection } from "@petr-ptacek/vue-ui";
+import { UiResizeContainer, UiResizeContainerSection } from "@petr-ptacek/vue-core";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof UiResizeContainer> = {

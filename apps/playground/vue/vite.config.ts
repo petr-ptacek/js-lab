@@ -16,10 +16,10 @@ export default defineConfig({
         new URL("./src", import.meta.url),
       ),
       "@petr-ptacek/vue-core": fileURLToPath(
-        new URL("../../../packages/vue-core/src", import.meta.url),
+        new URL("../../../packages/js-core/src", import.meta.url),
       ),
       "@petr-ptacek/vue-ui": fileURLToPath(
-        new URL("../../../packages/vue-ui/src", import.meta.url),
+        new URL("../../../packages/vue-core/src", import.meta.url),
       ),
     },
   },

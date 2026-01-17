@@ -1,7 +1,7 @@
-import { expectTypeOf } from "vitest";
-import type { PrimitiveValue } from "../../types";
-import { describeIs } from "./test-utils";
-import { isPrimitive } from "./isPrimitive";
+import { expectTypeOf }        from "vitest";
+import type { PrimitiveValue } from "../types";
+import { describeIs }          from "./test-utils";
+import { isPrimitive }         from "./isPrimitive";
 
 describeIs<PrimitiveValue>("isPrimitive", isPrimitive, {
   valid: [

@@ -1,5 +1,5 @@
-import type { PrimitiveValue } from "../types";
 import { isArray, isObject }   from "./is-what";
+import type { PrimitiveValue } from "./types";
 
 export type Path<T> =
   T extends PrimitiveValue

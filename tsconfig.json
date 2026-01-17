@@ -8,7 +8,7 @@
       "path": "./packages/vue-core"
     },
     {
-      "path": "./packages/vue-ui"
+      "path": "./packages/js-core"
     }
   ]
 }

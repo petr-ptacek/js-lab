@@ -1,4 +1,4 @@
-import { isNumber, isString } from "@petr-ptacek/vue-core";
+import { isNumber, isString } from "@petr-ptacek/js-core";
 
 import type { SizeValue } from "../types";
 

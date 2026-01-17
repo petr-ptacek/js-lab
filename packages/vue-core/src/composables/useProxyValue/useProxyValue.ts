@@ -1,9 +1,9 @@
+import { isUndefined }                           from "@petr-ptacek/js-core";
 import { useDebounceFn }                         from "@vueuse/core";
 import type { Ref }                              from "vue";
 import { computed, readonly, shallowRef, watch } from "vue";
 
 import type { UseProxyValueOptions, UseProxyValueReturn } from "./types";
-import { isUndefined }                                    from "../../utils";
 
 /**
  * Creates a proxy value with an internal buffer that can be

@@ -1,6 +1,6 @@
-import { usePointerDrag } from "@petr-ptacek/vue-core";
 import { readonly, type Ref, shallowRef, watch, computed } from "vue";
 
+import { usePointerDrag } from "../../../composables";
 import type { OrientationValue } from "../types";
 
 export type UseResizeOptions = {

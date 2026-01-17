@@ -23,8 +23,8 @@
       "@petr-ptacek/vue-core": [
         "../../../packages/vue-core/src/index.ts"
       ],
-      "@petr-ptacek/vue-ui": [
-        "../../../packages/vue-ui/src/index.ts"
+      "@petr-ptacek/js-core": [
+        "../../../packages/js-core/src/index.ts"
       ]
     }
   },

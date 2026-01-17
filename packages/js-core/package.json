@@ -4,13 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
-    "build:types": "echo \"not implemented\"",
-    "type-check": "echo \"not implemented\"",
-    "type-watch": "echo \"not implemented\"",
-    "test": "echo \"not implemented\"",
-    "coverage": "echo \"not implemented\""
+    "build:types": "tsc -b ./tsconfig.types.json",
+    "type-check": "tsc -b ./tsconfig.app.json",
+    "type-watch": "tsc -b ./tsconfig.app.json --watch",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
@@ -21,10 +20,11 @@
   "files": [
     "dist"
   ],
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/index.js"
     }
   },

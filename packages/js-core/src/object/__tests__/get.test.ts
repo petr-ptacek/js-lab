@@ -1,5 +1,5 @@
 import { it, expect, describe } from "vitest";
-import { get }                  from "./get";
+import { get }                  from "../get";
 
 describe("get", () => {
   it("object has path", () => {

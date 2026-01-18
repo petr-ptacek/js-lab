@@ -28,7 +28,6 @@ type PathValue<T, P extends string> =
       ? T[P]
       : never;
 
-// bez defaultu
 export function get<
   T extends object,
   P extends Path<T>
@@ -36,7 +35,7 @@ export function get<
   obj: T,
   path: P,
 ): PathValue<T, P> | undefined;
-// s defaultem
+
 export function get<
   T extends object,
   P extends Path<T>,
@@ -46,6 +45,47 @@ export function get<
   path: P,
   defaultValue: D,
 ): Exclude<PathValue<T, P>, undefined> | D;
+
+/**
+ * Safely gets a nested value from an object using a dot-separated path.
+ *
+ * The path is strongly typed and validated at compile time.
+ * If the resolved value is `undefined`, the provided default value is returned instead.
+ *
+ * Supports:
+ * - nested objects
+ * - arrays via numeric indices
+ *
+ * @typeParam T - Object type
+ * @typeParam P - Valid path into the object
+ * @typeParam D - Default value type
+ *
+ * @param obj - The object to read from
+ * @param path - Dot-separated path to the value
+ * @param defaultValue - Optional default value returned when the path resolves to `undefined`
+ *
+ * @returns
+ * - The resolved value at the given path
+ * - `undefined` if the path does not exist and no default value is provided
+ * - The default value if provided and the resolved value is `undefined`
+ *
+ * @example
+ * const obj = {
+ *   user: {
+ *     name: "John",
+ *     roles: ["admin", "editor"],
+ *   },
+ * };
+ *
+ * get(obj, "user.name");
+ * // → "John"
+ *
+ * get(obj, "user.roles.0");
+ * // → "admin"
+ *
+ * get(obj, "user.age", 30);
+ * // → 30
+ */
 export function get(obj: object, path: string, defaultValue?: unknown) {
   function isIndex(key: string): boolean {
     return key !== "" && !Number.isNaN(Number(key));

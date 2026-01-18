@@ -24,6 +24,12 @@ export default defineConfig([
       "**/node_modules/**",
       "**/.nuxt/**",
       "**/coverage/**",
+
+      // docs
+      "**/docs/**",
+      "**/.vitepress/**",
+      "**/docs/.vitepress/**",
+      "**/docs/**/api/**", // TypeDoc output (markdown)
     ],
   },
 

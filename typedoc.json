@@ -1,0 +1,14 @@
+{
+  "entryPoints": [
+    "packages/js-core/src"
+  ],
+  "entryPointStrategy": "expand",
+  "out": "docs/js-core/api",
+  "plugin": [
+    "typedoc-plugin-markdown"
+  ],
+  "tsconfig": "packages/js-core/tsconfig.app.json",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "readme": "none"
+}

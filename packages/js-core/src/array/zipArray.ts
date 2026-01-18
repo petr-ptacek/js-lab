@@ -11,6 +11,33 @@ export function zipArray<T, U, R>(
   mapper: (a: T, b: U) => R,
 ): R[];
 
+/**
+ * Zips two arrays element-wise.
+ *
+ * The resulting array length is determined by the shorter input array.
+ * When a mapper is provided, each pair is transformed using the mapper function.
+ * The input arrays are not mutated.
+ *
+ * @typeParam T - Type of elements in the first array
+ * @typeParam U - Type of elements in the second array
+ * @typeParam R - Result type produced by the mapper
+ *
+ * @param arrayOne - First array
+ * @param arrayTwo - Second array
+ * @param mapper - Optional function to transform each pair
+ *
+ * @returns
+ * - An array of tuples `[T, U]` when no mapper is provided
+ * - An array of mapped values when a mapper is provided
+ *
+ * @example
+ * zipArray([1, 2], ["a", "b"])
+ * // → [[1, "a"], [2, "b"]]
+ *
+ * @example
+ * zipArray([1, 2], [10, 20], (a, b) => a + b)
+ * // → [11, 22]
+ */
 export function zipArray<T, U, R>(
   arrayOne: readonly T[],
   arrayTwo: readonly U[],

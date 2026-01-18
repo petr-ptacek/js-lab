@@ -1,16 +1,29 @@
 {
   "name": "@petr-ptacek/js-core",
+  "description": "Core JavaScript utilities for every project.",
   "version": "0.0.0",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "run-p \"test\"",
+    "dev": "test",
     "build:types": "tsc -b ./tsconfig.types.json",
     "type-check": "tsc -b ./tsconfig.app.json",
     "type-watch": "tsc -b ./tsconfig.app.json --watch",
     "test": "vitest",
     "coverage": "vitest run --coverage"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "utilities",
+    "math",
+    "type-guards",
+    "esm"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -22,6 +35,7 @@
     "dist"
   ],
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {

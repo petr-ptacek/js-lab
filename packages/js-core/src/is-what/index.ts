@@ -14,4 +14,5 @@ export * from "./isBigint";
 export * from "./isBoolean";
 export * from "./isSymbol";
 export * from "./isFiniteNumber";
-export * from "./isNotNaNNumber";
+export * from "./isNaNNumber";
+export * from "./isFunction";

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "dev": "run-p \"test\"",
     "build:types": "tsc -b ./tsconfig.types.json",
     "type-check": "tsc -b ./tsconfig.app.json",
     "type-watch": "tsc -b ./tsconfig.app.json --watch",

@@ -6,13 +6,17 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prebuild": "pnpm clear",
     "build": "vite build",
     "dev": "test",
     "build:types": "tsc -b ./tsconfig.types.json",
     "type-check": "tsc -b ./tsconfig.app.json",
     "type-watch": "tsc -b ./tsconfig.app.json --watch",
-    "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "clear": "rimraf ./dist ./node_modules/.tmp",
+    "prepublishOnly": "pnpm clear && pnpm type-check && pnpm test && pnpm build && pnpm build:types"
   },
   "keywords": [
     "javascript",

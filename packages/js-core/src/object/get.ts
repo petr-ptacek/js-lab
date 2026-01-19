@@ -1,7 +1,7 @@
 import { isArray, isObject }   from "../is-what";
 import type { PrimitiveValue } from "../types";
 
-export type Path<T> =
+type Path<T> =
   T extends PrimitiveValue
   ? never
   : T extends readonly (infer U)[]

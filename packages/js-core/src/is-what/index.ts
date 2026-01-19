@@ -1,8 +1,3 @@
-/**
- * IsWhat utilities.
- *
- * @packageDocumentation
- */
 export * from "./isNumber";
 export * from "./isUndefined";
 export * from "./isNull";

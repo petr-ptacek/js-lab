@@ -1,0 +1,28 @@
+{
+  "entryPoints": [
+    "packages/js-core/src/array/index.ts",
+    "packages/js-core/src/math/index.ts",
+    "packages/js-core/src/is-what/index.ts",
+    "packages/js-core/src/object/index.ts",
+    "packages/js-core/src/types/index.ts"
+  ],
+  "out": "docs/api/js-core",
+  "plugin": [
+    "typedoc-plugin-markdown"
+  ],
+  "tsconfig": "packages/js-core/tsconfig.app.json",
+  "outputFileStrategy": "modules",
+  "readme": "none",
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/__tests__/**"
+  ],
+  "excludePrivate": true,
+  "excludeNotDocumented": true,
+  "excludeInternal": true,
+  "cleanOutputDir": true,
+  "sort": [
+    "source-order"
+  ]
+}

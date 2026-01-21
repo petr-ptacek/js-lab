@@ -2,10 +2,12 @@ import type {
   WithTryCatchOptions,
   TryCatchResult,
   FallbackValue,
-} from "./types";
+}                                  from "./types";
+import { isUndefined, isFunction } from "../../is-what";
+
 
 function isFallbackFn<TResult, TError>(v: FallbackValue<TResult, TError>): v is (e: TError) => TResult {
-  return typeof v === "function";
+  return isFunction(v);
 }
 
 export async function withTryCatch<TResult, TError = unknown>(
@@ -19,7 +21,7 @@ export async function withTryCatch<TResult, TError = unknown>(
   } catch ( e: unknown ) {
     const error = options.mapError ? options.mapError(e) : (e as TError);
 
-    if ( options.fallback !== undefined ) {
+    if ( !isUndefined(options.fallback) ) {
       const data = isFallbackFn(options.fallback) ? options.fallback(error) : options.fallback;
       result = { ok: true, data };
     } else {

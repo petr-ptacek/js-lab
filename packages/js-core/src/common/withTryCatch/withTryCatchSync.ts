@@ -1,21 +1,23 @@
 import { invokeCallbacks, resolveErrorResult } from "./helpers";
 import type { TryCatchResult, WithTryCatchOptions, TryCatchResultSuccess, FallbackValue } from "./types";
 
-export function withTryCatch<TResult, TError = unknown>(
-  fn: () => Promise<TResult> | TResult,
-  options: WithTryCatchOptions<TResult, TError> & { fallback: FallbackValue<TResult, TError> },
-): Promise<TryCatchResultSuccess<TResult>>;
 
-export function withTryCatch<TResult, TError = unknown>(
-  fn: () => Promise<TResult> | TResult,
+export function withTryCatchSync<TResult, TError = unknown>(
+  fn: () => TResult,
+  options: WithTryCatchOptions<TResult, TError> & { fallback: FallbackValue<TResult, TError> },
+): TryCatchResultSuccess<TResult>;
+
+export function withTryCatchSync<TResult, TError = unknown>(
+  fn: () => TResult,
   options?: WithTryCatchOptions<TResult, TError>,
-): Promise<TryCatchResult<TResult, TError>>;
+): TryCatchResult<TResult, TError>;
 
 /**
- * Executes a function and returns its outcome as a discriminated union.
+ * Executes a synchronous function and returns its outcome
+ * as a discriminated union.
  *
  * This utility is responsible only for:
- * - executing the provided function
+ * - executing the provided synchronous function
  * - converting its result into a {@link TryCatchResult}
  *
  * The returned result is fully determined **before** any callbacks are invoked.
@@ -38,7 +40,7 @@ export function withTryCatch<TResult, TError = unknown>(
  * @template TResult The successful result type.
  * @template TError The mapped error type (defaults to `unknown`).
  *
- * @param fn Function to execute. May return a value or a Promise.
+ * @param fn Synchronous function to execute.
  * @param options Configuration object controlling error mapping,
  * fallback behavior and lifecycle callbacks.
  *
@@ -46,8 +48,8 @@ export function withTryCatch<TResult, TError = unknown>(
  *
  * @example
  * ```ts
- * const result = await withTryCatch<number | null>(
- *   async () => {
+ * const result = withTryCatchSync<number | null>(
+ *   () => {
  *     if (Math.random() < 0.5) throw new Error("fail");
  *     return 100;
  *   },
@@ -59,14 +61,14 @@ export function withTryCatch<TResult, TError = unknown>(
  * }
  * ```
  */
-export async function withTryCatch<TResult, TError = unknown>(
-  fn: () => Promise<TResult> | TResult,
+export function withTryCatchSync<TResult, TError = unknown>(
+  fn: () => TResult,
   options: WithTryCatchOptions<TResult, TError> = {},
-): Promise<TryCatchResult<TResult, TError>> {
+): TryCatchResult<TResult, TError> {
   let result: TryCatchResult<TResult, TError>;
 
   try {
-    const data = await fn();
+    const data = fn();
     result = { ok: true, data };
   } catch (e: unknown) {
     result = resolveErrorResult<TResult, TError>(e, options);

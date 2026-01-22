@@ -6,3 +6,4 @@ export type {
 } from "./types";
 
 export { withTryCatch } from "./withTryCatch";
+export { withTryCatchSync } from "./withTryCatchSync";

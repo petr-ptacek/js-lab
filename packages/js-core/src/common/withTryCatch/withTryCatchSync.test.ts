@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from "vitest";
-import { withTryCatch } from "./withTryCatch";
+import { withTryCatchSync } from "./withTryCatchSync";
 
-describe("withTryCatch (async)", () => {
-  it("returns success result when fn resolves", async () => {
-    const result = await withTryCatch(
-      async () => 42,
+describe("withTryCatchSync", () => {
+  it("returns success result when fn succeeds", () => {
+    const result = withTryCatchSync(
+      () => 42,
       {},
     );
 
@@ -14,11 +14,11 @@ describe("withTryCatch (async)", () => {
     }
   });
 
-  it("returns failure result when fn throws", async () => {
+  it("returns failure result when fn throws", () => {
     const error = new Error("fail");
 
-    const result = await withTryCatch(
-      async () => {
+    const result = withTryCatchSync(
+      () => {
         throw error;
       },
       {},
@@ -30,9 +30,9 @@ describe("withTryCatch (async)", () => {
     }
   });
 
-  it("uses fallback value when fn throws", async () => {
-    const result = await withTryCatch<number | null>(
-      async () => {
+  it("uses fallback value when fn throws", () => {
+    const result = withTryCatchSync<number | null>(
+      () => {
         throw new Error("fail");
       },
       {
@@ -46,11 +46,11 @@ describe("withTryCatch (async)", () => {
     }
   });
 
-  it("uses fallback function when fn throws", async () => {
+  it("uses fallback function when fn throws", () => {
     const fallback = vi.fn(() => 100);
 
-    const result = await withTryCatch(
-      async () => {
+    const result = withTryCatchSync(
+      () => {
         throw new Error("fail");
       },
       {
@@ -65,9 +65,9 @@ describe("withTryCatch (async)", () => {
     }
   });
 
-  it("maps error using mapError", async () => {
-    const result = await withTryCatch<number, string>(
-      async () => {
+  it("maps error using mapError", () => {
+    const result = withTryCatchSync<number, string>(
+      () => {
         throw new Error("boom");
       },
       {
@@ -81,11 +81,11 @@ describe("withTryCatch (async)", () => {
     }
   });
 
-  it("calls onSuccess when fn succeeds", async () => {
+  it("calls onSuccess when fn succeeds", () => {
     const onSuccess = vi.fn();
 
-    await withTryCatch(
-      async () => 10,
+    withTryCatchSync(
+      () => 10,
       {
         onSuccess,
       },
@@ -95,12 +95,12 @@ describe("withTryCatch (async)", () => {
     expect(onSuccess).toHaveBeenCalledWith(10);
   });
 
-  it("calls onError when fn fails and no fallback is used", async () => {
+  it("calls onError when fn fails and no fallback is used", () => {
     const error = new Error("fail");
     const onError = vi.fn();
 
-    await withTryCatch(
-      async () => {
+    withTryCatchSync(
+      () => {
         throw error;
       },
       {
@@ -112,11 +112,11 @@ describe("withTryCatch (async)", () => {
     expect(onError).toHaveBeenCalledWith(error);
   });
 
-  it("does not call onError when fallback converts failure to success", async () => {
+  it("does not call onError when fallback converts failure to success", () => {
     const onError = vi.fn();
 
-    const result = await withTryCatch(
-      async () => {
+    const result = withTryCatchSync(
+      () => {
         throw new Error("fail");
       },
       {
@@ -129,11 +129,11 @@ describe("withTryCatch (async)", () => {
     expect(onError).not.toHaveBeenCalled();
   });
 
-  it("calls onFinally on success", async () => {
+  it("calls onFinally on success", () => {
     const onFinally = vi.fn();
 
-    await withTryCatch(
-      async () => 1,
+    withTryCatchSync(
+      () => 1,
       {
         onFinally,
       },
@@ -142,11 +142,11 @@ describe("withTryCatch (async)", () => {
     expect(onFinally).toHaveBeenCalledOnce();
   });
 
-  it("calls onFinally on failure", async () => {
+  it("calls onFinally on failure", () => {
     const onFinally = vi.fn();
 
-    await withTryCatch(
-      async () => {
+    withTryCatchSync(
+      () => {
         throw new Error("fail");
       },
       {
@@ -157,11 +157,11 @@ describe("withTryCatch (async)", () => {
     expect(onFinally).toHaveBeenCalledOnce();
   });
 
-  it("invokes callbacks after result is resolved", async () => {
+  it("invokes callbacks after result is resolved", () => {
     const calls: string[] = [];
 
-    const result = await withTryCatch(
-      async () => {
+    const result = withTryCatchSync(
+      () => {
         calls.push("fn");
         return 1;
       },

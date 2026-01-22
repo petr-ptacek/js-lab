@@ -5,12 +5,6 @@ export type FallbackValue<TResult, TError> = TResult | ((e: TError) => TResult);
  */
 export type WithTryCatchOptions<TResult, TError = unknown> = {
   /**
-   * Function to execute.
-   * May return a value or a Promise.
-   */
-  fn: () => Promise<TResult> | TResult;
-
-  /**
    * Called when the operation succeeds.
    * Invoked after the result is determined.
    */

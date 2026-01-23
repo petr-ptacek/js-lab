@@ -29,5 +29,5 @@
 export function getRandomNumber(from = 0, to = Number.MAX_SAFE_INTEGER) {
   if (from > to) throw new Error(`getRandomNumber: from: (${from}) must be <= (${to})`);
 
-  return Math.ceil(Math.random() * (to - from + 1)) + from;
+  return Math.floor(Math.random() * (to - from + 1)) + from;
 }

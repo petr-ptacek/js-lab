@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { withTryCatchSync } from "./withTryCatchSync";
+import { withTryCatchSync } from "../withTryCatchSync";
 
 describe("withTryCatchSync", () => {
   it("returns success result when fn succeeds", () => {

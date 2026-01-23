@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { withTryCatch } from "./withTryCatch";
+import { withTryCatch } from "../withTryCatch";
 
 describe("withTryCatch (async)", () => {
   it("returns success result when fn resolves", async () => {

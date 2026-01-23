@@ -1,5 +1,19 @@
 import { withTryCatchSync } from "../withTryCatch";
 
+/* -------------------------------------------------- */
+/* Overloads */
+
+/* -------------------------------------------------- */
+
+export function parseJSONSafe<T>(value: string, fallback: T): T;
+export function parseJSONSafe<T>(value: string): T | undefined;
+
+
+/* -------------------------------------------------- */
+/* Implementation */
+
+/* -------------------------------------------------- */
+
 /**
  * Safely parses a JSON string and returns the parsed value.
  *
@@ -29,27 +43,6 @@ import { withTryCatchSync } from "../withTryCatch";
  * // => undefined
  * ```
  */
-
-/* -------------------------------------------------- */
-/* Overloads */
-
-/* -------------------------------------------------- */
-
-export function parseJSONSafe<T>(
-  value: string,
-  fallback: T,
-): T;
-
-export function parseJSONSafe<T>(
-  value: string,
-): T | undefined;
-
-
-/* -------------------------------------------------- */
-/* Implementation */
-
-/* -------------------------------------------------- */
-
 export function parseJSONSafe<T>(
   value: string,
   fallback?: T,

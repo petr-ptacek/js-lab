@@ -19,3 +19,8 @@ export * from "./object";
  * @module array
  */
 export * from "./array";
+
+/**
+ * @module common
+ */
+export * from "./common"

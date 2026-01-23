@@ -1,4 +1,4 @@
-import { invokeCallbacks, resolveErrorResult } from "./helpers";
+import { invokeCallbacks, resolveFailureResult } from "./helpers";
 import type {
   TryCatchResult,
   WithTryCatchOptions,
@@ -121,7 +121,7 @@ export async function withTryCatch<TResult, TError = unknown>(
     const data = await fn();
     result = { ok: true, data };
   } catch (e: unknown) {
-    result = resolveErrorResult<TResult, TError>(e, options);
+    result = resolveFailureResult<TResult, TError>(e, options);
   }
 
   invokeCallbacks<TResult, TError>(result, options);

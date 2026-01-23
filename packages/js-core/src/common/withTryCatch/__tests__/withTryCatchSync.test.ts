@@ -3,10 +3,7 @@ import { withTryCatchSync } from "../withTryCatchSync";
 
 describe("withTryCatchSync", () => {
   it("returns success result when fn succeeds", () => {
-    const result = withTryCatchSync(
-      () => 42,
-      {},
-    );
+    const result = withTryCatchSync(() => 42);
 
     expect(result.ok).toBe(true);
     if (result.ok) {
@@ -14,23 +11,21 @@ describe("withTryCatchSync", () => {
     }
   });
 
-  it("returns failure result when fn throws", () => {
+  it("returns failure result when fn throws and no fallback is provided", () => {
     const error = new Error("fail");
 
-    const result = withTryCatchSync(
-      () => {
-        throw error;
-      },
-      {},
-    );
+    const result = withTryCatchSync(() => {
+      throw error;
+    });
 
     expect(result.ok).toBe(false);
     if (!result.ok) {
       expect(result.error).toBe(error);
+      expect("data" in result).toBe(false);
     }
   });
 
-  it("uses fallback value when fn throws", () => {
+  it("returns failure result with data when fallback value is provided", () => {
     const result = withTryCatchSync<number | null>(
       () => {
         throw new Error("fail");
@@ -40,29 +35,33 @@ describe("withTryCatchSync", () => {
       },
     );
 
-    expect(result.ok).toBe(true);
-    if (result.ok) {
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
       expect(result.data).toBeNull();
     }
   });
 
   it("uses fallback function when fn throws", () => {
+    const error = new Error("fail");
     const fallback = vi.fn(() => 100);
 
     const result = withTryCatchSync(
       () => {
-        throw new Error("fail");
+        throw error;
       },
       {
         fallback,
       },
     );
 
-    expect(fallback).toHaveBeenCalledOnce();
-    expect(result.ok).toBe(true);
-    if (result.ok) {
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
       expect(result.data).toBe(100);
+      expect(result.error).toBe(error);
     }
+
+    expect(fallback).toHaveBeenCalledOnce();
+    expect(fallback).toHaveBeenCalledWith(error);
   });
 
   it("maps error using mapError", () => {
@@ -84,40 +83,35 @@ describe("withTryCatchSync", () => {
   it("calls onSuccess when fn succeeds", () => {
     const onSuccess = vi.fn();
 
-    withTryCatchSync(
-      () => 10,
-      {
-        onSuccess,
-      },
-    );
+    withTryCatchSync(() => 10, {
+      onSuccess,
+    });
 
     expect(onSuccess).toHaveBeenCalledOnce();
     expect(onSuccess).toHaveBeenCalledWith(10);
   });
 
-  it("calls onError when fn fails and no fallback is used", () => {
+  it("calls onError when fn fails without fallback", () => {
     const error = new Error("fail");
     const onError = vi.fn();
 
-    withTryCatchSync(
-      () => {
-        throw error;
-      },
-      {
-        onError,
-      },
-    );
+    withTryCatchSync(() => {
+      throw error;
+    }, {
+      onError,
+    });
 
     expect(onError).toHaveBeenCalledOnce();
     expect(onError).toHaveBeenCalledWith(error);
   });
 
-  it("does not call onError when fallback converts failure to success", () => {
+  it("calls onError when fn fails even if fallback is provided", () => {
+    const error = new Error("fail");
     const onError = vi.fn();
 
     const result = withTryCatchSync(
       () => {
-        throw new Error("fail");
+        throw error;
       },
       {
         fallback: 123,
@@ -125,19 +119,17 @@ describe("withTryCatchSync", () => {
       },
     );
 
-    expect(result.ok).toBe(true);
-    expect(onError).not.toHaveBeenCalled();
+    expect(result.ok).toBe(false);
+    expect(onError).toHaveBeenCalledOnce();
+    expect(onError).toHaveBeenCalledWith(error);
   });
 
   it("calls onFinally on success", () => {
     const onFinally = vi.fn();
 
-    withTryCatchSync(
-      () => 1,
-      {
-        onFinally,
-      },
-    );
+    withTryCatchSync(() => 1, {
+      onFinally,
+    });
 
     expect(onFinally).toHaveBeenCalledOnce();
   });
@@ -145,14 +137,11 @@ describe("withTryCatchSync", () => {
   it("calls onFinally on failure", () => {
     const onFinally = vi.fn();
 
-    withTryCatchSync(
-      () => {
-        throw new Error("fail");
-      },
-      {
-        onFinally,
-      },
-    );
+    withTryCatchSync(() => {
+      throw new Error("fail");
+    }, {
+      onFinally,
+    });
 
     expect(onFinally).toHaveBeenCalledOnce();
   });

@@ -3,10 +3,7 @@ import { withTryCatch } from "../withTryCatch";
 
 describe("withTryCatch (async)", () => {
   it("returns success result when fn resolves", async () => {
-    const result = await withTryCatch(
-      async () => 42,
-      {},
-    );
+    const result = await withTryCatch(async () => 42);
 
     expect(result.ok).toBe(true);
     if (result.ok) {
@@ -14,23 +11,21 @@ describe("withTryCatch (async)", () => {
     }
   });
 
-  it("returns failure result when fn throws", async () => {
+  it("returns failure result when fn throws and no fallback is provided", async () => {
     const error = new Error("fail");
 
-    const result = await withTryCatch(
-      async () => {
-        throw error;
-      },
-      {},
-    );
+    const result = await withTryCatch(async () => {
+      throw error;
+    });
 
     expect(result.ok).toBe(false);
     if (!result.ok) {
       expect(result.error).toBe(error);
+      expect("data" in result).toBe(false);
     }
   });
 
-  it("uses fallback value when fn throws", async () => {
+  it("returns failure result with data when fallback value is provided", async () => {
     const result = await withTryCatch<number | null>(
       async () => {
         throw new Error("fail");
@@ -40,29 +35,33 @@ describe("withTryCatch (async)", () => {
       },
     );
 
-    expect(result.ok).toBe(true);
-    if (result.ok) {
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
       expect(result.data).toBeNull();
     }
   });
 
   it("uses fallback function when fn throws", async () => {
+    const error = new Error("fail");
     const fallback = vi.fn(() => 100);
 
     const result = await withTryCatch(
       async () => {
-        throw new Error("fail");
+        throw error;
       },
       {
         fallback,
       },
     );
 
-    expect(fallback).toHaveBeenCalledOnce();
-    expect(result.ok).toBe(true);
-    if (result.ok) {
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
       expect(result.data).toBe(100);
+      expect(result.error).toBe(error);
     }
+
+    expect(fallback).toHaveBeenCalledOnce();
+    expect(fallback).toHaveBeenCalledWith(error);
   });
 
   it("maps error using mapError", async () => {
@@ -84,40 +83,35 @@ describe("withTryCatch (async)", () => {
   it("calls onSuccess when fn succeeds", async () => {
     const onSuccess = vi.fn();
 
-    await withTryCatch(
-      async () => 10,
-      {
-        onSuccess,
-      },
-    );
+    await withTryCatch(async () => 10, {
+      onSuccess,
+    });
 
     expect(onSuccess).toHaveBeenCalledOnce();
     expect(onSuccess).toHaveBeenCalledWith(10);
   });
 
-  it("calls onError when fn fails and no fallback is used", async () => {
+  it("calls onError when fn fails without fallback", async () => {
     const error = new Error("fail");
     const onError = vi.fn();
 
-    await withTryCatch(
-      async () => {
-        throw error;
-      },
-      {
-        onError,
-      },
-    );
+    await withTryCatch(async () => {
+      throw error;
+    }, {
+      onError,
+    });
 
     expect(onError).toHaveBeenCalledOnce();
     expect(onError).toHaveBeenCalledWith(error);
   });
 
-  it("does not call onError when fallback converts failure to success", async () => {
+  it("calls onError when fn fails even if fallback is provided", async () => {
+    const error = new Error("fail");
     const onError = vi.fn();
 
     const result = await withTryCatch(
       async () => {
-        throw new Error("fail");
+        throw error;
       },
       {
         fallback: 123,
@@ -125,19 +119,17 @@ describe("withTryCatch (async)", () => {
       },
     );
 
-    expect(result.ok).toBe(true);
-    expect(onError).not.toHaveBeenCalled();
+    expect(result.ok).toBe(false);
+    expect(onError).toHaveBeenCalledOnce();
+    expect(onError).toHaveBeenCalledWith(error);
   });
 
   it("calls onFinally on success", async () => {
     const onFinally = vi.fn();
 
-    await withTryCatch(
-      async () => 1,
-      {
-        onFinally,
-      },
-    );
+    await withTryCatch(async () => 1, {
+      onFinally,
+    });
 
     expect(onFinally).toHaveBeenCalledOnce();
   });
@@ -145,14 +137,11 @@ describe("withTryCatch (async)", () => {
   it("calls onFinally on failure", async () => {
     const onFinally = vi.fn();
 
-    await withTryCatch(
-      async () => {
-        throw new Error("fail");
-      },
-      {
-        onFinally,
-      },
-    );
+    await withTryCatch(async () => {
+      throw new Error("fail");
+    }, {
+      onFinally,
+    });
 
     expect(onFinally).toHaveBeenCalledOnce();
   });

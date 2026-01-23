@@ -3,6 +3,8 @@ export type {
   TryCatchResult,
   TryCatchResultSuccess,
   TryCatchResultFailure,
+  TryCatchResultFailureWithData,
+  TryCatchResultFailureNoData
 } from "./types";
 
 export { withTryCatch } from "./withTryCatch";

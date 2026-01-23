@@ -19,12 +19,19 @@ export function resolveErrorResult<TResult, TError = unknown>(
 
   if (Object.hasOwn(options, "fallback")) {
     const fallback = options.fallback as FallbackValue<TResult, TError>;
-
     const data = isFallbackFn(fallback) ? fallback(error) : fallback;
-    return { ok: true, data };
-  } else {
-    return { ok: false, error };
+
+    return {
+      ok: false,
+      error,
+      data,
+    };
   }
+
+  return {
+    ok: false,
+    error: error,
+  };
 }
 
 /**

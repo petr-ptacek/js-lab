@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { isUndefined }   from "@petr-ptacek/js-core";
-import { computed }      from "vue";
+import { isUndefined }              from "@petr-ptacek/js-core";
+import { computed, normalizeClass } from "vue";
 
 import type {
-  UiResizeContainerEmits,
+  UiResizeContainerEmits, UiResizeContainerExpose,
   UiResizeContainerModalValue,
   UiResizeContainerProps,
   UiResizeContainerSlots,
@@ -58,11 +58,16 @@ const {
 });
 
 defineSlots<UiResizeContainerSlots>();
+defineExpose<UiResizeContainerExpose>({
+  collapse,
+  expand,
+});
 </script>
 
 <template>
   <div
     class="ui-resize-container"
+    :class="props.ui?.root"
     :data-orientation="orientation"
     :data-origin="origin"
     :data-animatable="animatable"
@@ -73,79 +78,84 @@ defineSlots<UiResizeContainerSlots>();
   >
     <div
       class="ui-resize-container__content"
+      :class="props.ui?.content"
       ref="content"
     >
       <div
         class="ui-resize-container__section"
+        :class="normalizeClass([props.ui?.section, props.ui?.sectionAlpha])"
         data-section="alpha"
-        ref="sectionAlpha"
         :style="alphaStyle"
       >
         <slot name="alpha" />
       </div>
 
-      <div class="ui-resize-container__divider">
+      <div
+        class="ui-resize-container__divider"
+        :class="props.ui?.divider"
+      >
         <div
           class="ui-resize-container__handler"
+          :class="props.ui?.resizeHandler"
           @pointerdown="onPointerDown"
         ></div>
 
-        <div class="ui-resize-container__actions">
-          <div
-            class="ui-resize-container__action"
-            data-action="collapse"
-            :data-active-="collapsible && !isCollapsed"
-            @click="collapse"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="ui-resize-container__icon"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-            </svg>
-          </div>
+        <!--        <div class="ui-resize-container__actions">-->
+        <!--          <div-->
+        <!--            class="ui-resize-container__action"-->
+        <!--            data-action="collapse"-->
+        <!--            :data-active-="collapsible && !isCollapsed"-->
+        <!--            @click="collapse"-->
+        <!--          >-->
+        <!--            <svg-->
+        <!--              xmlns="http://www.w3.org/2000/svg"-->
+        <!--              class="ui-resize-container__icon"-->
+        <!--              fill="none"-->
+        <!--              viewBox="0 0 24 24"-->
+        <!--              stroke-width="1.5"-->
+        <!--              stroke="currentColor"-->
+        <!--            >-->
+        <!--              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />-->
+        <!--            </svg>-->
+        <!--          </div>-->
 
-          <!-- GRIP -->
-          <div
-            v-if="showGrip"
-            class="ui-resize-container__grip"
-            @pointerdown="onPointerDown"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-              <path
-                fill="currentColor"
-                d="M7 2a1 1 0 1 1-2 0a1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0M7 5a1 1 0 1 1-2 0a1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0M7 8a1 1 0 1 1-2 0a1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-3 3a1 1 0 1 1-2 0a1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-3 3a1 1 0 1 1-2 0a1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0" />
-            </svg>
-          </div>
+        <!--          &lt;!&ndash; GRIP &ndash;&gt;-->
+        <!--          <div-->
+        <!--            v-if="showGrip"-->
+        <!--            class="ui-resize-container__grip"-->
+        <!--            @pointerdown="onPointerDown"-->
+        <!--          >-->
+        <!--            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">-->
+        <!--              <path-->
+        <!--                fill="currentColor"-->
+        <!--                d="M7 2a1 1 0 1 1-2 0a1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0M7 5a1 1 0 1 1-2 0a1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0M7 8a1 1 0 1 1-2 0a1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-3 3a1 1 0 1 1-2 0a1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-3 3a1 1 0 1 1-2 0a1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0" />-->
+        <!--            </svg>-->
+        <!--          </div>-->
 
-          <div
-            class="ui-resize-container__action"
-            data-action="expand"
-            :data-visible="expandable && !isExpanded"
-            @click="expand"
-          >
-            <svg
-              class="ui-resize-container__icon"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-            </svg>
-          </div>
-        </div>
+        <!--          <div-->
+        <!--            class="ui-resize-container__action"-->
+        <!--            data-action="expand"-->
+        <!--            :data-visible="expandable && !isExpanded"-->
+        <!--            @click="expand"-->
+        <!--          >-->
+        <!--            <svg-->
+        <!--              class="ui-resize-container__icon"-->
+        <!--              xmlns="http://www.w3.org/2000/svg"-->
+        <!--              fill="none"-->
+        <!--              viewBox="0 0 24 24"-->
+        <!--              stroke-width="1.5"-->
+        <!--              stroke="currentColor"-->
+        <!--            >-->
+        <!--              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />-->
+        <!--            </svg>-->
+        <!--          </div>-->
+        <!--        </div>-->
       </div>
 
       <div
         class="ui-resize-container__section"
+        :class="normalizeClass([props.ui?.section, props.ui?.sectionBeta])"
         data-section="beta"
-        ref="sectionBeta"
         :style="betaStyle"
       >
         <slot name="beta" />

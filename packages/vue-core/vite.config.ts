@@ -1,6 +1,5 @@
 import { fileURLToPath, URL } from "node:url";
 
-import tailwindcssPlugin      from "@tailwindcss/vite";
 import vuePlugin              from "@vitejs/plugin-vue";
 import { defineConfig }       from "vite";
 
@@ -39,7 +38,6 @@ export default defineConfig({
     },
   },
   plugins: [
-    tailwindcssPlugin(),
     vuePlugin(),
   ],
 });

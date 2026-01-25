@@ -7,11 +7,11 @@
     "packages/js-core/src/types/index.ts"
   ],
   "out": "docs/api/js-core",
-  "plugin": [
-    "typedoc-plugin-markdown"
-  ],
+//  "plugin": [
+//    "typedoc-plugin-markdown"
+//  ],
   "tsconfig": "packages/js-core/tsconfig.app.json",
-  "outputFileStrategy": "modules",
+//  "outputFileStrategy": "router",
   "readme": "none",
   "exclude": [
     "**/*.test.ts",

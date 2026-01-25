@@ -39,8 +39,6 @@ export function useController(options: UseControllerOptions) {
     );
   });
 
-  // watchEffect(() => console.log(currentPercent.value));
-
   const { alphaStyle, betaStyle } = useResizeSizes({
     modelValue: options.modelValue,
     containerSize,

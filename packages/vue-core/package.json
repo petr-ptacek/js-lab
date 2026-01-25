@@ -37,20 +37,16 @@
   ],
   "dependencies": {
     "@petr-ptacek/js-core": "workspace:*",
-    "@vueuse/core": "^14.0.0",
-    "reka-ui": "^2.7.0",
-    "tailwindcss": "^4.1.18"
+    "@vueuse/core": "^14.0.0"
   },
   "peerDependencies": {
     "vue": "^3.5.0"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^24.10.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
     "vite": "^7.3.1",
-    "vite-plugin-dts": "^4.5.4",
     "vue": "^3.5.26",
     "vue-tsc": "^3.1.4"
   },

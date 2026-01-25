@@ -10,6 +10,16 @@ export type OrientationValue = "horizontal" | "vertical";
 
 export type UiResizeContainerModalValue = SizeValue;
 
+export type UI = {
+  root?: string;
+  content?: string;
+  section?: string;
+  sectionAlpha?: string;
+  sectionBeta?: string;
+  divider?: string;
+  resizeHandler?: string;
+}
+
 export type UiResizeContainerProps = {
   /**
    * Size of the origin section.
@@ -20,6 +30,8 @@ export type UiResizeContainerProps = {
   modelValue?: UiResizeContainerModalValue;
 
   defaultValue?: UiResizeContainerModalValue;
+
+  ui?: UI;
 
   orientation?: OrientationValue;
   origin?: OriginValue;
@@ -66,4 +78,9 @@ export type UiResizeContainerSlots = {
 
 export type UiResizeContainerEmits = {
   "update:modelValue": [UiResizeContainerModalValue]
+}
+
+export type UiResizeContainerExpose = {
+  expand: () => void;
+  collapse: () => void;
 }

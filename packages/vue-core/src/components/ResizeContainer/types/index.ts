@@ -1,4 +1,4 @@
-export type SizeUnitType = "%" | "px";
+import type { CSSClassValue } from "../../../types";
 
 export type SizeValueUnit = `${number}%` | `${number}px`;
 
@@ -11,13 +11,13 @@ export type OrientationValue = "horizontal" | "vertical";
 export type UiResizeContainerModalValue = SizeValue;
 
 export type UI = {
-  root?: string;
-  content?: string;
-  section?: string;
-  sectionAlpha?: string;
-  sectionBeta?: string;
-  divider?: string;
-  resizeHandler?: string;
+  root?: CSSClassValue;
+  content?: CSSClassValue;
+  section?: CSSClassValue;
+  sectionAlpha?: CSSClassValue;
+  sectionBeta?: CSSClassValue;
+  divider?: CSSClassValue;
+  resizeHandler?: CSSClassValue;
 }
 
 export type UiResizeContainerProps = {

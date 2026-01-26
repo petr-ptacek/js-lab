@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { UiResizeContainer, type UiResizeContainerModalValue, UiResizeContainerSection } from "@petr-ptacek/vue-core";
+import { UiResizeContainer, type UiResizeContainerModelValue, UiResizeContainerSection } from "@petr-ptacek/vue-core";
 import { shallowRef }                                                                    from "vue";
 
-const t = shallowRef<UiResizeContainerModalValue>("50%");
+const t = shallowRef<UiResizeContainerModelValue>("50%");
 </script>
 
 <template>

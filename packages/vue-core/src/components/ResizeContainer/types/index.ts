@@ -8,7 +8,7 @@ export type OriginValue = "alpha" | "beta";
 
 export type OrientationValue = "horizontal" | "vertical";
 
-export type UiResizeContainerModalValue = SizeValue;
+export type UiResizeContainerModelValue = SizeValue;
 
 export type UI = {
   root?: CSSClassValue;
@@ -27,9 +27,9 @@ export type UiResizeContainerProps = {
    * Internally normalized to percentage relative to container.
    * Emitted value is always percentage.
    */
-  modelValue?: UiResizeContainerModalValue;
+  modelValue?: UiResizeContainerModelValue;
 
-  defaultValue?: UiResizeContainerModalValue;
+  defaultValue?: UiResizeContainerModelValue;
 
   ui?: UI;
 
@@ -77,7 +77,7 @@ export type UiResizeContainerSlots = {
 }
 
 export type UiResizeContainerEmits = {
-  "update:modelValue": [UiResizeContainerModalValue]
+  (e: "update:modelValue", payload: UiResizeContainerModelValue): void;
 }
 
 export type UiResizeContainerExpose = {

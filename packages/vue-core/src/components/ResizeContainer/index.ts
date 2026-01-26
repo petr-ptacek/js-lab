@@ -7,5 +7,5 @@ export type {
   UiResizeContainerExpose,
   UiResizeContainerEmits,
   UiResizeContainerSlots,
-  UiResizeContainerModalValue
+  UiResizeContainerModelValue
 }                                              from "./types";

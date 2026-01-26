@@ -4,7 +4,7 @@ import { computed, normalizeClass } from "vue";
 
 import type {
   UiResizeContainerEmits, UiResizeContainerExpose,
-  UiResizeContainerModalValue,
+  UiResizeContainerModelValue,
   UiResizeContainerProps,
   UiResizeContainerSlots,
 }                        from "./types";
@@ -30,7 +30,7 @@ const props = withDefaults(
 
 const emit = defineEmits<UiResizeContainerEmits>();
 
-const { value: mv } = useProxyValue<UiResizeContainerModalValue>(computed({
+const { value: mv } = useProxyValue<UiResizeContainerModelValue>(computed({
     get: () => props.modelValue,
     set: (value) => {
       if ( isUndefined(value) ) return;

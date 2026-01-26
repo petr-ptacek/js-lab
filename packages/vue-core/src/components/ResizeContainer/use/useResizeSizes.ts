@@ -1,10 +1,10 @@
 import { computed, type Ref }                                       from "vue";
 
-import type { OriginValue, SizeValue, UiResizeContainerModalValue } from "../types";
+import type { OriginValue, SizeValue, UiResizeContainerModelValue } from "../types";
 import { normalizeSizeToPercent }                                   from "../utils";
 
 export type UseResizeSizesOptions = {
-  modelValue: Ref<UiResizeContainerModalValue>;
+  modelValue: Ref<UiResizeContainerModelValue>;
   containerSize: Ref<number>;
   origin: Ref<OriginValue>;
   minSize?: Ref<SizeValue | undefined>;

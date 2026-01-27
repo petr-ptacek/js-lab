@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toRef, useTemplateRef } from "vue";
+import { computed, toRef, useTemplateRef } from "vue";
 
 import { useElementOverflow } from "../../composables";
 
@@ -10,9 +10,11 @@ const props = withDefaults(
   { scrollable: true },
 );
 
+const scrollable = toRef(props, "scrollable");
 const root = useTemplateRef("root");
+
 const { hasHorizontal, hasVertical, hasOverflow } = useElementOverflow(root, {
-  enabled: toRef(props, "scrollable"),
+  disabled: computed(() => !scrollable.value),
 });
 </script>
 

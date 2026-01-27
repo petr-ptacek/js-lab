@@ -3,7 +3,7 @@ import { type MaybeRef, type Ref } from "vue";
 export type OverflowDirection = "vertical" | "horizontal" | "both" | "none";
 
 export type UseElementOverflowOptions = {
-  enabled?: MaybeRef<boolean>;
+  disabled?: MaybeRef<boolean>;
   observeContent?: MaybeRef<boolean>;
   debounceDelay?: number;
 }

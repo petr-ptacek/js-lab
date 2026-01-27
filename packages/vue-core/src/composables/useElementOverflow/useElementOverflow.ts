@@ -22,7 +22,7 @@ import type { OverflowDirection, UseElementOverflowOptions, UseElementOverflowRe
  * @param options
  * Configuration options.
  *
- * @param options.enabled
+ * @param options.disabled
  * Enables or disables overflow detection.
  * When disabled, overflow state is reset.
  *
@@ -53,7 +53,7 @@ export function useElementOverflow(
   target: MaybeComputedElementRef<HTMLElement | null>,
   options: UseElementOverflowOptions = {},
 ): UseElementOverflowReturn {
-  const enabled = computed(() => toValue(options.enabled) ?? true);
+  const disabled = computed(() => toValue(options.disabled) ?? false);
   const observeContent = computed(() => toValue(options.observeContent) ?? true);
   const targetEl = computed(() => toValue(target));
   const debounceDelay = computed(() => options.debounceDelay ?? 16);
@@ -73,7 +73,7 @@ export function useElementOverflow(
   useResizeObserver(
     targetEl,
     () => {
-      if (!observeContent.value || !enabled.value) {
+      if (!observeContent.value || disabled.value) {
         return;
       }
 
@@ -82,7 +82,7 @@ export function useElementOverflow(
   );
 
   watchDebounced(
-    [elSize.width, elSize.height, enabled, targetEl],
+    [elSize.width, elSize.height, disabled, targetEl],
     update,
     { immediate: true, debounce: debounceDelay },
   );
@@ -93,7 +93,7 @@ export function useElementOverflow(
   }
 
   function update() {
-    if (!targetEl.value || !enabled.value) {
+    if (!targetEl.value || disabled.value) {
       reset();
       return;
     }

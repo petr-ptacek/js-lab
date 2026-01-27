@@ -1,9 +1,9 @@
 import { expectTypeOf } from "vitest";
 
-import { describeIs }  from "./test-utils";
-import { isNaNNumber } from "../isNaNNumber";
+import { describeIs } from "./test-utils";
+import { isNaNValue } from "../isNaNValue";
 
-describeIs<number>("isNotNaNNumber", isNaNNumber, {
+describeIs<number>("isNotNaNNumber", isNaNValue, {
   valid: [
     NaN
   ],

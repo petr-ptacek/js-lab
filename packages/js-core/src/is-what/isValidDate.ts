@@ -1,5 +1,5 @@
-import { isDate }      from "./isDate";
-import { isNaNNumber } from "./isNaNNumber";
+import { isDate }     from "./isDate";
+import { isNaNValue } from "./isNaNValue";
 
 /**
  * Checks whether the given value is a valid `Date` instance.
@@ -29,5 +29,5 @@ import { isNaNNumber } from "./isNaNNumber";
  * ```
  */
 export function isValidDate(value: unknown): value is Date {
-  return isDate(value) && !isNaNNumber(value.getTime());
+  return isDate(value) && !isNaNValue(value.getTime());
 }

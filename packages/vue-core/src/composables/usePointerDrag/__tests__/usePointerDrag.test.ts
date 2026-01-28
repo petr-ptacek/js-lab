@@ -1,5 +1,5 @@
 import { it, expect, vi, beforeEach, afterEach } from "vitest";
-import { describeVue }                           from "../../../test-utils";
+import { describeVue }                           from "@petr-ptacek/vue-test-utils";
 import type { UsePointerDragOptions }            from "../types.ts";
 import { usePointerDrag }                        from "../usePointerDrag";
 import { createTargetEl, createPointerEvent }    from "./helpers.ts";

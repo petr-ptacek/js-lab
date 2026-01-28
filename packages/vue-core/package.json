@@ -37,6 +37,7 @@
   ],
   "dependencies": {
     "@petr-ptacek/js-core": "workspace:*",
+    "@petr-ptacek/vue-test-utils": "workspace:*",
     "@vueuse/core": "^14.0.0"
   },
   "peerDependencies": {

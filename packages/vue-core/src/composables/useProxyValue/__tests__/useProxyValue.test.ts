@@ -1,7 +1,7 @@
 import { it, expect, vi } from "vitest";
 import { expectTypeOf }   from "vitest";
 import { ref, nextTick }  from "vue";
-import { describeVue }    from "../../../test-utils";
+import { describeVue }    from "@petr-ptacek/vue-test-utils";
 
 import { useProxyValue } from "../useProxyValue";
 

@@ -56,16 +56,16 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@tsconfig/node20": "^20.1.8",
-    "@typescript-eslint/eslint-plugin": "^8.53.0",
-    "@typescript-eslint/parser": "^8.53.0",
-    "@vitest/coverage-v8": "^4.0.17",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "@vitest/coverage-v8": "^4.0.18",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-unused-imports": "^4.3.0",
     "eslint-plugin-vitest": "^0.5.4",
-    "eslint-plugin-vue": "^10.6.2",
-    "globals": "^17.0.0",
+    "eslint-plugin-vue": "^10.7.0",
+    "globals": "^17.2.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "npm-run-all2": "^8.0.4",
@@ -74,8 +74,8 @@
     "typedoc-plugin-markdown": "^4.9.0",
     "typescript": "^5.9.3",
     "vitepress": "^1.6.4",
-    "vitest": "^4.0.17",
+    "vitest": "^4.0.18",
     "vue-eslint-parser": "^10.2.0",
-    "vue-tsc": "^3.2.2"
+    "vue-tsc": "^3.2.4"
   }
 }

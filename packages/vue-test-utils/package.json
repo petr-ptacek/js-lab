@@ -1,0 +1,15 @@
+{
+  "name": "@petr-ptacek/vue-test-utils",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    }
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0",
+    "vitest": "^1.0.0"
+  }
+}

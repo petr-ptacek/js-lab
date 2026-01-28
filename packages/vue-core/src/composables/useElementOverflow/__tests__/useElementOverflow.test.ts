@@ -1,6 +1,6 @@
 import { expect, it, vi } from "vitest";
 import { nextTick, ref }  from "vue";
-import { describeVue }    from "../../../test-utils";
+import { describeVue }    from "@petr-ptacek/vue-test-utils";
 
 import { useElementOverflow } from "../useElementOverflow";
 

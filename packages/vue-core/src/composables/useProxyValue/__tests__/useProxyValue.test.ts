@@ -1,10 +1,11 @@
-import { describe, it, expect, vi } from "vitest";
-import { expectTypeOf } from "vitest";
-import { ref, nextTick } from "vue";
+import { it, expect, vi } from "vitest";
+import { expectTypeOf }   from "vitest";
+import { ref, nextTick }  from "vue";
+import { describeVue }    from "../../../test-utils";
 
-import { useProxyValue } from "./useProxyValue";
+import { useProxyValue } from "../useProxyValue";
 
-describe("useProxyValue", () => {
+describeVue("useProxyValue", () => {
   it("uses defaultValue when sourceValue is undefined", () => {
     const source = ref<string | undefined>(undefined);
 

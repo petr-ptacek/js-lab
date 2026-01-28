@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { useDragDirection } from "./useDragDirection";
+import { useDragDirection } from "../useDragDirection";
 
 describe("useDragDirection", () => {
   it("sets direction to right for positive dx", () => {

@@ -1,5 +1,6 @@
-import { describe, expect, it, vi } from "vitest";
-import { nextTick, ref }        from "vue";
+import { expect, it, vi } from "vitest";
+import { nextTick, ref }  from "vue";
+import { describeVue }    from "../../../test-utils";
 
 import { useElementOverflow } from "../useElementOverflow";
 
@@ -32,7 +33,7 @@ async function flush() {
   await nextTick();
 }
 
-describe("useElementOverflow", () => {
+describeVue("useElementOverflow", () => {
   it("detects no overflow", async () => {
     const el = createElement({
       clientWidth: 100,
@@ -44,7 +45,7 @@ describe("useElementOverflow", () => {
     const target = ref<HTMLElement | null>(el);
     const overflow = useElementOverflow(target);
 
-    await flush()
+    await flush();
 
     expect(overflow.hasOverflow.value).toBe(false);
     expect(overflow.direction.value).toBe("none");

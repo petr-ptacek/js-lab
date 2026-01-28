@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { describe, it, expect } from "vitest";
-import { useDragDelta } from "./useDragDelta";
+import { useDragDelta } from "../useDragDelta";
 
 function mockEvent(x: number, y: number): PointerEvent {
   return {

@@ -7,7 +7,7 @@ import type {
   StoreItem,
   ListenerContext,
   CleanupFn,
-  RecordEvents,
+  EmitterEvents,
   InitialHandlers,
   EventHandler, InitialHandler,
 } from "./types";
@@ -38,7 +38,7 @@ import type {
  * emitter.on("log", console.log);
  * ```
  */
-export class Emitter<Events extends RecordEvents> {
+export class Emitter<Events extends EmitterEvents> {
   #eventsStore: Store<Events> = new Map();
 
   /**
@@ -99,7 +99,7 @@ export class Emitter<Events extends RecordEvents> {
    * @param type - Event name
    * @param args - Arguments passed to the event handlers
    */
-  emit<TType extends keyof Events>(type: TType, ...args: Parameters<Events[TType]>) {
+  emit<TType extends keyof Events>(type: TType, ...args: Parameters<Events[TType]>): void {
     if (!this.#eventsStore.has(type)) {
       return;
     }
@@ -131,7 +131,7 @@ export class Emitter<Events extends RecordEvents> {
    */
   off<TType extends keyof Events>(type: TType): void;
   off<TType extends keyof Events>(type: TType, handler: Events[TType]): void;
-  off<TType extends keyof Events>(type: TType, handler?: Events[TType]) {
+  off<TType extends keyof Events>(type: TType, handler?: Events[TType]): void {
     if (!this.#eventsStore.has(type)) {
       return;
     }

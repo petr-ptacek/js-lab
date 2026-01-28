@@ -23,4 +23,10 @@ export * from "./array";
 /**
  * @module common
  */
-export * from "./common"
+export * from "./common";
+
+
+/**
+ * @module emitter
+ */
+export * from "./emitter";

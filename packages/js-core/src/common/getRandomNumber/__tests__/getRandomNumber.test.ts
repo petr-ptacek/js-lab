@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { getRandomNumber } from "./getRandomNumber";
+import { getRandomNumber } from "../getRandomNumber";
 
 describe("getRandomNumber", () => {
   it("returns a number within range", () => {

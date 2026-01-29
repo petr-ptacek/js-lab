@@ -1,0 +1,1 @@
+export { scaleByAspectRatio } from "./scaleByAspectRatio";

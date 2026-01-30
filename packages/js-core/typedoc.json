@@ -3,7 +3,7 @@
   "entryPoints": [
     "src/index.ts"
   ],
-  "out": "docs/api-generated",
+  "out": "docs/src/api-generated",
   "plugin": [
     "typedoc-plugin-markdown"
   ],

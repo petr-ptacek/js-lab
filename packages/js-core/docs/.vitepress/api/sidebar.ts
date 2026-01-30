@@ -11,7 +11,6 @@ function entries<T extends Record<string, unknown>>(obj: T) {
 export function createApiSidebar(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: "API",
       items: [
         { text: "Overview", link: "/api/" },
 

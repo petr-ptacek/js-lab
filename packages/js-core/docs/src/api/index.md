@@ -6,7 +6,6 @@ This page provides an overview of all available API modules.
 
 Utility functions for working with arrays.
 
-- [`Overview`](/api/array)
 - [`range`](/api-generated/functions/range)
 - [`shuffle`](/api-generated/functions/shuffle)
 - [`zip`](/api-generated/functions/zip)
@@ -15,7 +14,6 @@ Utility functions for working with arrays.
 
 Global TypeScript utility types.
 
-- [`Overview`](/api/types)
 - [`Dict`](/api-generated/type-aliases/Dict)
 - [`MaybeNull`](/api-generated/type-aliases/MaybeNull)
 - [`MaybeNullable`](/api-generated/type-aliases/MaybeNullable)

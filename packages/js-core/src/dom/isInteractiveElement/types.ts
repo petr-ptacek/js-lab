@@ -3,6 +3,8 @@ export type Selector = keyof HTMLElementTagNameMap | string;
 
 /**
  * Options for {@link isInteractiveElement}.
+ *
+ * @since 1.0.0
  */
 export type InteractiveElementOptions = {
   /**

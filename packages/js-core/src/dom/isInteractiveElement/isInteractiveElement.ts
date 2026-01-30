@@ -7,6 +7,8 @@ import type { InteractiveElementOptions, Selector } from "./types";
  * form controls and contenteditable elements.
  *
  * Can be imported and extended by consumers when custom behavior is needed.
+ *
+ * @since 1.0.0
  */
 export const DEFAULT_INTERACTIVE_SELECTORS = [
   "button",
@@ -21,14 +23,18 @@ export const DEFAULT_INTERACTIVE_SELECTORS = [
  * Determines whether the given element is interactive or is contained
  * within an interactive element.
  *
- * The function uses {@link Element.closest} to check the element itself
- * and its ancestors against a set of CSS selectors.
+ * The function checks the element itself and its ancestors using
+ * {@link Element.closest} against a set of CSS selectors.
  *
  * @param element - DOM element to test. If `null`, the function returns `false`.
  * @param options - Optional configuration for interactive element detection.
  *
  * @returns `true` if the element matches or is inside an interactive element,
  * otherwise `false`.
+ *
+ * @remarks
+ * Providing an empty `selectors` array disables interactive detection
+ * and the function will always return `false`.
  *
  * @example
  * ```ts
@@ -44,6 +50,8 @@ export const DEFAULT_INTERACTIVE_SELECTORS = [
  *   ],
  * });
  * ```
+ *
+ * @since 1.0.0
  */
 export function isInteractiveElement(element: Element | null, options: InteractiveElementOptions = {}): boolean {
   if (!element) return false;

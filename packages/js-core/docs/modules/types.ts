@@ -1,10 +1,13 @@
-import { defineApiModule } from "./utils";
+import { defineModule } from "../.vitepress";
 
-export const moduleTypes = defineApiModule({
+export const moduleTypes = defineModule({
   title: "Types",
   description: "Global TypeScript utility types.",
   symbols: [
     // { name: "Overview", kind: "overview" },
+
+    { name: "EmitterEvents", kind: "type", order: -1 },
+    { name: "EmitterInitialHandlers", kind: "type", order: -1 },
     { name: "MaybeNullable", kind: "type" },
     { name: "MaybeNull", kind: "type" },
     { name: "MaybeUndefined", kind: "type" },

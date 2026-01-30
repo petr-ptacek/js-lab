@@ -1,12 +1,12 @@
-import { ApiSymbolKind } from "../types";
+import { ModuleSymbolKind } from "../types";
 
-export function resolveSymbolPath(
+export function resolveModulePath(
   moduleKey: string,
   symbolName: string,
-  kind: ApiSymbolKind,
+  kind: ModuleSymbolKind,
 ): string {
   switch (kind) {
-    case "overview":
+    case "section":
       return `/api/${moduleKey}`;
 
     case "function":

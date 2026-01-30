@@ -5,8 +5,8 @@
 Determines whether the given element is interactive or is contained
 within an interactive element.
 
-The function uses Element.closest to check the element itself
-and its ancestors against a set of CSS selectors.
+The function checks the element itself and its ancestors using
+Element.closest against a set of CSS selectors.
 
 ## Parameters
 
@@ -29,6 +29,11 @@ Optional configuration for interactive element detection.
 `true` if the element matches or is inside an interactive element,
 otherwise `false`.
 
+## Remarks
+
+Providing an empty `selectors` array disables interactive detection
+and the function will always return `false`.
+
 ## Examples
 
 ```ts
@@ -43,3 +48,7 @@ isInteractiveElement(el, {
   ],
 });
 ```
+
+## Since
+
+1.0.0

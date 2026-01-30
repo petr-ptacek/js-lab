@@ -8,7 +8,7 @@ via a generic event map.
 
 Handlers are executed in the order they were registered.
 
-## Example
+## Examples
 
 ```ts
 type Events = {
@@ -26,6 +26,20 @@ const emitter = new Emitter<Events>({
 
 emitter.emit("sum", 1, 2);
 emitter.on("log", console.log);
+```
+
+*
+
+```ts
+type Events = {
+  sum: (a: number, b: number) => number;
+  log: (message: string) => void;
+};
+
+const emitter = new Emitter<Events>();
+
+emitter.on("log", console.log);
+emitter.emit("sum", 1, 2);
 ```
 
 ## Since

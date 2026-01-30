@@ -1,1 +1,0 @@
-export { createApiSidebar } from "./sidebar";

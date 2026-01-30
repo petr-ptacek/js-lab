@@ -17,8 +17,8 @@
     "clear": "rimraf ./dist ./node_modules/.tmp",
     "prepublishOnly": "pnpm clear && pnpm type:check && pnpm test && pnpm build && pnpm build:types",
     "docs:api:index": "tsx docs/scripts/generate-api-index.ts",
-    "docs:dev": "pnpm docs:api:index && vitepress dev docs",
-    "docs:build": "pnpm docs:api:index && vitepress build docs",
+    "docs:dev": "pnpm docs:api:index && typedoc && vitepress dev docs",
+    "docs:build": "pnpm docs:api:index && typedoc && vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
   "keywords": [

@@ -1,6 +1,6 @@
-import { defineApiModule } from "./utils";
+import { defineModule } from "../.vitepress";
 
-export const moduleObject = defineApiModule({
+export const moduleObject = defineModule({
   title: "Object",
   description: "Utility functions for working with objects.",
   symbols: [

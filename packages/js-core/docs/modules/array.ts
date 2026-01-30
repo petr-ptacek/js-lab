@@ -1,6 +1,6 @@
-import { defineApiModule } from "./utils";
+import { defineModule } from "../.vitepress";
 
-export const moduleArray = defineApiModule({
+export const moduleArray = defineModule({
   title: "Array",
   description: "Utility functions for working with arrays.",
   symbols: [

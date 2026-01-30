@@ -8,3 +8,7 @@ Includes common interactive HTML elements such as buttons, links,
 form controls and contenteditable elements.
 
 Can be imported and extended by consumers when custom behavior is needed.
+
+## Since
+
+1.0.0

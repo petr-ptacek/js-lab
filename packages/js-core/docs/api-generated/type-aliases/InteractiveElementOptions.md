@@ -4,6 +4,10 @@
 
 Options for [isInteractiveElement](../functions/isInteractiveElement.md).
 
+## Since
+
+1.0.0
+
 ## Properties
 
 ### selectors?

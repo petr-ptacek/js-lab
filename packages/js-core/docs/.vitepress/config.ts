@@ -1,11 +1,12 @@
 import { defineConfig } from "vitepress";
-import { createApiSidebar } from "./api";
+import { createSidebar } from "./src";
+
+import { modules } from "../modules";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "JS Core",
   description: "JavaScript & TypeScript utility library",
-  srcDir: "src",
   base: "/js-core/",
   ignoreDeadLinks: true,
   themeConfig: {
@@ -15,7 +16,7 @@ export default defineConfig({
     //   { text: "API", link: "/api/" },
     // ],
 
-    sidebar: createApiSidebar(),
+    sidebar: createSidebar(modules),
 
     socialLinks: [
       { icon: "github", link: "https://github.com/vuejs/vitepress" },

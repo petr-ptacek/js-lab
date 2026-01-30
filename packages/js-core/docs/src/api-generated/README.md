@@ -1,0 +1,70 @@
+# @petr-ptacek/js-core
+
+## Classes
+
+- [Emitter](classes/Emitter.md)
+
+## Type Aliases
+
+- [LoadImageOptions](type-aliases/LoadImageOptions.md)
+- [WithTryCatchOptions](type-aliases/WithTryCatchOptions.md)
+- [TryCatchResultSuccess](type-aliases/TryCatchResultSuccess.md)
+- [TryCatchResultFailure](type-aliases/TryCatchResultFailure.md)
+- [TryCatchResultFailureNoData](type-aliases/TryCatchResultFailureNoData.md)
+- [TryCatchResultFailureWithData](type-aliases/TryCatchResultFailureWithData.md)
+- [TryCatchResult](type-aliases/TryCatchResult.md)
+- [InteractiveElementOptions](type-aliases/InteractiveElementOptions.md)
+- [EmitterInitialHandlers](type-aliases/EmitterInitialHandlers.md)
+- [EmitterEvents](type-aliases/EmitterEvents.md)
+- [Dict](type-aliases/Dict.md)
+- [MaybeNullable](type-aliases/MaybeNullable.md)
+- [MaybeNull](type-aliases/MaybeNull.md)
+- [MaybeUndefined](type-aliases/MaybeUndefined.md)
+- [MaybePromise](type-aliases/MaybePromise.md)
+- [PrimitiveValue](type-aliases/PrimitiveValue.md)
+
+## Variables
+
+- [DEFAULT\_INTERACTIVE\_SELECTORS](variables/DEFAULT_INTERACTIVE_SELECTORS.md)
+
+## Functions
+
+- [range](functions/range.md)
+- [shuffle](functions/shuffle.md)
+- [zip](functions/zip.md)
+- [getAspectRatio](functions/getAspectRatio.md)
+- [getRandomNumber](functions/getRandomNumber.md)
+- [loadImage](functions/loadImage.md)
+- [parseJSONSafe](functions/parseJSONSafe.md)
+- [scaleByAspectRatio](functions/scaleByAspectRatio.md)
+- [withTryCatch](functions/withTryCatch.md)
+- [withTryCatchSync](functions/withTryCatchSync.md)
+- [isInteractiveElement](functions/isInteractiveElement.md)
+- [isArray](functions/isArray.md)
+- [isBigint](functions/isBigint.md)
+- [isBoolean](functions/isBoolean.md)
+- [isDate](functions/isDate.md)
+- [isEmptyArray](functions/isEmptyArray.md)
+- [isEmptyObject](functions/isEmptyObject.md)
+- [isEmptyString](functions/isEmptyString.md)
+- [isFiniteNumber](functions/isFiniteNumber.md)
+- [isFunction](functions/isFunction.md)
+- [isNaNValue](functions/isNaNValue.md)
+- [isNotEmptyObject](functions/isNotEmptyObject.md)
+- [isNull](functions/isNull.md)
+- [isNullable](functions/isNullable.md)
+- [isNumber](functions/isNumber.md)
+- [isObject](functions/isObject.md)
+- [isPlainObject](functions/isPlainObject.md)
+- [isPrimitive](functions/isPrimitive.md)
+- [isString](functions/isString.md)
+- [isSymbol](functions/isSymbol.md)
+- [isUndefined](functions/isUndefined.md)
+- [isValidDate](functions/isValidDate.md)
+- [add](functions/add.md)
+- [clamp](functions/clamp.md)
+- [multiply](functions/multiply.md)
+- [subtract](functions/subtract.md)
+- [sum](functions/sum.md)
+- [toPercentage](functions/toPercentage.md)
+- [get](functions/get.md)

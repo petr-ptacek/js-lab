@@ -1,22 +1,25 @@
 {
   "name": "@petr-ptacek/js-core",
-  "description": "Core JavaScript utilities for every project.",
+  "description": "JavaScript and TypeScript utilities.",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {
-    "type:check": "tsc -b ./tsconfig.app.json",
     "prebuild": "pnpm clear",
     "build": "vite build",
     "build:types": "tsc -b ./tsconfig.types.json",
+    "type:check": "tsc -b ./tsconfig.app.json",
     "type:watch": "tsc -b ./tsconfig.app.json --watch",
     "test": "vitest run",
     "test:watch": "vitest",
-    "dev": "test",
     "coverage": "vitest run --coverage",
     "clear": "rimraf ./dist ./node_modules/.tmp",
-    "prepublishOnly": "pnpm clear && pnpm type:check && pnpm test && pnpm build && pnpm build:types"
+    "prepublishOnly": "pnpm clear && pnpm type:check && pnpm test && pnpm build && pnpm build:types",
+    "docs:api:index": "tsx docs/scripts/generate-api-index.ts",
+    "docs:dev": "pnpm docs:api:index && vitepress dev docs",
+    "docs:build": "pnpm docs:api:index && vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "keywords": [
     "javascript",

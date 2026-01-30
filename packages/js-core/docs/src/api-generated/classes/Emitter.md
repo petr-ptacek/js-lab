@@ -2,9 +2,11 @@
 
 Strongly-typed event emitter.
 
-Provides a minimal, type-safe API for registering, emitting
-and removing event handlers. Events and their payloads
-are defined via a generic event map.
+Provides a minimal and type-safe API for registering, emitting,
+and removing event handlers. Events and their payloads are defined
+via a generic event map.
+
+Handlers are executed in the order they were registered.
 
 ## Example
 
@@ -25,6 +27,10 @@ const emitter = new Emitter<Events>({
 emitter.emit("sum", 1, 2);
 emitter.on("log", console.log);
 ```
+
+## Since
+
+1.0.0
 
 ## Type Parameters
 
@@ -177,10 +183,6 @@ Arguments passed to the event handlers
 
 ### off()
 
-#### Call Signature
-
-> **off**\<`TType`\>(`type`): `void`
-
 Removes event handlers.
 
 When called with only the event type, all handlers
@@ -188,6 +190,18 @@ for that event are removed.
 
 When a handler is provided, only that handler
 is removed.
+
+#### Param
+
+Event name
+
+#### Param
+
+Optional handler to remove
+
+#### Call Signature
+
+> **off**\<`TType`\>(`type`): `void`
 
 ##### Type Parameters
 
@@ -200,8 +214,6 @@ is removed.
 ###### type
 
 `TType`
-
-Event name
 
 ##### Returns
 
@@ -211,14 +223,6 @@ Event name
 
 > **off**\<`TType`\>(`type`, `handler`): `void`
 
-Removes event handlers.
-
-When called with only the event type, all handlers
-for that event are removed.
-
-When a handler is provided, only that handler
-is removed.
-
 ##### Type Parameters
 
 ###### TType
@@ -231,13 +235,9 @@ is removed.
 
 `TType`
 
-Event name
-
 ###### handler
 
 `Events`\[`TType`\]
-
-Optional handler to remove
 
 ##### Returns
 

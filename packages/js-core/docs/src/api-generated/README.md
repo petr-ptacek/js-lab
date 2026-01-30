@@ -67,4 +67,5 @@
 - [subtract](functions/subtract.md)
 - [sum](functions/sum.md)
 - [toPercentage](functions/toPercentage.md)
+- [entries](functions/entries.md)
 - [get](functions/get.md)

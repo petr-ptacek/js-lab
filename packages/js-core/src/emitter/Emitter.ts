@@ -15,9 +15,11 @@ import type {
 /**
  * Strongly-typed event emitter.
  *
- * Provides a minimal, type-safe API for registering, emitting
- * and removing event handlers. Events and their payloads
- * are defined via a generic event map.
+ * Provides a minimal and type-safe API for registering, emitting,
+ * and removing event handlers. Events and their payloads are defined
+ * via a generic event map.
+ *
+ * Handlers are executed in the order they were registered.
  *
  * @example
  * ```ts
@@ -37,6 +39,21 @@ import type {
  * emitter.emit("sum", 1, 2);
  * emitter.on("log", console.log);
  * ```
+ *
+ * * @example
+ * ```ts
+ * type Events = {
+ *   sum: (a: number, b: number) => number;
+ *   log: (message: string) => void;
+ * };
+ *
+ * const emitter = new Emitter<Events>();
+ *
+ * emitter.on("log", console.log);
+ * emitter.emit("sum", 1, 2);
+ * ```
+ *
+ * @since 1.0.0
  */
 export class Emitter<Events extends EmitterEvents> {
   #eventsStore: Store<Events> = new Map();
@@ -117,6 +134,8 @@ export class Emitter<Events extends EmitterEvents> {
   }
 
 
+  off<TType extends keyof Events>(type: TType): void;
+  off<TType extends keyof Events>(type: TType, handler: Events[TType]): void;
   /**
    * Removes event handlers.
    *
@@ -129,8 +148,6 @@ export class Emitter<Events extends EmitterEvents> {
    * @param type - Event name
    * @param handler - Optional handler to remove
    */
-  off<TType extends keyof Events>(type: TType): void;
-  off<TType extends keyof Events>(type: TType, handler: Events[TType]): void;
   off<TType extends keyof Events>(type: TType, handler?: Events[TType]): void {
     if (!this.#eventsStore.has(type)) {
       return;

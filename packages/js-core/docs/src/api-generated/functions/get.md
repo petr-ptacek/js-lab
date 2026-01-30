@@ -3,35 +3,27 @@
 Safely gets a nested value from an object using a dot-separated path.
 
 The path is strongly typed and validated at compile time.
-If the resolved value is `undefined`, the provided default value is returned instead.
+Supports nested objects and arrays via numeric indices.
 
-Supports:
-- nested objects
-- arrays via numeric indices
-
-## Type Param
-
-Object type
-
-## Type Param
-
-Valid path into the object
-
-## Type Param
-
-Default value type
+If the resolved value is `undefined`, the provided default value
+is returned instead.
 
 ## Param
 
-The object to read from
+The object to read from.
 
 ## Param
 
-Dot-separated path to the value
+Dot-separated path to the value.
 
 ## Param
 
-Optional default value returned when the path resolves to `undefined`
+Value returned when the resolved value is `undefined`.
+
+## Remarks
+
+The default value is only used when the resolved value is `undefined`.
+If the resolved value is `null`, it is returned as-is.
 
 ## Example
 
@@ -52,6 +44,10 @@ get(obj, "user.roles.0");
 get(obj, "user.age", 30);
 // → 30
 ```
+
+## Since
+
+1.0.0
 
 ## Call Signature
 

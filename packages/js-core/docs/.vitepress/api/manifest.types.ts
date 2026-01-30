@@ -1,7 +1,7 @@
 import { defineApiModule } from "./utils";
 
 export const moduleTypes = defineApiModule({
-  title: "types",
+  title: "Types",
   description: "Global TypeScript utility types.",
   symbols: [
     // { name: "Overview", kind: "overview" },

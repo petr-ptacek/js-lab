@@ -10,7 +10,14 @@ Utility functions for working with arrays.
 - [`shuffle`](/api-generated/functions/shuffle)
 - [`zip`](/api-generated/functions/zip)
 
-## types
+## Object
+
+Utility functions for working with objects.
+
+- [`entries`](/api-generated/functions/entries)
+- [`get`](/api-generated/functions/get)
+
+## Types
 
 Global TypeScript utility types.
 
@@ -20,4 +27,10 @@ Global TypeScript utility types.
 - [`MaybePromise`](/api-generated/type-aliases/MaybePromise)
 - [`MaybeUndefined`](/api-generated/type-aliases/MaybeUndefined)
 - [`PrimitiveValue`](/api-generated/type-aliases/PrimitiveValue)
+
+## Emitter
+
+Utility functions for working with objects.
+
+- [`Emitter`](/api-generated/classes/Emitter)
 

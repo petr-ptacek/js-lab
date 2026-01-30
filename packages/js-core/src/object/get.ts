@@ -1,4 +1,4 @@
-import { isArray, isObject }   from "../is-what";
+import { isArray, isObject } from "../is-what";
 import type { PrimitiveValue } from "../types";
 
 type Path<T> =
@@ -50,26 +50,23 @@ export function get<
  * Safely gets a nested value from an object using a dot-separated path.
  *
  * The path is strongly typed and validated at compile time.
- * If the resolved value is `undefined`, the provided default value is returned instead.
+ * Supports nested objects and arrays via numeric indices.
  *
- * Supports:
- * - nested objects
- * - arrays via numeric indices
+ * If the resolved value is `undefined`, the provided default value
+ * is returned instead.
  *
- * @typeParam T - Object type
- * @typeParam P - Valid path into the object
- * @typeParam D - Default value type
+ * @param obj - The object to read from.
+ * @param path - Dot-separated path to the value.
+ * @param defaultValue - Value returned when the resolved value is `undefined`.
  *
- * @param obj - The object to read from
- * @param path - Dot-separated path to the value
- * @param defaultValue - Optional default value returned when the path resolves to `undefined`
+ * @returns The resolved value, the default value, or `undefined`.
  *
- * @returns
- * - The resolved value at the given path
- * - `undefined` if the path does not exist and no default value is provided
- * - The default value if provided and the resolved value is `undefined`
+ * @remarks
+ * The default value is only used when the resolved value is `undefined`.
+ * If the resolved value is `null`, it is returned as-is.
  *
  * @example
+ * ```ts
  * const obj = {
  *   user: {
  *     name: "John",
@@ -85,36 +82,27 @@ export function get<
  *
  * get(obj, "user.age", 30);
  * // → 30
+ * ```
+ *
+ * @since 1.0.0
  */
 export function get(obj: object, path: string, defaultValue?: unknown) {
-  function isIndex(key: string): boolean {
-    return key !== "" && !Number.isNaN(Number(key));
-  }
-
   const result = path
     .split(".")
-    .reduce<unknown>(
-      (acc, key) => {
-        if ( !isObject(acc) || !(key in acc) ) {
-          return undefined;
-        }
+    .reduce<unknown>((acc, key) => {
+      if (acc == null) return undefined;
 
-        if ( isArray(acc) ) {
-          if ( !isIndex(key) ) {
-            return undefined;
-          }
+      if (isArray(acc)) {
+        const index = Number(key);
+        return Number.isInteger(index) ? acc[index] : undefined;
+      }
 
-          return acc[Number(key)];
-        }
-
-        if ( !(key in acc) ) {
-          return undefined;
-        }
-
+      if (isObject(acc)) {
         return (acc as Record<string, unknown>)[key];
-      },
-      obj,
-    );
+      }
+
+      return undefined;
+    }, obj);
 
   return typeof result === "undefined" ? defaultValue : result;
 }

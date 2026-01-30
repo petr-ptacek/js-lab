@@ -13,7 +13,7 @@ export function createSidebar(
 
         ...modules.map(({ key, module }) => ({
           text: module.title,
-          collapsed: false,
+          collapsed: !module.opened,
           items: module.symbols.map(symbol => {
             if (symbol.kind === "section") {
               return {

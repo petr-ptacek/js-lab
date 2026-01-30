@@ -21,6 +21,7 @@ export type ModuleItem = {
 export type ModuleSymbol = ModuleSection | ModuleItem;
 
 export type ModuleDefinition = {
+  opened?: boolean;
   title: string;
   description?: string;
   symbols: ModuleSymbol[];

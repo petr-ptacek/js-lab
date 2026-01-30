@@ -1,12 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { shuffleArray }         from "../shuffleArray";
+import { shuffle }         from "../shuffle";
 
-describe("shuffleArray", () => {
+describe("shuffle", () => {
   it("does not mutate the original array", () => {
     const original = [1, 2, 3, 4];
     const copy = [...original];
 
-    shuffleArray(original);
+    shuffle(original);
 
     expect(original).toEqual(copy);
   });
@@ -14,7 +14,7 @@ describe("shuffleArray", () => {
   it("returns an array with the same length", () => {
     const array = [1, 2, 3, 4, 5];
 
-    const result = shuffleArray(array);
+    const result = shuffle(array);
 
     expect(result).toHaveLength(array.length);
   });
@@ -22,17 +22,17 @@ describe("shuffleArray", () => {
   it("contains the same elements", () => {
     const array = [1, 2, 3, 4, 5];
 
-    const result = shuffleArray(array);
+    const result = shuffle(array);
 
     expect(result.slice().sort()).toEqual(array.slice().sort());
   });
 
   it("works with empty array", () => {
-    expect(shuffleArray([])).toEqual([]);
+    expect(shuffle([])).toEqual([]);
   });
 
   it("works with single-element array", () => {
-    expect(shuffleArray([42])).toEqual([42]);
+    expect(shuffle([42])).toEqual([42]);
   });
 
   it("eventually changes the order (statistical test)", () => {
@@ -40,7 +40,7 @@ describe("shuffleArray", () => {
     let changed = false;
 
     for ( let i = 0; i < 20; i++ ) {
-      const shuffled = shuffleArray(array);
+      const shuffled = shuffle(array);
 
       if ( !shuffled.every((value, index) => value === array[index]) ) {
         changed = true;
@@ -53,7 +53,7 @@ describe("shuffleArray", () => {
 
   it("never adds or removes elements", () => {
     const array = [1, 2, 3];
-    const result = shuffleArray(array);
+    const result = shuffle(array);
 
     expect(result.filter(v => v === undefined)).toHaveLength(0);
   });

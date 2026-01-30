@@ -1,3 +1,3 @@
-export * from "./shuffleArray";
-export * from "./zipArray";
-export * from "./rangeArray";
+export * from "./shuffle";
+export * from "./zip";
+export * from "./range";

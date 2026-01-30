@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
 
-import { zipArray } from "../zipArray";
+import { zip } from "../zip";
 
-describe("zipArray", () => {
+describe("zip", () => {
   it("zips two arrays into tuples", () => {
-    const result = zipArray([1, 2, 3], ["a", "b", "c"]);
+    const result = zip([1, 2, 3], ["a", "b", "c"]);
 
     expect(result).toEqual([
       [1, "a"],
@@ -14,14 +14,14 @@ describe("zipArray", () => {
   });
 
   it("uses the shorter array length", () => {
-    const result = zipArray([1, 2, 3], ["a"]);
+    const result = zip([1, 2, 3], ["a"]);
 
     expect(result).toEqual([[1, "a"]]);
   });
 
   it("returns empty array when one array is empty", () => {
-    expect(zipArray([], [1, 2, 3])).toEqual([]);
-    expect(zipArray([1, 2, 3], [])).toEqual([]);
+    expect(zip([], [1, 2, 3])).toEqual([]);
+    expect(zip([1, 2, 3], [])).toEqual([]);
   });
 
   it("does not mutate input arrays", () => {
@@ -30,14 +30,14 @@ describe("zipArray", () => {
     const aCopy = [...a];
     const bCopy = [...b];
 
-    zipArray(a, b);
+    zip(a, b);
 
     expect(a).toEqual(aCopy);
     expect(b).toEqual(bCopy);
   });
 
   it("maps values when mapper is provided", () => {
-    const result = zipArray(
+    const result = zip(
       [1, 2, 3],
       [10, 20, 30],
       (a, b) => a + b,
@@ -49,7 +49,7 @@ describe("zipArray", () => {
   it("passes correct values to mapper", () => {
     const calls: Array<[number, number]> = [];
 
-    zipArray(
+    zip(
       [1, 2],
       [3, 4],
       (a, b) => {

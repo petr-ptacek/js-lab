@@ -1,8 +1,9 @@
 {
   "extends": "../../tsconfig.node.base.json",
   "include": [
-    "vite.config.ts",
-    "vitest.config.ts",
-    "docs/**/*.ts"
+    "./vite.config.ts",
+    "./vitest.config.ts",
+    "./docs/.vitepress/**/*.ts",
+    "./docs/**/*.ts"
   ]
 }

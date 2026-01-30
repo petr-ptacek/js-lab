@@ -14,6 +14,6 @@
     "outDir": "dist/types"
   },
   "include": [
-    "src/**/*"
+    "./src/**/*"
   ]
 }

@@ -25,11 +25,9 @@ Utility functions for working with objects.
 
 ## DOM
 
-Utility functions for working with objects.
+Utilities for working with DOM elements.
 
 - [`isInteractiveElement`](/api-generated/functions/isInteractiveElement)
-- [`DEFAULT_INTERACTIVE_SELECTORS`](/api-generated/variables/DEFAULT_INTERACTIVE_SELECTORS)
-- [`InteractiveElementOptions`](/api-generated/type-aliases/InteractiveElementOptions)
 
 ## Types
 
@@ -44,8 +42,9 @@ Global TypeScript utility types.
 - [`MaybeUndefined`](/api-generated/type-aliases/MaybeUndefined)
 - [`PrimitiveValue`](/api-generated/type-aliases/PrimitiveValue)
 
-## Variables
+## Constants
 
-Variables for working with objects.
+Constants for working with objects.
 
+- [`DEFAULT_INTERACTIVE_SELECTORS`](/api-generated/variables/DEFAULT_INTERACTIVE_SELECTORS)
 

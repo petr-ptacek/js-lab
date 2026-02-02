@@ -14,7 +14,54 @@ export default defineConfig({
     // ],
 
     sidebar: [
-
+      {
+        text: "Array",
+        collapsed: false,
+        items: [
+          {
+            text: "shuffle",
+            link: "/api-generated/functions/shuffle",
+          },
+          {
+            text: "zip",
+            link: "/api-generated/functions/zip",
+          },
+          {
+            text: "range",
+            link: "/api-generated/functions/range",
+          }
+        ]
+      },
+      {
+        text: "TS - Types",
+        collapsed: true,
+        items: [
+          {
+            text: "MaybeUndefined",
+            link: "/api-generated/type-aliases/MaybeUndefined",
+          },
+          {
+            text: "MaybeNull",
+            link: "/api-generated/type-aliases/MaybeNull",
+          },
+          {
+            text: "MaybeNullable",
+            link: "/api-generated/type-aliases/MaybeNullable",
+          },
+          {
+            text: "MaybePromise",
+            link: "/api-generated/type-aliases/MaybePromise",
+          },
+          {
+            text: "Dict",
+            link: "/api-generated/type-aliases/Dict",
+          },
+          {
+            text: "PrimitiveValue",
+            link: "/api-generated/type-aliases/PrimitiveValue",
+          }
+        ]
+      }
     ],
 
     socialLinks: [

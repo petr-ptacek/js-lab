@@ -13,6 +13,8 @@ import { isObject } from "./isObject";
  *
  * @returns `true` if the value is a plain object, otherwise `false`.
  *
+ * @since 1.0.0
+ *
  * @example
  * ```ts
  * isPlainObject({});                 // true

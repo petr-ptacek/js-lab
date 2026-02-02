@@ -9,6 +9,8 @@ import { isUndefined } from "./isUndefined";
  * @param value The value to test.
  * @returns `true` if the value is `null` or `undefined`, otherwise `false`.
  *
+ * @since 1.0.0
+ *
  * @example
  * ```ts
  * isNullable(null);        // true

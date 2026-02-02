@@ -49,6 +49,50 @@ export default defineConfig({
           {
             text: "isNullable",
             link: "/api-generated/functions/isNullable",
+          },
+          {
+            text: "isString",
+            link: "/api-generated/functions/isString",
+          },
+          {
+            text: "isNumber",
+            link: "/api-generated/functions/isNumber",
+          },
+          {
+            text: "isFunction",
+            link: "/api-generated/functions/isFunction",
+          },
+          {
+            text: "isArray",
+            link: "/api-generated/functions/isArray",
+          },
+          {
+            text: "isBoolean",
+            link: "/api-generated/functions/isBoolean",
+          },
+          {
+            text: "isDate",
+            link: "/api-generated/functions/isDate",
+          },
+          {
+            text: "isObject",
+            link: "/api-generated/functions/isObject",
+          },
+          {
+            text: "isPlainObject",
+            link: "/api-generated/functions/isPlainObject",
+          },
+          {
+            text: "isSymbol",
+            link: "/api-generated/functions/isSymbol",
+          },
+          {
+            text: "isValidDate",
+            link: "/api-generated/functions/isValidDate",
+          },
+          {
+            text: "isNaNValue",
+            link: "/api-generated/functions/isNaNValue",
           }
         ]
       },

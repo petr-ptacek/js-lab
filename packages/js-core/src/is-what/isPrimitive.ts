@@ -15,6 +15,8 @@ import type { PrimitiveValue } from "../types";
  * A primitive value is one of:
  * `string`, `number`, `boolean`, `symbol`, `bigint`, `null`, or `undefined`.
  *
+ * @since 1.0.0
+ *
  * @param value The value to test.
  * @returns `true` if the value is a primitive value, otherwise `false`.
  *

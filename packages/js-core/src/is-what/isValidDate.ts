@@ -12,6 +12,8 @@ import { isNaNValue } from "./isNaNValue";
  * @param value The value to test.
  * @returns `true` if the value is a valid `Date`, otherwise `false`.
  *
+ * @since 1.0.0
+ *
  * @example
  * ```ts
  * isValidDate(new Date());                // true

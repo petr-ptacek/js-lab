@@ -7,6 +7,8 @@
  * @param value The value to test.
  * @returns `true` if the value is `NaN`, otherwise `false`.
  *
+ * @since 1.0.0
+ *
  * @example
  * ```ts
  * isNaNNumber(NaN);        // true

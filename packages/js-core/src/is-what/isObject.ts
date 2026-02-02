@@ -11,6 +11,8 @@ import { isNull } from "./isNull";
  * @param value The value to test.
  * @returns `true` if the value is a non-null object, otherwise `false`.
  *
+ * @since 1.0.0
+ *
  * @example
  * ```ts
  * isObject({});        // true

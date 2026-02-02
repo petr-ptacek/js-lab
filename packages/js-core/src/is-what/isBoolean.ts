@@ -6,6 +6,8 @@
  * @param value The value to test.
  * @returns `true` if the value is a boolean, otherwise `false`.
  *
+ * @since 1.0.0
+ *
  * @example
  * ```ts
  * isBoolean(true);    // true

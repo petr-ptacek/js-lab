@@ -6,6 +6,8 @@
  * @param value The value to test.
  * @returns `true` if the value is of type `string`, otherwise `false`.
  *
+ * @since 1.0.0
+ *
  * @example
  * ```ts
  * isString("text");   // true

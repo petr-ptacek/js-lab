@@ -6,6 +6,8 @@
  * @param value The value to test.
  * @returns `true` if the value is `null`, otherwise `false`.
  *
+ * @since 1.0.0
+ *
  * @example
  * ```ts
  * isNull(null);       // true

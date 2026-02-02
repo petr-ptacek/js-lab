@@ -24,6 +24,10 @@ The value to check.
 
 `true` if the value is a plain object, otherwise `false`.
 
+## Since
+
+1.0.0
+
 ## Example
 
 ```ts

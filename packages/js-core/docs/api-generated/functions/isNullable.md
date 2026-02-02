@@ -20,6 +20,10 @@ value is null \| undefined
 
 `true` if the value is `null` or `undefined`, otherwise `false`.
 
+## Since
+
+1.0.0
+
 ## Examples
 
 ```ts

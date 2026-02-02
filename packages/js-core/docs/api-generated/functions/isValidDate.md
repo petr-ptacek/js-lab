@@ -23,6 +23,10 @@ The value to test.
 
 `true` if the value is a valid `Date`, otherwise `false`.
 
+## Since
+
+1.0.0
+
 ## Examples
 
 ```ts

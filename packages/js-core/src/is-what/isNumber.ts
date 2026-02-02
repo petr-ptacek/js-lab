@@ -7,6 +7,8 @@
  * @param value The value to test.
  * @returns `true` if the value is of type `number`, otherwise `false`.
  *
+ * @since 1.0.0
+ *
  * @example
  * ```ts
  * isNumber(42);        // true

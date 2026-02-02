@@ -7,6 +7,8 @@
  * @param value The value to test.
  * @returns `true` if the value is an array, otherwise `false`.
  *
+ * @since 1.0.0
+ *
  * @example
  * ```ts
  * isArray([1, 2, 3]); // true

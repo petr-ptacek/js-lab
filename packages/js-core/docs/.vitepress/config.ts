@@ -172,7 +172,7 @@ export default defineConfig({
         ],
       },
       {
-        text: "TS - Types",
+        text: "Types",
         collapsed: true,
         items: [
           {

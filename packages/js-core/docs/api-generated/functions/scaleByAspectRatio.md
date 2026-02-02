@@ -1,6 +1,6 @@
 # Function: scaleByAspectRatio()
 
-Scales a size while preserving its aspect ratio.
+Scales a dimensions while preserving its aspect ratio.
 
 Exactly one target dimension must be provided (`width` or `height`).
 The opposite dimension is calculated automatically based on the
@@ -8,7 +8,7 @@ original aspect ratio.
 
 ## Param
 
-Original size
+Original dimensions
 
 ## Param
 
@@ -21,7 +21,7 @@ Optional rounding function (defaults to `Math.round`)
 ## Throws
 
 Throws if:
-- `size.width` or `size.height` is not a positive finite number
+- `dimensions.width` or `dimensions.height` is not a positive finite number
 - both or neither of `target.width` / `target.height` are provided
 - target dimension is not a positive finite number
 
@@ -41,15 +41,19 @@ scaleByAspectRatio(
 // → { width: 200, height: 150 }
 ```
 
+## Since
+
+1.0.0
+
 ## Call Signature
 
-> **scaleByAspectRatio**(`size`, `target`, `round?`): `Size`
+> **scaleByAspectRatio**(`dimensions`, `target`, `round?`): [`Dimensions`](../type-aliases/Dimensions.md)
 
 ### Parameters
 
-#### size
+#### dimensions
 
-`Size`
+[`Dimensions`](../type-aliases/Dimensions.md)
 
 #### target
 
@@ -59,21 +63,21 @@ scaleByAspectRatio(
 
 #### round?
 
-`RoundFn`
+[`RoundValueFn`](../type-aliases/RoundValueFn.md)
 
 ### Returns
 
-`Size`
+[`Dimensions`](../type-aliases/Dimensions.md)
 
 ## Call Signature
 
-> **scaleByAspectRatio**(`size`, `target`, `round?`): `Size`
+> **scaleByAspectRatio**(`dimensions`, `target`, `round?`): [`Dimensions`](../type-aliases/Dimensions.md)
 
 ### Parameters
 
-#### size
+#### dimensions
 
-`Size`
+[`Dimensions`](../type-aliases/Dimensions.md)
 
 #### target
 
@@ -83,8 +87,8 @@ scaleByAspectRatio(
 
 #### round?
 
-`RoundFn`
+[`RoundValueFn`](../type-aliases/RoundValueFn.md)
 
 ### Returns
 
-`Size`
+[`Dimensions`](../type-aliases/Dimensions.md)

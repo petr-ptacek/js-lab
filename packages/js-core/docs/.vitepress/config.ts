@@ -34,6 +34,20 @@ export default defineConfig({
         ],
       },
       {
+        text: "Object",
+        collapsed: true,
+        items: [
+          {
+            text: "get",
+            link: "/api/object/get",
+          },
+          {
+            text: "entries",
+            link: "/api/object/entries",
+          },
+        ],
+      },
+      {
         text: "Emitter",
         link: "/api/emitter/",
       },
@@ -45,7 +59,51 @@ export default defineConfig({
             text: "isInteractiveElement",
             link: "/api-generated/functions/isInteractiveElement",
           },
+          {
+            text: "loadImage",
+            link: "/api-generated/functions/loadImage",
+          },
         ],
+      },
+      {
+        text: "Math",
+        collapsed: true,
+        items: [
+          {
+            text: "toPercentage",
+            link: "/api-generated/functions/toPercentage",
+          },
+          {
+            text: "clamp",
+            link: "/api-generated/functions/clamp",
+          },
+          {
+            text: "getRandomNumber",
+            link: "/api-generated/functions/getRandomNumber",
+          },
+          {
+            text: "getAspectRatio",
+            link: "/api-generated/functions/getAspectRatio",
+          },
+          {
+            text: "scaleByAspectRatio",
+            link: "/api/math/scaleByAspectRatio",
+          },
+        ],
+      },
+      {
+        text: "Safe/Execution",
+        collapsed: true,
+        items: [
+          {
+            text: "withTryCatch",
+            link: "/api/safe/withTryCatch",
+          },
+          {
+            text: "withTryCatchSync",
+            link: "/api/safe/withTryCatchSync",
+          }
+        ]
       },
       {
         text: "Is What",
@@ -156,6 +214,38 @@ export default defineConfig({
           {
             text: "EmitterInitialHandlers",
             link: "/api-generated/type-aliases/EmitterInitialHandlers",
+          },
+          {
+            text: "Dimensions",
+            link: "/api-generated/type-aliases/Dimensions",
+          },
+          {
+            text: "RoundValueFn",
+            link: "/api-generated/type-aliases/RoundValueFn",
+          },
+          {
+            text: "WithTryCatchOptions",
+            link: "/api-generated/type-aliases/WithTryCatchOptions",
+          },
+          {
+            text: "TryCatchResult",
+            link: "/api-generated/type-aliases/TryCatchResult",
+          },
+          {
+            text: "TryCatchResultSuccess",
+            link: "/api-generated/type-aliases/TryCatchResultSuccess",
+          },
+          {
+            text: "TryCatchResultFailure",
+            link: "/api-generated/type-aliases/TryCatchResultFailure",
+          },
+          {
+            text: "TryCatchResultFailureNoData",
+            link: "/api-generated/type-aliases/TryCatchResultFailureNoData",
+          },
+          {
+            text: "TryCatchResultFailureWithData",
+            link: "/api-generated/type-aliases/TryCatchResultFailureWithData",
           },
         ],
       },

@@ -19,6 +19,8 @@ import { assertPositiveFinite } from "../../_helpers_";
  * getAspectRatio(1920, 1080); // 1.777...
  * getAspectRatio(400, 200);  // 2
  * ```
+ *
+ * @since 1.0.0
  */
 export function getAspectRatio(width: number, height: number): number {
   assertPositiveFinite("width", width);

@@ -44,3 +44,7 @@ getRandomNumber(5, 5) // → 5
 ```ts
 getRandomNumber(-10, 10)
 ```
+
+## Since
+
+1.0.0

@@ -44,5 +44,3 @@ if (isPrimitive(value)) {
   // value is PrimitiveValue
 }
 ```
-
-## Link

@@ -1,25 +1,30 @@
 import { scaleToWidth, scaleToHeight } from "./helpers";
-import type { Size, RoundFn, ScaleTarget } from "./types";
+import type { DimensionsTarget } from "./types";
 import { assertPositiveFinite } from "../../_helpers_";
+import type { Dimensions, RoundValueFn } from "../../types";
 
-export function scaleByAspectRatio(size: Size, target: { width: number; }, round?: RoundFn): Size;
-export function scaleByAspectRatio(size: Size, target: { height: number; }, round?: RoundFn): Size;
+export function scaleByAspectRatio(dimensions: Dimensions, target: {
+  width: number;
+}, round?: RoundValueFn): Dimensions;
+export function scaleByAspectRatio(dimensions: Dimensions, target: {
+  height: number;
+}, round?: RoundValueFn): Dimensions;
 /**
- * Scales a size while preserving its aspect ratio.
+ * Scales a dimensions while preserving its aspect ratio.
  *
  * Exactly one target dimension must be provided (`width` or `height`).
  * The opposite dimension is calculated automatically based on the
  * original aspect ratio.
  *
- * @param size - Original size
+ * @param dimensions - Original dimensions
  * @param target - Target dimension (`width` or `height`)
  * @param round - Optional rounding function (defaults to `Math.round`)
  *
- * @returns A new size scaled by aspect ratio
+ * @returns A new dimensions scaled by aspect ratio
  *
  * @throws {Error}
  * Throws if:
- * - `size.width` or `size.height` is not a positive finite number
+ * - `dimensions.width` or `dimensions.height` is not a positive finite number
  * - both or neither of `target.width` / `target.height` are provided
  * - target dimension is not a positive finite number
  *
@@ -37,29 +42,31 @@ export function scaleByAspectRatio(size: Size, target: { height: number; }, roun
  * );
  * // → { width: 200, height: 150 }
  * ```
+ *
+ * @since 1.0.0
  */
 export function scaleByAspectRatio(
-  size: Size,
-  target: ScaleTarget,
-  round: RoundFn = Math.round,
-): Size {
-  assertPositiveFinite("size.width", size.width);
-  assertPositiveFinite("size.height", size.height);
+  dimensions: Dimensions,
+  target: DimensionsTarget,
+  round: RoundValueFn = Math.round,
+): Dimensions {
+  assertPositiveFinite("dimensions.width", dimensions.width);
+  assertPositiveFinite("dimensions.height", dimensions.height);
 
   const hasWidth = typeof target.width === "number";
   const hasHeight = typeof target.height === "number";
 
-  if (hasWidth === hasHeight) {
+  if ( hasWidth === hasHeight ) {
     throw new Error(
       "scaleTo requires exactly one of target.width or target.height",
     );
   }
 
-  if (hasWidth) {
+  if ( hasWidth ) {
     assertPositiveFinite("target.width", target.width!);
-    return scaleToWidth(size, target.width!, round);
+    return scaleToWidth(dimensions, target.width!, round);
   }
 
   assertPositiveFinite("target.height", target.height!);
-  return scaleToHeight(size, target.height!, round);
+  return scaleToHeight(dimensions, target.height!, round);
 }

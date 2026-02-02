@@ -14,6 +14,7 @@ export type FallbackValue<TResult, TError> = TResult | ((e: TError) => TResult);
  *
  * @template TResult Type of the successful (or fallback) result.
  * @template TError Type of the mapped error.
+ * @since 1.0.0
  */
 export type WithTryCatchOptions<TResult, TError = unknown> = {
   /**

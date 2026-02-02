@@ -25,6 +25,8 @@
  * ```ts
  * getRandomNumber(-10, 10)
  * ```
+ *
+ * @since 1.0.0
  */
 export function getRandomNumber(from = 0, to = Number.MAX_SAFE_INTEGER) {
   if (from > to) throw new Error(`getRandomNumber: from: (${from}) must be <= (${to})`);

@@ -37,3 +37,7 @@ Throws if `width` or `height` is not a positive finite number.
 getAspectRatio(1920, 1080); // 1.777...
 getAspectRatio(400, 200);  // 2
 ```
+
+## Since
+
+1.0.0

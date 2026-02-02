@@ -38,3 +38,7 @@ const image = await loadImage("/image.png", {
   decoding: "async",
 });
 ```
+
+## Since
+
+1.0.0

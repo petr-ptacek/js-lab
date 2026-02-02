@@ -4,30 +4,27 @@ import type {
   WithTryCatchOptions,
   TryCatchResultSuccess,
   FallbackValue,
-  TryCatchResultFailureWithData, TryCatchResultFailureNoData,
+  TryCatchResultFailureWithData,
+  TryCatchResultFailureNoData,
 } from "./types";
 
-export function withTryCatch<TResult, TError = unknown>(
-  fn: () => Promise<TResult> | TResult,
-  options: WithTryCatchOptions<TResult, TError> & { fallback: FallbackValue<TResult, TError> },
-): Promise<
-  | TryCatchResultSuccess<TResult>
-  | TryCatchResultFailureWithData<TResult, TError>
->;
 
-export function withTryCatch<TResult, TError = unknown>(
-  fn: () => Promise<TResult> | TResult,
+export function withTryCatchSync<TResult, TError = unknown>(
+  fn: () => TResult,
+  options: WithTryCatchOptions<TResult, TError> & { fallback: FallbackValue<TResult, TError> },
+): TryCatchResultSuccess<TResult> | TryCatchResultFailureWithData<TResult, TError>;
+
+export function withTryCatchSync<TResult, TError = unknown>(
+  fn: () => TResult,
   options?: WithTryCatchOptions<TResult, TError>,
-): Promise<
-  | TryCatchResultSuccess<TResult>
-  | TryCatchResultFailureNoData<TError>
->;
+): TryCatchResultSuccess<TResult> | TryCatchResultFailureNoData<TError>;
 
 /**
- * Executes a function and returns its outcome as a discriminated union.
+ * Executes a synchronous function and returns its outcome
+ * as a discriminated union.
  *
  * This utility is responsible only for:
- * - executing the provided function
+ * - executing the provided synchronous function
  * - converting its outcome into a typed {@link TryCatchResult}
  *
  * The returned result is fully determined **before** any lifecycle
@@ -80,10 +77,8 @@ export function withTryCatch<TResult, TError = unknown>(
  *   to contain a `data` property
  * - When `fallback` is not provided, `data` exists only on success
  *
- * @template TResult The successful (or fallback) result type.
- * @template TError The mapped error type (defaults to `unknown`).
  *
- * @param fn Function to execute. May return a value or a Promise.
+ * @param fn Synchronous function to execute.
  * @param options Configuration object controlling error mapping,
  * fallback behavior, and lifecycle callbacks.
  *
@@ -92,8 +87,8 @@ export function withTryCatch<TResult, TError = unknown>(
  *
  * @example
  * ```ts
- * const result = await withTryCatch(
- *   async () => {
+ * const result = withTryCatchSync(
+ *   () => {
  *     if (Math.random() < 0.5) throw new Error("fail")
  *     return 100
  *   },
@@ -110,15 +105,17 @@ export function withTryCatch<TResult, TError = unknown>(
  *   console.log(result.data)
  * }
  * ```
+ *
+ * @since 1.0.0
  */
-export async function withTryCatch<TResult, TError = unknown>(
-  fn: () => Promise<TResult> | TResult,
+export function withTryCatchSync<TResult, TError = unknown>(
+  fn: () => TResult,
   options: WithTryCatchOptions<TResult, TError> = {},
-): Promise<TryCatchResult<TResult, TError>> {
+): TryCatchResult<TResult, TError> {
   let result: TryCatchResult<TResult, TError>;
 
   try {
-    const data = await fn();
+    const data = fn();
     result = { ok: true, data };
   } catch (e: unknown) {
     result = resolveFailureResult<TResult, TError>(e, options);

@@ -7,11 +7,13 @@
  *
  * @throws {Error} Throws an error if `base` is 0.
  *
- * @example
- * toPercentage(50, 200); // 25
+ * @since 1.0.0
  *
  * @example
  * toPercentage(1, 4); // 25
+ * toPercentage(2, 4); // 50
+ * toPercentage(3, 4); // 75
+ * toPercentage(4, 4); // 100
  */
 export function toPercentage(value: number, base: number): number {
   if (base === 0) {

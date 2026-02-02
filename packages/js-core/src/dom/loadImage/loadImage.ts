@@ -24,6 +24,8 @@ import { isUndefined }           from "../../is-what";
  *   decoding: "async",
  * });
  * ```
+ *
+ * @since 1.0.0
  */
 export function loadImage(src: string, options: LoadImageOptions = {}): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {

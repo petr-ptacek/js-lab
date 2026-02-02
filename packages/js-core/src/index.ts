@@ -5,4 +5,4 @@ export * from "./object";
 export * from "./array";
 export * from "./emitter";
 export * from "./dom";
-export * from "./common";
+export * from "./safe";

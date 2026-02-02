@@ -13,6 +13,10 @@ Providing a `fallback` does **not** convert failure into success.
 Instead, it allows returning recovery data while preserving
 the failure state (`ok: false`).
 
+## Since
+
+1.0.0
+
 ## Type Parameters
 
 ### TResult

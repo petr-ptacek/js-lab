@@ -37,6 +37,10 @@ The clamped value within the `[min, max]` range.
 
 If `min` is greater than `max`.
 
+## Since
+
+1.0.0
+
 ## Example
 
 ```ts

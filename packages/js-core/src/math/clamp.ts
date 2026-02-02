@@ -12,6 +12,8 @@
  *
  * @throws {Error} If `min` is greater than `max`.
  *
+ * @since 1.0.0
+ *
  * @example
  * clamp(5, 0, 10); // 5
  * clamp(-5, 0, 10); // 0

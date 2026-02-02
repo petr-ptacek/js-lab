@@ -9,7 +9,8 @@ import type {
   CleanupFn,
   EmitterEvents,
   InitialHandlers,
-  EventHandler, InitialHandler,
+  EventHandler,
+  InitialHandler,
 } from "./types";
 
 /**

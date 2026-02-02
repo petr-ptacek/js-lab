@@ -98,7 +98,7 @@ Registers an event handler.
 
 ##### THandler
 
-`THandler` *extends* `EventHandler`
+`THandler` *extends* [`EmitterEventHandler`](../type-aliases/EmitterEventHandler.md)
 
 #### Parameters
 
@@ -138,7 +138,7 @@ The handler is automatically removed after the first invocation.
 
 ##### THandler
 
-`THandler` *extends* `EventHandler`
+`THandler` *extends* [`EmitterEventHandler`](../type-aliases/EmitterEventHandler.md)
 
 #### Parameters
 

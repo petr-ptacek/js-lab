@@ -15,6 +15,7 @@
 - [TryCatchResult](type-aliases/TryCatchResult.md)
 - [InteractiveElementOptions](type-aliases/InteractiveElementOptions.md)
 - [EmitterInitialHandlers](type-aliases/EmitterInitialHandlers.md)
+- [EmitterEventHandler](type-aliases/EmitterEventHandler.md)
 - [EmitterEvents](type-aliases/EmitterEvents.md)
 - [Dict](type-aliases/Dict.md)
 - [MaybeNullable](type-aliases/MaybeNullable.md)

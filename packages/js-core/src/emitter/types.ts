@@ -29,7 +29,31 @@ export type InitialHandlers<E extends EmitterEvents> = {
 export type InitialHandler<THandler> = THandler | { handler: THandler, once?: boolean };
 
 export type EventType = string | symbol;
-export type EventHandler = (...args: any) => void;
+
+/**
+ * Generic event handler function.
+ *
+ * Represents a callable listener registered for an event.
+ * The concrete argument types are defined by the event map
+ * (`EmitterEvents`) and enforced at usage sites.
+ *
+ * This base type is intentionally permissive and is only used
+ * internally as a common constraint for all event handlers.
+ *
+ * @example
+ * ```ts
+ * type Events = {
+ *   log: (message: string) => void;
+ * };
+ *
+ * const handler: EventHandler = (...args) => {
+ *   console.log(args);
+ * };
+ * ```
+ *
+ * @since 1.0.0
+ */
+export type EventHandler = (...args: any[]) => void;
 
 /**
  * Defines a map of event names to event handler functions.

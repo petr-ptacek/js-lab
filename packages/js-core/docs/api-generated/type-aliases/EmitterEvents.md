@@ -9,7 +9,7 @@ the corresponding handler signature.
 
 ## Index Signature
 
-\[`event`: `string` \| `symbol`\]: `EventHandler`
+\[`event`: `string` \| `symbol`\]: [`EmitterEventHandler`](EmitterEventHandler.md)
 
 ## Example
 

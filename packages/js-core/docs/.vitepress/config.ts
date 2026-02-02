@@ -30,13 +30,26 @@ export default defineConfig({
           {
             text: "range",
             link: "/api-generated/functions/range",
-          }
-        ]
+          },
+        ],
+      },
+      {
+        text: "Emitter",
+        link: "/api/emitter/",
+      },
+      {
+        text: "DOM",
+        collapsed: true,
+        items: [
+          {
+            text: "isInteractiveElement",
+            link: "/api-generated/functions/isInteractiveElement",
+          },
+        ],
       },
       {
         text: "Is What",
         collapsed: true,
-        docFooterText: "Is What fafafvavfadf",
         items: [
           {
             text: "isUndefined",
@@ -93,8 +106,8 @@ export default defineConfig({
           {
             text: "isNaNValue",
             link: "/api-generated/functions/isNaNValue",
-          }
-        ]
+          },
+        ],
       },
       {
         text: "TS - Types",
@@ -123,9 +136,35 @@ export default defineConfig({
           {
             text: "PrimitiveValue",
             link: "/api-generated/type-aliases/PrimitiveValue",
-          }
-        ]
-      }
+          },
+          {
+            text: "InteractiveElementOptions",
+            link: "/api-generated/type-aliases/InteractiveElementOptions",
+          },
+          {
+            text: "EmitterEvents",
+            link: "/api-generated/type-aliases/EmitterEvents",
+          },
+          {
+            text: "EmitterEventHandler",
+            link: "/api-generated/type-aliases/EmitterEventHandler",
+          },
+          {
+            text: "EmitterInitialHandlers",
+            link: "/api-generated/type-aliases/EmitterInitialHandlers",
+          },
+        ],
+      },
+      {
+        text: "Constants",
+        collapsed: true,
+        items: [
+          {
+            text: "DEFAULT_INTERACTIVE_SELECTORS",
+            link: "/api-generated/variables/DEFAULT_INTERACTIVE_SELECTORS",
+          },
+        ],
+      },
     ],
 
     socialLinks: [

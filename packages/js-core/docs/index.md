@@ -1,6 +1,6 @@
 # @petr-ptacek/js-core
 
-Collection of small tested utils functions for **JavaScript** a **TypeScript**.
+Collection of small tested utils functions for **JavaScript** and **TypeScript**.
 
 ## Installation
 

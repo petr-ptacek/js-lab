@@ -16,7 +16,8 @@ export default defineConfig({
     sidebar: [
       {
         text: "Array",
-        collapsed: false,
+        collapsed: true,
+        link: "/api/array/",
         items: [
           {
             text: "shuffle",
@@ -29,6 +30,25 @@ export default defineConfig({
           {
             text: "range",
             link: "/api-generated/functions/range",
+          }
+        ]
+      },
+      {
+        text: "Is What",
+        collapsed: true,
+        docFooterText: "Is What fafafvavfadf",
+        items: [
+          {
+            text: "isUndefined",
+            link: "/api-generated/functions/isUndefined",
+          },
+          {
+            text: "isNull",
+            link: "/api-generated/functions/isNull",
+          },
+          {
+            text: "isNullable",
+            link: "/api-generated/functions/isNullable",
           }
         ]
       },

@@ -17,6 +17,10 @@ Second array.
 
 Optional function to transform each pair.
 
+## Since
+
+1.0.0
+
 ## Examples
 
 ```ts
@@ -28,10 +32,6 @@ zip([1, 2], ["a", "b"])
 zip([1, 2], [10, 20], (a, b) => a + b)
 // → [11, 22]
 ```
-
-## Since
-
-1.0.0
 
 ## Call Signature
 

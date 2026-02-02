@@ -21,6 +21,10 @@ export function zip<T, U, R>(
  * @param arrayTwo - Second array.
  * @param mapper - Optional function to transform each pair.
  *
+ * @returns A new array containing paired or mapped values.
+ *
+ * @since 1.0.0
+ *
  * @example
  * zip([1, 2], ["a", "b"])
  * // → [[1, "a"], [2, "b"]]
@@ -28,10 +32,6 @@ export function zip<T, U, R>(
  * @example
  * zip([1, 2], [10, 20], (a, b) => a + b)
  * // → [11, 22]
- *
- * @returns A new array containing paired or mapped values.
- *
- * @since 1.0.0
  */
 export function zip<T, U, R>(
   arrayOne: readonly T[],

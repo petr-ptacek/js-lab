@@ -107,6 +107,10 @@ export default defineConfig({
             text: "isNaNValue",
             link: "/api-generated/functions/isNaNValue",
           },
+          {
+            text: "isPrimitive",
+            link: "/api-generated/functions/isPrimitive",
+          },
         ],
       },
       {

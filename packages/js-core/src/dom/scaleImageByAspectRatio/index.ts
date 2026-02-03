@@ -1,0 +1,2 @@
+export { scaleImageByAspectRatio } from "./scaleImageByAspectRatio";
+

@@ -1,7 +1,6 @@
 import { scaleToWidth, scaleToHeight } from "./helpers";
-import type { DimensionsTarget } from "./types";
 import { assertPositiveFinite } from "../../_helpers_";
-import type { Dimensions, RoundValueFn } from "../../types";
+import type { Dimensions, DimensionsTarget, RoundValueFn } from "../../types";
 
 export function scaleByAspectRatio(dimensions: Dimensions, target: {
   width: number;
@@ -56,13 +55,13 @@ export function scaleByAspectRatio(
   const hasWidth = typeof target.width === "number";
   const hasHeight = typeof target.height === "number";
 
-  if ( hasWidth === hasHeight ) {
+  if (hasWidth === hasHeight) {
     throw new Error(
       "scaleTo requires exactly one of target.width or target.height",
     );
   }
 
-  if ( hasWidth ) {
+  if (hasWidth) {
     assertPositiveFinite("target.width", target.width!);
     return scaleToWidth(dimensions, target.width!, round);
   }

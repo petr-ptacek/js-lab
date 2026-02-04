@@ -56,14 +56,6 @@ Callbacks do **not** influence the returned result.
   to contain a `data` property
 - When `fallback` is not provided, `data` exists only on success
 
-## Template
-
-The successful (or fallback) result type.
-
-## Template
-
-The mapped error type (defaults to `unknown`).
-
 ## Param
 
 Function to execute. May return a value or a Promise.
@@ -94,6 +86,10 @@ if (result.ok) {
   console.log(result.data)
 }
 ```
+
+## Since
+
+1.0.0
 
 ## Call Signature
 

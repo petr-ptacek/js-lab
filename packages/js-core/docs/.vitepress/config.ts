@@ -67,6 +67,18 @@ export default defineConfig({
             text: "scaleImageByAspectRatio",
             link: "/api-generated/functions/scaleImageByAspectRatio",
           },
+          {
+            text: "shrinkImage",
+            link: "/api-generated/functions/shrinkImage",
+          },
+          {
+            text: "shrinkImageFile",
+            link: "/api-generated/functions/shrinkImageFile",
+          },
+          {
+            text: "shrinkImageElement",
+            link: "/api-generated/functions/shrinkImageElement",
+          },
         ],
       },
       {
@@ -250,6 +262,10 @@ export default defineConfig({
           {
             text: "TryCatchResultFailureWithData",
             link: "/api-generated/type-aliases/TryCatchResultFailureWithData",
+          },
+          {
+            text: "ShrinkImageOptions",
+            link: "/api-generated/type-aliases/ShrinkImageOptions",
           },
         ],
       },

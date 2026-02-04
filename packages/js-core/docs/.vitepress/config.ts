@@ -236,6 +236,10 @@ export default defineConfig({
             link: "/api-generated/type-aliases/Dimensions",
           },
           {
+            text: "DimensionsTarget",
+            link: "/api-generated/type-aliases/DimensionsTarget",
+          },
+          {
             text: "RoundValueFn",
             link: "/api-generated/type-aliases/RoundValueFn",
           },
@@ -266,6 +270,22 @@ export default defineConfig({
           {
             text: "ShrinkImageOptions",
             link: "/api-generated/type-aliases/ShrinkImageOptions",
+          },
+          {
+            text: "AsyncFn",
+            link: "/api-generated/type-aliases/AsyncFn",
+          },
+          {
+            text: "SyncFn",
+            link: "/api-generated/type-aliases/SyncFn",
+          },
+          {
+            text: "Identity",
+            link: "/api-generated/type-aliases/Identity",
+          },
+          {
+            text: "Comparator",
+            link: "/api-generated/type-aliases/Comparator",
           },
         ],
       },

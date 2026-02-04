@@ -63,6 +63,10 @@ export default defineConfig({
             text: "loadImage",
             link: "/api-generated/functions/loadImage",
           },
+          {
+            text: "scaleImageByAspectRatio",
+            link: "/api-generated/functions/scaleImageByAspectRatio",
+          },
         ],
       },
       {
@@ -102,8 +106,8 @@ export default defineConfig({
           {
             text: "withTryCatchSync",
             link: "/api/safe/withTryCatchSync",
-          }
-        ]
+          },
+        ],
       },
       {
         text: "Is What",

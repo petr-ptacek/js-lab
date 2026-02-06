@@ -10,7 +10,7 @@ const items = shallowRef<NavigationMenuItem[]>([
     children: [
       {
         label: "Main",
-        to: "/ui-resize-container",
+        to: "/resize-container",
       },
     ],
   },
@@ -46,17 +46,22 @@ const items = shallowRef<NavigationMenuItem[]>([
 </script>
 
 <template>
-  <div class="app-playground h-dvh min-w-full flex">
-    <aside class="p-4 min-w-[200px] w-2/12 border-r border-muted">
+  <div class="h-dvh min-w-full flex">
+    <aside class="pb-3 min-w-[200px] w-2/12 border-r border-muted">
       <div class="flex flex-col gap-2">
-        <header class="font-semibold text-center">Playground</header>
-        <UNavigationMenu
-          color="primary"
-          :items="items"
-          orientation="vertical"
-          variant="link"
-          :highlight="true"
-        />
+        <div class="py-3 border border-muted border-r-0">
+          <h1 class="heading-3 mb-0 text-center">Playground</h1>
+        </div>
+
+        <div class="px-4">
+          <UNavigationMenu
+            color="primary"
+            :items="items"
+            orientation="vertical"
+            variant="link"
+            :highlight="true"
+          />
+        </div>
       </div>
     </aside>
     <UMain class="flex-1 min-h-0 overflow-auto">

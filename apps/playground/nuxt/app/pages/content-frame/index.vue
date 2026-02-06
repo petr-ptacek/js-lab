@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { UiContentFrame } from "@petr-ptacek/vue-core";
+
+import { ExampleFrame }   from "~/components";
 </script>
 
 <template>
-  <div class="h-full p-6">
+  <ExampleFrame
+    title="UiContentFrame"
+    class="h-full"
+  >
     <UiContentFrame :scrollable="true">
       <template #header>
         <div class="">header</div>
@@ -108,5 +113,5 @@ import { UiContentFrame } from "@petr-ptacek/vue-core";
         </div>
       </template>
     </UiContentFrame>
-  </div>
+  </ExampleFrame>
 </template>

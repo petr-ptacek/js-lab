@@ -15,11 +15,12 @@ const items = shallowRef<NavigationMenuItem[]>([
     ],
   },
   {
-    label: "UILoader",
+    label: "UiContentFrame",
     defaultOpen: true,
     children: [
       {
         label: "Main",
+        to: "/content-frame",
       },
     ],
   },
@@ -45,7 +46,7 @@ const items = shallowRef<NavigationMenuItem[]>([
 </script>
 
 <template>
-  <div class="app-playground min-h-full min-w-full flex">
+  <div class="app-playground h-dvh min-w-full flex">
     <aside class="p-4 min-w-[200px] w-2/12 border-r border-muted">
       <div class="flex flex-col gap-2">
         <header class="font-semibold text-center">Playground</header>
@@ -58,7 +59,7 @@ const items = shallowRef<NavigationMenuItem[]>([
         />
       </div>
     </aside>
-    <UMain class="flex-1">
+    <UMain class="flex-1 min-h-0 overflow-auto">
       <slot />
     </UMain>
   </div>

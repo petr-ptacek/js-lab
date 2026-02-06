@@ -7,4 +7,20 @@
     width: 100%;
     margin: 0;
   }
+
+  .para {
+    @apply mb-4 leading-relaxed text-base;
+  }
+
+  .heading-1 {
+    @apply mb-6 text-3xl font-semibold leading-tight;
+  }
+
+  .heading-2 {
+    @apply mb-5 text-2xl font-semibold leading-snug;
+  }
+
+  .heading-3 {
+    @apply mb-4 text-xl font-semibold leading-snug;
+  }
 }

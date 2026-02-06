@@ -1,8 +1,7 @@
 <script setup lang="ts">
-</script>
+import { definePageMeta } from "#imports";
 
-<template>
-  <UContainer>
-    <h1 class="">Hello</h1>
-  </UContainer>
-</template>
+definePageMeta({
+  redirect: "/ui-resize-container",
+})
+</script>

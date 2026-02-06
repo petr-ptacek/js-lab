@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@nuxt/ui": "^4.4.0",
+    "@petr-ptacek/js-core": "workspace:*",
+    "@petr-ptacek/vue-core": "workspace:*",
     "nuxt": "^4.3.0",
     "vue": "^3.5.27",
     "vue-router": "^4.6.4"

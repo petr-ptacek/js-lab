@@ -20,7 +20,7 @@ export default defineConfig({
     },
     cssCodeSplit: false,
     rollupOptions: {
-      external: ["vue"],
+      external: ["vue", "@vueuse/core"],
       output: {
         assetFileNames: (assetInfo) => {
           if (

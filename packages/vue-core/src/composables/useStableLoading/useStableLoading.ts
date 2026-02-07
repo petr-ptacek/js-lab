@@ -21,6 +21,8 @@ const MIN_VISIBLE = 300;
  * The returned `loading` ref is the only value intended for UI consumption.
  * Other returned states are provided for diagnostics, testing, or advanced control.
  *
+ * delay / minVisible are treated as static configuration
+ *
  * @param source
  * A reactive boolean indicating whether an operation is currently in progress.
  *

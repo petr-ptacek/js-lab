@@ -1,7 +1,14 @@
 <script setup lang="ts">
+import type { CSSClassValue } from "@petr-ptacek/vue-core";
+import { normalizeClass }     from "vue";
+
 defineProps<{
-  title?: string
-  description?: string
+  title?: string;
+  description?: string;
+  ui?: {
+    contentWrapper: CSSClassValue;
+    content: CSSClassValue;
+  }
 }>();
 
 </script>
@@ -19,8 +26,8 @@ defineProps<{
         </div>
       </div>
     </div>
-    <div class="flex-1 flex min-h-0">
-      <div class="p-6 flex-1">
+    <div class="flex-1 flex min-h-0" :class="normalizeClass(ui?.contentWrapper)">
+      <div class="p-6 flex-1" :class="normalizeClass(ui?.content)">
         <slot />
       </div>
     </div>

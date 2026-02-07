@@ -1,0 +1,101 @@
+.ui-preloader {
+  /*default sizing (md)*/
+  --ui-preloader-spinner-size: 7.5rem; /*120px*/
+  --ui-preloader-gap: 1rem;
+  --ui-preloader-font-size: 0.875rem;
+
+  --ui-preloader-z: 10;
+  --ui-preloader-backdrop-blur: 2px;
+  --ui-preloader-backdrop-color: rgba(255, 255, 255, 0.3);
+
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: var(--ui-preloader-z);
+  pointer-events: none;
+}
+
+/***************************************
+  CONTENT
+ **************************************/
+
+.ui-preloader__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ui-preloader-gap);
+  opacity: 1;
+  transition: opacity 180ms ease-out;
+}
+
+.ui-preloader[data-is-delaying="true"] .ui-preloader__content {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-preloader__content {
+    transition: none;
+  }
+}
+
+/******************************************
+  SPINNER
+ *********************************************/
+.ui-preloader__spinner {
+  width: var(--ui-preloader-spinner-size);
+  height: var(--ui-preloader-spinner-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ui-preloader__message {
+  font-size: var(--ui-preloader-font-size);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/**********************************************
+ * BACKDROP
+ **********************************************/
+.ui-preloader[data-backdrop="false"] {
+  background-color: transparent;
+}
+
+.ui-preloader[data-backdrop="true"] {
+  pointer-events: auto;
+}
+
+.ui-preloader[data-backdrop="true"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ui-preloader-backdrop-color);
+  backdrop-filter: blur(var(--ui-preloader-backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--ui-preloader-backdrop-blur));
+}
+
+/**************************************************
+ * SIZES
+ **************************************************/
+.ui-preloader[data-preloader-size="sm"] {
+  --ui-preloader-spinner-size: 4rem; /*64px*/;
+  --ui-preloader-gap: 0.5rem;
+  --ui-preloader-font-size: 0.75rem;
+}
+
+.ui-preloader[data-preloader-size="md"] {
+  --ui-preloader-spinner-size: 7.5rem; /*120px*/
+  --ui-preloader-gap: 1rem;
+  --ui-preloader-font-size: 0.875rem;
+}
+
+.ui-preloader[data-preloader-size="lg"] {
+  --ui-preloader-spinner-size: 11.25rem; /*180px*/
+  --ui-preloader-gap: 1.5rem; /*24px*/
+  --ui-preloader-font-size: 1rem;
+}

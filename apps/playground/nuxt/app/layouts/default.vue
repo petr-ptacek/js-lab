@@ -5,7 +5,7 @@ import { shallowRef } from "#imports";
 
 const items = shallowRef<NavigationMenuItem[]>([
   {
-    label: "UIResizeContainer",
+    label: "UiResizeContainer",
     defaultOpen: true,
     children: [
       {
@@ -25,20 +25,12 @@ const items = shallowRef<NavigationMenuItem[]>([
     ],
   },
   {
-    label: "UIBox",
+    label: "UiPreloader",
     defaultOpen: true,
     children: [
       {
         label: "Main",
-      },
-    ],
-  },
-  {
-    label: "UILayoutContent",
-    defaultOpen: true,
-    children: [
-      {
-        label: "Main",
+        to: "/preloader",
       },
     ],
   },

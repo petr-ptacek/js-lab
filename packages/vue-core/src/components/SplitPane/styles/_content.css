@@ -1,0 +1,21 @@
+.ui-split-pane__content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+/* =========================
+   VERTICAL
+   ========================= */
+.ui-split-pane[data-orientation="vertical"] {
+
+}
+
+/* =========================
+   HORIZONTAL
+   ========================= */
+.ui-split-pane[data-orientation="horizontal"] {
+  .ui-split-pane__content {
+    flex-direction: column;
+  }
+}

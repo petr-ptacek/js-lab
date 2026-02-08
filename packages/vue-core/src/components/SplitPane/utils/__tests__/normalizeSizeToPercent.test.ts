@@ -1,5 +1,5 @@
 import { describe, it, expect }   from "vitest";
-import { normalizeSizeToPercent } from "./normalizeSizeToPercent";
+import { normalizeSizeToPercent } from "../normalizeSizeToPercent";
 
 describe("normalizeSizeToPercent", () => {
   describe("invalid container size", () => {

@@ -1,0 +1,28 @@
+.ui-split-pane__divider {
+  position: relative;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+
+/* =========================
+   VERTICAL
+   ========================= */
+.ui-split-pane[data-orientation="vertical"] {
+  .ui-split-pane__divider {
+    width: 1px;
+    height: 100%;
+  }
+}
+
+
+/* =========================
+   HORIZONTAL
+   ========================= */
+.ui-split-pane[data-orientation="horizontal"] {
+  .ui-split-pane__divider {
+    height: 1px;
+    width: 100%;
+  }
+}
+

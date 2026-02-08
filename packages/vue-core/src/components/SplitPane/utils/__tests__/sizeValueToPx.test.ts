@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { sizeValueToPx }        from "./sizeValueToPx";
+import { sizeValueToPx }        from "../sizeValueToPx";
 
 describe("sizeValueToPx", () => {
   describe("number values", () => {

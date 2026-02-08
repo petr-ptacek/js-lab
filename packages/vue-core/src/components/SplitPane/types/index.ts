@@ -1,4 +1,5 @@
-import type { CSSClassValue } from "../../../types";
+import type { UsePointerDragReturn } from "../../../composables";
+import type { CSSClassValue }        from "../../../types";
 
 export type SizeValueUnit = `${number}%` | `${number}px`;
 
@@ -8,7 +9,6 @@ export type OriginValue = "alpha" | "beta";
 
 export type OrientationValue = "horizontal" | "vertical";
 
-export type UiResizeContainerModelValue = SizeValue;
 
 export type UI = {
   root?: CSSClassValue;
@@ -17,19 +17,29 @@ export type UI = {
   sectionAlpha?: CSSClassValue;
   sectionBeta?: CSSClassValue;
   divider?: CSSClassValue;
+  actionsWrapper?: CSSClassValue;
+  actions?: CSSClassValue;
+  gripWrapper?: CSSClassValue;
+  grip?: CSSClassValue;
   resizeHandler?: CSSClassValue;
 }
 
-export type UiResizeContainerProps = {
+/** =============================================================
+ * PUBLIC API
+ * ============================================================== */
+
+export type SplitPaneModelValue = SizeValue;
+
+export type SplitPaneProps = {
   /**
    * Size of the origin section.
    * Can be defined in px or %.
    * Internally normalized to percentage relative to container.
    * Emitted value is always percentage.
    */
-  modelValue?: UiResizeContainerModelValue;
+  modelValue?: SplitPaneModelValue;
 
-  defaultValue?: UiResizeContainerModelValue;
+  defaultValue?: SplitPaneModelValue;
 
   ui?: UI;
 
@@ -37,6 +47,8 @@ export type UiResizeContainerProps = {
   origin?: OriginValue;
 
   showGrip?: boolean;
+
+  showActions?: boolean;
 
   rememberSize?: boolean;
 
@@ -71,16 +83,31 @@ export type UiResizeContainerProps = {
   resizeable?: boolean;
 };
 
-export type UiResizeContainerSlots = {
+export type SplitPaneSlots = {
   alpha: () => void;
   beta: () => void;
+  actions: (
+    props: {
+      ui: CSSClassValue,
+      expand: () => void;
+      collapse: () => void;
+      isCollapsed: boolean;
+      isExpanded: boolean;
+    },
+  ) => void;
+  grip: (
+    props: {
+      onPointerDown: UsePointerDragReturn["onPointerDown"]
+      ui: CSSClassValue,
+    },
+  ) => void;
 }
 
-export type UiResizeContainerEmits = {
-  (e: "update:modelValue", payload: UiResizeContainerModelValue): void;
+export type SplitPaneEmits = {
+  (e: "update:modelValue", payload: SplitPaneModelValue): void;
 }
 
-export type UiResizeContainerExpose = {
+export type SplitPaneExpose = {
   expand: () => void;
   collapse: () => void;
 }

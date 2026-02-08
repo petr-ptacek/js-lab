@@ -2,7 +2,7 @@ import { useElementSize } from "@vueuse/core";
 import type { Ref } from "vue";
 import { computed, useTemplateRef, watch } from "vue";
 
-import type { UiResizeContainerModelValue, UiResizeContainerProps } from "../types";
+import type { SplitPaneModelValue, SplitPaneProps }       from "../types";
 import { clampPercentWithLimits, normalizeSizeToPercent } from "../utils";
 import { useResizeActions } from "./useResizeActions";
 import { useResizeDrag } from "./useResizeDrag";
@@ -10,8 +10,8 @@ import { useResizeSizes } from "./useResizeSizes";
 import { useResizeValue } from "./useResizeValue";
 
 export type UseControllerOptions = {
-  modelValue: Ref<UiResizeContainerModelValue>;
-  props: UiResizeContainerProps;
+  modelValue: Ref<SplitPaneModelValue>;
+  props: SplitPaneProps;
 }
 
 export function useController(options: UseControllerOptions) {

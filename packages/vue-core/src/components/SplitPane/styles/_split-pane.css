@@ -1,0 +1,23 @@
+/* =========================
+   ROOT
+   ========================= */
+.ui-split-pane {
+  /* RESIZER */
+  --ui-split-pane-resizer-size: 8px;
+  --ui-split-pane-resizer-size-hover: 8px;
+  --ui-split-pane-resizer-color: #b3b3b3;
+  --ui-split-pane-resizer-color-hover: #7a7a7a;
+  --ui-split-pane-resizer-border: 1px solid #e5e5e5;
+
+  /* GRIP */
+  --ui-split-pane-grip-offset: 0.5rem;
+  --ui-split-pane-grip-dot-size: 0.25rem;
+  --ui-split-pane-grip-dot-gap: 0.5rem;
+  --ui-split-pane-grip-dot-color: #9a9a9a;
+
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: var(--ui-split-pane-resizer-border);
+}

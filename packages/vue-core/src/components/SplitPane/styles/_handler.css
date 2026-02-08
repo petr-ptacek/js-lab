@@ -1,0 +1,54 @@
+/* =========================
+   RESIZE HANDLER (DRAG OWNER)
+   ========================= */
+.ui-split-pane__handler {
+  position: absolute;
+  background-color: var(--ui-split-pane-resizer-color);
+  touch-action: none;
+  pointer-events: auto;
+
+  transition: width 150ms ease,
+  height 150ms ease,
+  background-color 150ms ease;
+}
+
+/* =========================
+   VERTICAL
+   ========================= */
+.ui-split-pane[data-orientation="vertical"] {
+  .ui-split-pane__handler {
+    top: 0;
+    left: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+    width: var(--ui-split-pane-resizer-size);
+    cursor: col-resize;
+
+    &:hover {
+      width: var(--ui-split-pane-resizer-size-hover);
+      background-color: var(--ui-split-pane-resizer-color-hover);
+    }
+  }
+}
+
+/* =========================
+   HORIZONTAL
+   ========================= */
+.ui-split-pane[data-orientation="horizontal"] {
+  .ui-split-pane__handler {
+    left: 0;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    height: var(--ui-split-pane-resizer-size);
+    cursor: row-resize;
+
+    &:hover {
+      height: var(--ui-split-pane-resizer-size-hover);
+      background-color: var(--ui-split-pane-resizer-color-hover);
+    }
+  }
+}
+
+
+

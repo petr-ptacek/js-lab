@@ -21,7 +21,7 @@ const { hasHorizontal, hasVertical, hasOverflow } = useElementOverflow(root, {
 <template>
   <div
     ref="root"
-    class="ui-resize-container-section"
+    class="ui-split-pane-section"
     :data-scrollable="scrollable"
     :data-has-scroll="hasOverflow"
     :data-has-scroll-vertical="hasVertical"

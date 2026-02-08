@@ -1,3 +1,7 @@
+<style>
+@import "./styles.css";
+</style>
+
 <script setup lang="ts">
 import { computed, normalizeClass, toRef, useSlots } from "vue";
 

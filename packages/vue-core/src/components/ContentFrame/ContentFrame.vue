@@ -1,3 +1,7 @@
+<style>
+@import "./styles.css";
+</style>
+
 <script setup lang="ts">
 import { normalizeClass } from "vue";
 

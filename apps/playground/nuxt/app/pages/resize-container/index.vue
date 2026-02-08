@@ -1,20 +1,21 @@
 <script setup lang="ts">
-import { UiResizeContainer, UiResizeContainerSection } from "@petr-ptacek/vue-core";
+import { UiSplitPane, UiSplitPaneSection } from "@petr-ptacek/vue-core";
 
 import { ExampleFrame } from "~/components";
 </script>
 
 <template>
   <ExampleFrame title="UiResizeContainer" class="h-full">
-    <UiResizeContainer>
+    <UiSplitPane orientation="horizontal" origin="alpha" show-grip>
       <template #alpha>
-        <UiResizeContainerSection class="">
-        </UiResizeContainerSection>
+        <UiSplitPaneSection class="bg-red-400/50">
+        </UiSplitPaneSection>
       </template>
+
       <template #beta>
-        <UiResizeContainerSection class="">
-        </UiResizeContainerSection>
+        <UiSplitPaneSection class="bg-blue-400/50">
+        </UiSplitPaneSection>
       </template>
-    </UiResizeContainer>
+    </UiSplitPane>
   </ExampleFrame>
 </template>

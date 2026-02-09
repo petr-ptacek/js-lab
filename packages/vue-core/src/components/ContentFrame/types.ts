@@ -17,4 +17,6 @@ export type ContentFrameSlots = {
   header?: () => void;
   default: () => void;
   footer?: () => void;
+  contentBefore?: () => void;
+  contentAfter?: () => void;
 }

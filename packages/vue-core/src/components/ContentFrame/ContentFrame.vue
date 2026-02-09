@@ -33,6 +33,8 @@ defineSlots<ContentFrameSlots>();
       :class="normalizeClass(ui?.contentWrapper)"
       data-slot="content-wrapper"
     >
+      <slot name="contentBefore" />
+
       <div
         class="ui-content-frame__content"
         :class="normalizeClass(ui?.content)"
@@ -40,6 +42,8 @@ defineSlots<ContentFrameSlots>();
       >
         <slot />
       </div>
+
+      <slot name="contentAfter" />
     </div>
 
     <div

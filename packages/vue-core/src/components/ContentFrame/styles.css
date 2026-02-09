@@ -1,3 +1,5 @@
+/* ❗ it is possible to have multiple level nesting */
+
 .ui-content-frame {
   --ui-content-frame-header-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
   --ui-content-frame-footer-shadow: 0 -4px 10px rgba(0, 0, 0, 0.06);

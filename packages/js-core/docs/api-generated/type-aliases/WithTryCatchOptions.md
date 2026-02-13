@@ -92,7 +92,7 @@ Invoked after all other lifecycle callbacks.
 
 ### fallback?
 
-> `optional` **fallback**: `FallbackValue`\<`TResult`, `TError`\>
+> `optional` **fallback**: [`ValueOrFactory`](ValueOrFactory.md)\<`TResult`, \[`TError`\]\>
 
 Fallback value or function used when `fn` throws.
 

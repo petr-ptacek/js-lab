@@ -1,7 +1,7 @@
 {
   "name": "@petr-ptacek/js-core",
   "description": "JavaScript and TypeScript utilities.",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "license": "MIT",
   "private": false,
   "type": "module",

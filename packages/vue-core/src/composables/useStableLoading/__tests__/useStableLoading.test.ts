@@ -1,7 +1,7 @@
 import { it, expect, vi, beforeEach, afterEach } from "vitest";
-import { ref }                                   from "vue";
+import { nextTick, ref } from "vue";
 
-import { describeVue }      from "@petr-ptacek/vue-test-utils";
+import { describeVue } from "@petr-ptacek/vue-test-utils";
 import { useStableLoading } from "../useStableLoading";
 
 describeVue("useStableLoading – short loading", () => {
@@ -29,7 +29,7 @@ describeVue("useStableLoading – short loading", () => {
     expect(loading.value).toBe(false);
   });
 
-  it("shows loading after delay", () => {
+  it("shows loading after delay", async () => {
     const source = ref(false);
     const { loading } = useStableLoading(source, {
       delay: 250,
@@ -37,12 +37,15 @@ describeVue("useStableLoading – short loading", () => {
     });
 
     source.value = true;
+    await nextTick();
+
     vi.advanceTimersByTime(250);
+    await nextTick();
 
     expect(loading.value).toBe(true);
   });
 
-  it("keeps loading visible for minimum duration", () => {
+  it("keeps loading visible for minimum duration", async () => {
     const source = ref(false);
     const { loading } = useStableLoading(source, {
       delay: 250,
@@ -50,21 +53,28 @@ describeVue("useStableLoading – short loading", () => {
     });
 
     source.value = true;
+    await nextTick();
+
     vi.advanceTimersByTime(250); // loader se objeví
+    await nextTick();
 
     expect(loading.value).toBe(true);
 
     source.value = false;
+    await nextTick();
+
     vi.advanceTimersByTime(100); // méně než minVisible
+    await nextTick();
 
     expect(loading.value).toBe(true);
 
     vi.advanceTimersByTime(200); // doběhne minVisible
+    await nextTick();
 
     expect(loading.value).toBe(false);
   });
 
-  it("hides loading immediately if minVisible is already satisfied", () => {
+  it("hides loading immediately if minVisible is already satisfied", async () => {
     const source = ref(false);
     const { loading } = useStableLoading(source, {
       delay: 250,
@@ -72,12 +82,17 @@ describeVue("useStableLoading – short loading", () => {
     });
 
     source.value = true;
-    vi.advanceTimersByTime(700); // delay + minVisible
+    await nextTick();
+
+    vi.advanceTimersByTime(250); // delay + minVisible
+    await nextTick();
 
     expect(loading.value).toBe(true);
 
+    vi.advanceTimersByTime(300);
+
     source.value = false;
-    vi.runAllTimers();
+    await nextTick();
 
     expect(loading.value).toBe(false);
   });

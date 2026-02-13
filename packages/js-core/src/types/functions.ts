@@ -117,39 +117,6 @@ export type SyncFn<TArgs extends unknown[] = unknown[], TResult = unknown> =
   (...args: TArgs) => TResult;
 
 /**
- * Represents a predicate function.
- *
- * A predicate is a synchronous function that evaluates a value
- * and returns a boolean result.
- *
- * Predicates are commonly used for filtering, validation,
- * conditional checks, and guard logic.
- *
- * @example
- * ```ts
- * const isPositive: Predicate<number> = (value) => value > 0;
- * ```
- */
-export type Predicate<T> = (value: T) => boolean;
-
-/**
- * Represents an asynchronous predicate function.
- *
- * Similar to {@link Predicate}, but returns a Promise<boolean>.
- *
- * Useful for validations that require asynchronous checks,
- * such as API calls or database lookups.
- *
- * @example
- * ```ts
- * const isUserAllowed: AsyncPredicate<User> = async (user) => {
- *   return await api.hasAccess(user.id);
- * };
- * ```
- */
-export type AsyncPredicate<T> = (value: T) => Promise<boolean>;
-
-/**
  * Represents a projection function.
  *
  * A projection function maps an input value to a derived value.

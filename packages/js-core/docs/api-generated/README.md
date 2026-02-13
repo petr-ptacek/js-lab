@@ -28,8 +28,6 @@
 - [RoundValueFn](type-aliases/RoundValueFn.md)
 - [AsyncFn](type-aliases/AsyncFn.md)
 - [SyncFn](type-aliases/SyncFn.md)
-- [Predicate](type-aliases/Predicate.md)
-- [AsyncPredicate](type-aliases/AsyncPredicate.md)
 - [ProjectionFn](type-aliases/ProjectionFn.md)
 - [AsyncProjectionFn](type-aliases/AsyncProjectionFn.md)
 - [Identity](type-aliases/Identity.md)

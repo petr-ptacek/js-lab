@@ -17,5 +17,6 @@
     "source-order"
   ],
   "hideBreadcrumbs": true,
-  "hidePageHeader": true
+  "hidePageHeader": true,
+  "cleanOutputDir": true
 }

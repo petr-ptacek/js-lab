@@ -1,4 +1,66 @@
 /**
+ * Represents a getter function.
+ *
+ * A getter is a function that returns a value of type TResult.
+ *
+ * @example
+ * ```ts
+ * const getValue: Getter<number> = () => 42;
+ * ```
+ *
+ * @since 1.0.0
+ */
+export type Getter<TResult> = () => TResult;
+
+/**
+ * Represents a value or a getter function that produces a value.
+ *
+ * This type allows for flexible value provision, where the value can be
+ * provided directly or computed lazily via a getter function.
+ *
+ * @example
+ * ```ts
+ * const config: ValueOrGetter<string> = "default";
+ * const configGetter: ValueOrGetter<string> = () => "computed";
+ * ```
+ *
+ * @since 1.0.0
+ */
+export type ValueOrGetter<TResult> = TResult | Getter<TResult>;
+
+/**
+ * Represents a factory function.
+ *
+ * A factory is a function that accepts arguments and returns a value of type TResult.
+ *
+ * @example
+ * ```ts
+ * const createUser: Factory<User, [name: string, age: number]> = (name, age) => ({ name, age });
+ * ```
+ *
+ * @since 1.0.0
+ */
+export type Factory<TResult, TArgs extends unknown[] = []> = (...args: TArgs) => TResult;
+
+/**
+ * Represents a value or a factory function that produces a value.
+ *
+ * This type allows for flexible value provision, where the value can be
+ * provided directly or computed lazily via a factory function.
+ *
+ * @example
+ * ```ts
+ * const config: ValueOrFactory<string> = "default";
+ * const configFactory: ValueOrFactory<string, [number]> = (n) => `computed ${n}`;
+ * ```
+ *
+ * @since 1.0.0
+ */
+export type ValueOrFactory<TResult, TArgs extends unknown[] = []> =
+  TResult | Factory<TResult, TArgs>;
+
+
+/**
  * Function used to round a numeric value.
  *
  * This function is applied to calculated values when scaling or

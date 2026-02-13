@@ -287,6 +287,22 @@ export default defineConfig({
             text: "Comparator",
             link: "/api-generated/type-aliases/Comparator",
           },
+          {
+            text: "Getter",
+            link: "/api-generated/type-aliases/Getter",
+          },
+          {
+            text: "ValueOrGetter",
+            link: "/api-generated/type-aliases/ValueOrGetter",
+          },
+          {
+            text: "Factory",
+            link: "/api-generated/type-aliases/Factory",
+          },
+          {
+            text: "ValueOrFactory",
+            link: "/api-generated/type-aliases/ValueOrFactory",
+          },
         ],
       },
       {

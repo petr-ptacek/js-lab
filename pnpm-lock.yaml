@@ -115,43 +115,6 @@ importers:
         specifier: ^4.1.18
         version: 4.1.18
 
-  apps/playground/vue:
-    dependencies:
-      '@petr-ptacek/js-core':
-        specifier: workspace:*
-        version: link:../../../packages/js-core
-      '@petr-ptacek/vue-core':
-        specifier: workspace:*
-        version: link:../../../packages/vue-core
-      '@vueuse/core':
-        specifier: ^14.1.0
-        version: 14.1.0(vue@3.5.26(typescript@5.9.3))
-      tailwindcss:
-        specifier: ^4.1.18
-        version: 4.1.18
-      vue:
-        specifier: ^3.5.24
-        version: 3.5.26(typescript@5.9.3)
-    devDependencies:
-      '@tailwindcss/vite':
-        specifier: ^4.1.18
-        version: 4.1.18(vite@7.3.1(@types/node@24.10.8)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))
-      '@types/node':
-        specifier: ^24.10.1
-        version: 24.10.8
-      '@vitejs/plugin-vue':
-        specifier: ^6.0.1
-        version: 6.0.3(vite@7.3.1(@types/node@24.10.8)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))(vue@3.5.26(typescript@5.9.3))
-      '@vue/tsconfig':
-        specifier: ^0.8.1
-        version: 0.8.1(typescript@5.9.3)(vue@3.5.26(typescript@5.9.3))
-      vite:
-        specifier: ^7.3.1
-        version: 7.3.1(@types/node@24.10.8)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2)
-      vue-tsc:
-        specifier: ^3.1.4
-        version: 3.2.2(typescript@5.9.3)
-
   apps/storybook:
     dependencies:
       '@petr-ptacek/vue-core':

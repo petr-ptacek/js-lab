@@ -7,5 +7,9 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": []
+  "ignore": [
+    "@petr-ptacek/vue-core",
+    "apps/storybook",
+    "apps/playground/nuxt"
+  ]
 }

@@ -3,6 +3,7 @@
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.types.tsbuildinfo",
     "emitDeclarationOnly": true,
+    "declarationMap": false,
     "noEmit": false
   },
   "include": [

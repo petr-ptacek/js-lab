@@ -1,7 +1,5 @@
-import "./styles.css";
-
 export { default as UiContentFrame } from "./ContentFrame.vue";
 export type {
-  ContentFrameProps as UiContentFrameProps,
-  ContentFrameSlots as UiContentFrameSlots,
+  Props as UiContentFrameProps,
+  Slots as UiContentFrameSlots,
 } from "./types";

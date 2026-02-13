@@ -8,12 +8,12 @@ export type UI = {
   footer?: CSSClassValue;
 }
 
-export type ContentFrameProps = {
+export type Props = {
   ui?: UI;
   scrollable?: boolean;
 }
 
-export type ContentFrameSlots = {
+export type Slots = {
   header: () => void;
   default: () => void;
   footer: () => void;

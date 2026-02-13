@@ -5,13 +5,13 @@
 <script setup lang="ts">
 import { normalizeClass } from "vue";
 
-import type { ContentFrameSlots, ContentFrameProps } from "./types";
+import type { Slots, Props } from "./types";
 
 withDefaults(
-  defineProps<ContentFrameProps>(),
+  defineProps<Props>(),
   { scrollable: true },
 );
-defineSlots<ContentFrameSlots>();
+defineSlots<Slots>();
 </script>
 
 <template>

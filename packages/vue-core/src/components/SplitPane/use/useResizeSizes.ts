@@ -1,10 +1,10 @@
 import { computed, type Ref }                                       from "vue";
 
-import type { OriginValue, SizeValue, SplitPaneModelValue } from "../types";
+import type { OriginValue, SizeValue, ModelValue } from "../types";
 import { normalizeSizeToPercent }                           from "../utils";
 
 export type UseResizeSizesOptions = {
-  modelValue: Ref<SplitPaneModelValue>;
+  modelValue: Ref<ModelValue>;
   containerSize: Ref<number>;
   origin: Ref<OriginValue>;
   minSize?: Ref<SizeValue | undefined>;

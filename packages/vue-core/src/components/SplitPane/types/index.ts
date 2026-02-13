@@ -28,18 +28,18 @@ export type UI = {
  * PUBLIC API
  * ============================================================== */
 
-export type SplitPaneModelValue = SizeValue;
+export type ModelValue = SizeValue;
 
-export type SplitPaneProps = {
+export type Props = {
   /**
    * Size of the origin section.
    * Can be defined in px or %.
    * Internally normalized to percentage relative to container.
    * Emitted value is always percentage.
    */
-  modelValue?: SplitPaneModelValue;
+  modelValue?: ModelValue;
 
-  defaultValue?: SplitPaneModelValue;
+  defaultValue?: ModelValue;
 
   ui?: UI;
 
@@ -83,7 +83,7 @@ export type SplitPaneProps = {
   resizeable?: boolean;
 };
 
-export type SplitPaneSlots = {
+export type Slots = {
   alpha: () => void;
   beta: () => void;
   actions: (
@@ -103,11 +103,11 @@ export type SplitPaneSlots = {
   ) => void;
 }
 
-export type SplitPaneEmits = {
-  (e: "update:modelValue", payload: SplitPaneModelValue): void;
+export type Emits = {
+  (e: "update:modelValue", payload: ModelValue): void;
 }
 
-export type SplitPaneExpose = {
+export type Expose = {
   expand: () => void;
   collapse: () => void;
 }

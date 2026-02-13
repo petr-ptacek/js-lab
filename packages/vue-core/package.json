@@ -4,12 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "prebuild": "pnpm clear",
     "build": "vite build",
-    "build:types": "vue-tsc -b ./tsconfig.types.json",
-    "type-check": "vue-tsc -b ./tsconfig.app.json",
-    "type-watch": "vue-tsc -b ./tsconfig.app.json --watch",
-    "test": "vitest"
+    "build:types": "tsc -b ./tsconfig.types.json",
+    "type:check": "tsc -b ./tsconfig.app.json",
+    "type:watch": "tsc -b ./tsconfig.app.json --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "clear": "rimraf ./dist ./node_modules/.tmp",
+    "dev": "vite"
   },
   "repository": {
     "type": "git",

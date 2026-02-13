@@ -14,7 +14,10 @@
     "dev:playground": "pnpm --dir apps/playground/nuxt run dev",
     "prepare": "husky",
     "clean": "pnpm -r exec -- rm -rf node_modules & rm -rf node_modules",
-    "commitlint": "commitlint"
+    "commitlint": "commitlint",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [

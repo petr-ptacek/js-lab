@@ -20,6 +20,8 @@ defineSlots<ContentFrameSlots>();
     :class="normalizeClass(ui?.root)"
     :data-scrollable="scrollable"
   >
+    <slot name="overlay" />
+
     <div
       class="ui-content-frame__header"
       :class="normalizeClass(ui?.header)"
@@ -33,7 +35,7 @@ defineSlots<ContentFrameSlots>();
       :class="normalizeClass(ui?.contentWrapper)"
       data-slot="content-wrapper"
     >
-      <slot name="contentBefore" />
+      <slot name="contentOverlay" />
 
       <div
         class="ui-content-frame__content"
@@ -42,8 +44,6 @@ defineSlots<ContentFrameSlots>();
       >
         <slot />
       </div>
-
-      <slot name="contentAfter" />
     </div>
 
     <div

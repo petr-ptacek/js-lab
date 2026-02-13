@@ -1,4 +1,4 @@
-import { isUndefined }                           from "@petr-ptacek/js-core";
+import { isUndefined, type ValueOrGetter } from "@petr-ptacek/js-core";
 import { useDebounceFn }                         from "@vueuse/core";
 import type { Ref }                              from "vue";
 import { computed, readonly, shallowRef, watch } from "vue";
@@ -14,7 +14,7 @@ import type { UseProxyValueOptions, UseProxyValueReturn } from "./types";
  *
  * ## Behavior
  * - If `sourceValue.value` is `undefined`, the `defaultValue` is used.
- * - `defaultValue` may be provided as a value or a factory function.
+ * - `defaultValue` may be provided as a value or a getter function.
  * - `null` is treated as a valid value and will not trigger the default.
  * - All changes are written to an internal buffer first.
  * - Calling `sync()` commits the buffer back to `sourceValue`
@@ -45,7 +45,7 @@ import type { UseProxyValueOptions, UseProxyValueReturn } from "./types";
  *
  * @param sourceValue - Source ref acting as the external value
  *   (e.g. `v-model`)
- * @param defaultValue - Fallback value or factory used when
+ * @param defaultValue - Fallback value or getter function of type `ValueOrGetter<TValue>` used when
  *   `sourceValue.value` is `undefined`
  * @param options - Configuration options
  *
@@ -120,7 +120,7 @@ import type { UseProxyValueOptions, UseProxyValueReturn } from "./types";
  */
 export function useProxyValue<TValue>(
   sourceValue: Ref<TValue | undefined>,
-  defaultValue: (TValue | (() => TValue)),
+  defaultValue: ValueOrGetter<TValue>,
   options: UseProxyValueOptions = {},
 ): UseProxyValueReturn<TValue> {
   const autoSync = shallowRef(options.autoSync ?? true);

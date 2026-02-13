@@ -3,13 +3,13 @@ import type {
   TryCatchResult,
   WithTryCatchOptions,
   TryCatchResultSuccess,
-  FallbackValue,
   TryCatchResultFailureWithData, TryCatchResultFailureNoData,
 } from "./types";
+import type { ValueOrFactory } from "../../types";
 
 export function withTryCatch<TResult, TError = unknown>(
   fn: () => Promise<TResult> | TResult,
-  options: WithTryCatchOptions<TResult, TError> & { fallback: FallbackValue<TResult, TError> },
+  options: WithTryCatchOptions<TResult, TError> & { fallback: ValueOrFactory<TResult, [TError]> },
 ): Promise<
   | TryCatchResultSuccess<TResult>
   | TryCatchResultFailureWithData<TResult, TError>

@@ -1,10 +1,11 @@
-import type { FallbackValue, TryCatchResult, TryCatchResultFailure, WithTryCatchOptions } from "./types";
+import type { TryCatchResult, TryCatchResultFailure, WithTryCatchOptions } from "./types";
 import { isFunction } from "../../is-what";
+import type { ValueOrFactory } from "../../types";
 
 /**
  * @internal
  */
-export function isFallbackFn<TResult, TError>(v: FallbackValue<TResult, TError>): v is (e: TError) => TResult {
+export function isFallbackFn<TResult, TError>(v: ValueOrFactory<TResult, [TError]>): v is (e: TError) => TResult {
   return isFunction(v);
 }
 
@@ -18,7 +19,7 @@ export function resolveFailureResult<TResult, TError = unknown>(
   const error = options.mapError ? options.mapError(e) : (e as TError);
 
   if (Object.hasOwn(options, "fallback")) {
-    const fallback = options.fallback as FallbackValue<TResult, TError>;
+    const fallback = options.fallback as ValueOrFactory<TResult, [TError]>;
     const data = isFallbackFn(fallback) ? fallback(error) : fallback;
 
     return {

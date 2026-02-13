@@ -1,4 +1,4 @@
-export type FallbackValue<TResult, TError> = TResult | ((e: TError) => TResult);
+import type { ValueOrFactory } from "../../types";
 
 /**
  * Configuration options for {@link withTryCatch}.
@@ -50,7 +50,7 @@ export type WithTryCatchOptions<TResult, TError = unknown> = {
    *
    * This enables error recovery without hiding failures.
    */
-  fallback?: FallbackValue<TResult, TError>;
+  fallback?: ValueOrFactory<TResult, [TError]>;
 
   /**
    * Maps an unknown thrown value to a typed error.

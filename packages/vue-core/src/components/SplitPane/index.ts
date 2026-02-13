@@ -1,8 +1,8 @@
 export type {
-  Props as UiSplitPaneProps,
-  Expose as UiSplitPaneExpose,
-  Emits as UiSplitPaneEmits,
-  Slots as UiSplitPaneSlots,
+  Props as SplitPaneProps,
+  Expose as SplitPaneExpose,
+  Emits as SplitPaneEmits,
+  Slots as SplitPaneSlots,
   ModelValue as UiSplitPaneModelValue,
 } from "./types";
 

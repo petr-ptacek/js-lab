@@ -8,21 +8,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "docs:api": "typedoc",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
-    "docs:api:js-core": "typedoc --options typedoc.js-core.json",
-    "type-check:packages": "pnpm -r --filter \"./packages/**\" run type-check",
-    "test:packages": "pnpm -r --filter \"./packages/**\" run test",
-    "build:packages": "pnpm -r --filter \"./packages/**\" run build",
-    "build:types": "vue-tsc -b ./tsconfig.types.json",
-    "test": "pnpm run test:packages",
-    "verify": "pnpm run type-check:packages && pnpm run test:packages",
-    "build": "pnpm run verify && pnpm run build:packages && pnpm run build:types",
-    "dev:playground": "pnpm --dir apps/playground/vue run dev",
+    "test": "pnpm run test:js-core && pnpm run test:vue-core",
+    "test:js-core": "pnpm -r --filter \"./packages/js-core\" run test",
+    "test:vue-core": "pnpm -r --filter \"./packages/vue-core\" run test",
+    "dev:playground": "pnpm --dir apps/playground/nuxt run dev",
     "prepare": "husky",
-    "clean": "pnpm -r exec -- rm -rf node_modules & rm -rf node_modules"
+    "clean": "pnpm -r exec -- rm -rf node_modules & rm -rf node_modules",
+    "commitlint": "commitlint"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
@@ -54,6 +46,8 @@
   },
   "packageManager": "pnpm@10.28.0",
   "devDependencies": {
+    "@commitlint/cli": "^20.4.1",
+    "@commitlint/config-conventional": "^20.4.1",
     "@eslint/js": "^9.39.2",
     "@tsconfig/node20": "^20.1.9",
     "@typescript-eslint/eslint-plugin": "^8.54.0",

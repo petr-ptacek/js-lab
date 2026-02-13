@@ -18,7 +18,7 @@ import type { CSSClassValue } from "../../types";
  * All size-related styles can be overridden via the `ui` prop, which takes
  * precedence over size presets.
  */
-export type PreloaderSize =
+export type Size =
   | "sm"
   | "md"
   | "lg"
@@ -61,7 +61,7 @@ export type UI = {
  * an external loading state. It does not emit any events
  * and does not manage async logic internally.
  */
-export type PreloaderProps = {
+export type Props = {
   /**
    * Optional UI class overrides for internal elements.
    */
@@ -72,7 +72,7 @@ export type PreloaderProps = {
    *
    * Defaults to `md`.
    */
-  size?: PreloaderSize;
+  size?: Size;
 
   /**
    * Controls whether the preloader should be displayed.
@@ -123,13 +123,13 @@ export type PreloaderProps = {
  * Slots allow customizing individual parts of the preloader
  * while preserving the default layout and behavior.
  */
-export type PreloaderSlots = {
+export type Slots = {
   /**
    * Slot for customizing the spinner.
    *
    * Receives the resolved preloader size.
    */
-  spinner: (props: { size: PreloaderSize }) => void;
+  spinner: (props: { size: Size }) => void;
 
   /**
    * Slot for customizing the loading message.
@@ -141,5 +141,5 @@ export type PreloaderSlots = {
    *
    * Receives the resolved size and message value.
    */
-  content: (props: { size: PreloaderSize; message: string | undefined }) => void;
+  content: (props: { size: Size; message: string | undefined }) => void;
 };

@@ -1,4 +1,4 @@
-# UiPreloader – Size API
+# Preloader – Size API
 
 This document describes the `size` API of the `UiPreloader` component, including
 default presets, customization options, and override mechanisms.

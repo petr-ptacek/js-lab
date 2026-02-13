@@ -3,13 +3,13 @@
 </style>
 
 <script setup lang="ts">
-import { computed, normalizeClass, toRef, useSlots } from "vue";
+import { normalizeClass } from "vue";
 
-import LoadingSpinner                          from "./LoadingSpinner.vue";
-import type { PreloaderProps, PreloaderSlots } from "./types";
-import { useStableLoading }                    from "../../composables";
+import LoadingSpinner from "./LoadingSpinner.vue";
+import type { Props, Slots } from "./types";
+import { useController } from "./useController";
 
-const props = withDefaults(defineProps<PreloaderProps>(), {
+const props = withDefaults(defineProps<Props>(), {
   visible: false,
   delay: 250,
   minVisible: 300,
@@ -18,20 +18,15 @@ const props = withDefaults(defineProps<PreloaderProps>(), {
   size: "md",
 });
 
-const { loading, isHolding, isDelaying } = useStableLoading(
-  toRef(props, "visible"),
-  {
-    delay: props.delay,
-    minVisible: props.minVisible,
-  },
-);
 
-defineSlots<PreloaderSlots>();
+defineSlots<Slots>();
 
-
-const slots = useSlots();
-
-const hasMessageSlot = computed(() => !!slots.message);
+const {
+  loading,
+  isHolding,
+  isDelaying,
+  hasMessageSlot,
+} = useController({ props });
 </script>
 
 <template>

@@ -4,7 +4,7 @@
 
 Represents an asynchronous predicate function.
 
-Similar to [Predicate](Predicate.md), but returns a Promise<boolean>.
+Similar to [Predicate](Predicate.md), but returns a `Promise<boolean>`.
 
 Useful for validations that require asynchronous checks,
 such as API calls or database lookups.

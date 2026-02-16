@@ -135,7 +135,7 @@ export type Predicate<T> = (value: T) => boolean;
 /**
  * Represents an asynchronous predicate function.
  *
- * Similar to {@link Predicate}, but returns a Promise<boolean>.
+ * Similar to {@link Predicate}, but returns a `Promise<boolean>`.
  *
  * Useful for validations that require asynchronous checks,
  * such as API calls or database lookups.

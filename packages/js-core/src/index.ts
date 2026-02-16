@@ -6,3 +6,4 @@ export * from "./array";
 export * from "./emitter";
 export * from "./dom";
 export * from "./safe";
+export * from "./withAbortable";

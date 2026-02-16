@@ -39,6 +39,8 @@
 - [MaybeUndefined](type-aliases/MaybeUndefined.md)
 - [MaybePromise](type-aliases/MaybePromise.md)
 - [PrimitiveValue](type-aliases/PrimitiveValue.md)
+- [WithAbortableOptions](type-aliases/WithAbortableOptions.md)
+- [WithAbortableReturn](type-aliases/WithAbortableReturn.md)
 
 ## Variables
 
@@ -90,3 +92,4 @@
 - [parseJSONSafe](functions/parseJSONSafe.md)
 - [withTryCatch](functions/withTryCatch.md)
 - [withTryCatchSync](functions/withTryCatchSync.md)
+- [withAbortable](functions/withAbortable.md)

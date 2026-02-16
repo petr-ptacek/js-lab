@@ -192,6 +192,14 @@ export default defineConfig({
         collapsed: true,
         items: [
           {
+            text: "WithAbortableOptions",
+            link: "/api-generated/type-aliases/WithAbortableOptions",
+          },
+          {
+            text: "WithAbortableReturn",
+            link: "/api-generated/type-aliases/WithAbortableReturn",
+          },
+          {
             text: "MaybeUndefined",
             link: "/api-generated/type-aliases/MaybeUndefined",
           },

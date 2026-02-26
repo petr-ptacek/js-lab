@@ -2,4 +2,4 @@
 "@petr-ptacek/js-core": minor
 ---
 
-Added withTryCatch utility function.
+Added withAbortable utility function for managing abortable operations, e.g. api calls.

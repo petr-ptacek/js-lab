@@ -1,3 +1,3 @@
 import type { Ref } from "vue";
 
-export type ReadonlyRef<T> = Readonly<Ref<T, T>>;
+export type ReadonlyRef<T> = Readonly<Ref<T>>;

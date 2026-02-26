@@ -26,6 +26,10 @@ const items = shallowRef<NavigationMenuItem[]>([
         label: "With Preloader",
         to: "/content-frame/with-preloader",
       },
+      {
+        label: "Scroll Controls",
+        to: "/content-frame/scroll-controll",
+      },
     ],
   },
   {

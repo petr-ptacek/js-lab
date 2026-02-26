@@ -1,26 +1,32 @@
 # UiContentFrame
 
-`UiContentFrame` is a **structural UI component** for vertical content composed of three sections:
+`UiContentFrame` is a **structural UI component** for vertical content
+composed of three sections:
 
 - `header`
 - `content` (body)
 - `footer`
 
-The primary goal of this component is to **keep scrolling inside the content area**, while header and footer remain
-visually separated and stable.
+The primary goal of this component is to **keep scrolling inside the
+content area**, while header and footer remain visually separated and
+stable.
 
-The component **does not manage page or viewport layout**. It expects to receive its height from the application layout.
+The component **does not manage page or viewport layout**. It expects to
+receive its height from the application layout.
 
----
+------------------------------------------------------------------------
 
 ## What this component does
 
 - provides a clear `header → content → footer` structure
 - isolates scrolling inside the content section
 - behaves predictably inside flex-based layouts
-- defines an explicit contract for *scrollable* vs *auto-grow* behavior
+- supports nested usage (multiple levels deep)
+- provides a controlled scroll API via `expose`
+- defines an explicit contract for *scrollable* vs *auto-grow*
+  behavior
 
----
+------------------------------------------------------------------------
 
 ## What this component does NOT do
 
@@ -28,13 +34,13 @@ The component **does not manage page or viewport layout**. It expects to receive
 - it does not manage global application layout
 - it does not handle horizontal or directional layouts
 - it does not deal with portals (dropdowns, tooltips, etc.)
+- it does not automatically block pointer events for overlays
 
----
+------------------------------------------------------------------------
 
 ## Basic usage
 
-```vue
-
+``` vue
 <UiContentFrame>
   <template #header>
     Header
@@ -50,67 +56,7 @@ The component **does not manage page or viewport layout**. It expects to receive
 </UiContentFrame>
 ```
 
----
-
-## Examples
-
-### Simple layout with header and footer
-
-```vue
-
-<UiContentFrame>
-  <template #header>
-    <h1>Page Title</h1>
-  </template>
-
-  <p>This is the main content area.</p>
-
-  <template #footer>
-    <button>Action</button>
-  </template>
-</UiContentFrame>
-```
-
-### With custom styling using CSS variables
-
-```vue
-
-<UiContentFrame style="--ui-content-frame-padding: 2rem; --ui-content-frame-border: 2px solid blue;">
-  <template #header>Custom Styled Header</template>
-  <div>Content with custom padding</div>
-  <template #footer>Footer</template>
-</UiContentFrame>
-```
-
-### Non-scrollable mode for short content
-
-```vue
-
-<UiContentFrame :scrollable="false">
-  <template #header>Short Page</template>
-  <div>Short content that grows naturally.</div>
-  <template #footer>Footer</template>
-</UiContentFrame>
-```
-
-### Using additional slots
-
-```vue
-
-<UiContentFrame>
-  <template #contentBefore>
-    <div>Content before main slot</div>
-  </template>
-
-  <div>Main content</div>
-
-  <template #contentAfter>
-    <div>Content after main slot</div>
-  </template>
-</UiContentFrame>
-```
-
----
+------------------------------------------------------------------------
 
 ## Scroll behavior (default)
 
@@ -120,8 +66,7 @@ Default behavior:
 - scrolling happens **inside the content section**
 - header and footer remain fixed within the frame
 
-```vue
-
+``` vue
 <UiContentFrame>
   <template #header>Header</template>
 
@@ -133,40 +78,33 @@ Default behavior:
 </UiContentFrame>
 ```
 
----
+------------------------------------------------------------------------
 
 ## Height contract (important)
 
 > **A scrollable element must have a constrained height.**
 
-`UiContentFrame` does not create its own height.  
+`UiContentFrame` does not create its own height.\
 It expects height to be propagated from the layout above it.
 
 Typical height propagation chain:
 
-```
-viewport / app layout
-→ main container (flex-1, min-h-0)
-→ page wrapper (h-full)
-→ UiContentFrame (height: 100%)
-```
+    viewport / app layout
+    → main container (flex-1, min-h-0)
+    → page wrapper (h-full)
+    → UiContentFrame (height: 100%)
 
-If this chain is broken, scrolling will move to the parent (often `body`).
+If this chain is broken, scrolling will move to the parent (often
+`body`).
 
----
+------------------------------------------------------------------------
 
 ## Non-scrollable mode (`scrollable = false`)
 
-In some situations it is desirable for the content to grow naturally and let the parent handle scrolling.
+In some situations it is desirable for the content to grow naturally and
+let the parent handle scrolling.
 
-Examples:
-
-- short or static pages
-- pages with their own scrollable widgets
-- virtual lists, maps, or canvas-based content
-
-```vue
-
+``` vue
 <UiContentFrame :scrollable="false">
   <template #header>Header</template>
 
@@ -183,61 +121,34 @@ Examples:
 - the component switches to an auto-height layout
 - content grows naturally
 - the entire component grows with the content
-- footer is always rendered **after** the content
+- footer is always rendered after the content
 
----
-
-## Props
-
-### `scrollable`
-
-```ts
-scrollable?: boolean; // default: true
-```
-
-| Value   | Behavior                                        |
-|---------|-------------------------------------------------|
-| `true`  | internal scrolling inside the content section   |
-| `false` | auto-grow layout, scrolling delegated to parent |
-
-### `ui`
-
-```ts
-ui?: {
-  root?: CSSClassValue;
-  header?: CSSClassValue;
-  content?: CSSClassValue;
-  contentWrapper?: CSSClassValue;
-  contentOverlay?: CSSClassValue;
-  conntentScroll?: CSSClassValue;
-  footer?: CSSClassValue;
-}
-```
-
-Allows custom CSS classes for different parts of the component.
-
----
+------------------------------------------------------------------------
 
 ## Slots
 
-| Slot             | Description                                                                                 | Type         |
-|------------------|---------------------------------------------------------------------------------------------|--------------|
-| `header`         | top section                                                                                 | `() => void` |
-| `default`        | main content                                                                                | `() => void` |
-| `footer`         | bottom section                                                                              | `() => void` |
-| `overlay`        | overlay for absolutely positioned elements relative to the component root                   | `() => void` |
-| `contentOverlay` | overlay layer rendered **above** the scrollable content area (covers the *visible viewport*, does not scroll with content) | `() => void` |
+-----------------------------------------------------------------------
 
----
+| Slot             | Description                                                                   |
+|------------------|-------------------------------------------------------------------------------|
+| `header`         | top section                                                                   |
+| `default`        | main content                                                                  |
+| `footer`         | bottom section                                                                |
+| `overlay`        | overlay positioned relative to the component root                             |
+| `contentOverlay` | overlay rendered above the scrollable viewport (does not scroll with content) |
+
+------------------------------------------------------------------------
 
 ### `contentOverlay` example (preloader)
 
-`contentOverlay` is useful for loaders/spinners or any UI that should visually cover the scrollable content area.
+`contentOverlay` is useful for loaders/spinners or UI that should
+visually cover the scrollable content area.
 
-- The overlay layer covers the **visible** scroll viewport (so centered loaders stay centered even for very long content).
-- The component only provides the overlay layer. Pointer/scroll behavior (e.g. `pointer-events`, scroll lock) is up to the consumer.
+- The overlay layer covers the **visible scroll viewport**
+- It does **not scroll** with content
+- Pointer behavior (`pointer-events`) is controlled by the consumer
 
-```vue
+``` vue
 <UiContentFrame>
   <template #contentOverlay>
     <div class="absolute inset-0 grid place-items-center bg-white/70">
@@ -251,53 +162,151 @@ Allows custom CSS classes for different parts of the component.
 </UiContentFrame>
 ```
 
----
+------------------------------------------------------------------------
+
+## Exposed API
+
+`UiContentFrame` exposes internal elements and scroll utilities via
+`ref`.
+
+``` vue
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+
+const frame = ref<InstanceType<typeof UiContentFrame> | null>(null);
+
+onMounted(() => {
+  frame.value?.scrollToTop({ behavior: "smooth" });
+});
+</script>
+
+<template>
+  <UiContentFrame ref="frame">
+    <template #header>Header</template>
+    <div>Long content...</div>
+  </UiContentFrame>
+</template>
+```
+
+### Exposed properties
+
+``` ts
+type Expose = {
+  contentWrapper: ReadonlyRef<HTMLElement | null>;
+  contentOverlay: ReadonlyRef<HTMLElement | null>;
+  contentScroll: ReadonlyRef<HTMLElement | null>;
+  content: ReadonlyRef<HTMLElement | null>;
+
+  scrollTo(options: ScrollToOptions): boolean;
+  scrollToTop(options?: Omit<ScrollToOptions, "top">): boolean;
+  scrollToBottom(options?: Omit<ScrollToOptions, "top">): boolean;
+}
+```
+
+### Scroll methods
+
+#### `scrollTo(options)`
+
+Low-level scroll method that proxies to the internal scroll container.
+
+Returns `false` if:
+
+- component is in `scrollable = false` mode
+- scroll container is not mounted yet
+
+#### `scrollToTop(options?)`
+
+Scrolls to the top of the content.
+
+#### `scrollToBottom(options?)`
+
+Scrolls to the bottom of the content.
+
+All scroll methods return a `boolean` indicating whether the scroll was
+executed.
+
+------------------------------------------------------------------------
+
+## Props
+
+### `scrollable`
+
+```ts
+scrollable?: boolean; // default: true
+```
+
+Value Behavior
+  --------- -------------------------------------------------
+`true`    internal scrolling inside the content section
+`false`   auto-grow layout, scrolling delegated to parent
+
+------------------------------------------------------------------------
+
+### `ui`
+
+``` ts
+ui?: {
+  root?: CSSClassValue;
+  header?: CSSClassValue;
+  content?: CSSClassValue;
+  contentWrapper?: CSSClassValue;
+  contentOverlay?: CSSClassValue;
+  contentScroll?: CSSClassValue;
+  footer?: CSSClassValue;
+}
+```
+
+Allows custom CSS classes for different parts of the component.
+
+------------------------------------------------------------------------
 
 ## Styling
 
-The component uses CSS custom properties (variables) for easy customization:
+The component uses CSS custom properties for customization:
 
-- `--ui-content-frame-header-shadow`: Shadow for the header (default: `0 4px 10px rgba(0, 0, 0, 0.06)`)
-- `--ui-content-frame-footer-shadow`: Shadow for the footer (default: `0 -4px 10px rgba(0, 0, 0, 0.06)`)
-- `--ui-content-frame-border`: Border style (default: `1px solid #E5E5E5`)
-- `--ui-content-frame-padding`: Padding for sections (default: `1rem`)
+- `--ui-content-frame-header-shadow`
+- `--ui-content-frame-footer-shadow`
+- `--ui-content-frame-border`
+- `--ui-content-frame-padding`
 
-You can override these variables to customize the appearance:
+Example:
 
-```css
+``` css
 .ui-content-frame {
   --ui-content-frame-padding: 2rem;
   --ui-content-frame-border: 2px solid blue;
 }
 ```
 
----
+------------------------------------------------------------------------
 
 ## When to use
 
 - pages or panels with internal scrolling
-- content areas with fixed header and footer
-- layouts where scroll must be controlled explicitly
+- nested layout containers
+- fixed header + footer content areas
+- situations where scroll must be explicitly controlled
 
----
+------------------------------------------------------------------------
 
 ## When NOT to use
 
 - purely horizontal layouts
 - small cards without scrolling needs
 - global application layout (sidebar + main)
-- places without a clear height constraint
+- places without a height constraint
 
----
+------------------------------------------------------------------------
 
 ## Summary
 
-`UiContentFrame` is a predictable content container that:
+`UiContentFrame` is a predictable, nested-safe content container that:
 
 - keeps scrolling inside by default
 - does not manage page height
-- provides an explicit, opt-in auto-grow mode
+- provides a controlled scroll API via `expose`
+- supports overlay layers
 - behaves consistently in complex flex layouts
-- supports customization via CSS variables
 
-It is designed to be safe by default, while still allowing controlled escape when needed.
+It is designed to be safe by default, while still allowing controlled
+extension when needed.

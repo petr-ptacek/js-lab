@@ -3,23 +3,25 @@
 </style>
 
 <script setup lang="ts">
-import { normalizeClass, readonly, shallowRef } from "vue";
+import { normalizeClass } from "vue";
 
 import type { Slots, Props, Expose } from "./types";
+import { useController } from "./useController";
 
-withDefaults(
+const props = withDefaults(
   defineProps<Props>(),
   { scrollable: true },
 );
 
-/***************************************
- Template HTMLElements Refs
- ***************************************/
-
-const contentWrapper = shallowRef<HTMLElement | null>(null);
-const contentOverlay = shallowRef<HTMLElement | null>(null);
-const contentScroll = shallowRef<HTMLElement | null>(null);
-const content = shallowRef<HTMLElement | null>(null);
+const {
+  contentWrapper,
+  contentOverlay,
+  contentScroll,
+  content,
+  scrollTo,
+  scrollToTop,
+  scrollToBottom,
+} = useController({ props });
 
 /***************************************
  Expose and Slots
@@ -27,12 +29,16 @@ const content = shallowRef<HTMLElement | null>(null);
 
 defineSlots<Slots>();
 
-const exposed: Expose = {
-  contentWrapper: readonly(contentWrapper) as unknown as Expose["contentWrapper"],
-  contentOverlay: readonly(contentOverlay) as unknown as Expose["contentOverlay"],
-  contentScroll: readonly(contentScroll) as unknown as Expose["contentScroll"],
-  content: readonly(content) as unknown as Expose["content"],
-};
+const exposed = {
+  contentWrapper,
+  contentOverlay,
+  contentScroll,
+  content,
+
+  scrollTo,
+  scrollToTop,
+  scrollToBottom,
+} satisfies Expose;
 
 defineExpose(exposed);
 </script>

@@ -7,4 +7,3 @@ export * from "./emitter";
 export * from "./dom";
 export * from "./safe";
 export * from "./crypto";
-export * from "./withAbortable";

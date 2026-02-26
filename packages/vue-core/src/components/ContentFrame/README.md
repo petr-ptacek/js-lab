@@ -34,7 +34,7 @@ receive its height from the application layout.
 - it does not manage global application layout
 - it does not handle horizontal or directional layouts
 - it does not deal with portals (dropdowns, tooltips, etc.)
-- it does not automatically block pointer events for overlays
+- it does not enforce overlay blocking behavior (consumer controls it)
 
 ------------------------------------------------------------------------
 
@@ -127,31 +127,47 @@ let the parent handle scrolling.
 
 ## Slots
 
------------------------------------------------------------------------
+  -----------------------------------------------------------------------
 
-| Slot             | Description                                                                   |
-|------------------|-------------------------------------------------------------------------------|
-| `header`         | top section                                                                   |
-| `default`        | main content                                                                  |
-| `footer`         | bottom section                                                                |
-| `overlay`        | overlay positioned relative to the component root                             |
-| `contentOverlay` | overlay rendered above the scrollable viewport (does not scroll with content) |
+| Slot             | Description                                                                         |
+|------------------|-------------------------------------------------------------------------------------|
+| `header`         | top section                                                                         |
+| `default`        | main content                                                                        |
+| `footer`         | bottom section                                                                      |
+| `overlay`        | portal mount point positioned relative to the component root                        |
+| `contentOverlay` | overlay layer rendered above the scrollable viewport (does not scroll with content) |
 
 ------------------------------------------------------------------------
 
-### `contentOverlay` example (preloader)
+### `contentOverlay` behavior (important)
 
-`contentOverlay` is useful for loaders/spinners or UI that should
-visually cover the scrollable content area.
+The `contentOverlay` slot renders inside a dedicated overlay layer that:
 
-- The overlay layer covers the **visible scroll viewport**
-- It does **not scroll** with content
-- Pointer behavior (`pointer-events`) is controlled by the consumer
+- is positioned absolutely over the visible scroll viewport
+- does **not scroll** with the content
+- is **non-blocking by default**
+
+Implementation detail:
+
+- the overlay wrapper has `pointer-events: none`
+- direct children of the wrapper have `pointer-events: auto`
+
+This means:
+
+- if the slot renders nothing, the content remains fully interactive
+- if you render a non-blocking loader, content remains
+  clickable/selectable
+- if you want to block interaction, you must provide a backdrop
+  element that captures pointer events
+
+------------------------------------------------------------------------
+
+### Non-blocking preloader example
 
 ``` vue
 <UiContentFrame>
   <template #contentOverlay>
-    <div class="absolute inset-0 grid place-items-center bg-white/70">
+    <div class="absolute inset-0 grid place-items-center">
       Loading...
     </div>
   </template>
@@ -161,6 +177,30 @@ visually cover the scrollable content area.
   </div>
 </UiContentFrame>
 ```
+
+------------------------------------------------------------------------
+
+### Blocking overlay example
+
+``` vue
+<UiContentFrame>
+  <template #contentOverlay>
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-white/70"></div>
+      <div class="absolute inset-0 grid place-items-center">
+        Loading...
+      </div>
+    </div>
+  </template>
+
+  <div>
+    Long content...
+  </div>
+</UiContentFrame>
+```
+
+In this example, the backdrop blocks interaction because it captures
+pointer events.
 
 ------------------------------------------------------------------------
 
@@ -231,7 +271,7 @@ executed.
 
 ### `scrollable`
 
-```ts
+``` ts
 scrollable?: boolean; // default: true
 ```
 
@@ -305,7 +345,7 @@ Example:
 - keeps scrolling inside by default
 - does not manage page height
 - provides a controlled scroll API via `expose`
-- supports overlay layers
+- supports overlay layers with safe default interaction behavior
 - behaves consistently in complex flex layouts
 
 It is designed to be safe by default, while still allowing controlled

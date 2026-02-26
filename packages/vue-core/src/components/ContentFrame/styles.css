@@ -42,9 +42,14 @@
   }
 
   & > .ui-content-frame__content-wrapper > .ui-content-frame__content-overlay {
+    pointer-events: none;
     position: absolute;
     inset: 0;
     z-index: 1;
+
+    & > * {
+      pointer-events: auto;
+    }
   }
 
   & > .ui-content-frame__content-wrapper > .ui-content-frame__content-scroll {

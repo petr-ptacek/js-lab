@@ -1,5 +1,5 @@
 {
-  "name": "nuxt",
+  "name": "@petr-ptacek/playground-nuxt",
   "type": "module",
   "private": true,
   "scripts": {

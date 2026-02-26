@@ -1,24 +1,26 @@
 {
   "name": "@petr-ptacek/js-core",
   "description": "JavaScript and TypeScript utilities.",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "type": "module",
   "scripts": {
     "prebuild": "pnpm clear",
     "build": "vite build",
-    "build:types": "tsc -b ./tsconfig.types.json",
-    "type:check": "tsc -b ./tsconfig.app.json",
-    "type:watch": "tsc -b ./tsconfig.app.json --watch",
+    "types:build": "tsc -b ./tsconfig.types.json",
+    "types:check": "tsc -b ./tsconfig.app.json",
+    "types:watch": "tsc -b ./tsconfig.app.json --watch",
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
     "clear": "rimraf ./dist ./node_modules/.tmp",
-    "prepublishOnly": "pnpm clear && pnpm type:check && pnpm test && pnpm build && pnpm build:types",
+    "prepublishOnly": "pnpm clear && pnpm types:check && pnpm test && pnpm build && pnpm types:build",
     "docs:dev": "pnpm typedoc && vitepress dev docs",
     "docs:build": "pnpm typedoc && vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "release:check": "pnpm types:check && pnpm test && pnpm build && pnpm types:build",
+    "release:dry": "pnpm release:check && npm publish --dry-run"
   },
   "keywords": [
     "javascript",
@@ -26,10 +28,15 @@
     "utilities",
     "math",
     "type-guards",
-    "esm"
+    "esm-only",
+    "functional",
+    "tree-shaking"
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/petr-ptacek/js-lab/issues"
   },
   "repository": {
     "type": "git",
@@ -54,6 +61,6 @@
     "vite": "^7.3.1"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=20"
   }
 }

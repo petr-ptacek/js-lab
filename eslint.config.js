@@ -38,6 +38,13 @@ export default defineConfig([
    * ------------------------------------------------------------------ */
   js.configs.recommended,
 
+  {
+    files: ["**/*.{ts,mts,cts,tsx,vue}"],
+    rules: {
+      "no-undef": "off",
+    },
+  },
+
   /* ------------------------------------------------------------------ *
    * JS / TS / Vue (script část)
    * ------------------------------------------------------------------ */
@@ -61,6 +68,7 @@ export default defineConfig([
       /* ---------------- TS ---------------- */
 
       ...tsPlugin.configs.recommended.rules,
+      //"no-undef": "off", // vypnuto, protože TS tohle řeší
 
       "@typescript-eslint/no-explicit-any": "warn",
 

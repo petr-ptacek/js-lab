@@ -192,7 +192,7 @@ Examples:
 ### `scrollable`
 
 ```ts
-scrollable ? : boolean; // default: true
+scrollable?: boolean; // default: true
 ```
 
 | Value   | Behavior                                        |
@@ -203,12 +203,14 @@ scrollable ? : boolean; // default: true
 ### `ui`
 
 ```ts
-ui ? : {
-  root? : CSSClassValue;
-  header? : CSSClassValue;
-  content? : CSSClassValue;
-  contentWrapper? : CSSClassValue;
-  footer? : CSSClassValue;
+ui?: {
+  root?: CSSClassValue;
+  header?: CSSClassValue;
+  content?: CSSClassValue;
+  contentWrapper?: CSSClassValue;
+  contentOverlay?: CSSClassValue;
+  conntentScroll?: CSSClassValue;
+  footer?: CSSClassValue;
 }
 ```
 
@@ -218,13 +220,36 @@ Allows custom CSS classes for different parts of the component.
 
 ## Slots
 
-| Slot            | Description                                                                 | Type         |
-|-----------------|-----------------------------------------------------------------------------|--------------|
-| `header`        | top section                                                                 | `() => void` |
-| `default`       | main content                                                                | `() => void` |
-| `footer`        | bottom section                                                              | `() => void` |
-| `overlay`       | overlay for absolutely positioned elements relative to the component root   | `() => void` |
-| `contentOverlay`| overlay for elements positioned within the content wrapper                  | `() => void` |
+| Slot             | Description                                                                                 | Type         |
+|------------------|---------------------------------------------------------------------------------------------|--------------|
+| `header`         | top section                                                                                 | `() => void` |
+| `default`        | main content                                                                                | `() => void` |
+| `footer`         | bottom section                                                                              | `() => void` |
+| `overlay`        | overlay for absolutely positioned elements relative to the component root                   | `() => void` |
+| `contentOverlay` | overlay layer rendered **above** the scrollable content area (covers the *visible viewport*, does not scroll with content) | `() => void` |
+
+---
+
+### `contentOverlay` example (preloader)
+
+`contentOverlay` is useful for loaders/spinners or any UI that should visually cover the scrollable content area.
+
+- The overlay layer covers the **visible** scroll viewport (so centered loaders stay centered even for very long content).
+- The component only provides the overlay layer. Pointer/scroll behavior (e.g. `pointer-events`, scroll lock) is up to the consumer.
+
+```vue
+<UiContentFrame>
+  <template #contentOverlay>
+    <div class="absolute inset-0 grid place-items-center bg-white/70">
+      Loading...
+    </div>
+  </template>
+
+  <div>
+    Long content...
+  </div>
+</UiContentFrame>
+```
 
 ---
 
@@ -241,8 +266,8 @@ You can override these variables to customize the appearance:
 
 ```css
 .ui-content-frame {
-    --ui-content-frame-padding: 2rem;
-    --ui-content-frame-border: 2px solid blue;
+  --ui-content-frame-padding: 2rem;
+  --ui-content-frame-border: 2px solid blue;
 }
 ```
 

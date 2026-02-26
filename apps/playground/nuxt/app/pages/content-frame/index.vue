@@ -1,20 +1,26 @@
 <script setup lang="ts">
 import { UiContentFrame } from "@petr-ptacek/vue-core";
 
-import { ExampleFrame }   from "~/components";
+import { ExampleFrame } from "~/components";
 </script>
 
 <template>
   <ExampleFrame
     title="UiContentFrame"
+    description="Base example of UiContentFrame component. It is a simple wrapper around the content with header and footer slots."
     class="h-full"
   >
-    <UiContentFrame :scrollable="true">
+    <UiContentFrame
+      :ui="{
+        header: 'bg-blue-500 text-white',
+        footer: 'bg-green-500 text-white',
+      }"
+    >
       <template #header>
         <div class="">header</div>
       </template>
 
-      <div class="">
+      <div class="p-4">
         <p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque beatae earum eum,
                         fugit molestiae necessitatibus non praesentium sit ullam. Distinctio eligendi illo maxime,
                         mollitia numquam sed! Atque dolorum earum esse, facilis, harum, incidunt ipsam nisi possimus

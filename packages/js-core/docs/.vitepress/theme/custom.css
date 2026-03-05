@@ -1,0 +1,42 @@
+.vp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.vp-card {
+  display: block;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid var(--vp-c-divider);
+  transition: border 0.2s, background 0.2s;
+}
+
+.vp-card:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-soft);
+}
+
+.vp-card h3 {
+  margin: 0 0 6px 0;
+}
+
+.tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:20px;
+}
+
+.tag {
+  padding:4px 10px;
+  border-radius:20px;
+  border:1px solid var(--vp-c-divider);
+  cursor:pointer;
+}
+
+.tag.active {
+  background:var(--vp-c-brand-1);
+  color:white;
+}

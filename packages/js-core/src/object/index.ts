@@ -1,2 +1,5 @@
-export { get } from "./get";
-export { entries } from "./entries";
+export * from "./get";
+export * from "./entries";
+export * from "./range";
+export * from "./shuffle";
+export * from "./zip";

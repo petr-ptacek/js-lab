@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.node.base.json",
   "include": [
+    "./src/_internal/meta.ts",
     "./vite.config.ts",
     "./vitest.config.ts",
     "./docs/.vitepress/**/*.ts",

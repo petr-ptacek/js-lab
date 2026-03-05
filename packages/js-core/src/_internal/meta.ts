@@ -1,0 +1,22 @@
+export type MetaCategory =
+  | "async"
+  | "browser"
+  | "crypto"
+  | "error"
+  | "event"
+  | "number"
+  | "object"
+  | "validation";
+
+export type Meta = Readonly<{
+  id: string;
+  name: string;
+  category: MetaCategory;
+  description?: string;
+  demo?: boolean;
+  snippets?: boolean;
+  tags?: readonly string[];
+  deprecated?: boolean;
+  since?: `${number}.${number}.${number}`;
+  experimental?: boolean;
+}>;

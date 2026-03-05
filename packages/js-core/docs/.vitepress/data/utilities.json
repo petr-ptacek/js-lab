@@ -1,6 +1,23 @@
 {
   "utilities": [
     {
+      "id": "clamp",
+      "name": "clamp",
+      "description": "Constrains a numeric value between specified minimum and maximum boundaries.",
+      "category": "number",
+      "tags": [
+        "number",
+        "clamp",
+        "constrain",
+        "bounds",
+        "range",
+        "limit"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
       "id": "createUUIDV4",
       "name": "createUUIDV4",
       "description": "Generates a random UUID (version 4) string.",
@@ -15,9 +32,146 @@
       "demo": false,
       "snippets": false,
       "since": "1.0.0"
+    },
+    {
+      "id": "Emitter",
+      "name": "Emitter",
+      "description": "Strongly-typed event emitter with type-safe event definitions and handler management.",
+      "category": "event",
+      "tags": [
+        "event",
+        "emitter",
+        "typed",
+        "observer",
+        "pubsub",
+        "handler"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "entries",
+      "name": "entries",
+      "description": "Returns the enumerable own property [key, value] pairs of an object with preserved key and value types.",
+      "category": "object",
+      "tags": [
+        "object",
+        "entries",
+        "typed",
+        "key-value",
+        "iteration"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "get",
+      "name": "get",
+      "description": "Safely gets a nested value from an object using a dot-separated path with full TypeScript type safety.",
+      "category": "object",
+      "tags": [
+        "object",
+        "nested",
+        "path",
+        "safe-access",
+        "typed",
+        "dot-notation"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "range",
+      "name": "range",
+      "description": "Creates an array of numbers following the same semantics as Python's range.",
+      "category": "object",
+      "tags": [
+        "array",
+        "range",
+        "numbers",
+        "sequence",
+        "python",
+        "iteration"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "shuffle",
+      "name": "shuffle",
+      "description": "Returns a new array with elements shuffled in random order using the Fisher–Yates shuffle algorithm.",
+      "category": "object",
+      "tags": [
+        "array",
+        "shuffle",
+        "random",
+        "fisher-yates",
+        "immutable",
+        "randomize"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "withAbortable",
+      "name": "withAbortable",
+      "description": "Wraps an asynchronous function with AbortController lifecycle management.",
+      "category": "async",
+      "tags": [
+        "async",
+        "abort",
+        "controller",
+        "cancellation",
+        "timeout",
+        "lifecycle"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "zip",
+      "name": "zip",
+      "description": "Combines two arrays element-wise into pairs or applies a mapping function to each pair.",
+      "category": "object",
+      "tags": [
+        "array",
+        "zip",
+        "combine",
+        "pairs",
+        "mapping",
+        "transform"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
     }
   ],
   "categories": {
+    "number": [
+      {
+        "id": "clamp",
+        "name": "clamp",
+        "description": "Constrains a numeric value between specified minimum and maximum boundaries.",
+        "category": "number",
+        "tags": [
+          "number",
+          "clamp",
+          "constrain",
+          "bounds",
+          "range",
+          "limit"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
     "crypto": [
       {
         "id": "createUUIDV4",
@@ -33,6 +187,130 @@
         ],
         "demo": false,
         "snippets": false,
+        "since": "1.0.0"
+      }
+    ],
+    "event": [
+      {
+        "id": "Emitter",
+        "name": "Emitter",
+        "description": "Strongly-typed event emitter with type-safe event definitions and handler management.",
+        "category": "event",
+        "tags": [
+          "event",
+          "emitter",
+          "typed",
+          "observer",
+          "pubsub",
+          "handler"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
+    "object": [
+      {
+        "id": "entries",
+        "name": "entries",
+        "description": "Returns the enumerable own property [key, value] pairs of an object with preserved key and value types.",
+        "category": "object",
+        "tags": [
+          "object",
+          "entries",
+          "typed",
+          "key-value",
+          "iteration"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "get",
+        "name": "get",
+        "description": "Safely gets a nested value from an object using a dot-separated path with full TypeScript type safety.",
+        "category": "object",
+        "tags": [
+          "object",
+          "nested",
+          "path",
+          "safe-access",
+          "typed",
+          "dot-notation"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "range",
+        "name": "range",
+        "description": "Creates an array of numbers following the same semantics as Python's range.",
+        "category": "object",
+        "tags": [
+          "array",
+          "range",
+          "numbers",
+          "sequence",
+          "python",
+          "iteration"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "shuffle",
+        "name": "shuffle",
+        "description": "Returns a new array with elements shuffled in random order using the Fisher–Yates shuffle algorithm.",
+        "category": "object",
+        "tags": [
+          "array",
+          "shuffle",
+          "random",
+          "fisher-yates",
+          "immutable",
+          "randomize"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "zip",
+        "name": "zip",
+        "description": "Combines two arrays element-wise into pairs or applies a mapping function to each pair.",
+        "category": "object",
+        "tags": [
+          "array",
+          "zip",
+          "combine",
+          "pairs",
+          "mapping",
+          "transform"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
+    "async": [
+      {
+        "id": "withAbortable",
+        "name": "withAbortable",
+        "description": "Wraps an asynchronous function with AbortController lifecycle management.",
+        "category": "async",
+        "tags": [
+          "async",
+          "abort",
+          "controller",
+          "cancellation",
+          "timeout",
+          "lifecycle"
+        ],
+        "demo": false,
+        "snippets": true,
         "since": "1.0.0"
       }
     ]

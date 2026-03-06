@@ -1,5 +1,5 @@
 <style>
-@import "./styles.css";
+@import "./style/index.css";
 </style>
 
 <script setup lang="ts">

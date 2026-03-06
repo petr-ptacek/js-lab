@@ -265,6 +265,37 @@
       "since": "1.0.0"
     },
     {
+      "id": "isArray",
+      "name": "isArray",
+      "description": "Checks whether the given value is an array.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "array",
+        "generic",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isString",
+      "name": "isString",
+      "description": "Checks whether the given value is a string.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "string",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
       "id": "MaybeNull",
       "name": "MaybeNull",
       "description": "Represents a value that may be null.",
@@ -1095,6 +1126,39 @@
           "pairs",
           "mapping",
           "transform"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
+    "validation": [
+      {
+        "id": "isArray",
+        "name": "isArray",
+        "description": "Checks whether the given value is an array.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "array",
+          "generic",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isString",
+        "name": "isString",
+        "description": "Checks whether the given value is a string.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "string",
+          "typescript"
         ],
         "demo": false,
         "snippets": true,

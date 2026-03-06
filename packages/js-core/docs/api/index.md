@@ -30,6 +30,11 @@ Collection of utilities available in **@petr-ptacek/js-core**.
 <p>5 utilities</p>
 </a>
 
+<a class="vp-card" href="/api/validation/">
+<h3>validation</h3>
+<p>2 utilities</p>
+</a>
+
 <a class="vp-card" href="/api/error/">
 <h3>error</h3>
 <p>3 utilities</p>

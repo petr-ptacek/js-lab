@@ -1,3 +1,4 @@
+
 # js-core Module Structure
 
 This document defines the canonical structure of a **utility module**
@@ -30,9 +31,14 @@ Canonical structure:
       createUUIDV4.ts
       types.ts
       utils.ts
+      meta.ts
       __tests__/
         createUUIDV4.test.ts
       README.md
+      demo/
+        basic.vue
+      snippets/
+        basic.ts
 
 Not all files are mandatory. Minimal modules may contain fewer files.
 
@@ -49,10 +55,8 @@ This file **must not contain implementation logic**. It acts as the
 
 Example:
 
-``` ts
 export { createUUIDV4 } from './createUUIDV4'
 export type { UUID } from './types'
-```
 
 Responsibilities:
 
@@ -74,11 +78,9 @@ Contains the **main implementation of the module**.
 
 Example:
 
-``` ts
 export function createUUIDV4(): string {
   return crypto.randomUUID()
 }
-```
 
 Rules:
 
@@ -105,9 +107,7 @@ This file may include:
 
 Example:
 
-``` ts
 export type UUID = string
-```
 
 If the number of types grows significantly:
 
@@ -131,11 +131,9 @@ These utilities:
 
 Example:
 
-``` ts
 export function ensureHex(value: string): string {
   return value.toLowerCase()
 }
-```
 
 Rules:
 
@@ -144,7 +142,33 @@ Rules:
 
 ------------------------------------------------------------------------
 
-## **tests**/
+## meta.ts
+
+Contains **metadata describing the utility**.
+
+Metadata is used primarily by documentation tooling (for example
+VitePress) to automatically generate documentation pages and navigation.
+
+Example:
+
+export const meta = {
+  id: "createUUIDV4",
+  name: "createUUIDV4",
+  category: "crypto",
+  description: "Generate RFC4122 UUID v4",
+  demo: true,
+  snippets: true
+}
+
+Rules:
+
+- metadata is **not part of the public API**
+- metadata is used only by tooling
+- metadata should remain small and stable
+
+------------------------------------------------------------------------
+
+## __tests__/
 
 Contains **Vitest test files** for the module.
 
@@ -172,59 +196,74 @@ README is preferred over `index.md` because:
 - npm users often read documentation directly in the repository
 - AI coding assistants index README files reliably
 
-Example structure:
+README files can also be consumed by **VitePress** when generating documentation pages.
 
-``` md
-# createUUIDV4
+------------------------------------------------------------------------
 
-Generate RFC4122 UUID v4.
+## demo/
 
-## Usage
+Contains **interactive examples** demonstrating how the utility works.
 
-```ts
-import { createUUIDV4 } from '@petr-ptacek/js-core'
+Example:
 
-const uuid = createUUIDV4()
-```
+    demo/
+      basic.vue
+      button.vue
 
-## Why not crypto.randomUUID
+Rules:
 
-Explanation of design decisions.
+- demo files are typically Vue components (`.vue`)
+- multiple demo files are allowed
+- demo files are not part of the public API
+- demo files exist only for documentation purposes
 
-## Design Notes
+------------------------------------------------------------------------
 
-Implementation trade-offs and reasoning.
+## snippets/
 
-    README files can also be consumed by **VitePress** when generating documentation pages.
+Contains **code snippets** demonstrating how to use the utility.
 
-    ------------------------------------------------------------------------
+Example:
 
-    # Minimal Module Variant
+    snippets/
+      basic.ts
+      vue.vue
+      node.ts
 
-    For simple utilities, a reduced structure is acceptable:
+Rules:
 
-        createUUIDV4/
-          index.ts
-          createUUIDV4.ts
-          __tests__/
-          README.md
+- snippets may contain TypeScript or Vue examples
+- multiple snippets are allowed
+- snippets are used only for documentation
+- snippets are not part of the public API
 
-    Additional files should only be introduced when they provide clear value.
+------------------------------------------------------------------------
 
-    ------------------------------------------------------------------------
+# Minimal Module Variant
 
-    # Root Export Structure
+For simple utilities, a reduced structure is acceptable:
 
-    All modules are re-exported from the package root.
+    createUUIDV4/
+      index.ts
+      createUUIDV4.ts
+      __tests__/
+      README.md
 
-    Example:
+Additional files should only be introduced when they provide clear value.
 
-        src/index.ts
+------------------------------------------------------------------------
 
-    ```ts
-    export * from './createUUIDV4'
-    export * from './parseJSONSafe'
-    export * from './withTryCatch'
+# Root Export Structure
+
+All modules are re-exported from the package root.
+
+Example:
+
+    src/index.ts
+
+export * from './createUUIDV4'
+export * from './parseJSONSafe'
+export * from './withTryCatch'
 
 This allows consumers to import utilities from a single entry point.
 
@@ -234,17 +273,6 @@ This allows consumers to import utilities from a single entry point.
 
 In addition to feature utilities, the library also contains **shared
 TypeScript type primitives**.
-
-A type file may contain multiple related type utilities. If the file grows too large, it may be converted into a
-directory with individual type modules.
-
-These are not treated as feature modules because they:
-
-- do not provide runtime functionality
-- act as reusable type building blocks
-- would gain little value from the full module structure
-
-Type utilities therefore use a **flat structure**.
 
 Example:
 
@@ -262,38 +290,25 @@ These files export reusable types such as:
     Dictionary<K, V>
     Primitive
 
-The `index.ts` file in the `type` directory re‑exports all type
-primitives so they can be imported from the package root:
-
-``` ts
-export * from './type'
-```
-
-Usage example:
-
-``` ts
-import type { Maybe } from '@petr-ptacek/js-core'
-```
-
 ------------------------------------------------------------------------
 
 # Design Principles
 
 The `js-core` module architecture follows several principles.
 
-Feature isolation\
+Feature isolation  
 Each utility lives in its own directory.
 
-Explicit public API\
+Explicit public API  
 `index.ts` defines what is publicly exported.
 
-Implementation separation\
+Implementation separation  
 Internal helpers and types are separated from the public API.
 
-Documentation per utility\
+Documentation per utility  
 Each module contains its own documentation.
 
-Scalable structure\
+Scalable structure  
 The pattern works equally well for small and large utilities.
 
 ------------------------------------------------------------------------
@@ -306,12 +321,6 @@ Recommended file:
 
     docs/architecture/naming-conventions.md
 
-Keeping naming rules separate ensures:
-
-- architectural rules remain stable
-- naming rules can evolve independently
-- documentation stays easier to maintain
-
 ------------------------------------------------------------------------
 
 # Summary
@@ -323,8 +332,11 @@ Canonical module structure:
       <feature>.ts
       types.ts
       utils.ts
+      meta.ts
       __tests__/
       README.md
+      demo/
+      snippets/
 
 Core rules:
 

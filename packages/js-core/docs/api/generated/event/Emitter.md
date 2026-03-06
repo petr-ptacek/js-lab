@@ -215,6 +215,8 @@ emitter.emit("userLogout", "user123");
 // One-time handlers
 console.log("\n=== One-time Handlers ===");
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 const _onceCleanup = emitter.once("error", (message) => {
   console.log(`🔥 This error handler will only run once: ${message}`);
 });
@@ -488,6 +490,9 @@ class AnalyticsService {
 const authService = new AuthService(appEventBus);
 const dataService = new DataService(appEventBus);
 const uiManager = new UIManager(appEventBus);
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 const _analyticsService = new AnalyticsService(appEventBus);
 
 // Application flow simulation

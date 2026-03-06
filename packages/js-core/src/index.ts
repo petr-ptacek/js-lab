@@ -6,3 +6,4 @@ export * from "./event";
 export * from "./browser";
 export * from "./async";
 export * from "./crypto";
+export * from "./error";

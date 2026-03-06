@@ -1,12 +1,12 @@
-import { invokeCallbacks, resolveFailureResult } from "./helpers";
+import type { ValueOrFactory } from "../../type";
 import type {
   TryCatchResult,
   WithTryCatchOptions,
   TryCatchResultSuccess,
   TryCatchResultFailureWithData,
   TryCatchResultFailureNoData,
-} from "./types";
-import type { ValueOrFactory } from "../../type";
+} from "../withTryCatch";
+import { invokeCallbacks, resolveFailureResult } from "../withTryCatch/helpers";
 
 
 export function withTryCatchSync<TResult, TError = unknown>(

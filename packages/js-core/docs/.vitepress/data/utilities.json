@@ -1,6 +1,39 @@
 {
   "utilities": [
     {
+      "id": "AsyncFn",
+      "name": "AsyncFn",
+      "description": "Represents an asynchronous function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "async",
+        "promise",
+        "generic"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "AsyncProjectionFn",
+      "name": "AsyncProjectionFn",
+      "description": "Represents an asynchronous projection function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "async",
+        "projection",
+        "mapping",
+        "transformation"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
       "id": "clamp",
       "name": "clamp",
       "description": "Constrains a numeric value between specified minimum and maximum boundaries.",
@@ -18,6 +51,23 @@
       "since": "1.0.0"
     },
     {
+      "id": "Comparator",
+      "name": "Comparator",
+      "description": "Represents a comparison function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "comparator",
+        "sorting",
+        "ordering",
+        "comparison"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
       "id": "createUUIDV4",
       "name": "createUUIDV4",
       "description": "Generates a random UUID (version 4) string.",
@@ -28,6 +78,57 @@
         "random",
         "string",
         "crypto"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "Dict",
+      "name": "Dict",
+      "description": "Represents a dictionary object with arbitrary keys and values.",
+      "category": "type",
+      "tags": [
+        "type",
+        "dictionary",
+        "record",
+        "object",
+        "mapping",
+        "key-value"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "Dimensions",
+      "name": "Dimensions",
+      "description": "Represents a two-dimensional size defined by width and height.",
+      "category": "type",
+      "tags": [
+        "type",
+        "dimensions",
+        "size",
+        "width",
+        "height",
+        "2d"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "DimensionsTarget",
+      "name": "DimensionsTarget",
+      "description": "Defines a target dimension using a single axis.",
+      "category": "type",
+      "tags": [
+        "type",
+        "dimensions",
+        "target",
+        "scaling",
+        "exclusive",
+        "union"
       ],
       "demo": false,
       "snippets": false,
@@ -67,6 +168,22 @@
       "since": "1.0.0"
     },
     {
+      "id": "Factory",
+      "name": "Factory",
+      "description": "Represents a factory function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "factory",
+        "creation",
+        "parameters"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
       "id": "get",
       "name": "get",
       "description": "Safely gets a nested value from an object using a dot-separated path with full TypeScript type safety.",
@@ -84,6 +201,184 @@
       "since": "1.0.0"
     },
     {
+      "id": "getAspectRatio",
+      "name": "getAspectRatio",
+      "description": "Computes the aspect ratio from given dimensions.",
+      "category": "number",
+      "tags": [
+        "aspect-ratio",
+        "dimensions",
+        "ratio",
+        "calculation",
+        "image"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "getRandomNumber",
+      "name": "getRandomNumber",
+      "description": "Returns a random integer within the given inclusive range.",
+      "category": "number",
+      "tags": [
+        "random",
+        "integer",
+        "range",
+        "generation",
+        "math"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "Getter",
+      "name": "Getter",
+      "description": "Represents a getter function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "getter",
+        "lazy",
+        "parameterless"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "Identity",
+      "name": "Identity",
+      "description": "Represents an identity function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "identity",
+        "passthrough",
+        "neutral"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "MaybeNull",
+      "name": "MaybeNull",
+      "description": "Represents a value that may be null.",
+      "category": "type",
+      "tags": [
+        "type",
+        "null",
+        "union",
+        "nullable",
+        "optional"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "MaybeNullable",
+      "name": "MaybeNullable",
+      "description": "Represents a value that may be null or undefined.",
+      "category": "type",
+      "tags": [
+        "type",
+        "null",
+        "undefined",
+        "union",
+        "nullable",
+        "optional"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "MaybePromise",
+      "name": "MaybePromise",
+      "description": "Represents a value that may be returned synchronously or as a Promise.",
+      "category": "type",
+      "tags": [
+        "type",
+        "promise",
+        "async",
+        "sync",
+        "union",
+        "flexible"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "MaybeUndefined",
+      "name": "MaybeUndefined",
+      "description": "Represents a value that may be undefined.",
+      "category": "type",
+      "tags": [
+        "type",
+        "undefined",
+        "union",
+        "optional",
+        "uninitialized"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "parseJSONSafe",
+      "name": "parseJSONSafe",
+      "description": "Safely parses a JSON string with optional fallback handling.",
+      "category": "error",
+      "tags": [
+        "json",
+        "parse",
+        "safe",
+        "fallback",
+        "error-handling"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "PrimitiveValue",
+      "name": "PrimitiveValue",
+      "description": "Represents a JavaScript primitive value.",
+      "category": "type",
+      "tags": [
+        "type",
+        "primitive",
+        "javascript",
+        "union",
+        "value"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "ProjectionFn",
+      "name": "ProjectionFn",
+      "description": "Represents a projection function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "projection",
+        "mapping",
+        "transformation"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
       "id": "range",
       "name": "range",
       "description": "Creates an array of numbers following the same semantics as Python's range.",
@@ -95,6 +390,39 @@
         "sequence",
         "python",
         "iteration"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "RoundValueFn",
+      "name": "RoundValueFn",
+      "description": "Function used to round a numeric value.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "rounding",
+        "numeric",
+        "precision",
+        "math"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "scaleByAspectRatio",
+      "name": "scaleByAspectRatio",
+      "description": "Scales dimensions while preserving aspect ratio to a target width or height.",
+      "category": "number",
+      "tags": [
+        "scaling",
+        "aspect-ratio",
+        "dimensions",
+        "responsive",
+        "image"
       ],
       "demo": false,
       "snippets": true,
@@ -118,6 +446,71 @@
       "since": "1.0.0"
     },
     {
+      "id": "SyncFn",
+      "name": "SyncFn",
+      "description": "Represents a synchronous function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "sync",
+        "synchronous",
+        "generic"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "toPercentage",
+      "name": "toPercentage",
+      "description": "Converts a numeric value to a percentage relative to a given base.",
+      "category": "number",
+      "tags": [
+        "percentage",
+        "math",
+        "calculation",
+        "conversion"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "ValueOrFactory",
+      "name": "ValueOrFactory",
+      "description": "Represents a value or a factory function that produces a value.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "value",
+        "factory",
+        "flexible",
+        "parameters"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "ValueOrGetter",
+      "name": "ValueOrGetter",
+      "description": "Represents a value or a getter function that produces a value.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "value",
+        "getter",
+        "flexible",
+        "union"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
       "id": "withAbortable",
       "name": "withAbortable",
       "description": "Wraps an asynchronous function with AbortController lifecycle management.",
@@ -129,6 +522,40 @@
         "cancellation",
         "timeout",
         "lifecycle"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "withTryCatch",
+      "name": "withTryCatch",
+      "description": "Executes a function and returns its outcome as a discriminated union.",
+      "category": "error",
+      "tags": [
+        "error",
+        "try-catch",
+        "async",
+        "result",
+        "union",
+        "handling"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "withTryCatchSync",
+      "name": "withTryCatchSync",
+      "description": "Executes a synchronous function and returns its outcome as a discriminated union.",
+      "category": "error",
+      "tags": [
+        "error",
+        "try-catch",
+        "sync",
+        "result",
+        "union",
+        "handling"
       ],
       "demo": false,
       "snippets": true,
@@ -153,6 +580,322 @@
     }
   ],
   "categories": {
+    "type": [
+      {
+        "id": "AsyncFn",
+        "name": "AsyncFn",
+        "description": "Represents an asynchronous function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "async",
+          "promise",
+          "generic"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "AsyncProjectionFn",
+        "name": "AsyncProjectionFn",
+        "description": "Represents an asynchronous projection function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "async",
+          "projection",
+          "mapping",
+          "transformation"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Comparator",
+        "name": "Comparator",
+        "description": "Represents a comparison function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "comparator",
+          "sorting",
+          "ordering",
+          "comparison"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Dict",
+        "name": "Dict",
+        "description": "Represents a dictionary object with arbitrary keys and values.",
+        "category": "type",
+        "tags": [
+          "type",
+          "dictionary",
+          "record",
+          "object",
+          "mapping",
+          "key-value"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Dimensions",
+        "name": "Dimensions",
+        "description": "Represents a two-dimensional size defined by width and height.",
+        "category": "type",
+        "tags": [
+          "type",
+          "dimensions",
+          "size",
+          "width",
+          "height",
+          "2d"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "DimensionsTarget",
+        "name": "DimensionsTarget",
+        "description": "Defines a target dimension using a single axis.",
+        "category": "type",
+        "tags": [
+          "type",
+          "dimensions",
+          "target",
+          "scaling",
+          "exclusive",
+          "union"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Factory",
+        "name": "Factory",
+        "description": "Represents a factory function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "factory",
+          "creation",
+          "parameters"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Getter",
+        "name": "Getter",
+        "description": "Represents a getter function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "getter",
+          "lazy",
+          "parameterless"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Identity",
+        "name": "Identity",
+        "description": "Represents an identity function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "identity",
+          "passthrough",
+          "neutral"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "MaybeNull",
+        "name": "MaybeNull",
+        "description": "Represents a value that may be null.",
+        "category": "type",
+        "tags": [
+          "type",
+          "null",
+          "union",
+          "nullable",
+          "optional"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "MaybeNullable",
+        "name": "MaybeNullable",
+        "description": "Represents a value that may be null or undefined.",
+        "category": "type",
+        "tags": [
+          "type",
+          "null",
+          "undefined",
+          "union",
+          "nullable",
+          "optional"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "MaybePromise",
+        "name": "MaybePromise",
+        "description": "Represents a value that may be returned synchronously or as a Promise.",
+        "category": "type",
+        "tags": [
+          "type",
+          "promise",
+          "async",
+          "sync",
+          "union",
+          "flexible"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "MaybeUndefined",
+        "name": "MaybeUndefined",
+        "description": "Represents a value that may be undefined.",
+        "category": "type",
+        "tags": [
+          "type",
+          "undefined",
+          "union",
+          "optional",
+          "uninitialized"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "PrimitiveValue",
+        "name": "PrimitiveValue",
+        "description": "Represents a JavaScript primitive value.",
+        "category": "type",
+        "tags": [
+          "type",
+          "primitive",
+          "javascript",
+          "union",
+          "value"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "ProjectionFn",
+        "name": "ProjectionFn",
+        "description": "Represents a projection function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "projection",
+          "mapping",
+          "transformation"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "RoundValueFn",
+        "name": "RoundValueFn",
+        "description": "Function used to round a numeric value.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "rounding",
+          "numeric",
+          "precision",
+          "math"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "SyncFn",
+        "name": "SyncFn",
+        "description": "Represents a synchronous function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "sync",
+          "synchronous",
+          "generic"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "ValueOrFactory",
+        "name": "ValueOrFactory",
+        "description": "Represents a value or a factory function that produces a value.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "value",
+          "factory",
+          "flexible",
+          "parameters"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "ValueOrGetter",
+        "name": "ValueOrGetter",
+        "description": "Represents a value or a getter function that produces a value.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "value",
+          "getter",
+          "flexible",
+          "union"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      }
+    ],
     "number": [
       {
         "id": "clamp",
@@ -166,6 +909,69 @@
           "bounds",
           "range",
           "limit"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "getAspectRatio",
+        "name": "getAspectRatio",
+        "description": "Computes the aspect ratio from given dimensions.",
+        "category": "number",
+        "tags": [
+          "aspect-ratio",
+          "dimensions",
+          "ratio",
+          "calculation",
+          "image"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "getRandomNumber",
+        "name": "getRandomNumber",
+        "description": "Returns a random integer within the given inclusive range.",
+        "category": "number",
+        "tags": [
+          "random",
+          "integer",
+          "range",
+          "generation",
+          "math"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "scaleByAspectRatio",
+        "name": "scaleByAspectRatio",
+        "description": "Scales dimensions while preserving aspect ratio to a target width or height.",
+        "category": "number",
+        "tags": [
+          "scaling",
+          "aspect-ratio",
+          "dimensions",
+          "responsive",
+          "image"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "toPercentage",
+        "name": "toPercentage",
+        "description": "Converts a numeric value to a percentage relative to a given base.",
+        "category": "number",
+        "tags": [
+          "percentage",
+          "math",
+          "calculation",
+          "conversion"
         ],
         "demo": false,
         "snippets": true,
@@ -289,6 +1095,58 @@
           "pairs",
           "mapping",
           "transform"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
+    "error": [
+      {
+        "id": "parseJSONSafe",
+        "name": "parseJSONSafe",
+        "description": "Safely parses a JSON string with optional fallback handling.",
+        "category": "error",
+        "tags": [
+          "json",
+          "parse",
+          "safe",
+          "fallback",
+          "error-handling"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "withTryCatch",
+        "name": "withTryCatch",
+        "description": "Executes a function and returns its outcome as a discriminated union.",
+        "category": "error",
+        "tags": [
+          "error",
+          "try-catch",
+          "async",
+          "result",
+          "union",
+          "handling"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "withTryCatchSync",
+        "name": "withTryCatchSync",
+        "description": "Executes a synchronous function and returns its outcome as a discriminated union.",
+        "category": "error",
+        "tags": [
+          "error",
+          "try-catch",
+          "sync",
+          "result",
+          "union",
+          "handling"
         ],
         "demo": false,
         "snippets": true,

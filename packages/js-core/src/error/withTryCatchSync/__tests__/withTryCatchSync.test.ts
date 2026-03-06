@@ -70,7 +70,7 @@ describe("withTryCatchSync", () => {
         throw new Error("boom");
       },
       {
-        mapError: (e) => (e instanceof Error ? e.message : "unknown"),
+        mapError: (e: any) => (e instanceof Error ? e.message : "unknown"),
       },
     );
 

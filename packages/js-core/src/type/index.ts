@@ -1,5 +1,6 @@
-export * from "./primitive";
-export * from "./dictionary";
 export * from "./maybe";
-export * from "./dimensions";
 export * from "./function";
+export type { PrimitiveValue } from "./PrimitiveValue";
+export type { Dict } from "./Dict";
+export type { Dimensions } from "./Dimensions";
+export type { DimensionsTarget } from "./DimensionsTarget";

@@ -1,4 +1,5 @@
-import { withTryCatchSync } from "../withTryCatch";
+import type { WithTryCatchOptions } from "../withTryCatch";
+import { withTryCatchSync } from "../withTryCatchSync";
 
 /* -------------------------------------------------- */
 /* Overloads */
@@ -20,9 +21,6 @@ export function parseJSONSafe<T>(value: string): T | undefined;
  * If parsing fails (invalid JSON), the provided `fallback` value is returned instead.
  * When no fallback is provided, `undefined` is returned.
  *
- * @typeParam T - Expected type of the parsed JSON value.
- * @typeParam D - Fallback value type.
- *
  * @param value - JSON string to parse.
  * @param fallback - Fallback value returned when parsing fails.
  *
@@ -42,10 +40,12 @@ export function parseJSONSafe<T>(value: string): T | undefined;
  * parseJSONSafe('invalid');
  * // => undefined
  * ```
+ *
+ * @since 1.0.0
  */
 export function parseJSONSafe<T>(
   value: string,
-  fallback?: T,
+  fallback?: WithTryCatchOptions<T>["fallback"],
 ): T | undefined {
   const result = withTryCatchSync<T | undefined>(
     () => JSON.parse(value) as T,

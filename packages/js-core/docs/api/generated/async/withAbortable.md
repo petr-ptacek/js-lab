@@ -149,6 +149,9 @@ const getUser = withAbortable(
 );
 
 // Execute the function
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 async function _example() {
   try {
     console.log("=== Basic Usage ===");
@@ -359,6 +362,8 @@ class ImageGallery {
 }
 
 // Usage examples
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 async function _demonstratePatterns() {
   console.log("=== Search Pattern ===");
   const searchComponent = new SearchComponent();
@@ -441,6 +446,8 @@ const downloadFile = withAbortable(
   }
 );
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 async function _timeoutExample() {
   console.log("\n=== Timeout Example ===");
 
@@ -458,6 +465,8 @@ async function _timeoutExample() {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 async function _manualAbortExample() {
   console.log("\n=== Manual Abort Example ===");
 
@@ -496,6 +505,8 @@ const concurrentTask = withAbortable(
   { autoAbort: false } // Allow concurrent executions
 );
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 async function _concurrentExample() {
   console.log("\n=== Concurrent Example ===");
 

@@ -1,17 +1,4 @@
 /**
- * Represents a two-dimensional size defined by width and height.
- *
- * This type is domain-agnostic and is used across the library
- * for size, scaling, and aspect-ratio related calculations.
- *
- * @since 1.0.0
- */
-export type Dimensions = {
-  width: number;
-  height: number;
-};
-
-/**
  * Defines a target dimension using a single axis.
  *
  * Exactly one property must be provided:
@@ -20,6 +7,12 @@ export type Dimensions = {
  *
  * This type enforces an exclusive choice between dimensions and
  * prevents invalid states where both or neither are specified.
+ *
+ * @example
+ * ```ts
+ * const targetWidth: DimensionsTarget = { width: 800 };
+ * const targetHeight: DimensionsTarget = { height: 600 };
+ * ```
  *
  * @since 1.0.0
  */

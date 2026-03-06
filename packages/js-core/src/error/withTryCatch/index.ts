@@ -4,8 +4,7 @@ export type {
   TryCatchResultSuccess,
   TryCatchResultFailure,
   TryCatchResultFailureWithData,
-  TryCatchResultFailureNoData
+  TryCatchResultFailureNoData,
 } from "./types";
 
 export { withTryCatch } from "./withTryCatch";
-export { withTryCatchSync } from "./withTryCatchSync";

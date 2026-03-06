@@ -6,7 +6,8 @@ export type MetaCategory =
   | "event"
   | "number"
   | "object"
-  | "validation";
+  | "validation"
+  | "type";
 
 export type Meta = Readonly<{
   id: string;

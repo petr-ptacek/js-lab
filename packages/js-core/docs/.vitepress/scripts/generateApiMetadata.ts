@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const SRC_ROOT = path.resolve(__dirname, "../../../src");
-const DOCS_ROOT = path.resolve(__dirname, "../../api/generated");
+const DOCS_ROOT = path.resolve(__dirname, "../../api");
 const DATA_OUTPUT = path.resolve(__dirname, "../data/utilities.json");
 
 /* -------------------------------------------------- */
@@ -278,7 +278,7 @@ Utilities in the **${category}** category.
 ${utilities
     .map(
       u =>
-        `<li><a href="/api/generated/${u.category}/${u.id}">${u.name}</a> — ${u.description}</li>`,
+        `<li><a href="/api/${u.category}/${u.id}">${u.name}</a> — ${u.description}</li>`,
     )
     .join("\n")}
 </ul>
@@ -323,7 +323,7 @@ Collection of utilities available in **@petr-ptacek/js-core**.
 ${Object.entries(categories)
         .map(
           ([category, utils]) => `
-<a class="vp-card" href="/api/generated/${category}/">
+<a class="vp-card" href="/api/${category}/">
 <h3>${category}</h3>
 <p>${utils.length} utilities</p>
 </a>`,

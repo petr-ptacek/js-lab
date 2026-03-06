@@ -2,7 +2,8 @@ import { defineConfig } from "vitepress";
 import data from "./data/utilities.json";
 
 function buildSidebar() {
-  const categories = Object.entries(data.categories);
+  const categories = Object.entries(data.categories)
+                           .sort(([a], [b]) => a.localeCompare(b)); // Sort categories A-Z
 
   return [
     {
@@ -14,11 +15,11 @@ function buildSidebar() {
         items: [
           {
             text: "All utilities",
-            link: `/api/generated/${category}/`,
+            link: `/api/${category}/`,
           },
           ...utils.map(u => ({
             text: u.name,
-            link: `/api/generated/${u.category}/${u.id}`,
+            link: `/api/${u.category}/${u.id}`,
           })),
         ],
       })),
@@ -34,10 +35,10 @@ export default defineConfig({
   ignoreDeadLinks: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    // nav: [
-    //   { text: "Home", link: "/" },
-    //   { text: "API", link: "/api/" },
-    // ],
+    nav: [
+      { text: "Home", link: "/" },
+      { text: "API Reference", link: "/api/" },
+    ],
 
     search: {
       provider: "local",
@@ -48,7 +49,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" },
+      { icon: "github", link: "https://github.com/petr-ptacek/js-lab" },
     ],
   },
 });

@@ -14,6 +14,8 @@
     "typecheck": "pnpm --parallel run typecheck:js-core && pnpm run typecheck:vue-core",
     "typecheck:js-core": "pnpm --filter \"@petr-ptacek/js-core\" run type:check",
     "typecheck:vue-core": "pnpm --filter \"@petr-ptacek/vue-core\" run type:check",
+    "docs": "pnpm --parallel run docs:js-core",
+    "docs:js-core": "pnpm --filter \"@petr-ptacek/js-core\" run docs:build",
     "dev": "pnpm --dir apps/playground/nuxt run dev",
     "prepare": "husky",
     "clean": "pnpm -r exec -- rm -rf node_modules & rm -rf node_modules",

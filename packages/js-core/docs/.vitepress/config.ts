@@ -1,5 +1,5 @@
 import { defineConfig } from "vitepress";
-import data from "./data/utilities.json";
+import data             from "./data/utilities.json";
 
 function buildSidebar() {
   const categories = Object.entries(data.categories)
@@ -30,6 +30,7 @@ function buildSidebar() {
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "@petr-ptacek/js-core",
+  base: "/js-lab/js-core/",
   description: "JavaScript & TypeScript utility library",
   // base: "/js-core/",
   ignoreDeadLinks: true,

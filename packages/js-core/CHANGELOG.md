@@ -1,5 +1,11 @@
 # @petr-ptacek/js-core
 
+## 0.2.1
+
+### Patch Changes
+
+- 51bcd67: Update js-core readme, add links to docs page.
+
 ## 0.2.0
 
 ### Minor Changes

@@ -27,7 +27,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build root docs
-        run: pnpm docs
+        run: pnpm docs:build
 
       - name: Move root docs
         run: |

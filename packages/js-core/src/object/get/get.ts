@@ -1,32 +1,5 @@
-import type { PrimitiveValue } from "../../type";
-import { isArray, isObject } from "../../validation";
-
-type Path<T> =
-  T extends PrimitiveValue
-  ? never
-  : T extends readonly (infer U)[]
-    ? `${number}` | `${number}.${Path<U>}`
-    : {
-      [K in keyof T & string]:
-      T[K] extends PrimitiveValue
-      ? K
-      : K | `${K}.${Path<T[K]>}`;
-    }[keyof T & string];
-
-type PathValue<T, P extends string> =
-  T extends readonly (infer U)[]
-  ? P extends `${number}.${infer Rest}`
-    ? PathValue<U, Rest>
-    : P extends `${number}`
-      ? U
-      : never
-  : P extends `${infer K}.${infer Rest}`
-    ? K extends keyof T
-      ? PathValue<T[K], Rest>
-      : never
-    : P extends keyof T
-      ? T[P]
-      : never;
+import type { Path, PathValue } from "./types";
+import { isArray, isObject }    from "../../validation";
 
 export function get<
   T extends object,
@@ -90,14 +63,14 @@ export function get(obj: object, path: string, defaultValue?: unknown) {
   const result = path
     .split(".")
     .reduce<unknown>((acc, key) => {
-      if (acc == null) return undefined;
+      if ( acc == null ) return undefined;
 
-      if (isArray(acc)) {
+      if ( isArray(acc) ) {
         const index = Number(key);
         return Number.isInteger(index) ? acc[index] : undefined;
       }
 
-      if (isObject(acc)) {
+      if ( isObject(acc) ) {
         return (acc as Record<string, unknown>)[key];
       }
 

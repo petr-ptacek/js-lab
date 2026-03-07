@@ -18,7 +18,7 @@
     "coverage:watch": "vitest --coverage --watch",
     "clear": "rimraf ./dist ./node_modules/.tmp",
     "prepublishOnly": "pnpm clear && pnpm types:check && pnpm test && pnpm build && pnpm types:build",
-    "docs:meta": "node docs/.vitepress/scripts/generateApiMetadata.ts",
+    "docs:meta": "tsx docs/.vitepress/scripts/generateApiMetadata.ts",
     "docs:dev": "pnpm docs:meta && vitepress dev docs",
     "docs:build": "pnpm docs:meta && vitepress build docs",
     "docs:preview": "vitepress preview docs",

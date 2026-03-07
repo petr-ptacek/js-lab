@@ -279,7 +279,7 @@ Collection of utilities available in **@petr-ptacek/js-core**.
 ${Object.entries(categories)
         .map(
           ([category, utils]) => `
-<a class="vp-card" href="/api/${category}/">
+<a class="vp-card" href="./${category}/">
 <h3>${category}</h3>
 <p>${utils.length} utilities</p>
 </a>`,

@@ -45,9 +45,12 @@ console.log(createUUIDV4()); // "550e8400-e29b-41d4-a716-446655440000"
 ```
 
 ## 📖 API Reference
-For a complete list of available functions and their documentation, please refer to the API Reference ([docs](./docs/api/) | [web](/api/)).
+
+For a complete list of available functions and their documentation, please refer to
+the [API Reference](https://petr-ptacek.github.io/js-lab/js-core/api/).
 
 ## 📄 License
 
-[MIT License](https://github.com/petr-ptacek/js-lab/blob/main/LICENSE) © 2026-PRESENT [Petr Ptáček](https://github.com/petr-ptacek)
+[MIT License](https://github.com/petr-ptacek/js-lab/blob/main/LICENSE) ©
+2026-PRESENT [Petr Ptáček](https://github.com/petr-ptacek)
 

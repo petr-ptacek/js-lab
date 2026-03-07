@@ -32,7 +32,6 @@ export default defineConfig({
   title: "@petr-ptacek/js-core",
   base: "/js-lab/js-core/",
   description: "JavaScript & TypeScript utility library",
-  // base: "/js-core/",
   ignoreDeadLinks: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

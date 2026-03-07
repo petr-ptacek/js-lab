@@ -1,8 +1,8 @@
-import fs from "node:fs";
-import path from "node:path";
-import fg from "fast-glob";
+import fs                               from "node:fs";
+import path                             from "node:path";
+import fg                               from "fast-glob";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { dirname } from "node:path";
+import { dirname }                      from "node:path";
 
 import type { Meta } from "../../../src/_internal/meta";
 
@@ -29,7 +29,7 @@ function cleanGeneratedDocs() {
 /* -------------------------------------------------- */
 
 async function findMetaFiles(): Promise<string[]> {
-  return fg("**/meta.ts", { cwd: SRC_ROOT });
+  return fg("**/meta.ts", { cwd: SRC_ROOT, ignore: ["**/_internal/**"] });
 }
 
 /* -------------------------------------------------- */
@@ -41,7 +41,7 @@ async function loadMeta(file: string): Promise<{ meta: Meta; utilDir: string } |
   const modulePath = path.join(SRC_ROOT, file);
   const mod = await import(pathToFileURL(modulePath).href);
 
-  if (!mod.meta) {
+  if ( !mod.meta ) {
     console.warn(`Skipping meta-less module: ${file}`);
     return null;
   }
@@ -86,7 +86,7 @@ title: ${title}${categoryBlock}${tagsBlock}${sinceBlock}
 function loadReadme(utilDir: string): string {
   const readmePath = path.join(utilDir, "README.md");
 
-  if (!fs.existsSync(readmePath)) {
+  if ( !fs.existsSync(readmePath) ) {
     return "";
   }
 
@@ -101,7 +101,7 @@ function loadReadme(utilDir: string): string {
 function loadSnippets(utilDir: string): string {
   const snippetsDir = path.join(utilDir, "snippets");
 
-  if (!fs.existsSync(snippetsDir)) {
+  if ( !fs.existsSync(snippetsDir) ) {
     return "";
   }
 
@@ -109,7 +109,7 @@ function loadSnippets(utilDir: string): string {
 
   let content = "";
 
-  for (const file of files) {
+  for ( const file of files ) {
     const snippetPath = path.join(snippetsDir, file);
     const code = fs.readFileSync(snippetPath, "utf8");
 
@@ -133,7 +133,7 @@ ${code}
 function loadDemo(utilDir: string): string {
   const demoDir = path.join(utilDir, "demo");
 
-  if (!fs.existsSync(demoDir)) {
+  if ( !fs.existsSync(demoDir) ) {
     return "";
   }
 
@@ -141,7 +141,7 @@ function loadDemo(utilDir: string): string {
 
   let content = "";
 
-  for (const file of files) {
+  for ( const file of files ) {
     const componentName =
       "Demo" + file.replace(".vue", "").replace(/^\w/, c => c.toUpperCase());
 
@@ -218,8 +218,8 @@ function writeUtilitiesJson(utilities: Meta[]) {
 
   const categories: Record<string, Meta[]> = {};
 
-  for (const util of utilities) {
-    if (!categories[util.category]) {
+  for ( const util of utilities ) {
+    if ( !categories[util.category] ) {
       categories[util.category] = [];
     }
 
@@ -238,34 +238,6 @@ function writeUtilitiesJson(utilities: Meta[]) {
     ),
   );
 }
-
-// function writeCategoryIndex(category: string, utilities: Meta[]) {
-//
-//   const categoryDir = path.join(DOCS_ROOT, category);
-//
-//   const content = `# ${category}
-//
-// Utilities in the **${category}** category.
-//
-// <div class="vp-grid">
-//
-// ${utilities
-//     .map(
-//       u => `<a class="vp-card" href="/api/generated/${u.category}/${u.id}">
-// <h3>${u.name}</h3>
-// <p>${u.description}</p>
-// </a>`,
-//     )
-//     .join("\n")}
-//
-// </div>
-// `;
-//
-//   fs.writeFileSync(
-//     path.join(categoryDir, "index.md"),
-//     content,
-//   );
-// }
 
 function writeCategoryIndex(category: string, utilities: Meta[]) {
   const categoryDir = path.join(DOCS_ROOT, category);
@@ -295,22 +267,6 @@ function buildMetaPanel(meta: Meta) {
 ${tags ? `> **Tags:** ${tags}` : ""}
 `;
 }
-
-
-// function writeApiLanding() {
-//
-//   const content = `# API
-//
-// Collection of utilities available in **@petr-ptacek/js-core**.
-//
-// <ApiBrowser />
-// `;
-//
-//   fs.writeFileSync(
-//     path.resolve(__dirname, "../../api/index.md"),
-//     content,
-//   );
-// }
 
 function writeApiLanding(categories: Record<string, Meta[]>) {
 
@@ -351,10 +307,10 @@ async function generate() {
 
   const utilities: Meta[] = [];
 
-  for (const file of files) {
+  for ( const file of files ) {
     const result = await loadMeta(file);
 
-    if (!result) continue;
+    if ( !result ) continue;
 
     const { meta, utilDir } = result;
 
@@ -373,15 +329,15 @@ async function generate() {
 
   const categories: Record<string, Meta[]> = {};
 
-  for (const util of utilities) {
-    if (!categories[util.category]) {
+  for ( const util of utilities ) {
+    if ( !categories[util.category] ) {
       categories[util.category] = [];
     }
 
     categories[util.category].push(util);
   }
 
-  for (const [category, utils] of Object.entries(categories)) {
+  for ( const [category, utils] of Object.entries(categories) ) {
     writeCategoryIndex(category, utils);
   }
 

@@ -1,0 +1,2 @@
+export { isDate } from "./isDate";
+

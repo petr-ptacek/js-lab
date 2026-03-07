@@ -7,7 +7,7 @@ Collection of utilities available in **@petr-ptacek/js-core**.
 
 <a class="vp-card" href="/api/type/">
 <h3>type</h3>
-<p>19 utilities</p>
+<p>17 utilities</p>
 </a>
 
 <a class="vp-card" href="/api/number/">
@@ -32,7 +32,12 @@ Collection of utilities available in **@petr-ptacek/js-core**.
 
 <a class="vp-card" href="/api/validation/">
 <h3>validation</h3>
-<p>2 utilities</p>
+<p>17 utilities</p>
+</a>
+
+<a class="vp-card" href="/api/browser/">
+<h3>browser</h3>
+<p>6 utilities</p>
 </a>
 
 <a class="vp-card" href="/api/error/">

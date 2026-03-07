@@ -1,0 +1,2 @@
+export { isBoolean } from "./isBoolean";
+

@@ -1,0 +1,1 @@
+export { shrinkImageElement } from "./shrinkImageElement";

@@ -1,0 +1,2 @@
+export { isFiniteNumber } from "./isFiniteNumber";
+

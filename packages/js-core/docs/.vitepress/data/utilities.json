@@ -17,23 +17,6 @@
       "since": "1.0.0"
     },
     {
-      "id": "AsyncProjectionFn",
-      "name": "AsyncProjectionFn",
-      "description": "Represents an asynchronous projection function.",
-      "category": "type",
-      "tags": [
-        "type",
-        "function",
-        "async",
-        "projection",
-        "mapping",
-        "transformation"
-      ],
-      "demo": false,
-      "snippets": false,
-      "since": "1.0.0"
-    },
-    {
       "id": "clamp",
       "name": "clamp",
       "description": "Constrains a numeric value between specified minimum and maximum boundaries.",
@@ -281,6 +264,210 @@
       "since": "1.0.0"
     },
     {
+      "id": "isBigint",
+      "name": "isBigint",
+      "description": "Checks whether the given value is a bigint.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "bigint",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isBoolean",
+      "name": "isBoolean",
+      "description": "Checks whether the given value is a boolean.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "boolean",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isDate",
+      "name": "isDate",
+      "description": "Checks whether the given value is a Date instance.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "date",
+        "instance",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isFiniteNumber",
+      "name": "isFiniteNumber",
+      "description": "Checks whether the given value is a finite number.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "number",
+        "finite",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isFunction",
+      "name": "isFunction",
+      "description": "Checks whether the given value is a function.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "function",
+        "callable",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isInteractiveElement",
+      "name": "isInteractiveElement",
+      "description": "Determines whether an element is interactive or contained within an interactive element.",
+      "category": "browser",
+      "tags": [
+        "dom",
+        "element",
+        "interactive",
+        "event",
+        "button",
+        "form"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isNaNValue",
+      "name": "isNaNValue",
+      "description": "Checks whether the given value is NaN (Not-a-Number).",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "number",
+        "nan",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isNull",
+      "name": "isNull",
+      "description": "Checks whether the given value is null.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "null",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isNullable",
+      "name": "isNullable",
+      "description": "Checks whether the given value is null or undefined.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "null",
+        "undefined",
+        "nullable",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isNumber",
+      "name": "isNumber",
+      "description": "Checks whether the given value is a number.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "number",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isObject",
+      "name": "isObject",
+      "description": "Checks whether the given value is an object (including arrays, but excluding null).",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "object",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isPlainObject",
+      "name": "isPlainObject",
+      "description": "Checks whether the given value is a plain object.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "object",
+        "plain",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isPrimitive",
+      "name": "isPrimitive",
+      "description": "Checks whether the given value is a JavaScript primitive.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "primitive",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
       "id": "isString",
       "name": "isString",
       "description": "Checks whether the given value is a string.",
@@ -293,6 +480,68 @@
       ],
       "demo": false,
       "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isSymbol",
+      "name": "isSymbol",
+      "description": "Checks whether the given value is a symbol.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "symbol",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isUndefined",
+      "name": "isUndefined",
+      "description": "Checks whether the given value is undefined.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "undefined",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isValidDate",
+      "name": "isValidDate",
+      "description": "Checks whether the given value is a valid Date instance.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "date",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "loadImage",
+      "name": "loadImage",
+      "description": "Loads an image from a given source URL with optional configuration.",
+      "category": "browser",
+      "tags": [
+        "image",
+        "loading",
+        "promise",
+        "network",
+        "async",
+        "html"
+      ],
+      "demo": false,
+      "snippets": false,
       "since": "1.0.0"
     },
     {
@@ -394,22 +643,6 @@
       "since": "1.0.0"
     },
     {
-      "id": "ProjectionFn",
-      "name": "ProjectionFn",
-      "description": "Represents a projection function.",
-      "category": "type",
-      "tags": [
-        "type",
-        "function",
-        "projection",
-        "mapping",
-        "transformation"
-      ],
-      "demo": false,
-      "snippets": false,
-      "since": "1.0.0"
-    },
-    {
       "id": "range",
       "name": "range",
       "description": "Creates an array of numbers following the same semantics as Python's range.",
@@ -454,6 +687,73 @@
         "dimensions",
         "responsive",
         "image"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "scaleImageByAspectRatio",
+      "name": "scaleImageByAspectRatio",
+      "description": "Scales an image to a target width or height while preserving its aspect ratio.",
+      "category": "browser",
+      "tags": [
+        "image",
+        "scaling",
+        "aspect-ratio",
+        "dimensions",
+        "responsive"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "shrinkImage",
+      "name": "shrinkImage",
+      "description": "Shrinks an image by limiting its maximum dimensions and optionally reducing output quality.",
+      "category": "browser",
+      "tags": [
+        "image",
+        "compression",
+        "canvas",
+        "blob",
+        "resize",
+        "optimization"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "shrinkImageElement",
+      "name": "shrinkImageElement",
+      "description": "Shrinks an image element and returns a new HTMLImageElement with the optimized result.",
+      "category": "browser",
+      "tags": [
+        "image",
+        "compression",
+        "element",
+        "resize",
+        "dom",
+        "optimization"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "shrinkImageFile",
+      "name": "shrinkImageFile",
+      "description": "Shrinks an image file before upload by limiting its maximum dimensions and optionally reducing output quality.",
+      "category": "browser",
+      "tags": [
+        "file",
+        "image",
+        "compression",
+        "upload",
+        "optimization",
+        "blob"
       ],
       "demo": false,
       "snippets": true,
@@ -623,23 +923,6 @@
           "async",
           "promise",
           "generic"
-        ],
-        "demo": false,
-        "snippets": false,
-        "since": "1.0.0"
-      },
-      {
-        "id": "AsyncProjectionFn",
-        "name": "AsyncProjectionFn",
-        "description": "Represents an asynchronous projection function.",
-        "category": "type",
-        "tags": [
-          "type",
-          "function",
-          "async",
-          "projection",
-          "mapping",
-          "transformation"
         ],
         "demo": false,
         "snippets": false,
@@ -838,22 +1121,6 @@
           "javascript",
           "union",
           "value"
-        ],
-        "demo": false,
-        "snippets": false,
-        "since": "1.0.0"
-      },
-      {
-        "id": "ProjectionFn",
-        "name": "ProjectionFn",
-        "description": "Represents a projection function.",
-        "category": "type",
-        "tags": [
-          "type",
-          "function",
-          "projection",
-          "mapping",
-          "transformation"
         ],
         "demo": false,
         "snippets": false,
@@ -1150,6 +1417,193 @@
         "since": "1.0.0"
       },
       {
+        "id": "isBigint",
+        "name": "isBigint",
+        "description": "Checks whether the given value is a bigint.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "bigint",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isBoolean",
+        "name": "isBoolean",
+        "description": "Checks whether the given value is a boolean.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "boolean",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isDate",
+        "name": "isDate",
+        "description": "Checks whether the given value is a Date instance.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "date",
+          "instance",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isFiniteNumber",
+        "name": "isFiniteNumber",
+        "description": "Checks whether the given value is a finite number.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "number",
+          "finite",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isFunction",
+        "name": "isFunction",
+        "description": "Checks whether the given value is a function.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "function",
+          "callable",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isNaNValue",
+        "name": "isNaNValue",
+        "description": "Checks whether the given value is NaN (Not-a-Number).",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "number",
+          "nan",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isNull",
+        "name": "isNull",
+        "description": "Checks whether the given value is null.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "null",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isNullable",
+        "name": "isNullable",
+        "description": "Checks whether the given value is null or undefined.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "null",
+          "undefined",
+          "nullable",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isNumber",
+        "name": "isNumber",
+        "description": "Checks whether the given value is a number.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "number",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isObject",
+        "name": "isObject",
+        "description": "Checks whether the given value is an object (including arrays, but excluding null).",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "object",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isPlainObject",
+        "name": "isPlainObject",
+        "description": "Checks whether the given value is a plain object.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "object",
+          "plain",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isPrimitive",
+        "name": "isPrimitive",
+        "description": "Checks whether the given value is a JavaScript primitive.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "primitive",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
         "id": "isString",
         "name": "isString",
         "description": "Checks whether the given value is a string.",
@@ -1159,6 +1613,154 @@
           "type-guard",
           "string",
           "typescript"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isSymbol",
+        "name": "isSymbol",
+        "description": "Checks whether the given value is a symbol.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "symbol",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isUndefined",
+        "name": "isUndefined",
+        "description": "Checks whether the given value is undefined.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "undefined",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isValidDate",
+        "name": "isValidDate",
+        "description": "Checks whether the given value is a valid Date instance.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "date",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      }
+    ],
+    "browser": [
+      {
+        "id": "isInteractiveElement",
+        "name": "isInteractiveElement",
+        "description": "Determines whether an element is interactive or contained within an interactive element.",
+        "category": "browser",
+        "tags": [
+          "dom",
+          "element",
+          "interactive",
+          "event",
+          "button",
+          "form"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "loadImage",
+        "name": "loadImage",
+        "description": "Loads an image from a given source URL with optional configuration.",
+        "category": "browser",
+        "tags": [
+          "image",
+          "loading",
+          "promise",
+          "network",
+          "async",
+          "html"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "scaleImageByAspectRatio",
+        "name": "scaleImageByAspectRatio",
+        "description": "Scales an image to a target width or height while preserving its aspect ratio.",
+        "category": "browser",
+        "tags": [
+          "image",
+          "scaling",
+          "aspect-ratio",
+          "dimensions",
+          "responsive"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "shrinkImage",
+        "name": "shrinkImage",
+        "description": "Shrinks an image by limiting its maximum dimensions and optionally reducing output quality.",
+        "category": "browser",
+        "tags": [
+          "image",
+          "compression",
+          "canvas",
+          "blob",
+          "resize",
+          "optimization"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "shrinkImageElement",
+        "name": "shrinkImageElement",
+        "description": "Shrinks an image element and returns a new HTMLImageElement with the optimized result.",
+        "category": "browser",
+        "tags": [
+          "image",
+          "compression",
+          "element",
+          "resize",
+          "dom",
+          "optimization"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "shrinkImageFile",
+        "name": "shrinkImageFile",
+        "description": "Shrinks an image file before upload by limiting its maximum dimensions and optionally reducing output quality.",
+        "category": "browser",
+        "tags": [
+          "file",
+          "image",
+          "compression",
+          "upload",
+          "optimization",
+          "blob"
         ],
         "demo": false,
         "snippets": true,

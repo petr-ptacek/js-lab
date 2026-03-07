@@ -11,7 +11,7 @@
     "test": "pnpm --parallel run test:js-core && pnpm run test:vue-core",
     "test:js-core": "pnpm --filter \"@petr-ptacek/js-core\" run test",
     "test:vue-core": "pnpm --filter \"@petr-ptacek/vue-core\" run test",
-    "dev:playground": "pnpm --dir apps/playground/nuxt run dev",
+    "dev": "pnpm --dir apps/playground/nuxt run dev",
     "prepare": "husky",
     "clean": "pnpm -r exec -- rm -rf node_modules & rm -rf node_modules",
     "commitlint": "commitlint",

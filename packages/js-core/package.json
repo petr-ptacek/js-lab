@@ -46,7 +46,7 @@
     "url": "https://github.com/petr-ptacek/js-lab.git",
     "directory": "packages/js-core"
   },
-  "homepage": "https://github.com/petr-ptacek/js-lab",
+  "homepage": "https://petr-ptacek.github.io/js-lab/js-core/",
   "files": [
     "dist"
   ],

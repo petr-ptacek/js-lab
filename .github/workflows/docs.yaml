@@ -40,7 +40,7 @@ jobs:
       - name: Move js-core docs
         run: |
           mkdir -p site/js-core
-          cp -r packages/js-core/docs/.vitepress/* site/js-core
+          cp -r packages/js-core/docs/.vitepress/dist/* site/js-core
 
       #      - name: Build vue-core docs
       #        run: pnpm --filter "@petr-ptacek/vue-core" run docs:build

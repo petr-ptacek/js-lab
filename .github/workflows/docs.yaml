@@ -24,15 +24,23 @@ jobs:
           node-version: 22
           cache: pnpm
 
-      - run: pnpm install
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build root docs
+        run: pnpm docs
+
+      - name: Move root docs
+        run: |
+          mkdir -p site
+          cp -r docs/.vitepress/dist/* site
 
       - name: Build js-core docs
         run: pnpm docs:js-core
 
       - name: Move js-core docs
         run: |
-          mkdir site
-          cp -r packages/js-core/docs/.vitepress/dist site/js-core
+          mkdir -p site/js-core
+          cp -r packages/js-core/docs/.vitepress/* site/js-core
 
       #      - name: Build vue-core docs
       #        run: pnpm --filter "@petr-ptacek/vue-core" run docs:build

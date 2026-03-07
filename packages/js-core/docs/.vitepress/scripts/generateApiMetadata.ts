@@ -1,8 +1,7 @@
-import fs                               from "node:fs";
-import path                             from "node:path";
 import fg                               from "fast-glob";
+import fs                               from "node:fs";
+import path, { dirname }                from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { dirname }                      from "node:path";
 
 import type { Meta } from "../../../src/_internal/meta";
 
@@ -250,7 +249,7 @@ Utilities in the **${category}** category.
 ${utilities
     .map(
       u =>
-        `<li><a href="/api/${u.category}/${u.id}">${u.name}</a> — ${u.description}</li>`,
+        `<li><a href="./${u.id}">${u.name}</a> — ${u.description}</li>`,
     )
     .join("\n")}
 </ul>

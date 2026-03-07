@@ -646,7 +646,7 @@
       "id": "range",
       "name": "range",
       "description": "Creates an array of numbers following the same semantics as Python's range.",
-      "category": "object",
+      "category": "array",
       "tags": [
         "array",
         "range",
@@ -763,7 +763,7 @@
       "id": "shuffle",
       "name": "shuffle",
       "description": "Returns a new array with elements shuffled in random order using the Fisher–Yates shuffle algorithm.",
-      "category": "object",
+      "category": "array",
       "tags": [
         "array",
         "shuffle",
@@ -896,7 +896,7 @@
       "id": "zip",
       "name": "zip",
       "description": "Combines two arrays element-wise into pairs or applies a mapping function to each pair.",
-      "category": "object",
+      "category": "array",
       "tags": [
         "array",
         "zip",
@@ -1346,57 +1346,6 @@
         "demo": false,
         "snippets": true,
         "since": "1.0.0"
-      },
-      {
-        "id": "range",
-        "name": "range",
-        "description": "Creates an array of numbers following the same semantics as Python's range.",
-        "category": "object",
-        "tags": [
-          "array",
-          "range",
-          "numbers",
-          "sequence",
-          "python",
-          "iteration"
-        ],
-        "demo": false,
-        "snippets": true,
-        "since": "1.0.0"
-      },
-      {
-        "id": "shuffle",
-        "name": "shuffle",
-        "description": "Returns a new array with elements shuffled in random order using the Fisher–Yates shuffle algorithm.",
-        "category": "object",
-        "tags": [
-          "array",
-          "shuffle",
-          "random",
-          "fisher-yates",
-          "immutable",
-          "randomize"
-        ],
-        "demo": false,
-        "snippets": true,
-        "since": "1.0.0"
-      },
-      {
-        "id": "zip",
-        "name": "zip",
-        "description": "Combines two arrays element-wise into pairs or applies a mapping function to each pair.",
-        "category": "object",
-        "tags": [
-          "array",
-          "zip",
-          "combine",
-          "pairs",
-          "mapping",
-          "transform"
-        ],
-        "demo": false,
-        "snippets": true,
-        "since": "1.0.0"
       }
     ],
     "validation": [
@@ -1813,6 +1762,59 @@
           "result",
           "union",
           "handling"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
+    "array": [
+      {
+        "id": "range",
+        "name": "range",
+        "description": "Creates an array of numbers following the same semantics as Python's range.",
+        "category": "array",
+        "tags": [
+          "array",
+          "range",
+          "numbers",
+          "sequence",
+          "python",
+          "iteration"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "shuffle",
+        "name": "shuffle",
+        "description": "Returns a new array with elements shuffled in random order using the Fisher–Yates shuffle algorithm.",
+        "category": "array",
+        "tags": [
+          "array",
+          "shuffle",
+          "random",
+          "fisher-yates",
+          "immutable",
+          "randomize"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "zip",
+        "name": "zip",
+        "description": "Combines two arrays element-wise into pairs or applies a mapping function to each pair.",
+        "category": "array",
+        "tags": [
+          "array",
+          "zip",
+          "combine",
+          "pairs",
+          "mapping",
+          "transform"
         ],
         "demo": false,
         "snippets": true,

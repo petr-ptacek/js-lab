@@ -104,7 +104,7 @@ export function withAbortable<Args extends unknown[], R>(
   }
 
   async function execute(...args: Args): Promise<R> {
-    if (resolvedOptions.autoAbort) {
+    if ( resolvedOptions.autoAbort ) {
       abort();
     }
 
@@ -117,7 +117,7 @@ export function withAbortable<Args extends unknown[], R>(
 
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
-    if (resolvedOptions.timeoutMs != null) {
+    if ( resolvedOptions.timeoutMs != null ) {
       timeoutId = setTimeout(() => {
         abort();
       }, resolvedOptions.timeoutMs);
@@ -126,7 +126,7 @@ export function withAbortable<Args extends unknown[], R>(
     try {
       return await fn(context, ...args);
     } finally {
-      if (timeoutId) {
+      if ( timeoutId ) {
         clearTimeout(timeoutId);
       }
       isRunning = false;
@@ -145,27 +145,3 @@ export function withAbortable<Args extends unknown[], R>(
     },
   };
 }
-
-// Usage example:
-
-// const getMessage = withAbortable(
-//   ({ signal }, message: string) => Promise.resolve(message),
-// );
-//
-// const mathAdd = withAbortable(
-//   ({ signal }, a: number, b: number) =>
-//     new Promise<number>((resolve) => {
-//       setTimeout(() => resolve(a + b), 1000);
-//     }),
-// );
-//
-// const mathSum = withAbortable(
-//   ({ signal }, ...numbers: number[]) =>
-//     new Promise<number>((resolve) => {
-//       setTimeout(() => resolve(numbers.reduce((a, b) => a + b, 0)), 1000);
-//     }),
-// );
-//
-// getMessage.execute("Hello").then(console.log);
-// mathAdd.execute(1, 2).then(console.log);
-// mathSum.execute(1, 2, 3, 4, 5, 6).then(console.log);

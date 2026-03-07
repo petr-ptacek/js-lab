@@ -1,5 +1,6 @@
 export type MetaCategory =
   | "async"
+  | "array"
   | "browser"
   | "crypto"
   | "error"

@@ -1,6 +1,7 @@
 export * from "./type";
 export * from "./validation";
 export * from "./number";
+export * from "./array";
 export * from "./object";
 export * from "./event";
 export * from "./browser";

@@ -4,7 +4,7 @@ export const meta = {
   id: "zip",
   name: "zip",
   description: "Combines two arrays element-wise into pairs or applies a mapping function to each pair.",
-  category: "object",
+  category: "array",
   tags: ["array", "zip", "combine", "pairs", "mapping", "transform"],
   demo: false,
   snippets: true,

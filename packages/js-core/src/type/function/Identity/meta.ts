@@ -1,4 +1,4 @@
-import type { Meta } from "../../_internal/meta";
+import type { Meta } from "../../../_internal/meta";
 
 export const meta = {
   id: "Identity",

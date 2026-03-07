@@ -1,5 +1,11 @@
 # @petr-ptacek/js-core
 
+## 0.2.0
+
+### Minor Changes
+
+- ba49164: Added withAbortable utility function for managing abortable operations, e.g. api calls.
+
 ## 0.1.0
 
 ### Minor Changes

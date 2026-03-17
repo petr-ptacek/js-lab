@@ -2,6 +2,7 @@ export * from "./isBigint";
 export * from "./isBoolean";
 export * from "./isArray";
 export * from "./isDate";
+export * from "./isEmptyString";
 export * from "./isFiniteNumber";
 export * from "./isFunction";
 export * from "./isNaNValue";

@@ -1,0 +1,1 @@
+export { withTryCatchSync } from "./withTryCatchSync";

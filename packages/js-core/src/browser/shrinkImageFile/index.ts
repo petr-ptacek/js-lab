@@ -1,0 +1,1 @@
+export { shrinkImageFile } from "./shrinkImageFile";

@@ -1,3 +1,3 @@
+export * from "./range";
 export * from "./shuffle";
 export * from "./zip";
-export * from "./range";

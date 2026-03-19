@@ -1,0 +1,1844 @@
+{
+  "utilities": [
+    {
+      "id": "AsyncFn",
+      "name": "AsyncFn",
+      "description": "Represents an asynchronous function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "async",
+        "promise",
+        "generic"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "clamp",
+      "name": "clamp",
+      "description": "Constrains a numeric value between specified minimum and maximum boundaries.",
+      "category": "number",
+      "tags": [
+        "number",
+        "clamp",
+        "constrain",
+        "bounds",
+        "range",
+        "limit"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "Comparator",
+      "name": "Comparator",
+      "description": "Represents a comparison function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "comparator",
+        "sorting",
+        "ordering",
+        "comparison"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "createUUIDV4",
+      "name": "createUUIDV4",
+      "description": "Generates a random UUID (version 4) string.",
+      "category": "crypto",
+      "tags": [
+        "uuid",
+        "v4",
+        "random",
+        "string",
+        "crypto"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "Dict",
+      "name": "Dict",
+      "description": "Represents a dictionary object with arbitrary keys and values.",
+      "category": "type",
+      "tags": [
+        "type",
+        "dictionary",
+        "record",
+        "object",
+        "mapping",
+        "key-value"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "Dimensions",
+      "name": "Dimensions",
+      "description": "Represents a two-dimensional size defined by width and height.",
+      "category": "type",
+      "tags": [
+        "type",
+        "dimensions",
+        "size",
+        "width",
+        "height",
+        "2d"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "DimensionsTarget",
+      "name": "DimensionsTarget",
+      "description": "Defines a target dimension using a single axis.",
+      "category": "type",
+      "tags": [
+        "type",
+        "dimensions",
+        "target",
+        "scaling",
+        "exclusive",
+        "union"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "Emitter",
+      "name": "Emitter",
+      "description": "Strongly-typed event emitter with type-safe event definitions and handler management.",
+      "category": "event",
+      "tags": [
+        "event",
+        "emitter",
+        "typed",
+        "observer",
+        "pubsub",
+        "handler"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "entries",
+      "name": "entries",
+      "description": "Returns the enumerable own property [key, value] pairs of an object with preserved key and value types.",
+      "category": "object",
+      "tags": [
+        "object",
+        "entries",
+        "typed",
+        "key-value",
+        "iteration"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "Factory",
+      "name": "Factory",
+      "description": "Represents a factory function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "factory",
+        "creation",
+        "parameters"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "get",
+      "name": "get",
+      "description": "Safely gets a nested value from an object using a dot-separated path with full TypeScript type safety.",
+      "category": "object",
+      "tags": [
+        "object",
+        "nested",
+        "path",
+        "safe-access",
+        "typed",
+        "dot-notation"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "getAspectRatio",
+      "name": "getAspectRatio",
+      "description": "Computes the aspect ratio from given dimensions.",
+      "category": "number",
+      "tags": [
+        "aspect-ratio",
+        "dimensions",
+        "ratio",
+        "calculation",
+        "image"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "getRandomNumber",
+      "name": "getRandomNumber",
+      "description": "Returns a random integer within the given inclusive range.",
+      "category": "number",
+      "tags": [
+        "random",
+        "integer",
+        "range",
+        "generation",
+        "math"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "Getter",
+      "name": "Getter",
+      "description": "Represents a getter function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "getter",
+        "lazy",
+        "parameterless"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "Identity",
+      "name": "Identity",
+      "description": "Represents an identity function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "identity",
+        "passthrough",
+        "neutral"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isArray",
+      "name": "isArray",
+      "description": "Checks whether the given value is an array.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "array",
+        "generic",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isBigint",
+      "name": "isBigint",
+      "description": "Checks whether the given value is a bigint.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "bigint",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isBoolean",
+      "name": "isBoolean",
+      "description": "Checks whether the given value is a boolean.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "boolean",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isDate",
+      "name": "isDate",
+      "description": "Checks whether the given value is a Date instance.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "date",
+        "instance",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isFiniteNumber",
+      "name": "isFiniteNumber",
+      "description": "Checks whether the given value is a finite number.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "number",
+        "finite",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isFunction",
+      "name": "isFunction",
+      "description": "Checks whether the given value is a function.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "function",
+        "callable",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isInteractiveElement",
+      "name": "isInteractiveElement",
+      "description": "Determines whether an element is interactive or contained within an interactive element.",
+      "category": "browser",
+      "tags": [
+        "dom",
+        "element",
+        "interactive",
+        "event",
+        "button",
+        "form"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isNaNValue",
+      "name": "isNaNValue",
+      "description": "Checks whether the given value is NaN (Not-a-Number).",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "number",
+        "nan",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isNull",
+      "name": "isNull",
+      "description": "Checks whether the given value is null.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "null",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isNullable",
+      "name": "isNullable",
+      "description": "Checks whether the given value is null or undefined.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "null",
+        "undefined",
+        "nullable",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isNumber",
+      "name": "isNumber",
+      "description": "Checks whether the given value is a number.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "number",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isObject",
+      "name": "isObject",
+      "description": "Checks whether the given value is an object (including arrays, but excluding null).",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "object",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isPlainObject",
+      "name": "isPlainObject",
+      "description": "Checks whether the given value is a plain object.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "object",
+        "plain",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isPrimitive",
+      "name": "isPrimitive",
+      "description": "Checks whether the given value is a JavaScript primitive.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "primitive",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isString",
+      "name": "isString",
+      "description": "Checks whether the given value is a string.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "string",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isSymbol",
+      "name": "isSymbol",
+      "description": "Checks whether the given value is a symbol.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "symbol",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isUndefined",
+      "name": "isUndefined",
+      "description": "Checks whether the given value is undefined.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "undefined",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "isValidDate",
+      "name": "isValidDate",
+      "description": "Checks whether the given value is a valid Date instance.",
+      "category": "validation",
+      "tags": [
+        "validation",
+        "type-guard",
+        "date",
+        "typescript"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "loadImage",
+      "name": "loadImage",
+      "description": "Loads an image from a given source URL with optional configuration.",
+      "category": "browser",
+      "tags": [
+        "image",
+        "loading",
+        "promise",
+        "network",
+        "async",
+        "html"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "MaybeNull",
+      "name": "MaybeNull",
+      "description": "Represents a value that may be null.",
+      "category": "type",
+      "tags": [
+        "type",
+        "null",
+        "union",
+        "nullable",
+        "optional"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "MaybeNullable",
+      "name": "MaybeNullable",
+      "description": "Represents a value that may be null or undefined.",
+      "category": "type",
+      "tags": [
+        "type",
+        "null",
+        "undefined",
+        "union",
+        "nullable",
+        "optional"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "MaybePromise",
+      "name": "MaybePromise",
+      "description": "Represents a value that may be returned synchronously or as a Promise.",
+      "category": "type",
+      "tags": [
+        "type",
+        "promise",
+        "async",
+        "sync",
+        "union",
+        "flexible"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "MaybeUndefined",
+      "name": "MaybeUndefined",
+      "description": "Represents a value that may be undefined.",
+      "category": "type",
+      "tags": [
+        "type",
+        "undefined",
+        "union",
+        "optional",
+        "uninitialized"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "parseJSONSafe",
+      "name": "parseJSONSafe",
+      "description": "Safely parses a JSON string with optional fallback handling.",
+      "category": "error",
+      "tags": [
+        "json",
+        "parse",
+        "safe",
+        "fallback",
+        "error-handling"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "PrimitiveValue",
+      "name": "PrimitiveValue",
+      "description": "Represents a JavaScript primitive value.",
+      "category": "type",
+      "tags": [
+        "type",
+        "primitive",
+        "javascript",
+        "union",
+        "value"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "range",
+      "name": "range",
+      "description": "Creates an array of numbers following the same semantics as Python's range.",
+      "category": "array",
+      "tags": [
+        "array",
+        "range",
+        "numbers",
+        "sequence",
+        "python",
+        "iteration"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "RoundValueFn",
+      "name": "RoundValueFn",
+      "description": "Function used to round a numeric value.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "rounding",
+        "numeric",
+        "precision",
+        "math"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "scaleByAspectRatio",
+      "name": "scaleByAspectRatio",
+      "description": "Scales dimensions while preserving aspect ratio to a target width or height.",
+      "category": "number",
+      "tags": [
+        "scaling",
+        "aspect-ratio",
+        "dimensions",
+        "responsive",
+        "image"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "scaleImageByAspectRatio",
+      "name": "scaleImageByAspectRatio",
+      "description": "Scales an image to a target width or height while preserving its aspect ratio.",
+      "category": "browser",
+      "tags": [
+        "image",
+        "scaling",
+        "aspect-ratio",
+        "dimensions",
+        "responsive"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "shrinkImage",
+      "name": "shrinkImage",
+      "description": "Shrinks an image by limiting its maximum dimensions and optionally reducing output quality.",
+      "category": "browser",
+      "tags": [
+        "image",
+        "compression",
+        "canvas",
+        "blob",
+        "resize",
+        "optimization"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "shrinkImageElement",
+      "name": "shrinkImageElement",
+      "description": "Shrinks an image element and returns a new HTMLImageElement with the optimized result.",
+      "category": "browser",
+      "tags": [
+        "image",
+        "compression",
+        "element",
+        "resize",
+        "dom",
+        "optimization"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "shrinkImageFile",
+      "name": "shrinkImageFile",
+      "description": "Shrinks an image file before upload by limiting its maximum dimensions and optionally reducing output quality.",
+      "category": "browser",
+      "tags": [
+        "file",
+        "image",
+        "compression",
+        "upload",
+        "optimization",
+        "blob"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "shuffle",
+      "name": "shuffle",
+      "description": "Returns a new array with elements shuffled in random order using the Fisher–Yates shuffle algorithm.",
+      "category": "array",
+      "tags": [
+        "array",
+        "shuffle",
+        "random",
+        "fisher-yates",
+        "immutable",
+        "randomize"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "SyncFn",
+      "name": "SyncFn",
+      "description": "Represents a synchronous function.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "sync",
+        "synchronous",
+        "generic"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "toPercentage",
+      "name": "toPercentage",
+      "description": "Converts a numeric value to a percentage relative to a given base.",
+      "category": "number",
+      "tags": [
+        "percentage",
+        "math",
+        "calculation",
+        "conversion"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "ValueOrFactory",
+      "name": "ValueOrFactory",
+      "description": "Represents a value or a factory function that produces a value.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "value",
+        "factory",
+        "flexible",
+        "parameters"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "ValueOrGetter",
+      "name": "ValueOrGetter",
+      "description": "Represents a value or a getter function that produces a value.",
+      "category": "type",
+      "tags": [
+        "type",
+        "function",
+        "value",
+        "getter",
+        "flexible",
+        "union"
+      ],
+      "demo": false,
+      "snippets": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "withAbortable",
+      "name": "withAbortable",
+      "description": "Wraps an asynchronous function with AbortController lifecycle management.",
+      "category": "async",
+      "tags": [
+        "async",
+        "abort",
+        "controller",
+        "cancellation",
+        "timeout",
+        "lifecycle"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "withTryCatch",
+      "name": "withTryCatch",
+      "description": "Executes a function and returns its outcome as a discriminated union.",
+      "category": "error",
+      "tags": [
+        "error",
+        "try-catch",
+        "async",
+        "result",
+        "union",
+        "handling"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "withTryCatchSync",
+      "name": "withTryCatchSync",
+      "description": "Executes a synchronous function and returns its outcome as a discriminated union.",
+      "category": "error",
+      "tags": [
+        "error",
+        "try-catch",
+        "sync",
+        "result",
+        "union",
+        "handling"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    },
+    {
+      "id": "zip",
+      "name": "zip",
+      "description": "Combines two arrays element-wise into pairs or applies a mapping function to each pair.",
+      "category": "array",
+      "tags": [
+        "array",
+        "zip",
+        "combine",
+        "pairs",
+        "mapping",
+        "transform"
+      ],
+      "demo": false,
+      "snippets": true,
+      "since": "1.0.0"
+    }
+  ],
+  "categories": {
+    "type": [
+      {
+        "id": "AsyncFn",
+        "name": "AsyncFn",
+        "description": "Represents an asynchronous function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "async",
+          "promise",
+          "generic"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Comparator",
+        "name": "Comparator",
+        "description": "Represents a comparison function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "comparator",
+          "sorting",
+          "ordering",
+          "comparison"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Dict",
+        "name": "Dict",
+        "description": "Represents a dictionary object with arbitrary keys and values.",
+        "category": "type",
+        "tags": [
+          "type",
+          "dictionary",
+          "record",
+          "object",
+          "mapping",
+          "key-value"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Dimensions",
+        "name": "Dimensions",
+        "description": "Represents a two-dimensional size defined by width and height.",
+        "category": "type",
+        "tags": [
+          "type",
+          "dimensions",
+          "size",
+          "width",
+          "height",
+          "2d"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "DimensionsTarget",
+        "name": "DimensionsTarget",
+        "description": "Defines a target dimension using a single axis.",
+        "category": "type",
+        "tags": [
+          "type",
+          "dimensions",
+          "target",
+          "scaling",
+          "exclusive",
+          "union"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Factory",
+        "name": "Factory",
+        "description": "Represents a factory function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "factory",
+          "creation",
+          "parameters"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Getter",
+        "name": "Getter",
+        "description": "Represents a getter function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "getter",
+          "lazy",
+          "parameterless"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Identity",
+        "name": "Identity",
+        "description": "Represents an identity function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "identity",
+          "passthrough",
+          "neutral"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "MaybeNull",
+        "name": "MaybeNull",
+        "description": "Represents a value that may be null.",
+        "category": "type",
+        "tags": [
+          "type",
+          "null",
+          "union",
+          "nullable",
+          "optional"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "MaybeNullable",
+        "name": "MaybeNullable",
+        "description": "Represents a value that may be null or undefined.",
+        "category": "type",
+        "tags": [
+          "type",
+          "null",
+          "undefined",
+          "union",
+          "nullable",
+          "optional"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "MaybePromise",
+        "name": "MaybePromise",
+        "description": "Represents a value that may be returned synchronously or as a Promise.",
+        "category": "type",
+        "tags": [
+          "type",
+          "promise",
+          "async",
+          "sync",
+          "union",
+          "flexible"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "MaybeUndefined",
+        "name": "MaybeUndefined",
+        "description": "Represents a value that may be undefined.",
+        "category": "type",
+        "tags": [
+          "type",
+          "undefined",
+          "union",
+          "optional",
+          "uninitialized"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "PrimitiveValue",
+        "name": "PrimitiveValue",
+        "description": "Represents a JavaScript primitive value.",
+        "category": "type",
+        "tags": [
+          "type",
+          "primitive",
+          "javascript",
+          "union",
+          "value"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "RoundValueFn",
+        "name": "RoundValueFn",
+        "description": "Function used to round a numeric value.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "rounding",
+          "numeric",
+          "precision",
+          "math"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "SyncFn",
+        "name": "SyncFn",
+        "description": "Represents a synchronous function.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "sync",
+          "synchronous",
+          "generic"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "ValueOrFactory",
+        "name": "ValueOrFactory",
+        "description": "Represents a value or a factory function that produces a value.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "value",
+          "factory",
+          "flexible",
+          "parameters"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "ValueOrGetter",
+        "name": "ValueOrGetter",
+        "description": "Represents a value or a getter function that produces a value.",
+        "category": "type",
+        "tags": [
+          "type",
+          "function",
+          "value",
+          "getter",
+          "flexible",
+          "union"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      }
+    ],
+    "number": [
+      {
+        "id": "clamp",
+        "name": "clamp",
+        "description": "Constrains a numeric value between specified minimum and maximum boundaries.",
+        "category": "number",
+        "tags": [
+          "number",
+          "clamp",
+          "constrain",
+          "bounds",
+          "range",
+          "limit"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "getAspectRatio",
+        "name": "getAspectRatio",
+        "description": "Computes the aspect ratio from given dimensions.",
+        "category": "number",
+        "tags": [
+          "aspect-ratio",
+          "dimensions",
+          "ratio",
+          "calculation",
+          "image"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "getRandomNumber",
+        "name": "getRandomNumber",
+        "description": "Returns a random integer within the given inclusive range.",
+        "category": "number",
+        "tags": [
+          "random",
+          "integer",
+          "range",
+          "generation",
+          "math"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "scaleByAspectRatio",
+        "name": "scaleByAspectRatio",
+        "description": "Scales dimensions while preserving aspect ratio to a target width or height.",
+        "category": "number",
+        "tags": [
+          "scaling",
+          "aspect-ratio",
+          "dimensions",
+          "responsive",
+          "image"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "toPercentage",
+        "name": "toPercentage",
+        "description": "Converts a numeric value to a percentage relative to a given base.",
+        "category": "number",
+        "tags": [
+          "percentage",
+          "math",
+          "calculation",
+          "conversion"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
+    "crypto": [
+      {
+        "id": "createUUIDV4",
+        "name": "createUUIDV4",
+        "description": "Generates a random UUID (version 4) string.",
+        "category": "crypto",
+        "tags": [
+          "uuid",
+          "v4",
+          "random",
+          "string",
+          "crypto"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      }
+    ],
+    "event": [
+      {
+        "id": "Emitter",
+        "name": "Emitter",
+        "description": "Strongly-typed event emitter with type-safe event definitions and handler management.",
+        "category": "event",
+        "tags": [
+          "event",
+          "emitter",
+          "typed",
+          "observer",
+          "pubsub",
+          "handler"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
+    "object": [
+      {
+        "id": "entries",
+        "name": "entries",
+        "description": "Returns the enumerable own property [key, value] pairs of an object with preserved key and value types.",
+        "category": "object",
+        "tags": [
+          "object",
+          "entries",
+          "typed",
+          "key-value",
+          "iteration"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "get",
+        "name": "get",
+        "description": "Safely gets a nested value from an object using a dot-separated path with full TypeScript type safety.",
+        "category": "object",
+        "tags": [
+          "object",
+          "nested",
+          "path",
+          "safe-access",
+          "typed",
+          "dot-notation"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
+    "validation": [
+      {
+        "id": "isArray",
+        "name": "isArray",
+        "description": "Checks whether the given value is an array.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "array",
+          "generic",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isBigint",
+        "name": "isBigint",
+        "description": "Checks whether the given value is a bigint.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "bigint",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isBoolean",
+        "name": "isBoolean",
+        "description": "Checks whether the given value is a boolean.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "boolean",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isDate",
+        "name": "isDate",
+        "description": "Checks whether the given value is a Date instance.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "date",
+          "instance",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isFiniteNumber",
+        "name": "isFiniteNumber",
+        "description": "Checks whether the given value is a finite number.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "number",
+          "finite",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isFunction",
+        "name": "isFunction",
+        "description": "Checks whether the given value is a function.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "function",
+          "callable",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isNaNValue",
+        "name": "isNaNValue",
+        "description": "Checks whether the given value is NaN (Not-a-Number).",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "number",
+          "nan",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isNull",
+        "name": "isNull",
+        "description": "Checks whether the given value is null.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "null",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isNullable",
+        "name": "isNullable",
+        "description": "Checks whether the given value is null or undefined.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "null",
+          "undefined",
+          "nullable",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isNumber",
+        "name": "isNumber",
+        "description": "Checks whether the given value is a number.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "number",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isObject",
+        "name": "isObject",
+        "description": "Checks whether the given value is an object (including arrays, but excluding null).",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "object",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isPlainObject",
+        "name": "isPlainObject",
+        "description": "Checks whether the given value is a plain object.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "object",
+          "plain",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isPrimitive",
+        "name": "isPrimitive",
+        "description": "Checks whether the given value is a JavaScript primitive.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "primitive",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isString",
+        "name": "isString",
+        "description": "Checks whether the given value is a string.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "string",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isSymbol",
+        "name": "isSymbol",
+        "description": "Checks whether the given value is a symbol.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "symbol",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isUndefined",
+        "name": "isUndefined",
+        "description": "Checks whether the given value is undefined.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "undefined",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "isValidDate",
+        "name": "isValidDate",
+        "description": "Checks whether the given value is a valid Date instance.",
+        "category": "validation",
+        "tags": [
+          "validation",
+          "type-guard",
+          "date",
+          "typescript"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      }
+    ],
+    "browser": [
+      {
+        "id": "isInteractiveElement",
+        "name": "isInteractiveElement",
+        "description": "Determines whether an element is interactive or contained within an interactive element.",
+        "category": "browser",
+        "tags": [
+          "dom",
+          "element",
+          "interactive",
+          "event",
+          "button",
+          "form"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "loadImage",
+        "name": "loadImage",
+        "description": "Loads an image from a given source URL with optional configuration.",
+        "category": "browser",
+        "tags": [
+          "image",
+          "loading",
+          "promise",
+          "network",
+          "async",
+          "html"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "scaleImageByAspectRatio",
+        "name": "scaleImageByAspectRatio",
+        "description": "Scales an image to a target width or height while preserving its aspect ratio.",
+        "category": "browser",
+        "tags": [
+          "image",
+          "scaling",
+          "aspect-ratio",
+          "dimensions",
+          "responsive"
+        ],
+        "demo": false,
+        "snippets": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "shrinkImage",
+        "name": "shrinkImage",
+        "description": "Shrinks an image by limiting its maximum dimensions and optionally reducing output quality.",
+        "category": "browser",
+        "tags": [
+          "image",
+          "compression",
+          "canvas",
+          "blob",
+          "resize",
+          "optimization"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "shrinkImageElement",
+        "name": "shrinkImageElement",
+        "description": "Shrinks an image element and returns a new HTMLImageElement with the optimized result.",
+        "category": "browser",
+        "tags": [
+          "image",
+          "compression",
+          "element",
+          "resize",
+          "dom",
+          "optimization"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "shrinkImageFile",
+        "name": "shrinkImageFile",
+        "description": "Shrinks an image file before upload by limiting its maximum dimensions and optionally reducing output quality.",
+        "category": "browser",
+        "tags": [
+          "file",
+          "image",
+          "compression",
+          "upload",
+          "optimization",
+          "blob"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
+    "error": [
+      {
+        "id": "parseJSONSafe",
+        "name": "parseJSONSafe",
+        "description": "Safely parses a JSON string with optional fallback handling.",
+        "category": "error",
+        "tags": [
+          "json",
+          "parse",
+          "safe",
+          "fallback",
+          "error-handling"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "withTryCatch",
+        "name": "withTryCatch",
+        "description": "Executes a function and returns its outcome as a discriminated union.",
+        "category": "error",
+        "tags": [
+          "error",
+          "try-catch",
+          "async",
+          "result",
+          "union",
+          "handling"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "withTryCatchSync",
+        "name": "withTryCatchSync",
+        "description": "Executes a synchronous function and returns its outcome as a discriminated union.",
+        "category": "error",
+        "tags": [
+          "error",
+          "try-catch",
+          "sync",
+          "result",
+          "union",
+          "handling"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
+    "array": [
+      {
+        "id": "range",
+        "name": "range",
+        "description": "Creates an array of numbers following the same semantics as Python's range.",
+        "category": "array",
+        "tags": [
+          "array",
+          "range",
+          "numbers",
+          "sequence",
+          "python",
+          "iteration"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "shuffle",
+        "name": "shuffle",
+        "description": "Returns a new array with elements shuffled in random order using the Fisher–Yates shuffle algorithm.",
+        "category": "array",
+        "tags": [
+          "array",
+          "shuffle",
+          "random",
+          "fisher-yates",
+          "immutable",
+          "randomize"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      },
+      {
+        "id": "zip",
+        "name": "zip",
+        "description": "Combines two arrays element-wise into pairs or applies a mapping function to each pair.",
+        "category": "array",
+        "tags": [
+          "array",
+          "zip",
+          "combine",
+          "pairs",
+          "mapping",
+          "transform"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ],
+    "async": [
+      {
+        "id": "withAbortable",
+        "name": "withAbortable",
+        "description": "Wraps an asynchronous function with AbortController lifecycle management.",
+        "category": "async",
+        "tags": [
+          "async",
+          "abort",
+          "controller",
+          "cancellation",
+          "timeout",
+          "lifecycle"
+        ],
+        "demo": false,
+        "snippets": true,
+        "since": "1.0.0"
+      }
+    ]
+  }
+}

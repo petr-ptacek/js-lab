@@ -1,192 +1,160 @@
+---
+title: entries
+category: object
+tags:
+  - object
+  - entries
+  - typed
+  - key-value
+  - iteration
+since: 1.0.0
+---
+
+
+> **Category:** object
+> **Since:** 1.0.0
+> **Tags:** object, entries, typed, key-value, iteration
+
+
 # entries
 
-`entries` is a **TypeScript-safe wrapper** around `Object.entries`. It preserves the relationship between keys and values at the type level, something the native API intentionally does not provide.
+Returns the enumerable own property [key, value] pairs of an object with preserved key and value types.
 
-This utility is **not an atomic runtime helper** and does not change JavaScript behavior. Its sole purpose is to improve **type safety and developer experience** in TypeScript codebases.
-
----
-
-## What problem it solves
-
-The native `Object.entries` has the following signature:
+## Usage
 
 ```ts
-Object.entries(obj: object): [string, any][]
-```
+import { entries } from "@petr-ptacek/js-core"
 
-This means:
-
-- keys are widened to `string`
-- values are widened to `any`
-- the relationship between a key and its value is lost
-
-As a result, even for well-defined objects, TypeScript cannot help you inside loops or reducers.
-
----
-
-## What this utility does (and does not do)
-
-### Does
-
-- ✔ preserves **exact key union** (`keyof T`)
-- ✔ preserves **exact value types** (`T[K]`)
-- ✔ keeps key–value correlation intact
-
-### Does not
-
-- ❌ change runtime behavior
-- ❌ add validation or guards
-- ❌ make iteration safer at runtime
-
-This is a **type-level utility**, not a runtime abstraction.
-
----
-
-## Basic usage
-
-```ts
 const user = {
   id: 1,
   name: "John",
+  isActive: true,
 };
 
 for (const [key, value] of entries(user)) {
-  // key   → "id" | "name"
-  // value → number | string
+  console.log(`${key}: ${value}`);
 }
 ```
 
-Compared to native `Object.entries`, this gives TypeScript enough information to reason about the code.
+## Why This Utility Exists
 
----
+The native `Object.entries()` loses TypeScript type information, returning `[string, any][]` which provides no type safety. This utility preserves the exact types of both keys and values, enabling better IntelliSense and compile-time error checking.
 
-## Preserved key–value relationship
-
-TypeScript understands that each key is paired with its corresponding value type:
+## Signature
 
 ```ts
-for (const [key, value] of entries(user)) {
-  if (key === "id") {
-    // value is number
-  }
-
-  if (key === "name") {
-    // value is string
-  }
-}
+function entries<T extends object>(obj: T): {
+  [K in keyof T]: [K, T[K]];
+}[keyof T][]
 ```
 
-This is impossible to express with the native API without manual casting.
+## Parameters
 
----
+- `obj` (`T extends object`): The object whose key-value pairs to return.
 
-## Common use cases
+## Type Parameters
 
-### Mapping over object entries
+- `<T extends object>`: The type of the input object.
 
-```ts
-const flags = {
-  darkMode: true,
-  debug: false,
-};
+## Return Type
 
-const enabled = entries(flags)
-  .filter(([, value]) => value)
-  .map(([key]) => key);
-// enabled: ("darkMode" | "debug")[]
-```
+Returns an array of tuples where each tuple contains a property key and its corresponding value, with full type preservation. Only enumerable own properties are included.
 
----
 
-### Reducers and transforms
+## Design Notes
 
-```ts
-type Config = {
-  retries: number;
-  verbose: boolean;
-};
+The function is a typed wrapper around `Object.entries` that maintains TypeScript type safety. It only returns enumerable own properties, following the same behavior as the native method but with enhanced type information.
 
-const config: Config = { retries: 3, verbose: true };
+The key types are preserved as literal string types rather than generic `string`, and value types are preserved as their exact types rather than `any`.
 
-const result = entries(config).reduce((acc, [key, value]) => {
-  acc[key] = String(value);
-  return acc;
-}, {} as Record<keyof Config, string>);
-```
+## When To Use
 
----
+Use `entries` when you need to:
 
-## Comparison with Object.entries
+- iterate over object properties with preserved types
+- convert objects to arrays while maintaining type safety
+- work with key-value pairs in a type-safe manner
+- get better IntelliSense support when working with object entries
 
-### Native API
+## When Not To Use
 
-```ts
-for (const [key, value] of Object.entries(user)) {
-  // key: string
-  // value: any
-}
-```
+Avoid when:
 
-Issues:
-
-- ❌ loss of type information
-- ❌ requires casting in non-trivial logic
-
----
-
-### This `entries`
-
-```ts
-for (const [key, value] of entries(user)) {
-  // key: "id" | "name"
-  // value: number | string
-}
-```
-
-Benefits:
-
-- ✔ zero casts
-- ✔ safe refactors
-- ✔ works with `strict` TypeScript settings
-
----
-
-## Design notes
-
-- Implemented as a thin typed wrapper
-- Uses a single `as` assertion internally
-- No runtime overhead beyond `Object.entries`
-
-This is a deliberate trade-off: **minimal runtime, maximum type signal**.
-
----
-
-## When to use / when not to use
-
-### Use when
-
-- iterating over known object shapes
-- writing reducers, mappers, or serializers
-- building TypeScript-first libraries
-
-### Avoid when
-
-- object shape is unknown or dynamic
-- data comes directly from untrusted sources
-- runtime validation is required
-
----
+- you need all properties including non-enumerable ones (use `Object.getOwnPropertyNames`)
+- you need properties from the prototype chain (use `for...in` loop)  
+- you only need keys (use the `keys` utility)
+- you only need values (use the `values` utility)
+- working with objects where type safety is not a concern
 
 ## Summary
 
-`entries` exists to close a long-standing gap in the TypeScript standard library:
+`entries` provides a type-safe way to work with object key-value pairs while maintaining full type preservation and familiar `Object.entries` API.
 
-- it does not add features
-- it does not change behavior
-- it **restores type information** that JavaScript loses
 
-A small utility with a **high leverage** in strongly typed codebases.
+## Snippets
 
-## More
+### basic.ts
 
-[➡️ Read more →](/api-generated/functions/entries)
+```ts
+import { entries } from "@petr-ptacek/js-core";
+
+const user = {
+  id: 1,
+  name: "John",
+  isActive: true,
+};
+
+for (const [key, value] of entries(user)) {
+  // key: "id" | "name" | "isActive"
+  // value: number | string | boolean
+  console.log(`${key}: ${value}`);
+}
+
+```
+
+### filter.ts
+
+```ts
+import { entries } from "@petr-ptacek/js-core";
+
+const data = {
+  id: 1,
+  name: "Product",
+  price: 99.99,
+  internal: true,
+};
+
+// Filter out internal properties
+const publicData = Object.fromEntries(
+  entries(data).filter(([key]) => key !== "internal")
+);
+
+console.log(publicData);
+// Output: { id: 1, name: "Product", price: 99.99 }
+
+```
+
+### transform.ts
+
+```ts
+import { entries } from "@petr-ptacek/js-core";
+
+const original = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+// Transform object values while preserving types
+const doubled = Object.fromEntries(
+  entries(original).map(([key, value]) => [key, value * 2])
+);
+
+console.log(doubled);
+// Output: { a: 2, b: 4, c: 6 }
+
+```
+
+
+
+

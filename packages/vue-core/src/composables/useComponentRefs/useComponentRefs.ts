@@ -2,15 +2,18 @@ import { markRaw } from "vue";
 
 import type { Key, UseComponentRefsReturn } from "./types";
 
-export function useComponentRefs<TInstance extends object = object>(): UseComponentRefsReturn<TInstance> {
-  const refs = markRaw(new Map<Key, TInstance>());
-  const setters = markRaw(new Map<Key, (el: unknown) => void>());
+export function useComponentRefs<
+  TInstance extends object = object,
+  TKey extends Key = Key,
+>(): UseComponentRefsReturn<TInstance, TKey> {
+  const refs = markRaw(new Map<TKey, TInstance>());
+  const setters = markRaw(new Map<TKey, (el: unknown) => void>());
 
   function isObjectLike(value: unknown): value is object {
     return !!value && typeof value === "object";
   }
 
-  function setRef(key: Key, instance: unknown) {
+  function setRef(key: TKey, instance: unknown) {
     if (!instance) {
       refs.delete(key);
       setters.delete(key);
@@ -22,7 +25,7 @@ export function useComponentRefs<TInstance extends object = object>(): UseCompon
     }
   }
 
-  function createRefSetter(key: Key) {
+  function createRefSetter(key: TKey) {
     if (!setters.has(key)) {
       setters.set(key, (el: unknown) => setRef(key, el));
     }
@@ -30,11 +33,11 @@ export function useComponentRefs<TInstance extends object = object>(): UseCompon
     return setters.get(key)!;
   }
 
-  function forEach(callback: (ref: TInstance) => void) {
+  function forEach(callback: (ref: TInstance, key: TKey) => void) {
     refs.forEach(callback);
   }
 
-  function get(key: Key): TInstance | undefined {
+  function get(key: TKey): TInstance | undefined {
     return refs.get(key);
   }
 
@@ -47,7 +50,7 @@ export function useComponentRefs<TInstance extends object = object>(): UseCompon
     setters.clear();
   }
 
-  function has(key: string | number): boolean {
+  function has(key: TKey): boolean {
     return refs.has(key);
   }
 

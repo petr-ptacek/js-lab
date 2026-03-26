@@ -15,11 +15,7 @@ console.log(products); // [10, 40, 90, 160]
 // String operations
 const firstNames = ["John", "Jane", "Bob"];
 const lastNames = ["Doe", "Smith", "Johnson"];
-const fullNames = zip(
-  firstNames,
-  lastNames,
-  (first, last) => `${first} ${last}`,
-);
+const fullNames = zip(firstNames, lastNames, (first, last) => `${first} ${last}`);
 console.log(fullNames); // ["John Doe", "Jane Smith", "Bob Johnson"]
 
 // Creating objects

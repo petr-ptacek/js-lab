@@ -5,9 +5,7 @@ export type Path<T> = T extends PrimitiveValue
   : T extends readonly (infer U)[]
     ? `${number}` | `${number}.${Path<U>}`
     : {
-        [K in keyof T & string]: T[K] extends PrimitiveValue
-          ? K
-          : K | `${K}.${Path<T[K]>}`;
+        [K in keyof T & string]: T[K] extends PrimitiveValue ? K : K | `${K}.${Path<T[K]>}`;
       }[keyof T & string];
 
 export type PathValue<T, P extends string> = T extends readonly (infer U)[]

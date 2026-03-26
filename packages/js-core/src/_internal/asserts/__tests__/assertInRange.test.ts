@@ -7,18 +7,12 @@ describe("assertInRange", () => {
   });
 
   it("throws when value is out of range", () => {
-    expect(() => assertInRange("value", -1, 0, 10)).toThrow(
-      "value must be in range 0..10",
-    );
+    expect(() => assertInRange("value", -1, 0, 10)).toThrow("value must be in range 0..10");
 
-    expect(() => assertInRange("value", 11, 0, 10)).toThrow(
-      "value must be in range 0..10",
-    );
+    expect(() => assertInRange("value", 11, 0, 10)).toThrow("value must be in range 0..10");
   });
 
   it("throws for NaN or Infinity", () => {
-    expect(() => assertInRange("value", NaN, 0, 10)).toThrow(
-      "value must be in range 0..10",
-    );
+    expect(() => assertInRange("value", NaN, 0, 10)).toThrow("value must be in range 0..10");
   });
 });

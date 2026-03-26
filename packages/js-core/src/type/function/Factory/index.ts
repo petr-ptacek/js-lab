@@ -10,6 +10,4 @@
  *
  * @since 1.0.0
  */
-export type Factory<TResult, TArgs extends unknown[] = []> = (
-  ...args: TArgs
-) => TResult;
+export type Factory<TResult, TArgs extends unknown[] = []> = (...args: TArgs) => TResult;

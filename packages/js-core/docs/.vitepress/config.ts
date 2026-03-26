@@ -2,9 +2,7 @@ import { defineConfig } from "vitepress";
 import data from "./data/utilities.json";
 
 function buildSidebar() {
-  const categories = Object.entries(data.categories).sort(([a], [b]) =>
-    a.localeCompare(b),
-  ); // Sort categories A-Z
+  const categories = Object.entries(data.categories).sort(([a], [b]) => a.localeCompare(b)); // Sort categories A-Z
 
   return [
     {
@@ -49,8 +47,6 @@ export default defineConfig({
       "/api/": buildSidebar(),
     },
 
-    socialLinks: [
-      { icon: "github", link: "https://github.com/petr-ptacek/js-lab" },
-    ],
+    socialLinks: [{ icon: "github", link: "https://github.com/petr-ptacek/js-lab" }],
   },
 });

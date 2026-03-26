@@ -64,9 +64,7 @@ export function scaleByAspectRatio(
   const hasHeight = typeof target.height === "number";
 
   if (hasWidth === hasHeight) {
-    throw new Error(
-      "scaleTo requires exactly one of target.width or target.height",
-    );
+    throw new Error("scaleTo requires exactly one of target.width or target.height");
   }
 
   if (hasWidth) {

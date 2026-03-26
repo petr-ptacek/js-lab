@@ -1,8 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  DEFAULT_INTERACTIVE_SELECTORS,
-  isInteractiveElement,
-} from "../isInteractiveElement";
+import { DEFAULT_INTERACTIVE_SELECTORS, isInteractiveElement } from "../isInteractiveElement";
 
 describe("isInteractiveElement", () => {
   it("returns false for null element", () => {

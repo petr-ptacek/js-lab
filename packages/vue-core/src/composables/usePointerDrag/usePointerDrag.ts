@@ -1,17 +1,6 @@
-import {
-  computed,
-  getCurrentInstance,
-  onBeforeUnmount,
-  readonly,
-  shallowRef,
-  toValue,
-} from "vue";
+import { computed, getCurrentInstance, onBeforeUnmount, readonly, shallowRef, toValue } from "vue";
 
-import type {
-  DragAxis,
-  UsePointerDragOptions,
-  UsePointerDragReturn,
-} from "./types";
+import type { DragAxis, UsePointerDragOptions, UsePointerDragReturn } from "./types";
 import {
   useDragAxisLock,
   useDragDelta,
@@ -20,21 +9,15 @@ import {
   useDragVelocity,
 } from "./use";
 
-export function usePointerDrag(
-  options: UsePointerDragOptions = {},
-): UsePointerDragReturn {
+export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerDragReturn {
   /****************************
    * Default vars
    ***************************/
 
   const isDisabled = computed(() => !!toValue(options.disabled));
   const axis = computed<DragAxis>(() => toValue(options.axis) ?? "both");
-  const threshold = computed(() =>
-    Math.max(0, toValue(options.threshold) ?? 0),
-  );
-  const lockAxisAfterThreshold = computed(
-    () => !!toValue(options.lockAxisAfterThreshold),
-  );
+  const threshold = computed(() => Math.max(0, toValue(options.threshold) ?? 0));
+  const lockAxisAfterThreshold = computed(() => !!toValue(options.lockAxisAfterThreshold));
   const invertAxis = computed<DragAxis | null>(() => {
     const ivAx = toValue(options.invertAxis);
 
@@ -72,8 +55,7 @@ export function usePointerDrag(
    ****************/
 
   function onPointerDown(e: PointerEvent) {
-    if (activePointerId.value !== null || isDisabled.value || !e.currentTarget)
-      return;
+    if (activePointerId.value !== null || isDisabled.value || !e.currentTarget) return;
 
     startX.value = e.clientX;
     startY.value = e.clientY;
@@ -188,10 +170,7 @@ export function usePointerDrag(
       } catch {
         /* empty */
       }
-      captureEl.value.removeEventListener(
-        "lostpointercapture",
-        onLostPointerCapture,
-      );
+      captureEl.value.removeEventListener("lostpointercapture", onLostPointerCapture);
     }
 
     captureEl.value = null;

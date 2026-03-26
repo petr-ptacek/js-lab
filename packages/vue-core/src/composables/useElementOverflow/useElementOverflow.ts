@@ -63,9 +63,7 @@ export function useElementOverflow(
   options: UseElementOverflowOptions = {},
 ): UseElementOverflowReturn {
   const disabled = computed(() => toValue(options.disabled) ?? false);
-  const observeContent = computed(
-    () => toValue(options.observeContent) ?? true,
-  );
+  const observeContent = computed(() => toValue(options.observeContent) ?? true);
   const targetEl = computed(() => toValue(target));
   const debounceDelay = computed(() => options.debounceDelay ?? 16);
 
@@ -105,10 +103,8 @@ export function useElementOverflow(
       return;
     }
 
-    hasVertical.value =
-      targetEl.value.scrollHeight > targetEl.value.clientHeight;
-    hasHorizontal.value =
-      targetEl.value.scrollWidth > targetEl.value.clientWidth;
+    hasVertical.value = targetEl.value.scrollHeight > targetEl.value.clientHeight;
+    hasHorizontal.value = targetEl.value.scrollWidth > targetEl.value.clientWidth;
   }
 
   return {

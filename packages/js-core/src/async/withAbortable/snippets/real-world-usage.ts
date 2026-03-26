@@ -44,44 +44,42 @@ const loadImage = withAbortable(
 );
 
 // Data fetching with retry logic
-const fetchWithRetry = withAbortable(
-  async ({ signal }, url: string, maxRetries: number = 3) => {
-    let lastError: Error = new Error("No attempts made");
+const fetchWithRetry = withAbortable(async ({ signal }, url: string, maxRetries: number = 3) => {
+  let lastError: Error = new Error("No attempts made");
 
-    for (let attempt = 1; attempt <= maxRetries; attempt++) {
-      try {
-        console.log(`Attempt ${attempt}/${maxRetries} for ${url}`);
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      console.log(`Attempt ${attempt}/${maxRetries} for ${url}`);
 
-        const response = await fetch(url, { signal });
+      const response = await fetch(url, { signal });
 
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-
-        return await response.json();
-      } catch (error) {
-        lastError = error as Error;
-
-        // Don't retry if aborted
-        if (signal.aborted || (error as Error).name === "AbortError") {
-          throw error;
-        }
-
-        // Don't retry on last attempt
-        if (attempt === maxRetries) {
-          break;
-        }
-
-        // Exponential backoff
-        const delay = 2 ** (attempt - 1) * 1000;
-        console.log(`Retry ${attempt} failed, waiting ${delay}ms...`);
-        await new Promise((resolve) => setTimeout(resolve, delay));
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-    }
 
-    throw lastError;
-  },
-);
+      return await response.json();
+    } catch (error) {
+      lastError = error as Error;
+
+      // Don't retry if aborted
+      if (signal.aborted || (error as Error).name === "AbortError") {
+        throw error;
+      }
+
+      // Don't retry on last attempt
+      if (attempt === maxRetries) {
+        break;
+      }
+
+      // Exponential backoff
+      const delay = 2 ** (attempt - 1) * 1000;
+      console.log(`Retry ${attempt} failed, waiting ${delay}ms...`);
+      await new Promise((resolve) => setTimeout(resolve, delay));
+    }
+  }
+
+  throw lastError;
+});
 
 // Simulated UI component behavior
 class SearchComponent {
@@ -121,9 +119,7 @@ class ImageGallery {
     console.log(`Loading ${urls.length} images...`);
 
     // Load images concurrently, but allow cancellation of the whole batch
-    const results = await Promise.allSettled(
-      urls.map((url) => loadImage.execute(url)),
-    );
+    const results = await Promise.allSettled(urls.map((url) => loadImage.execute(url)));
 
     const successful: HTMLImageElement[] = [];
     const failed: string[] = [];
@@ -186,9 +182,7 @@ async function _demonstratePatterns() {
 
   console.log("\n=== Retry Pattern ===");
   try {
-    const data = await fetchWithRetry.execute(
-      "https://jsonplaceholder.typicode.com/posts/1",
-    );
+    const data = await fetchWithRetry.execute("https://jsonplaceholder.typicode.com/posts/1");
     console.log("Fetched data:", data.title);
   } catch (error) {
     const err = error as Error;

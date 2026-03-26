@@ -34,10 +34,6 @@ const roundToDecimal = (decimals: number) => (value: number) => {
   return Math.round(value * factor) / factor;
 };
 
-const precisionRound = scaleByAspectRatio(
-  dimensions,
-  { width: 33.33 },
-  roundToDecimal(1),
-);
+const precisionRound = scaleByAspectRatio(dimensions, { width: 33.33 }, roundToDecimal(1));
 console.log("Precision round:", precisionRound);
 // Rounds to 1 decimal place

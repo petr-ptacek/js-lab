@@ -23,9 +23,7 @@ export function useResizeValue(options: UseResizeValueOptions) {
 
   // 3️⃣ respektuj origin
   const signedDeltaPercent = computed(() => {
-    return options.origin.value === "alpha"
-      ? deltaPercent.value
-      : -deltaPercent.value;
+    return options.origin.value === "alpha" ? deltaPercent.value : -deltaPercent.value;
   });
 
   // 4️⃣ výsledná hodnota

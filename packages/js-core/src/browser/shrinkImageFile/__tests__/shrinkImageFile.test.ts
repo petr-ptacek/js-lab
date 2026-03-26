@@ -90,9 +90,7 @@ describe("shrinkImageFile", () => {
       type: "image/jpeg",
     });
 
-    shrinkImageSpy.mockResolvedValueOnce(
-      new Blob(["shrunk"], { type: "image/webp" }),
-    );
+    shrinkImageSpy.mockResolvedValueOnce(new Blob(["shrunk"], { type: "image/webp" }));
 
     const promise = shrinkImageFile(file);
 

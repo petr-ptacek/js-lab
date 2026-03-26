@@ -21,9 +21,7 @@ const gameEmitter = new Emitter<GameEvents>({
   // Handler with once option
   gameEnd: {
     handler: (winner) => {
-      console.log(
-        `🏆 Game ended! Winner: ${winner.name} with ${winner.score} points`,
-      );
+      console.log(`🏆 Game ended! Winner: ${winner.name} with ${winner.score} points`);
     },
     once: true, // This handler will only run once
   },

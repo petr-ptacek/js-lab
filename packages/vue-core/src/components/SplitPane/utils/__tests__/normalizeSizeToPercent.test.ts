@@ -3,9 +3,7 @@ import { normalizeSizeToPercent } from "../normalizeSizeToPercent";
 
 describe("normalizeSizeToPercent", () => {
   describe("invalid container size", () => {
-    it.each([
-      0, -100,
-    ])("returns 0 when containerSize is %o", (containerSize) => {
+    it.each([0, -100])("returns 0 when containerSize is %o", (containerSize) => {
       expect(normalizeSizeToPercent(50, containerSize)).toBe(0);
     });
   });

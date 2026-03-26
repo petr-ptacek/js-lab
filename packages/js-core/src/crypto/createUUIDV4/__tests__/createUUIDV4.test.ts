@@ -20,8 +20,7 @@ describe("createUUIDV4", () => {
 
   it("returns UUID in correct RFC 4122 v4 format", () => {
     const uuid = createUUIDV4();
-    const uuidRegex =
-      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
     expect(uuid).toMatch(uuidRegex);
   });
@@ -56,8 +55,7 @@ describe("createUUIDV4", () => {
 
     expect(getRandomValuesMock).toHaveBeenCalledTimes(1);
 
-    const uuidRegex =
-      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
     expect(uuid).toMatch(uuidRegex);
   });
@@ -70,8 +68,7 @@ describe("createUUIDV4", () => {
 
     const uuid = createUUIDV4();
 
-    const uuidRegex =
-      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
     expect(uuid).toMatch(uuidRegex);
   });

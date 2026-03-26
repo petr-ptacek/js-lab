@@ -115,11 +115,7 @@ describe("shrinkImage", () => {
       mimeType: "image/webp",
     });
 
-    expect(lastCanvas.toBlob).toHaveBeenCalledWith(
-      expect.any(Function),
-      "image/webp",
-      0.5,
-    );
+    expect(lastCanvas.toBlob).toHaveBeenCalledWith(expect.any(Function), "image/webp", 0.5);
   });
 
   it("does not mutate the original image", async () => {

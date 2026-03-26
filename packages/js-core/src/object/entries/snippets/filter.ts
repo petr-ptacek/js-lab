@@ -8,9 +8,7 @@ const data = {
 };
 
 // Filter out internal properties
-const publicData = Object.fromEntries(
-  entries(data).filter(([key]) => key !== "internal"),
-);
+const publicData = Object.fromEntries(entries(data).filter(([key]) => key !== "internal"));
 
 console.log(publicData);
 // Output: { id: 1, name: "Product", price: 99.99 }

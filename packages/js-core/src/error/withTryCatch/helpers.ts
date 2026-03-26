@@ -1,10 +1,6 @@
 import type { ValueOrFactory } from "../../type";
 import { isFunction } from "../../validation";
-import type {
-  TryCatchResult,
-  TryCatchResultFailure,
-  WithTryCatchOptions,
-} from "./types";
+import type { TryCatchResult, TryCatchResultFailure, WithTryCatchOptions } from "./types";
 
 /**
  * @internal

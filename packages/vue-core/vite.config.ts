@@ -6,9 +6,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
   resolve: {
     alias: {
-      "@petr-ptacek/js-core": fileURLToPath(
-        new URL("../js-core/src", import.meta.url),
-      ),
+      "@petr-ptacek/js-core": fileURLToPath(new URL("../js-core/src", import.meta.url)),
     },
   },
   build: {

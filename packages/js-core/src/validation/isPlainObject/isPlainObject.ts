@@ -32,9 +32,7 @@ import { isNull } from "../isNull";
  * }
  * ```
  */
-export function isPlainObject(
-  value: unknown,
-): value is Record<string, unknown> {
+export function isPlainObject(value: unknown): value is Record<string, unknown> {
   if (typeof value !== "object" || isNull(value) || isArray(value)) {
     return false;
   }

@@ -33,25 +33,17 @@ export function useResizeActions(options: UseResizeActionsOptions) {
   let lastRestoredPercent: number | null = null;
 
   const minPercent = computed(() =>
-    normalizeSizeToPercent(
-      options.minSize?.value ?? "0%",
-      options.containerSize.value,
-      {
-        minSize: options.minSize?.value,
-        maxSize: options.maxSize?.value,
-      },
-    ),
+    normalizeSizeToPercent(options.minSize?.value ?? "0%", options.containerSize.value, {
+      minSize: options.minSize?.value,
+      maxSize: options.maxSize?.value,
+    }),
   );
 
   const maxPercent = computed(() =>
-    normalizeSizeToPercent(
-      options.maxSize?.value ?? "100%",
-      options.containerSize.value,
-      {
-        minSize: options.minSize?.value,
-        maxSize: options.maxSize?.value,
-      },
-    ),
+    normalizeSizeToPercent(options.maxSize?.value ?? "100%", options.containerSize.value, {
+      minSize: options.minSize?.value,
+      maxSize: options.maxSize?.value,
+    }),
   );
 
   const isCollapsed = computed(() => {

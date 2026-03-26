@@ -100,12 +100,7 @@ export function shrinkImage(
   assertPositiveFinite("image.naturalWidth", image.naturalWidth);
   assertPositiveFinite("image.naturalHeight", image.naturalHeight);
 
-  const {
-    maxWidth,
-    maxHeight,
-    quality = DEFAULT_QUALITY,
-    mimeType = DEFAULT_MIME_TYPE,
-  } = options;
+  const { maxWidth, maxHeight, quality = DEFAULT_QUALITY, mimeType = DEFAULT_MIME_TYPE } = options;
 
   let target: Dimensions = {
     width: image.naturalWidth,

@@ -81,9 +81,7 @@ videos.forEach(({ name, width, height }) => {
 });
 
 // generate optimal thumbnail sizes
-const thumbnailSizes = [200, 400, 600].map((width) =>
-  videoPlayer.getOptimalContentSize(width),
-);
+const thumbnailSizes = [200, 400, 600].map((width) => videoPlayer.getOptimalContentSize(width));
 
 console.log("Optimal thumbnail sizes:", thumbnailSizes);
 // [

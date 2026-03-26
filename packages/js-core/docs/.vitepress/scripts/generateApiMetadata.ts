@@ -36,9 +36,7 @@ async function findMetaFiles(): Promise<string[]> {
 
 /* -------------------------------------------------- */
 
-async function loadMeta(
-  file: string,
-): Promise<{ meta: Meta; utilDir: string } | null> {
+async function loadMeta(file: string): Promise<{ meta: Meta; utilDir: string } | null> {
   const modulePath = path.join(SRC_ROOT, file);
   const mod = await import(pathToFileURL(modulePath).href);
 
@@ -139,13 +137,9 @@ function loadDemo(utilDir: string): string {
   let content = "";
 
   for (const file of files) {
-    const componentName =
-      "Demo" + file.replace(".vue", "").replace(/^\w/, (c) => c.toUpperCase());
+    const componentName = "Demo" + file.replace(".vue", "").replace(/^\w/, (c) => c.toUpperCase());
 
-    const importPath = path.relative(
-      path.resolve(__dirname, "../../"),
-      path.join(demoDir, file),
-    );
+    const importPath = path.relative(path.resolve(__dirname, "../../"), path.join(demoDir, file));
 
     content += `
 <script setup>
@@ -165,12 +159,7 @@ import ${componentName} from '/${importPath}'
 
 /* -------------------------------------------------- */
 
-function buildMarkdown(
-  meta: Meta,
-  readme: string,
-  snippets: string,
-  demo: string,
-): string {
+function buildMarkdown(meta: Meta, readme: string, snippets: string, demo: string): string {
   const frontmatter = buildFrontmatter(meta);
   const metaPanel = buildMetaPanel(meta);
 
@@ -252,9 +241,7 @@ function writeCategoryIndex(category: string, utilities: Meta[]) {
 Utilities in the **${category}** category.
 
 <ul>
-${utilities
-  .map((u) => `<li><a href="./${u.id}">${u.name}</a> — ${u.description}</li>`)
-  .join("\n")}
+${utilities.map((u) => `<li><a href="./${u.id}">${u.name}</a> — ${u.description}</li>`).join("\n")}
 </ul>
 `;
 

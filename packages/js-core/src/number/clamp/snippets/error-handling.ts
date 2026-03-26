@@ -8,9 +8,7 @@ try {
   const result = clamp(50, 0, 100);
   console.log(`✓ Valid range: clamp(50, 0, 100) = ${result}`);
 } catch (error) {
-  console.error(
-    `✗ Error: ${error instanceof Error ? error.message : String(error)}`,
-  );
+  console.error(`✗ Error: ${error instanceof Error ? error.message : String(error)}`);
 }
 
 // Invalid range - min > max
@@ -18,9 +16,7 @@ try {
   const result = clamp(50, 100, 0); // Invalid: min(100) > max(0)
   console.log(`Result: ${result}`);
 } catch (error) {
-  console.error(
-    `✗ Invalid range: ${error instanceof Error ? error.message : String(error)}`,
-  );
+  console.error(`✗ Invalid range: ${error instanceof Error ? error.message : String(error)}`);
 }
 
 // Safe clamp wrapper with validation

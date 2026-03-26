@@ -2,21 +2,7 @@ import { shuffle } from "@petr-ptacek/js-core";
 
 // Card deck simulation
 const suits = ["♠", "♥", "♦", "♣"];
-const ranks = [
-  "A",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "J",
-  "Q",
-  "K",
-];
+const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
 // Create full deck
 const deck = suits.flatMap((suit) => ranks.map((rank) => `${rank}${suit}`));

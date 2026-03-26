@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "@vue/tsconfig/tsconfig.dom.json",
-    "../../tsconfig.app.base.json"
-  ],
+  "extends": ["@vue/tsconfig/tsconfig.dom.json", "../../tsconfig.app.base.json"],
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "types": ["vite/client"],

@@ -15,11 +15,7 @@ console.log(distances); // [10.05, 20.1, 30.15, ...]
 
 // Data merging from parallel arrays
 const userIds = [1, 2, 3];
-const userEmails = [
-  "alice@example.com",
-  "bob@example.com",
-  "charlie@example.com",
-];
+const userEmails = ["alice@example.com", "bob@example.com", "charlie@example.com"];
 const userRoles = ["admin", "user", "moderator"];
 
 // Merge into user objects (using nested zip)

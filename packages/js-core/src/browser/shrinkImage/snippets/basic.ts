@@ -1,8 +1,7 @@
 import { shrinkImage } from "@petr-ptacek/js-core";
 
 // Basic usage: Shrink image before upload
-const imageInput =
-  document.querySelector<HTMLInputElement>("input[type='file']")!;
+const imageInput = document.querySelector<HTMLInputElement>("input[type='file']")!;
 
 imageInput.addEventListener("change", async (event) => {
   const file = (event.target as HTMLInputElement).files?.[0];

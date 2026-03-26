@@ -39,10 +39,8 @@
 
     &::before {
       box-shadow:
-        0 calc(var(--ui-split-pane-grip-dot-gap) * -1) 0
-        var(--ui-split-pane-grip-dot-color),
-        0 calc(var(--ui-split-pane-grip-dot-gap)) 0
-        var(--ui-split-pane-grip-dot-color);
+        0 calc(var(--ui-split-pane-grip-dot-gap) * -1) 0 var(--ui-split-pane-grip-dot-color),
+        0 calc(var(--ui-split-pane-grip-dot-gap)) 0 var(--ui-split-pane-grip-dot-color);
     }
   }
 
@@ -64,10 +62,7 @@
   &[data-origin="alpha"][data-expanded="true"],
   &[data-origin="beta"][data-collapsed="true"] {
     .ui-split-pane__grip-wrapper {
-      right: calc(
-        (var(--ui-split-pane-resizer-size) / 2) +
-        var(--ui-split-pane-grip-offset)
-      );
+      right: calc((var(--ui-split-pane-resizer-size) / 2) + var(--ui-split-pane-grip-offset));
       transform: translate(-100%, -50%);
     }
   }
@@ -77,10 +72,7 @@
   &[data-origin="alpha"][data-collapsed="true"],
   &[data-origin="beta"][data-expanded="true"] {
     .ui-split-pane__grip-wrapper {
-      left: calc(
-        (var(--ui-split-pane-resizer-size) / 2) +
-        var(--ui-split-pane-grip-offset)
-      );
+      left: calc((var(--ui-split-pane-resizer-size) / 2) + var(--ui-split-pane-grip-offset));
       transform: translateY(-50%);
     }
   }
@@ -105,10 +97,8 @@
 
     &::before {
       box-shadow:
-        calc(var(--ui-split-pane-grip-dot-gap) * -1) 0 0
-        var(--ui-split-pane-grip-dot-color),
-        calc(var(--ui-split-pane-grip-dot-gap)) 0 0
-        var(--ui-split-pane-grip-dot-color);
+        calc(var(--ui-split-pane-grip-dot-gap) * -1) 0 0 var(--ui-split-pane-grip-dot-color),
+        calc(var(--ui-split-pane-grip-dot-gap)) 0 0 var(--ui-split-pane-grip-dot-color);
     }
   }
 
@@ -126,10 +116,7 @@
   &[data-origin="alpha"][data-expanded="true"],
   &[data-origin="beta"][data-collapsed="true"] {
     .ui-split-pane__grip-wrapper {
-      bottom: calc(
-        (var(--ui-split-pane-resizer-size) / 2) +
-        var(--ui-split-pane-grip-offset)
-      );
+      bottom: calc((var(--ui-split-pane-resizer-size) / 2) + var(--ui-split-pane-grip-offset));
       transform: translate(-50%, -100%);
     }
   }
@@ -139,10 +126,7 @@
   &[data-origin="alpha"][data-collapsed="true"],
   &[data-origin="beta"][data-expanded="true"] {
     .ui-split-pane__grip-wrapper {
-      top: calc(
-        (var(--ui-split-pane-resizer-size) / 2) +
-        var(--ui-split-pane-grip-offset)
-      );
+      top: calc((var(--ui-split-pane-resizer-size) / 2) + var(--ui-split-pane-grip-offset));
       transform: translate(-50%, 0);
     }
   }

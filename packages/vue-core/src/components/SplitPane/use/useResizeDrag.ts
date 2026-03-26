@@ -11,23 +11,20 @@ export type UseResizeOptions = {
 export function useResizeDrag(options: UseResizeOptions) {
   const deltaPx = shallowRef(0);
 
-  const axis = computed(() =>
-    options.orientation.value === "vertical" ? "x" : "y",
-  );
+  const axis = computed(() => (options.orientation.value === "vertical" ? "x" : "y"));
 
-  const { onPointerDown, isDragging, deltaX, deltaY, isPressed } =
-    usePointerDrag({
-      disabled: options.disabled,
-      threshold: 4,
-      lockAxisAfterThreshold: true,
-      axis,
-      onStart(e) {
-        e.evt.preventDefault();
-      },
-      onMove(e) {
-        e.evt.preventDefault();
-      },
-    });
+  const { onPointerDown, isDragging, deltaX, deltaY, isPressed } = usePointerDrag({
+    disabled: options.disabled,
+    threshold: 4,
+    lockAxisAfterThreshold: true,
+    axis,
+    onStart(e) {
+      e.evt.preventDefault();
+    },
+    onMove(e) {
+      e.evt.preventDefault();
+    },
+  });
 
   watch([deltaX, deltaY], () => {
     deltaPx.value = axis.value === "x" ? deltaX.value : deltaY.value;

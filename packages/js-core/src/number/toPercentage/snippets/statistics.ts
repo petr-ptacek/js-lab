@@ -13,13 +13,11 @@ const surveyData = {
 };
 
 // calculate percentage for each category
-const results = Object.entries(surveyData.categories).map(
-  ([category, count]) => ({
-    category,
-    count,
-    percentage: toPercentage(count, surveyData.totalResponses),
-  }),
-);
+const results = Object.entries(surveyData.categories).map(([category, count]) => ({
+  category,
+  count,
+  percentage: toPercentage(count, surveyData.totalResponses),
+}));
 
 console.log("Survey Results:");
 results.forEach(({ category, count, percentage }) => {
@@ -27,8 +25,7 @@ results.forEach(({ category, count, percentage }) => {
 });
 
 // calculate satisfaction rate (Very Satisfied + Satisfied)
-const satisfied =
-  surveyData.categories["Very Satisfied"] + surveyData.categories["Satisfied"];
+const satisfied = surveyData.categories["Very Satisfied"] + surveyData.categories["Satisfied"];
 const satisfactionRate = toPercentage(satisfied, surveyData.totalResponses);
 
 console.log(`\nOverall Satisfaction Rate: ${satisfactionRate}%`);

@@ -9,8 +9,6 @@ describe("assertNotNull", () => {
   });
 
   it("throws for null", () => {
-    expect(() => assertNonNull("value", null)).toThrow(
-      "value must be not null",
-    );
+    expect(() => assertNonNull("value", null)).toThrow("value must be not null");
   });
 });

@@ -7,14 +7,10 @@ describe("assertNonEmptyString", () => {
   });
 
   it("throws for empty string", () => {
-    expect(() => assertNonEmptyString("value", "")).toThrow(
-      "a non-empty string",
-    );
+    expect(() => assertNonEmptyString("value", "")).toThrow("a non-empty string");
   });
 
   it("throws for non-string values", () => {
-    expect(() => assertNonEmptyString("value", 123 as any)).toThrow(
-      "a non-empty string",
-    );
+    expect(() => assertNonEmptyString("value", 123 as any)).toThrow("a non-empty string");
   });
 });

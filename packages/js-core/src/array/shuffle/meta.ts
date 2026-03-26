@@ -6,14 +6,7 @@ export const meta = {
   description:
     "Returns a new array with elements shuffled in random order using the Fisher–Yates shuffle algorithm.",
   category: "array",
-  tags: [
-    "array",
-    "shuffle",
-    "random",
-    "fisher-yates",
-    "immutable",
-    "randomize",
-  ],
+  tags: ["array", "shuffle", "random", "fisher-yates", "immutable", "randomize"],
   demo: false,
   snippets: true,
   since: "1.0.0",

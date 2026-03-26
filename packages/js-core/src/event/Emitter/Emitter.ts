@@ -123,10 +123,7 @@ export class Emitter<Events extends EmitterEvents> {
    * @param type - Event name
    * @param args - Arguments passed to the event handlers
    */
-  emit<TType extends keyof Events>(
-    type: TType,
-    ...args: Parameters<Events[TType]>
-  ): void {
+  emit<TType extends keyof Events>(type: TType, ...args: Parameters<Events[TType]>): void {
     if (!this.#eventsStore.has(type)) {
       return;
     }
@@ -194,8 +191,7 @@ export class Emitter<Events extends EmitterEvents> {
     handler: THandler,
     ctx: ListenerContext,
   ): CleanupFn {
-    const storeItem: StoreItem<THandler> =
-      this.#eventsStore.get(type) ?? new Map();
+    const storeItem: StoreItem<THandler> = this.#eventsStore.get(type) ?? new Map();
 
     const clear = () => {
       this.off(type, handler);
@@ -218,8 +214,6 @@ export class Emitter<Events extends EmitterEvents> {
 /**
  * Type guard for detecting a plain event handler.
  */
-function isHandler<T extends EventHandler>(
-  value: InitialHandler<T>,
-): value is T {
+function isHandler<T extends EventHandler>(value: InitialHandler<T>): value is T {
   return typeof value === "function";
 }

@@ -45,19 +45,13 @@ console.log("\n=== Slider Control ===");
 const slider = new Slider(0, 255); // RGB color slider
 
 slider.setValue(128);
-console.log(
-  `Value: ${slider.getValue()}, Percentage: ${slider.getPercentage().toFixed(1)}%`,
-);
+console.log(`Value: ${slider.getValue()}, Percentage: ${slider.getPercentage().toFixed(1)}%`);
 
 slider.setValue(300); // Clamped to 255
-console.log(
-  `Value: ${slider.getValue()}, Percentage: ${slider.getPercentage().toFixed(1)}%`,
-);
+console.log(`Value: ${slider.getValue()}, Percentage: ${slider.getPercentage().toFixed(1)}%`);
 
 slider.setValue(-50); // Clamped to 0
-console.log(
-  `Value: ${slider.getValue()}, Percentage: ${slider.getPercentage().toFixed(1)}%`,
-);
+console.log(`Value: ${slider.getValue()}, Percentage: ${slider.getPercentage().toFixed(1)}%`);
 
 // Game physics - velocity limiting
 function updatePlayerVelocity(currentVelocity: number, acceleration: number) {

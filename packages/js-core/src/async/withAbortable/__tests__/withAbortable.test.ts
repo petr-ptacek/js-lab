@@ -25,12 +25,10 @@ describe("withAbortable", () => {
     it("provides AbortSignal in context", async () => {
       let capturedSignal: AbortSignal | undefined;
 
-      const mockFn = vi
-        .fn()
-        .mockImplementation(({ signal }: { signal: AbortSignal }) => {
-          capturedSignal = signal;
-          return Promise.resolve();
-        });
+      const mockFn = vi.fn().mockImplementation(({ signal }: { signal: AbortSignal }) => {
+        capturedSignal = signal;
+        return Promise.resolve();
+      });
 
       const abortable = withAbortable(mockFn);
       await abortable.execute();
@@ -87,23 +85,21 @@ describe("withAbortable", () => {
       let firstSignal: AbortSignal | undefined;
       let secondSignal: AbortSignal | undefined;
 
-      const mockFn = vi
-        .fn()
-        .mockImplementation(({ signal }: { signal: AbortSignal }) => {
-          return new Promise<string>((resolve, reject) => {
-            if (firstSignal === undefined) {
-              firstSignal = signal;
-            } else {
-              secondSignal = signal;
-            }
+      const mockFn = vi.fn().mockImplementation(({ signal }: { signal: AbortSignal }) => {
+        return new Promise<string>((resolve, reject) => {
+          if (firstSignal === undefined) {
+            firstSignal = signal;
+          } else {
+            secondSignal = signal;
+          }
 
-            signal.addEventListener("abort", () => {
-              reject(new DOMException("Aborted", "AbortError"));
-            });
-
-            setTimeout(() => resolve("completed"), 100);
+          signal.addEventListener("abort", () => {
+            reject(new DOMException("Aborted", "AbortError"));
           });
+
+          setTimeout(() => resolve("completed"), 100);
         });
+      });
 
       const abortable = withAbortable(mockFn);
 
@@ -121,19 +117,17 @@ describe("withAbortable", () => {
       let firstSignal: AbortSignal | undefined;
       let secondSignal: AbortSignal | undefined;
 
-      const mockFn = vi
-        .fn()
-        .mockImplementation(({ signal }: { signal: AbortSignal }) => {
-          return new Promise<string>((resolve) => {
-            if (firstSignal === undefined) {
-              firstSignal = signal;
-            } else {
-              secondSignal = signal;
-            }
+      const mockFn = vi.fn().mockImplementation(({ signal }: { signal: AbortSignal }) => {
+        return new Promise<string>((resolve) => {
+          if (firstSignal === undefined) {
+            firstSignal = signal;
+          } else {
+            secondSignal = signal;
+          }
 
-            setTimeout(() => resolve("completed"), 50);
-          });
+          setTimeout(() => resolve("completed"), 50);
         });
+      });
 
       const abortable = withAbortable(mockFn, { autoAbort: false });
 
@@ -152,17 +146,15 @@ describe("withAbortable", () => {
     it("aborts current execution", async () => {
       let capturedSignal: AbortSignal | undefined;
 
-      const mockFn = vi
-        .fn()
-        .mockImplementation(({ signal }: { signal: AbortSignal }) => {
-          capturedSignal = signal;
-          return new Promise<string>((resolve, reject) => {
-            signal.addEventListener("abort", () => {
-              reject(new DOMException("Aborted", "AbortError"));
-            });
-            setTimeout(() => resolve("completed"), 100);
+      const mockFn = vi.fn().mockImplementation(({ signal }: { signal: AbortSignal }) => {
+        capturedSignal = signal;
+        return new Promise<string>((resolve, reject) => {
+          signal.addEventListener("abort", () => {
+            reject(new DOMException("Aborted", "AbortError"));
           });
+          setTimeout(() => resolve("completed"), 100);
         });
+      });
 
       const abortable = withAbortable(mockFn);
       const promise = abortable.execute();
@@ -192,17 +184,15 @@ describe("withAbortable", () => {
     it("aborts execution after timeout", async () => {
       let capturedSignal: AbortSignal | undefined;
 
-      const mockFn = vi
-        .fn()
-        .mockImplementation(({ signal }: { signal: AbortSignal }) => {
-          capturedSignal = signal;
-          return new Promise<string>((resolve, reject) => {
-            signal.addEventListener("abort", () => {
-              reject(new DOMException("Timeout", "AbortError"));
-            });
-            setTimeout(() => resolve("completed"), 200);
+      const mockFn = vi.fn().mockImplementation(({ signal }: { signal: AbortSignal }) => {
+        capturedSignal = signal;
+        return new Promise<string>((resolve, reject) => {
+          signal.addEventListener("abort", () => {
+            reject(new DOMException("Timeout", "AbortError"));
           });
+          setTimeout(() => resolve("completed"), 200);
         });
+      });
 
       const abortable = withAbortable(mockFn, { timeoutMs: 50 });
       const promise = abortable.execute();
@@ -213,13 +203,11 @@ describe("withAbortable", () => {
     });
 
     it("completes successfully when execution finishes before timeout", async () => {
-      const mockFn = vi
-        .fn()
-        .mockImplementation(({ signal: _ }: { signal: AbortSignal }) => {
-          return new Promise<string>((resolve) => {
-            setTimeout(() => resolve("completed"), 10);
-          });
+      const mockFn = vi.fn().mockImplementation(({ signal: _ }: { signal: AbortSignal }) => {
+        return new Promise<string>((resolve) => {
+          setTimeout(() => resolve("completed"), 10);
         });
+      });
 
       const abortable = withAbortable(mockFn, { timeoutMs: 100 });
 
@@ -267,10 +255,7 @@ describe("withAbortable", () => {
     });
 
     it("handles function with multiple executions in sequence", async () => {
-      const mockFn = vi
-        .fn()
-        .mockResolvedValueOnce("first")
-        .mockResolvedValueOnce("second");
+      const mockFn = vi.fn().mockResolvedValueOnce("first").mockResolvedValueOnce("second");
 
       const abortable = withAbortable(mockFn);
 

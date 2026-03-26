@@ -14,9 +14,7 @@ describe("clampPercentWithLimits", () => {
   });
 
   describe("invalid container size", () => {
-    it.each([
-      0, -100,
-    ])("returns clamped percent when containerSize is %o", (containerSize) => {
+    it.each([0, -100])("returns clamped percent when containerSize is %o", (containerSize) => {
       expect(
         clampPercentWithLimits(150, containerSize, {
           minSize: 50,

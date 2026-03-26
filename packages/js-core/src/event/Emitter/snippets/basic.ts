@@ -23,9 +23,7 @@ const logoutCleanup = emitter.on("userLogout", (userId) => {
 });
 
 const dataCleanup = emitter.on("dataReceived", (data, timestamp) => {
-  console.log(
-    `📦 Received ${data.length} items at ${new Date(timestamp).toISOString()}`,
-  );
+  console.log(`📦 Received ${data.length} items at ${new Date(timestamp).toISOString()}`);
 });
 
 const errorCleanup = emitter.on("error", (message, code) => {

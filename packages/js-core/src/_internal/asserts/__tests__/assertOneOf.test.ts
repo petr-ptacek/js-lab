@@ -9,8 +9,6 @@ describe("assertOneOf", () => {
   });
 
   it("throws for disallowed values", () => {
-    expect(() => assertOneOf("mode", "stretch", allowed)).toThrow(
-      "one of [contain, cover]",
-    );
+    expect(() => assertOneOf("mode", "stretch", allowed)).toThrow("one of [contain, cover]");
   });
 });

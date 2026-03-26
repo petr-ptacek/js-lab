@@ -168,9 +168,7 @@ export function useProxyValue<TValue>(
   });
 
   function resolveDefaultValue(): TValue {
-    return typeof defaultValue === "function"
-      ? (defaultValue as () => TValue)()
-      : defaultValue;
+    return typeof defaultValue === "function" ? (defaultValue as () => TValue)() : defaultValue;
   }
 
   function reset() {

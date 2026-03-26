@@ -20,25 +20,17 @@ export function useController(options: UseControllerOptions) {
   const containerElSize = useElementSize(containerEl);
 
   // Orientation
-  const isOrientationVertical = computed(
-    () => options.props.orientation === "vertical",
-  );
+  const isOrientationVertical = computed(() => options.props.orientation === "vertical");
 
   const containerSize = computed(() => {
-    return isOrientationVertical.value
-      ? containerElSize.width.value
-      : containerElSize.height.value;
+    return isOrientationVertical.value ? containerElSize.width.value : containerElSize.height.value;
   });
 
   const currentPercent = computed(() => {
-    return normalizeSizeToPercent(
-      options.modelValue.value,
-      containerSize.value,
-      {
-        minSize: options.props.minSize,
-        maxSize: options.props.maxSize,
-      },
-    );
+    return normalizeSizeToPercent(options.modelValue.value, containerSize.value, {
+      minSize: options.props.minSize,
+      maxSize: options.props.maxSize,
+    });
   });
 
   const { alphaStyle, betaStyle } = useResizeSizes({
@@ -61,23 +53,17 @@ export function useController(options: UseControllerOptions) {
     isDragging,
   });
 
-  const {
-    isCollapsed,
-    collapse,
-    toggle,
-    isExpanded,
-    expand,
-    setLastRestoredPercent,
-  } = useResizeActions({
-    containerSize,
-    currentPercent,
-    minSize: computed(() => options.props.minSize),
-    maxSize: computed(() => options.props.maxSize),
-    restorable: computed(() => !!options.props.rememberSize),
-    onChange: (percent) => {
-      options.modelValue.value = `${percent}%`;
-    },
-  });
+  const { isCollapsed, collapse, toggle, isExpanded, expand, setLastRestoredPercent } =
+    useResizeActions({
+      containerSize,
+      currentPercent,
+      minSize: computed(() => options.props.minSize),
+      maxSize: computed(() => options.props.maxSize),
+      restorable: computed(() => !!options.props.rememberSize),
+      onChange: (percent) => {
+        options.modelValue.value = `${percent}%`;
+      },
+    });
 
   // při startu dragu
   watch(isDragging, (dragging, wasDragging) => {

@@ -67,9 +67,7 @@ describe("scaleImageByAspectRatio", () => {
   it("throws if both width and height are provided", () => {
     const img = createImage(400, 200);
 
-    expect(() =>
-      scaleImageByAspectRatio(img, { width: 200, height: 100 } as any),
-    ).toThrow();
+    expect(() => scaleImageByAspectRatio(img, { width: 200, height: 100 } as any)).toThrow();
   });
 
   it("throws if neither width nor height is provided", () => {

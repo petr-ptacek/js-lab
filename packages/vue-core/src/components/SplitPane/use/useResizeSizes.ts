@@ -13,20 +13,14 @@ export type UseResizeSizesOptions = {
 
 export function useResizeSizes(options: UseResizeSizesOptions) {
   const originPercent = computed(() => {
-    return normalizeSizeToPercent(
-      options.modelValue.value,
-      options.containerSize.value,
-      {
-        minSize: options.minSize?.value,
-        maxSize: options.maxSize?.value,
-      },
-    );
+    return normalizeSizeToPercent(options.modelValue.value, options.containerSize.value, {
+      minSize: options.minSize?.value,
+      maxSize: options.maxSize?.value,
+    });
   });
 
   const alphaPercent = computed(() => {
-    return options.origin.value === "alpha"
-      ? originPercent.value
-      : 100 - originPercent.value;
+    return options.origin.value === "alpha" ? originPercent.value : 100 - originPercent.value;
   });
 
   const betaPercent = computed(() => 100 - alphaPercent.value);

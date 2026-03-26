@@ -6,11 +6,14 @@
     "useIgnoreFile": true
   },
   "files": {
-    "ignoreUnknown": true
+    "ignoreUnknown": true,
+    "includes": ["**", "!!**/dist", "!!**/build", "!!**/coverage", "!!**/out"]
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "lineWidth": 100,
+    "indentWidth": 2
   },
   "linter": {
     "enabled": true,
@@ -19,6 +22,22 @@
       "suspicious": {
         "noExplicitAny": "warn"
       }
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "noDuplicateClasses": "on",
+        "organizeImports": "on",
+        "useSortedKeys": "off",
+        "useSortedAttributes": "off"
+      }
+    }
+  },
+  "json": {
+    "formatter": {
+      "enabled": true
     }
   },
   "javascript": {
@@ -31,15 +50,17 @@
       "tailwindDirectives": true
     }
   },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
-  },
   "overrides": [
+    {
+      "includes": ["biome.json"],
+      "assist": {
+        "actions": {
+          "source": {
+            "useSortedKeys": "off"
+          }
+        }
+      }
+    },
     {
       "includes": ["apps/playground/**"],
       "linter": {

@@ -13,9 +13,7 @@ export function withTryCatchSync<TResult, TError = unknown>(
   options: WithTryCatchOptions<TResult, TError> & {
     fallback: ValueOrFactory<TResult, [TError]>;
   },
-):
-  | TryCatchResultSuccess<TResult>
-  | TryCatchResultFailureWithData<TResult, TError>;
+): TryCatchResultSuccess<TResult> | TryCatchResultFailureWithData<TResult, TError>;
 
 export function withTryCatchSync<TResult, TError = unknown>(
   fn: () => TResult,

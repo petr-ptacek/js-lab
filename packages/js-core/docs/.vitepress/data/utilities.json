@@ -25,14 +25,7 @@
       "name": "Comparator",
       "description": "Represents a comparison function.",
       "category": "type",
-      "tags": [
-        "type",
-        "function",
-        "comparator",
-        "sorting",
-        "ordering",
-        "comparison"
-      ],
+      "tags": ["type", "function", "comparator", "sorting", "ordering", "comparison"],
       "demo": false,
       "snippets": false,
       "since": "1.0.0"
@@ -52,14 +45,7 @@
       "name": "Dict",
       "description": "Represents a dictionary object with arbitrary keys and values.",
       "category": "type",
-      "tags": [
-        "type",
-        "dictionary",
-        "record",
-        "object",
-        "mapping",
-        "key-value"
-      ],
+      "tags": ["type", "dictionary", "record", "object", "mapping", "key-value"],
       "demo": false,
       "snippets": false,
       "since": "1.0.0"
@@ -119,14 +105,7 @@
       "name": "get",
       "description": "Safely gets a nested value from an object using a dot-separated path with full TypeScript type safety.",
       "category": "object",
-      "tags": [
-        "object",
-        "nested",
-        "path",
-        "safe-access",
-        "typed",
-        "dot-notation"
-      ],
+      "tags": ["object", "nested", "path", "safe-access", "typed", "dot-notation"],
       "demo": false,
       "snippets": true,
       "since": "1.0.0"
@@ -226,13 +205,7 @@
       "name": "isFunction",
       "description": "Checks whether the given value is a function.",
       "category": "validation",
-      "tags": [
-        "validation",
-        "type-guard",
-        "function",
-        "callable",
-        "typescript"
-      ],
+      "tags": ["validation", "type-guard", "function", "callable", "typescript"],
       "demo": false,
       "snippets": false,
       "since": "1.0.0"
@@ -272,14 +245,7 @@
       "name": "isNullable",
       "description": "Checks whether the given value is null or undefined.",
       "category": "validation",
-      "tags": [
-        "validation",
-        "type-guard",
-        "null",
-        "undefined",
-        "nullable",
-        "typescript"
-      ],
+      "tags": ["validation", "type-guard", "null", "undefined", "nullable", "typescript"],
       "demo": false,
       "snippets": false,
       "since": "1.0.0"
@@ -479,14 +445,7 @@
       "name": "shrinkImage",
       "description": "Shrinks an image by limiting its maximum dimensions and optionally reducing output quality.",
       "category": "browser",
-      "tags": [
-        "image",
-        "compression",
-        "canvas",
-        "blob",
-        "resize",
-        "optimization"
-      ],
+      "tags": ["image", "compression", "canvas", "blob", "resize", "optimization"],
       "demo": false,
       "snippets": true,
       "since": "1.0.0"
@@ -496,14 +455,7 @@
       "name": "shrinkImageElement",
       "description": "Shrinks an image element and returns a new HTMLImageElement with the optimized result.",
       "category": "browser",
-      "tags": [
-        "image",
-        "compression",
-        "element",
-        "resize",
-        "dom",
-        "optimization"
-      ],
+      "tags": ["image", "compression", "element", "resize", "dom", "optimization"],
       "demo": false,
       "snippets": true,
       "since": "1.0.0"
@@ -513,14 +465,7 @@
       "name": "shrinkImageFile",
       "description": "Shrinks an image file before upload by limiting its maximum dimensions and optionally reducing output quality.",
       "category": "browser",
-      "tags": [
-        "file",
-        "image",
-        "compression",
-        "upload",
-        "optimization",
-        "blob"
-      ],
+      "tags": ["file", "image", "compression", "upload", "optimization", "blob"],
       "demo": false,
       "snippets": true,
       "since": "1.0.0"
@@ -530,14 +475,7 @@
       "name": "shuffle",
       "description": "Returns a new array with elements shuffled in random order using the Fisher–Yates shuffle algorithm.",
       "category": "array",
-      "tags": [
-        "array",
-        "shuffle",
-        "random",
-        "fisher-yates",
-        "immutable",
-        "randomize"
-      ],
+      "tags": ["array", "shuffle", "random", "fisher-yates", "immutable", "randomize"],
       "demo": false,
       "snippets": true,
       "since": "1.0.0"
@@ -567,14 +505,7 @@
       "name": "ValueOrFactory",
       "description": "Represents a value or a factory function that produces a value.",
       "category": "type",
-      "tags": [
-        "type",
-        "function",
-        "value",
-        "factory",
-        "flexible",
-        "parameters"
-      ],
+      "tags": ["type", "function", "value", "factory", "flexible", "parameters"],
       "demo": false,
       "snippets": false,
       "since": "1.0.0"
@@ -594,14 +525,7 @@
       "name": "withAbortable",
       "description": "Wraps an asynchronous function with AbortController lifecycle management.",
       "category": "async",
-      "tags": [
-        "async",
-        "abort",
-        "controller",
-        "cancellation",
-        "timeout",
-        "lifecycle"
-      ],
+      "tags": ["async", "abort", "controller", "cancellation", "timeout", "lifecycle"],
       "demo": false,
       "snippets": true,
       "since": "1.0.0"
@@ -654,14 +578,7 @@
         "name": "Comparator",
         "description": "Represents a comparison function.",
         "category": "type",
-        "tags": [
-          "type",
-          "function",
-          "comparator",
-          "sorting",
-          "ordering",
-          "comparison"
-        ],
+        "tags": ["type", "function", "comparator", "sorting", "ordering", "comparison"],
         "demo": false,
         "snippets": false,
         "since": "1.0.0"
@@ -671,14 +588,7 @@
         "name": "Dict",
         "description": "Represents a dictionary object with arbitrary keys and values.",
         "category": "type",
-        "tags": [
-          "type",
-          "dictionary",
-          "record",
-          "object",
-          "mapping",
-          "key-value"
-        ],
+        "tags": ["type", "dictionary", "record", "object", "mapping", "key-value"],
         "demo": false,
         "snippets": false,
         "since": "1.0.0"
@@ -698,14 +608,7 @@
         "name": "DimensionsTarget",
         "description": "Defines a target dimension using a single axis.",
         "category": "type",
-        "tags": [
-          "type",
-          "dimensions",
-          "target",
-          "scaling",
-          "exclusive",
-          "union"
-        ],
+        "tags": ["type", "dimensions", "target", "scaling", "exclusive", "union"],
         "demo": false,
         "snippets": false,
         "since": "1.0.0"
@@ -795,14 +698,7 @@
         "name": "RoundValueFn",
         "description": "Function used to round a numeric value.",
         "category": "type",
-        "tags": [
-          "type",
-          "function",
-          "rounding",
-          "numeric",
-          "precision",
-          "math"
-        ],
+        "tags": ["type", "function", "rounding", "numeric", "precision", "math"],
         "demo": false,
         "snippets": false,
         "since": "1.0.0"
@@ -822,14 +718,7 @@
         "name": "ValueOrFactory",
         "description": "Represents a value or a factory function that produces a value.",
         "category": "type",
-        "tags": [
-          "type",
-          "function",
-          "value",
-          "factory",
-          "flexible",
-          "parameters"
-        ],
+        "tags": ["type", "function", "value", "factory", "flexible", "parameters"],
         "demo": false,
         "snippets": false,
         "since": "1.0.0"
@@ -881,13 +770,7 @@
         "name": "scaleByAspectRatio",
         "description": "Scales dimensions while preserving aspect ratio to a target width or height.",
         "category": "number",
-        "tags": [
-          "scaling",
-          "aspect-ratio",
-          "dimensions",
-          "responsive",
-          "image"
-        ],
+        "tags": ["scaling", "aspect-ratio", "dimensions", "responsive", "image"],
         "demo": false,
         "snippets": true,
         "since": "1.0.0"
@@ -943,14 +826,7 @@
         "name": "get",
         "description": "Safely gets a nested value from an object using a dot-separated path with full TypeScript type safety.",
         "category": "object",
-        "tags": [
-          "object",
-          "nested",
-          "path",
-          "safe-access",
-          "typed",
-          "dot-notation"
-        ],
+        "tags": ["object", "nested", "path", "safe-access", "typed", "dot-notation"],
         "demo": false,
         "snippets": true,
         "since": "1.0.0"
@@ -1012,13 +888,7 @@
         "name": "isFunction",
         "description": "Checks whether the given value is a function.",
         "category": "validation",
-        "tags": [
-          "validation",
-          "type-guard",
-          "function",
-          "callable",
-          "typescript"
-        ],
+        "tags": ["validation", "type-guard", "function", "callable", "typescript"],
         "demo": false,
         "snippets": false,
         "since": "1.0.0"
@@ -1048,14 +918,7 @@
         "name": "isNullable",
         "description": "Checks whether the given value is null or undefined.",
         "category": "validation",
-        "tags": [
-          "validation",
-          "type-guard",
-          "null",
-          "undefined",
-          "nullable",
-          "typescript"
-        ],
+        "tags": ["validation", "type-guard", "null", "undefined", "nullable", "typescript"],
         "demo": false,
         "snippets": false,
         "since": "1.0.0"
@@ -1167,13 +1030,7 @@
         "name": "scaleImageByAspectRatio",
         "description": "Scales an image to a target width or height while preserving its aspect ratio.",
         "category": "browser",
-        "tags": [
-          "image",
-          "scaling",
-          "aspect-ratio",
-          "dimensions",
-          "responsive"
-        ],
+        "tags": ["image", "scaling", "aspect-ratio", "dimensions", "responsive"],
         "demo": false,
         "snippets": false,
         "since": "1.0.0"
@@ -1183,14 +1040,7 @@
         "name": "shrinkImage",
         "description": "Shrinks an image by limiting its maximum dimensions and optionally reducing output quality.",
         "category": "browser",
-        "tags": [
-          "image",
-          "compression",
-          "canvas",
-          "blob",
-          "resize",
-          "optimization"
-        ],
+        "tags": ["image", "compression", "canvas", "blob", "resize", "optimization"],
         "demo": false,
         "snippets": true,
         "since": "1.0.0"
@@ -1200,14 +1050,7 @@
         "name": "shrinkImageElement",
         "description": "Shrinks an image element and returns a new HTMLImageElement with the optimized result.",
         "category": "browser",
-        "tags": [
-          "image",
-          "compression",
-          "element",
-          "resize",
-          "dom",
-          "optimization"
-        ],
+        "tags": ["image", "compression", "element", "resize", "dom", "optimization"],
         "demo": false,
         "snippets": true,
         "since": "1.0.0"
@@ -1217,14 +1060,7 @@
         "name": "shrinkImageFile",
         "description": "Shrinks an image file before upload by limiting its maximum dimensions and optionally reducing output quality.",
         "category": "browser",
-        "tags": [
-          "file",
-          "image",
-          "compression",
-          "upload",
-          "optimization",
-          "blob"
-        ],
+        "tags": ["file", "image", "compression", "upload", "optimization", "blob"],
         "demo": false,
         "snippets": true,
         "since": "1.0.0"
@@ -1268,14 +1104,7 @@
         "name": "range",
         "description": "Creates an array of numbers following the same semantics as Python's range.",
         "category": "array",
-        "tags": [
-          "array",
-          "range",
-          "numbers",
-          "sequence",
-          "python",
-          "iteration"
-        ],
+        "tags": ["array", "range", "numbers", "sequence", "python", "iteration"],
         "demo": false,
         "snippets": true,
         "since": "1.0.0"
@@ -1285,14 +1114,7 @@
         "name": "shuffle",
         "description": "Returns a new array with elements shuffled in random order using the Fisher–Yates shuffle algorithm.",
         "category": "array",
-        "tags": [
-          "array",
-          "shuffle",
-          "random",
-          "fisher-yates",
-          "immutable",
-          "randomize"
-        ],
+        "tags": ["array", "shuffle", "random", "fisher-yates", "immutable", "randomize"],
         "demo": false,
         "snippets": true,
         "since": "1.0.0"
@@ -1314,14 +1136,7 @@
         "name": "withAbortable",
         "description": "Wraps an asynchronous function with AbortController lifecycle management.",
         "category": "async",
-        "tags": [
-          "async",
-          "abort",
-          "controller",
-          "cancellation",
-          "timeout",
-          "lifecycle"
-        ],
+        "tags": ["async", "abort", "controller", "cancellation", "timeout", "lifecycle"],
         "demo": false,
         "snippets": true,
         "since": "1.0.0"

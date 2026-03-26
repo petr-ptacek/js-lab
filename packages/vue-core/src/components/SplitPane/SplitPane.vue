@@ -39,18 +39,11 @@ const { value: mv } = useProxyValue<ModelValue>(
   },
 );
 
-const {
-  betaStyle,
-  alphaStyle,
-  onPointerDown,
-  expand,
-  collapse,
-  isExpanded,
-  isCollapsed,
-} = useController({
-  modelValue: mv,
-  props,
-});
+const { betaStyle, alphaStyle, onPointerDown, expand, collapse, isExpanded, isCollapsed } =
+  useController({
+    modelValue: mv,
+    props,
+  });
 
 defineSlots<Slots>();
 defineExpose<Expose>({

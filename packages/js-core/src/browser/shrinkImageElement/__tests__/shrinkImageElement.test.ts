@@ -16,9 +16,7 @@ describe("shrinkImageElement", () => {
       .spyOn(shrinkModule, "shrinkImage")
       .mockResolvedValue(new Blob(["shrunk"], { type: "image/jpeg" }));
 
-    loadImageSpy = vi
-      .spyOn(loadImageModule, "loadImage")
-      .mockResolvedValue(createMockImage());
+    loadImageSpy = vi.spyOn(loadImageModule, "loadImage").mockResolvedValue(createMockImage());
 
     vi.spyOn(URL, "createObjectURL").mockReturnValue("blob:test");
     vi.spyOn(URL, "revokeObjectURL").mockImplementation(() => {});

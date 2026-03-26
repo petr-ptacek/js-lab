@@ -27,10 +27,7 @@ import type { LoadImageOptions } from "./types";
  *
  * @since 1.0.0
  */
-export function loadImage(
-  src: string,
-  options: LoadImageOptions = {},
-): Promise<HTMLImageElement> {
+export function loadImage(src: string, options: LoadImageOptions = {}): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
 

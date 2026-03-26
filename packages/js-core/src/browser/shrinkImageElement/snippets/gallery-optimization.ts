@@ -33,8 +33,7 @@ async function previewOptimizedImage(
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function optimizeGalleryImages(): Promise<void> {
-  const images =
-    document.querySelectorAll<HTMLImageElement>("img.gallery-item");
+  const images = document.querySelectorAll<HTMLImageElement>("img.gallery-item");
 
   for (const img of Array.from(images)) {
     try {
@@ -55,9 +54,7 @@ async function optimizeGalleryImages(): Promise<void> {
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-async function createResponsiveVersions(
-  sourceImage: HTMLImageElement,
-): Promise<{
+async function createResponsiveVersions(sourceImage: HTMLImageElement): Promise<{
   small: HTMLImageElement;
   medium: HTMLImageElement;
   large: HTMLImageElement;

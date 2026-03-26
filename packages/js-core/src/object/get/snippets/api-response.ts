@@ -18,11 +18,7 @@ const apiResponse = {
 const userEmail = get(apiResponse, "data.users.0.profile.email");
 console.log(userEmail); // "alice@example.com"
 
-const userTheme = get(
-  apiResponse,
-  "data.users.0.profile.preferences.theme",
-  "light",
-);
+const userTheme = get(apiResponse, "data.users.0.profile.preferences.theme", "light");
 console.log(userTheme); // "dark"
 
 // Handle missing data gracefully

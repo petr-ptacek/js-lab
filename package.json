@@ -8,7 +8,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "pnpm --parallel run test:js-core && pnpm run test:vue-core",
+    "test": "pnpm run test:js-core && pnpm run test:vue-core",
     "test:js-core": "pnpm --filter \"@petr-ptacek/js-core\" run test",
     "test:vue-core": "pnpm --filter \"@petr-ptacek/vue-core\" run test",
     "typecheck": "pnpm run typecheck:js-core && pnpm run typecheck:vue-core",

@@ -1,7 +1,6 @@
-import { it, expect, vi } from "vitest";
-import { expectTypeOf }   from "vitest";
-import { ref, nextTick }  from "vue";
-import { describeVue }    from "@petr-ptacek/vue-test-utils";
+import { describeVue } from "@petr-ptacek/vue-test-utils";
+import { expect, expectTypeOf, it, vi } from "vitest";
+import { nextTick, ref } from "vue";
 
 import { useProxyValue } from "../useProxyValue";
 
@@ -70,9 +69,13 @@ describeVue("useProxyValue", () => {
   it("reset restores buffer from sourceValue", () => {
     const source = ref<string | undefined>("initial");
 
-    const { value, buffer, reset, isSynced } = useProxyValue(source, "default", {
-      autoSync: false,
-    });
+    const { value, buffer, reset, isSynced } = useProxyValue(
+      source,
+      "default",
+      {
+        autoSync: false,
+      },
+    );
 
     value.value = "changed";
     expect(buffer.value).toBe("changed");
@@ -180,9 +183,10 @@ describeVue("useProxyValue", () => {
 
   it("reset re-evaluates lazy defaultValue", () => {
     const source = ref<string | undefined>(undefined);
-    const factory = vi.fn()
-                      .mockReturnValueOnce("first")
-                      .mockReturnValueOnce("second");
+    const factory = vi
+      .fn()
+      .mockReturnValueOnce("first")
+      .mockReturnValueOnce("second");
 
     const { buffer, reset } = useProxyValue(source, factory, {
       autoSync: false,
@@ -262,12 +266,10 @@ describeVue("useProxyValue", () => {
   it("does not sync automatically when autoSync is disabled", () => {
     const source = ref<string | undefined>("initial");
 
-    const {
-      value,
-      buffer,
-      isSynced,
-      disableAutoSync,
-    } = useProxyValue(source, "default");
+    const { value, buffer, isSynced, disableAutoSync } = useProxyValue(
+      source,
+      "default",
+    );
 
     disableAutoSync();
 
@@ -281,13 +283,8 @@ describeVue("useProxyValue", () => {
   it("syncs automatically again after autoSync is re-enabled", () => {
     const source = ref<string | undefined>("initial");
 
-    const {
-      value,
-      buffer,
-      isSynced,
-      disableAutoSync,
-      enableAutoSync,
-    } = useProxyValue(source, "default");
+    const { value, buffer, isSynced, disableAutoSync, enableAutoSync } =
+      useProxyValue(source, "default");
 
     disableAutoSync();
     value.value = "changed";
@@ -306,12 +303,10 @@ describeVue("useProxyValue", () => {
   it("manual sync works even when autoSync is disabled", () => {
     const source = ref<string | undefined>("initial");
 
-    const {
-      value,
-      sync,
-      isSynced,
-      disableAutoSync,
-    } = useProxyValue(source, "default");
+    const { value, sync, isSynced, disableAutoSync } = useProxyValue(
+      source,
+      "default",
+    );
 
     disableAutoSync();
 
@@ -327,11 +322,10 @@ describeVue("useProxyValue", () => {
   it("disableAutoSync does not affect external sourceValue updates", async () => {
     const source = ref<string | undefined>("initial");
 
-    const {
-      buffer,
-      isSynced,
-      disableAutoSync,
-    } = useProxyValue(source, "default");
+    const { buffer, isSynced, disableAutoSync } = useProxyValue(
+      source,
+      "default",
+    );
 
     disableAutoSync();
 
@@ -345,11 +339,10 @@ describeVue("useProxyValue", () => {
   it("exposes reactive autoSync state", () => {
     const source = ref<string | undefined>("initial");
 
-    const {
-      isAutoSync,
-      disableAutoSync,
-      enableAutoSync,
-    } = useProxyValue(source, "default");
+    const { isAutoSync, disableAutoSync, enableAutoSync } = useProxyValue(
+      source,
+      "default",
+    );
 
     expect(isAutoSync.value).toBe(true);
 
@@ -363,18 +356,13 @@ describeVue("useProxyValue", () => {
   it("concrete usage", async () => {
     const model = ref<string | undefined>("hello");
 
-    const {
-      value,
-      isSynced,
-      reset,
-    } = useProxyValue(model, () => "");
+    const { value, isSynced, reset } = useProxyValue(model, () => "");
 
     expect(value.value).toBe("hello");
 
     value.value = "world";
     expect(model.value).toBe("world");
     expect(isSynced.value).toBe(true);
-
 
     reset();
     expect(value.value).toBe("world");

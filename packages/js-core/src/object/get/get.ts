@@ -1,19 +1,12 @@
+import { isArray, isObject } from "../../validation";
 import type { Path, PathValue } from "./types";
-import { isArray, isObject }    from "../../validation";
 
-export function get<
-  T extends object,
-  P extends Path<T>
->(
+export function get<T extends object, P extends Path<T>>(
   obj: T,
   path: P,
 ): PathValue<T, P> | undefined;
 
-export function get<
-  T extends object,
-  P extends Path<T>,
-  D
->(
+export function get<T extends object, P extends Path<T>, D>(
   obj: T,
   path: P,
   defaultValue: D,
@@ -60,22 +53,20 @@ export function get<
  * @since 1.0.0
  */
 export function get(obj: object, path: string, defaultValue?: unknown) {
-  const result = path
-    .split(".")
-    .reduce<unknown>((acc, key) => {
-      if ( acc == null ) return undefined;
+  const result = path.split(".").reduce<unknown>((acc, key) => {
+    if (acc == null) return undefined;
 
-      if ( isArray(acc) ) {
-        const index = Number(key);
-        return Number.isInteger(index) ? acc[index] : undefined;
-      }
+    if (isArray(acc)) {
+      const index = Number(key);
+      return Number.isInteger(index) ? acc[index] : undefined;
+    }
 
-      if ( isObject(acc) ) {
-        return (acc as Record<string, unknown>)[key];
-      }
+    if (isObject(acc)) {
+      return (acc as Record<string, unknown>)[key];
+    }
 
-      return undefined;
-    }, obj);
+    return undefined;
+  }, obj);
 
   return typeof result === "undefined" ? defaultValue : result;
 }

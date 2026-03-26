@@ -1,7 +1,7 @@
-import fg                               from "fast-glob";
-import fs                               from "node:fs";
-import path, { dirname }                from "node:path";
+import fs from "node:fs";
+import path, { dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import fg from "fast-glob";
 
 import type { Meta } from "../../../src/_internal/meta";
 
@@ -36,11 +36,13 @@ async function findMetaFiles(): Promise<string[]> {
 
 /* -------------------------------------------------- */
 
-async function loadMeta(file: string): Promise<{ meta: Meta; utilDir: string } | null> {
+async function loadMeta(
+  file: string,
+): Promise<{ meta: Meta; utilDir: string } | null> {
   const modulePath = path.join(SRC_ROOT, file);
   const mod = await import(pathToFileURL(modulePath).href);
 
-  if ( !mod.meta ) {
+  if (!mod.meta) {
     console.warn(`Skipping meta-less module: ${file}`);
     return null;
   }
@@ -56,20 +58,16 @@ function buildFrontmatter(meta: Meta): string {
 
   const title = meta.name;
 
-  const categoryBlock = meta.category
-                        ? `\ncategory: ${meta.category}`
-                        : "";
+  const categoryBlock = meta.category ? `\ncategory: ${meta.category}` : "";
 
   const tagsBlock =
     tags.length > 0
-    ? `
+      ? `
 tags:
-${tags.map(t => `  - ${t}`).join("\n")}`
-    : "";
+${tags.map((t) => `  - ${t}`).join("\n")}`
+      : "";
 
-  const sinceBlock = meta.since
-                     ? `\nsince: ${meta.since}`
-                     : "";
+  const sinceBlock = meta.since ? `\nsince: ${meta.since}` : "";
 
   return `---
 title: ${title}${categoryBlock}${tagsBlock}${sinceBlock}
@@ -85,7 +83,7 @@ title: ${title}${categoryBlock}${tagsBlock}${sinceBlock}
 function loadReadme(utilDir: string): string {
   const readmePath = path.join(utilDir, "README.md");
 
-  if ( !fs.existsSync(readmePath) ) {
+  if (!fs.existsSync(readmePath)) {
     return "";
   }
 
@@ -100,7 +98,7 @@ function loadReadme(utilDir: string): string {
 function loadSnippets(utilDir: string): string {
   const snippetsDir = path.join(utilDir, "snippets");
 
-  if ( !fs.existsSync(snippetsDir) ) {
+  if (!fs.existsSync(snippetsDir)) {
     return "";
   }
 
@@ -108,7 +106,7 @@ function loadSnippets(utilDir: string): string {
 
   let content = "";
 
-  for ( const file of files ) {
+  for (const file of files) {
     const snippetPath = path.join(snippetsDir, file);
     const code = fs.readFileSync(snippetPath, "utf8");
 
@@ -132,7 +130,7 @@ ${code}
 function loadDemo(utilDir: string): string {
   const demoDir = path.join(utilDir, "demo");
 
-  if ( !fs.existsSync(demoDir) ) {
+  if (!fs.existsSync(demoDir)) {
     return "";
   }
 
@@ -140,9 +138,9 @@ function loadDemo(utilDir: string): string {
 
   let content = "";
 
-  for ( const file of files ) {
+  for (const file of files) {
     const componentName =
-      "Demo" + file.replace(".vue", "").replace(/^\w/, c => c.toUpperCase());
+      "Demo" + file.replace(".vue", "").replace(/^\w/, (c) => c.toUpperCase());
 
     const importPath = path.relative(
       path.resolve(__dirname, "../../"),
@@ -182,13 +180,21 @@ ${metaPanel}
 
 ${readme}
 
-${snippets ? `## Snippets
+${
+  snippets
+    ? `## Snippets
 
-${snippets}` : ""}
+${snippets}`
+    : ""
+}
 
-${demo ? `## Demo
+${
+  demo
+    ? `## Demo
 
-${demo}` : ""}
+${demo}`
+    : ""
+}
 `;
 }
 
@@ -217,8 +223,8 @@ function writeUtilitiesJson(utilities: Meta[]) {
 
   const categories: Record<string, Meta[]> = {};
 
-  for ( const util of utilities ) {
-    if ( !categories[util.category] ) {
+  for (const util of utilities) {
+    if (!categories[util.category]) {
       categories[util.category] = [];
     }
 
@@ -247,11 +253,8 @@ Utilities in the **${category}** category.
 
 <ul>
 ${utilities
-    .map(
-      u =>
-        `<li><a href="./${u.id}">${u.name}</a> — ${u.description}</li>`,
-    )
-    .join("\n")}
+  .map((u) => `<li><a href="./${u.id}">${u.name}</a> — ${u.description}</li>`)
+  .join("\n")}
 </ul>
 `;
 
@@ -268,7 +271,6 @@ ${tags ? `> **Tags:** ${tags}` : ""}
 }
 
 function writeApiLanding(categories: Record<string, Meta[]>) {
-
   const content = `# API
 
 Collection of utilities available in **@petr-ptacek/js-core**.
@@ -276,22 +278,19 @@ Collection of utilities available in **@petr-ptacek/js-core**.
 <div class="vp-grid">
 
 ${Object.entries(categories)
-        .map(
-          ([category, utils]) => `
+  .map(
+    ([category, utils]) => `
 <a class="vp-card" href="./${category}/">
 <h3>${category}</h3>
 <p>${utils.length} utilities</p>
 </a>`,
-        )
-        .join("\n")}
+  )
+  .join("\n")}
 
 </div>
 `;
 
-  fs.writeFileSync(
-    path.resolve(__dirname, "../../api/index.md"),
-    content,
-  );
+  fs.writeFileSync(path.resolve(__dirname, "../../api/index.md"), content);
 }
 
 /* -------------------------------------------------- */
@@ -306,10 +305,10 @@ async function generate() {
 
   const utilities: Meta[] = [];
 
-  for ( const file of files ) {
+  for (const file of files) {
     const result = await loadMeta(file);
 
-    if ( !result ) continue;
+    if (!result) continue;
 
     const { meta, utilDir } = result;
 
@@ -328,15 +327,15 @@ async function generate() {
 
   const categories: Record<string, Meta[]> = {};
 
-  for ( const util of utilities ) {
-    if ( !categories[util.category] ) {
+  for (const util of utilities) {
+    if (!categories[util.category]) {
       categories[util.category] = [];
     }
 
     categories[util.category].push(util);
   }
 
-  for ( const [category, utils] of Object.entries(categories) ) {
+  for (const [category, utils] of Object.entries(categories)) {
     writeCategoryIndex(category, utils);
   }
 

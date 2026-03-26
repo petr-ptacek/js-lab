@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { shuffle }         from "../shuffle";
+import { describe, expect, it } from "vitest";
+import { shuffle } from "../shuffle";
 
 describe("shuffle", () => {
   it("does not mutate the original array", () => {
@@ -39,10 +39,10 @@ describe("shuffle", () => {
     const array = [1, 2, 3, 4, 5];
     let changed = false;
 
-    for ( let i = 0; i < 20; i++ ) {
+    for (let i = 0; i < 20; i++) {
       const shuffled = shuffle(array);
 
-      if ( !shuffled.every((value, index) => value === array[index]) ) {
+      if (!shuffled.every((value, index) => value === array[index])) {
         changed = true;
         break;
       }
@@ -55,7 +55,6 @@ describe("shuffle", () => {
     const array = [1, 2, 3];
     const result = shuffle(array);
 
-    expect(result.filter(v => v === undefined)).toHaveLength(0);
+    expect(result.filter((v) => v === undefined)).toHaveLength(0);
   });
-
 });

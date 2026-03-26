@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isFiniteNumber } from "../isFiniteNumber";
 
 describe("isFiniteNumber", () => {
@@ -35,4 +35,3 @@ describe("isFiniteNumber", () => {
     }
   });
 });
-

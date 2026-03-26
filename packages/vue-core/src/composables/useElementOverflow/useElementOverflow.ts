@@ -1,7 +1,16 @@
-import { type MaybeComputedElementRef, useElementSize, useResizeObserver, watchDebounced } from "@vueuse/core";
+import {
+  type MaybeComputedElementRef,
+  useElementSize,
+  useResizeObserver,
+  watchDebounced,
+} from "@vueuse/core";
 import { computed, readonly, shallowRef, toValue } from "vue";
 
-import type { OverflowDirection, UseElementOverflowOptions, UseElementOverflowReturn } from "./types";
+import type {
+  OverflowDirection,
+  UseElementOverflowOptions,
+  UseElementOverflowReturn,
+} from "./types";
 
 /**
  * Reactive utility for detecting element overflow.
@@ -54,7 +63,9 @@ export function useElementOverflow(
   options: UseElementOverflowOptions = {},
 ): UseElementOverflowReturn {
   const disabled = computed(() => toValue(options.disabled) ?? false);
-  const observeContent = computed(() => toValue(options.observeContent) ?? true);
+  const observeContent = computed(
+    () => toValue(options.observeContent) ?? true,
+  );
   const targetEl = computed(() => toValue(target));
   const debounceDelay = computed(() => options.debounceDelay ?? 16);
 
@@ -70,22 +81,18 @@ export function useElementOverflow(
     return "none";
   });
 
-  useResizeObserver(
-    targetEl,
-    () => {
-      if (!observeContent.value || disabled.value) {
-        return;
-      }
+  useResizeObserver(targetEl, () => {
+    if (!observeContent.value || disabled.value) {
+      return;
+    }
 
-      update();
-    },
-  );
+    update();
+  });
 
-  watchDebounced(
-    [elSize.width, elSize.height, disabled, targetEl],
-    update,
-    { immediate: true, debounce: debounceDelay },
-  );
+  watchDebounced([elSize.width, elSize.height, disabled, targetEl], update, {
+    immediate: true,
+    debounce: debounceDelay,
+  });
 
   function reset() {
     hasVertical.value = false;
@@ -98,8 +105,10 @@ export function useElementOverflow(
       return;
     }
 
-    hasVertical.value = targetEl.value.scrollHeight > targetEl.value.clientHeight;
-    hasHorizontal.value = targetEl.value.scrollWidth > targetEl.value.clientWidth;
+    hasVertical.value =
+      targetEl.value.scrollHeight > targetEl.value.clientHeight;
+    hasHorizontal.value =
+      targetEl.value.scrollWidth > targetEl.value.clientWidth;
   }
 
   return {

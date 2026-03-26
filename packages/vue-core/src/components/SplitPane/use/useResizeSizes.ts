@@ -1,7 +1,7 @@
-import { computed, type Ref }                                       from "vue";
+import { computed, type Ref } from "vue";
 
-import type { OriginValue, SizeValue, ModelValue } from "../types";
-import { normalizeSizeToPercent }                           from "../utils";
+import type { ModelValue, OriginValue, SizeValue } from "../types";
+import { normalizeSizeToPercent } from "../utils";
 
 export type UseResizeSizesOptions = {
   modelValue: Ref<ModelValue>;
@@ -10,7 +10,6 @@ export type UseResizeSizesOptions = {
   minSize?: Ref<SizeValue | undefined>;
   maxSize?: Ref<SizeValue | undefined>;
 };
-
 
 export function useResizeSizes(options: UseResizeSizesOptions) {
   const originPercent = computed(() => {
@@ -26,8 +25,8 @@ export function useResizeSizes(options: UseResizeSizesOptions) {
 
   const alphaPercent = computed(() => {
     return options.origin.value === "alpha"
-           ? originPercent.value
-           : 100 - originPercent.value;
+      ? originPercent.value
+      : 100 - originPercent.value;
   });
 
   const betaPercent = computed(() => 100 - alphaPercent.value);

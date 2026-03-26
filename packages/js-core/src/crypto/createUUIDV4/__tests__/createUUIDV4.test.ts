@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
-import { createUUIDV4 }                        from "../createUUIDV4";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { createUUIDV4 } from "../createUUIDV4";
 
 describe("createUUIDV4", () => {
   const originalCrypto = globalThis.crypto;
@@ -41,7 +41,7 @@ describe("createUUIDV4", () => {
 
   it("uses crypto.getRandomValues when randomUUID is not available", () => {
     const getRandomValuesMock = vi.fn((arr: Uint8Array) => {
-      for ( let i = 0; i < arr.length; i++ ) {
+      for (let i = 0; i < arr.length; i++) {
         arr[i] = i;
       }
       return arr;
@@ -80,7 +80,7 @@ describe("createUUIDV4", () => {
     const uuids = new Set<string>();
     const count = 1000;
 
-    for ( let i = 0; i < count; i++ ) {
+    for (let i = 0; i < count; i++) {
       uuids.add(createUUIDV4());
     }
 

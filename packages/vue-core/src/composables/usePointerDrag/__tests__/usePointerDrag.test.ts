@@ -1,8 +1,8 @@
-import { it, expect, vi, beforeEach, afterEach } from "vitest";
-import { describeVue }                           from "@petr-ptacek/vue-test-utils";
-import type { UsePointerDragOptions }            from "../types.ts";
-import { usePointerDrag }                        from "../usePointerDrag";
-import { createTargetEl, createPointerEvent }    from "./helpers.ts";
+import { describeVue } from "@petr-ptacek/vue-test-utils";
+import { afterEach, beforeEach, expect, it, vi } from "vitest";
+import type { UsePointerDragOptions } from "../types.ts";
+import { usePointerDrag } from "../usePointerDrag";
+import { createPointerEvent, createTargetEl } from "./helpers.ts";
 
 describeVue("usePointerDrag – threshold behavior", () => {
   let target: HTMLElement;

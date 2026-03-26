@@ -1,2 +1,1 @@
 export { isFunction } from "./isFunction";
-

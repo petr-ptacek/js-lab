@@ -15,14 +15,18 @@ console.log(distances); // [10.05, 20.1, 30.15, ...]
 
 // Data merging from parallel arrays
 const userIds = [1, 2, 3];
-const userEmails = ["alice@example.com", "bob@example.com", "charlie@example.com"];
+const userEmails = [
+  "alice@example.com",
+  "bob@example.com",
+  "charlie@example.com",
+];
 const userRoles = ["admin", "user", "moderator"];
 
 // Merge into user objects (using nested zip)
 const users = zip(userIds, userEmails).map(([id, email], index) => ({
   id,
   email,
-  role: userRoles[index]
+  role: userRoles[index],
 }));
 
 console.log(users);
@@ -37,12 +41,12 @@ const formValues = ["john@email.com", "password123", "John"];
 const validationRules = [
   (val: string) => val.includes("@"),
   (val: string) => val.length >= 8,
-  (val: string) => val.length > 0
+  (val: string) => val.length > 0,
 ];
 
 const validationResults = zip(formValues, validationRules, (value, rule) => ({
   value,
-  isValid: rule(value)
+  isValid: rule(value),
 }));
 
 console.log(validationResults);

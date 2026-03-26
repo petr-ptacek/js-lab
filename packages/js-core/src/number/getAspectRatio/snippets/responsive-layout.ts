@@ -5,10 +5,7 @@ class ResponsiveContainer {
   private width: number;
   private height: number;
 
-  constructor(
-    width: number,
-    height: number
-  ) {
+  constructor(width: number, height: number) {
     this.width = width;
     this.height = height;
   }
@@ -48,18 +45,18 @@ class ResponsiveContainer {
     if (targetWidth) {
       return {
         width: targetWidth,
-        height: Math.round(targetWidth / ratio)
+        height: Math.round(targetWidth / ratio),
       };
     } else if (targetHeight) {
       return {
         width: Math.round(targetHeight * ratio),
-        height: targetHeight
+        height: targetHeight,
       };
     } else {
       // suggest based on container dimensions
       return {
         width: this.width,
-        height: this.height
+        height: this.height,
       };
     }
   }
@@ -74,7 +71,7 @@ const videos = [
   { name: "YouTube video", width: 1920, height: 1080 },
   { name: "Old TV show", width: 640, height: 480 },
   { name: "Vertical TikTok", width: 608, height: 1080 },
-  { name: "Square Instagram", width: 1080, height: 1080 }
+  { name: "Square Instagram", width: 1080, height: 1080 },
 ];
 
 videos.forEach(({ name, width, height }) => {
@@ -84,8 +81,8 @@ videos.forEach(({ name, width, height }) => {
 });
 
 // generate optimal thumbnail sizes
-const thumbnailSizes = [200, 400, 600].map(width =>
-  videoPlayer.getOptimalContentSize(width)
+const thumbnailSizes = [200, 400, 600].map((width) =>
+  videoPlayer.getOptimalContentSize(width),
 );
 
 console.log("Optimal thumbnail sizes:", thumbnailSizes);

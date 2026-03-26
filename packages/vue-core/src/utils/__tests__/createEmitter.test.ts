@@ -1,6 +1,6 @@
-import { describe, it, expect, vi } from "vitest";
-import { createEmitter } from "../createEmitter";
 import { Emitter } from "@petr-ptacek/js-core";
+import { describe, expect, it, vi } from "vitest";
+import { createEmitter } from "../createEmitter";
 
 type Events = {
   log: (msg: string) => void;
@@ -8,14 +8,12 @@ type Events = {
 
 vi.mock("@petr-ptacek/js-core", () => {
   return {
-    Emitter: vi.fn().mockImplementation(function() {
-      return {
-        on: vi.fn(() => vi.fn()),
-        once: vi.fn(() => vi.fn()),
-        off: vi.fn(),
-        emit: vi.fn(),
-      };
-    }),
+    Emitter: vi.fn().mockImplementation(() => ({
+      on: vi.fn(() => vi.fn()),
+      once: vi.fn(() => vi.fn()),
+      off: vi.fn(),
+      emit: vi.fn(),
+    })),
   };
 });
 
@@ -25,14 +23,12 @@ describe("createEmitter", () => {
 
     const MockedEmitter = vi.mocked(Emitter);
 
-    MockedEmitter.mockImplementationOnce(function() {
-      return {
-        on: vi.fn(() => vi.fn()),
-        once: vi.fn(),
-        off: vi.fn(),
-        emit: vi.fn(),
-      };
-    });
+    MockedEmitter.mockImplementationOnce(() => ({
+      on: vi.fn(() => vi.fn()),
+      once: vi.fn(),
+      off: vi.fn(),
+      emit: vi.fn(),
+    }));
 
     const e = createEmitter<Events>();
 
@@ -44,14 +40,12 @@ describe("createEmitter", () => {
   it("does not throw when used outside component lifecycle", () => {
     const MockedEmitter = vi.mocked(Emitter);
 
-    MockedEmitter.mockImplementationOnce(function() {
-      return {
-        on: vi.fn(() => vi.fn()),
-        once: vi.fn(),
-        off: vi.fn(),
-        emit: vi.fn(),
-      };
-    });
+    MockedEmitter.mockImplementationOnce(() => ({
+      on: vi.fn(() => vi.fn()),
+      once: vi.fn(),
+      off: vi.fn(),
+      emit: vi.fn(),
+    }));
 
     const e = createEmitter<Events>();
 
@@ -65,14 +59,12 @@ describe("createEmitter", () => {
     const cleanup = vi.fn();
     const MockedEmitter = vi.mocked(Emitter);
 
-    MockedEmitter.mockImplementationOnce(function() {
-      return {
-        on: vi.fn(() => cleanup),
-        once: vi.fn(),
-        off: vi.fn(),
-        emit: vi.fn(),
-      };
-    });
+    MockedEmitter.mockImplementationOnce(() => ({
+      on: vi.fn(() => cleanup),
+      once: vi.fn(),
+      off: vi.fn(),
+      emit: vi.fn(),
+    }));
 
     const e = createEmitter<Events>();
     const off = e.on("log", vi.fn());

@@ -1,4 +1,4 @@
-import { toPercentage }                   from "@petr-ptacek/js-core";
+import { toPercentage } from "@petr-ptacek/js-core";
 import { computed, type Ref, shallowRef } from "vue";
 
 import type { OriginValue } from "../types";
@@ -8,15 +8,15 @@ export type UseResizeValueOptions = {
   containerSize: Ref<number>;
   origin: Ref<OriginValue>;
   isDragging: Ref<boolean>;
-}
+};
 
 export function useResizeValue(options: UseResizeValueOptions) {
   const startPercent = shallowRef(0);
 
   // 2️⃣ px → %
   const deltaPercent = computed(() => {
-    if ( !options.isDragging.value ) return 0;
-    if ( !options.containerSize.value ) return 0;
+    if (!options.isDragging.value) return 0;
+    if (!options.containerSize.value) return 0;
 
     return toPercentage(options.deltaPx.value, options.containerSize.value);
   });
@@ -24,8 +24,8 @@ export function useResizeValue(options: UseResizeValueOptions) {
   // 3️⃣ respektuj origin
   const signedDeltaPercent = computed(() => {
     return options.origin.value === "alpha"
-           ? deltaPercent.value
-           : -deltaPercent.value;
+      ? deltaPercent.value
+      : -deltaPercent.value;
   });
 
   // 4️⃣ výsledná hodnota

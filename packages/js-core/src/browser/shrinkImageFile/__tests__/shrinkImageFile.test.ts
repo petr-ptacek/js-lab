@@ -1,6 +1,6 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { shrinkImageFile } from "../shrinkImageFile";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import * as shrinkModule from "../../shrinkImage";
+import { shrinkImageFile } from "../shrinkImageFile";
 
 function createMockImage(): HTMLImageElement {
   let onload: ((ev: Event) => void) | null = null;
@@ -34,22 +34,16 @@ describe("shrinkImageFile", () => {
   beforeEach(() => {
     imageInstance = createMockImage();
 
-    vi.stubGlobal(
-      "Image",
-      function ImageMock(this: HTMLImageElement) {
-        return imageInstance;
-      } as unknown as typeof Image,
-    );
+    vi.stubGlobal("Image", function ImageMock(this: HTMLImageElement) {
+      return imageInstance;
+    } as unknown as typeof Image);
 
     vi.spyOn(URL, "createObjectURL").mockReturnValue("blob:test");
-    vi.spyOn(URL, "revokeObjectURL").mockImplementation(() => {
-    });
+    vi.spyOn(URL, "revokeObjectURL").mockImplementation(() => {});
 
     shrinkImageSpy = vi
       .spyOn(shrinkModule, "shrinkImage")
-      .mockResolvedValue(
-        new Blob(["shrunk"], { type: "image/jpeg" }),
-      );
+      .mockResolvedValue(new Blob(["shrunk"], { type: "image/jpeg" }));
   });
 
   afterEach(() => {
@@ -115,9 +109,7 @@ describe("shrinkImageFile", () => {
       type: "image/jpeg",
     });
 
-    shrinkImageSpy.mockResolvedValueOnce(
-      new Blob(["shrunk"]),
-    );
+    shrinkImageSpy.mockResolvedValueOnce(new Blob(["shrunk"]));
 
     const promise = shrinkImageFile(file);
 
@@ -142,10 +134,9 @@ describe("shrinkImageFile", () => {
     await promise;
 
     expect(shrinkImageSpy).toHaveBeenCalledOnce();
-    expect(shrinkImageSpy).toHaveBeenCalledWith(
-      imageInstance,
-      { maxWidth: 800 },
-    );
+    expect(shrinkImageSpy).toHaveBeenCalledWith(imageInstance, {
+      maxWidth: 800,
+    });
   });
 
   it("revokes object URL after image load", async () => {

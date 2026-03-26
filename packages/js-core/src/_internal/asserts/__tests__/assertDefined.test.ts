@@ -10,14 +10,12 @@ describe("assertDefined", () => {
   });
 
   it("throws for undefined", () => {
-    expect(() =>
-      assertDefined("value", undefined),
-    ).toThrow("value must be defined");
+    expect(() => assertDefined("value", undefined)).toThrow(
+      "value must be defined",
+    );
   });
 
   it("throws for null", () => {
-    expect(() =>
-      assertDefined("value", null),
-    ).toThrow("value must be defined");
+    expect(() => assertDefined("value", null)).toThrow("value must be defined");
   });
 });

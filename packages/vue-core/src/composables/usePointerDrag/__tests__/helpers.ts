@@ -38,4 +38,3 @@ export function createTargetEl() {
   document.body.appendChild(el);
   return el;
 }
-

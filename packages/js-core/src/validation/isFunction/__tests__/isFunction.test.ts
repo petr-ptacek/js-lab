@@ -1,10 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isFunction } from "../isFunction";
 
 describe("isFunction", () => {
   it("returns true for functions", () => {
     expect(isFunction(() => {})).toBe(true);
-    expect(isFunction(function() {})).toBe(true);
+    expect(isFunction(() => {})).toBe(true);
     expect(isFunction(async () => {})).toBe(true);
     expect(isFunction(class MyClass {})).toBe(true);
     expect(isFunction(Math.max)).toBe(true);
@@ -28,4 +28,3 @@ describe("isFunction", () => {
     }
   });
 });
-

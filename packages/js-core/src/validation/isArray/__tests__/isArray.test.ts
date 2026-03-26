@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isArray } from "../isArray";
 
 describe("isArray", () => {
@@ -35,7 +35,7 @@ describe("isArray", () => {
 
       // These operations should be type-safe
       expect(value.length).toBe(3);
-      expect(value.map(x => x * 2)).toEqual([2, 4, 6]);
+      expect(value.map((x) => x * 2)).toEqual([2, 4, 6]);
     } else {
       // This should not be reached
       throw new Error("Type guard should have passed");
@@ -86,10 +86,10 @@ describe("isArray", () => {
       null,
       undefined,
       new Array(5),
-      Array.prototype
+      Array.prototype,
     ];
 
-    testCases.forEach(testCase => {
+    testCases.forEach((testCase) => {
       expect(isArray(testCase)).toBe(Array.isArray(testCase));
     });
   });

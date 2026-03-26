@@ -112,9 +112,9 @@ export type TryCatchResultFailureNoData<TError = unknown> = {
  */
 export type TryCatchResultFailureWithData<TResult, TError = unknown> = {
   ok: false;
-  error: TError,
+  error: TError;
   data: TResult;
-}
+};
 
 /**
  * Discriminated union representing the result of {@link withTryCatch}.

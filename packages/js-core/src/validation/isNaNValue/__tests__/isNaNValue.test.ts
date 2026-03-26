@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isNaNValue } from "../isNaNValue";
 
 describe("isNaNValue", () => {
@@ -30,4 +30,3 @@ describe("isNaNValue", () => {
     }
   });
 });
-

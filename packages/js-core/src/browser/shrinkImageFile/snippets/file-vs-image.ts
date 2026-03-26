@@ -1,4 +1,4 @@
-import { shrinkImageFile, shrinkImage } from "@petr-ptacek/js-core";
+import { shrinkImage, shrinkImageFile } from "@petr-ptacek/js-core";
 
 // Demonstrate use cases: when to use shrinkImageFile vs shrinkImage
 
@@ -84,4 +84,3 @@ async function uploadAvatarForm(event: Event): Promise<void> {
     console.error("Failed to upload avatar:", error);
   }
 }
-

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isDate } from "../isDate";
 
 describe("isDate", () => {
@@ -26,4 +26,3 @@ describe("isDate", () => {
     }
   });
 });
-

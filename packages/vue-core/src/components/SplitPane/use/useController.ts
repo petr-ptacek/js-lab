@@ -2,7 +2,7 @@ import { useElementSize } from "@vueuse/core";
 import type { Ref } from "vue";
 import { computed, useTemplateRef, watch } from "vue";
 
-import type { ModelValue, Props }       from "../types";
+import type { ModelValue, Props } from "../types";
 import { clampPercentWithLimits, normalizeSizeToPercent } from "../utils";
 import { useResizeActions } from "./useResizeActions";
 import { useResizeDrag } from "./useResizeDrag";
@@ -12,7 +12,7 @@ import { useResizeValue } from "./useResizeValue";
 export type UseControllerOptions = {
   modelValue: Ref<ModelValue>;
   props: Props;
-}
+};
 
 export function useController(options: UseControllerOptions) {
   // Content
@@ -20,12 +20,14 @@ export function useController(options: UseControllerOptions) {
   const containerElSize = useElementSize(containerEl);
 
   // Orientation
-  const isOrientationVertical = computed(() => options.props.orientation === "vertical");
+  const isOrientationVertical = computed(
+    () => options.props.orientation === "vertical",
+  );
 
   const containerSize = computed(() => {
-    return isOrientationVertical.value ?
-           containerElSize.width.value :
-           containerElSize.height.value;
+    return isOrientationVertical.value
+      ? containerElSize.width.value
+      : containerElSize.height.value;
   });
 
   const currentPercent = computed(() => {
@@ -47,11 +49,7 @@ export function useController(options: UseControllerOptions) {
     maxSize: computed(() => options.props.maxSize),
   });
 
-  const {
-    deltaPx,
-    onPointerDown,
-    isDragging,
-  } = useResizeDrag({
+  const { deltaPx, onPointerDown, isDragging } = useResizeDrag({
     orientation: computed(() => options.props.orientation!),
     disabled: computed(() => !options.props.resizeable),
   });
@@ -63,7 +61,14 @@ export function useController(options: UseControllerOptions) {
     isDragging,
   });
 
-  const { isCollapsed, collapse, toggle, isExpanded, expand, setLastRestoredPercent } = useResizeActions({
+  const {
+    isCollapsed,
+    collapse,
+    toggle,
+    isExpanded,
+    expand,
+    setLastRestoredPercent,
+  } = useResizeActions({
     containerSize,
     currentPercent,
     minSize: computed(() => options.props.minSize),
@@ -92,14 +97,10 @@ export function useController(options: UseControllerOptions) {
     if (!isDragging.value) return;
     if (!containerSize.value) return;
 
-    const clamped = clampPercentWithLimits(
-      value,
-      containerSize.value,
-      {
-        minSize: options.props.minSize,
-        maxSize: options.props.maxSize,
-      },
-    );
+    const clamped = clampPercentWithLimits(value, containerSize.value, {
+      minSize: options.props.minSize,
+      maxSize: options.props.maxSize,
+    });
     options.modelValue.value = `${clamped}%`;
   });
 

@@ -1,4 +1,4 @@
-import { type MaybeRef, type Ref } from "vue";
+import type { MaybeRef, Ref } from "vue";
 
 /********************
  PUBLIC TYPES
@@ -143,4 +143,4 @@ export type EventData = {
   deltaY: number;
   velocityX: number;
   velocityY: number;
-}
+};

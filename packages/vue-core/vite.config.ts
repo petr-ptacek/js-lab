@@ -1,8 +1,7 @@
 import { fileURLToPath, URL } from "node:url";
 
-import vuePlugin              from "@vitejs/plugin-vue";
-import { defineConfig }       from "vite";
-
+import vuePlugin from "@vitejs/plugin-vue";
+import { defineConfig } from "vite";
 
 export default defineConfig({
   resolve: {
@@ -25,9 +24,7 @@ export default defineConfig({
         assetFileNames: (assetInfo) => {
           if (
             assetInfo.type === "asset" &&
-            assetInfo.originalFileNames?.some((name) =>
-              name.endsWith(".css"),
-            )
+            assetInfo.originalFileNames?.some((name) => name.endsWith(".css"))
           ) {
             return "style.css";
           }
@@ -37,7 +34,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [
-    vuePlugin(),
-  ],
+  plugins: [vuePlugin()],
 });

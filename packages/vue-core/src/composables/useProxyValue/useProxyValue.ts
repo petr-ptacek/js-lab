@@ -1,6 +1,6 @@
 import { isUndefined, type ValueOrGetter } from "@petr-ptacek/js-core";
-import { useDebounceFn }                         from "@vueuse/core";
-import type { Ref }                              from "vue";
+import { useDebounceFn } from "@vueuse/core";
+import type { Ref } from "vue";
 import { computed, readonly, shallowRef, watch } from "vue";
 
 import type { UseProxyValueOptions, UseProxyValueReturn } from "./types";
@@ -124,15 +124,14 @@ export function useProxyValue<TValue>(
   options: UseProxyValueOptions = {},
 ): UseProxyValueReturn<TValue> {
   const autoSync = shallowRef(options.autoSync ?? true);
-  const internalValue = shallowRef<TValue>(isUndefined(sourceValue.value) ?
-                                           resolveDefaultValue() :
-                                           sourceValue.value,
+  const internalValue = shallowRef<TValue>(
+    isUndefined(sourceValue.value) ? resolveDefaultValue() : sourceValue.value,
   );
   const isSynced = shallowRef(!isUndefined(sourceValue.value));
 
   const value = computed<TValue>({
     get: () => {
-      if ( !isSynced.value || isUndefined(sourceValue.value) ) {
+      if (!isSynced.value || isUndefined(sourceValue.value)) {
         return internalValue.value;
       }
 
@@ -141,7 +140,7 @@ export function useProxyValue<TValue>(
     set: (val: TValue) => {
       internalValue.value = val;
       isSynced.value = false;
-      if ( autoSync.value ) {
+      if (autoSync.value) {
         sync();
       }
     },
@@ -159,7 +158,7 @@ export function useProxyValue<TValue>(
   });
 
   watch(sourceValue, (v) => {
-    if ( isUndefined(v) ) {
+    if (isUndefined(v)) {
       internalValue.value = resolveDefaultValue();
       isSynced.value = false;
     } else {
@@ -170,14 +169,14 @@ export function useProxyValue<TValue>(
 
   function resolveDefaultValue(): TValue {
     return typeof defaultValue === "function"
-           ? (defaultValue as () => TValue)()
-           : defaultValue;
+      ? (defaultValue as () => TValue)()
+      : defaultValue;
   }
 
   function reset() {
     internalValue.value = isUndefined(sourceValue.value)
-                          ? resolveDefaultValue()
-                          : sourceValue.value;
+      ? resolveDefaultValue()
+      : sourceValue.value;
 
     isSynced.value = !isUndefined(sourceValue.value);
   }
@@ -191,7 +190,7 @@ export function useProxyValue<TValue>(
   }
 
   function sync() {
-    if ( !isUndefined(sourceValue.value) ) {
+    if (!isUndefined(sourceValue.value)) {
       sourceValue.value = internalValue.value;
       isSynced.value = true;
     }

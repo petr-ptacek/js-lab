@@ -8,22 +8,22 @@ describe("assertPositiveFinite", () => {
   });
 
   it("throws for zero or negative numbers", () => {
-    expect(() =>
-      assertPositiveFinite("value", 0),
-    ).toThrow("value must be a positive finite number");
+    expect(() => assertPositiveFinite("value", 0)).toThrow(
+      "value must be a positive finite number",
+    );
 
-    expect(() =>
-      assertPositiveFinite("value", -1),
-    ).toThrow("value must be a positive finite number");
+    expect(() => assertPositiveFinite("value", -1)).toThrow(
+      "value must be a positive finite number",
+    );
   });
 
   it("throws for NaN or Infinity", () => {
-    expect(() =>
-      assertPositiveFinite("value", NaN),
-    ).toThrow("value must be a positive finite number");
+    expect(() => assertPositiveFinite("value", NaN)).toThrow(
+      "value must be a positive finite number",
+    );
 
-    expect(() =>
-      assertPositiveFinite("value", Infinity),
-    ).toThrow("value must be a positive finite number");
+    expect(() => assertPositiveFinite("value", Infinity)).toThrow(
+      "value must be a positive finite number",
+    );
   });
 });

@@ -1,15 +1,15 @@
+import { describeVue } from "@petr-ptacek/vue-test-utils";
 import { expect, it, vi } from "vitest";
-import { nextTick, ref }  from "vue";
-import { describeVue }    from "@petr-ptacek/vue-test-utils";
+import { nextTick, ref } from "vue";
 
 import { useElementOverflow } from "../useElementOverflow";
 
 function createElement({
-                         clientWidth,
-                         clientHeight,
-                         scrollWidth,
-                         scrollHeight,
-                       }: {
+  clientWidth,
+  clientHeight,
+  scrollWidth,
+  scrollHeight,
+}: {
   clientWidth: number;
   clientHeight: number;
   scrollWidth: number;

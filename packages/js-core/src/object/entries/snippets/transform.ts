@@ -8,7 +8,7 @@ const original = {
 
 // Transform object values while preserving types
 const doubled = Object.fromEntries(
-  entries(original).map(([key, value]) => [key, value * 2])
+  entries(original).map(([key, value]) => [key, value * 2]),
 );
 
 console.log(doubled);

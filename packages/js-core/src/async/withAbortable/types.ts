@@ -33,8 +33,10 @@ export type AbortableContext = {
  * The function MUST properly handle the provided `AbortSignal`.
  * If it ignores the signal, cancellation guarantees are not enforced.
  */
-export type AbortableFn<Args extends unknown[], R> =
-  (context: AbortableContext, ...args: Args) => Promise<R>;
+export type AbortableFn<Args extends unknown[], R> = (
+  context: AbortableContext,
+  ...args: Args
+) => Promise<R>;
 
 /**
  * Configuration options for {@link withAbortable}.
@@ -59,7 +61,7 @@ export type WithAbortableOptions = {
    * custom error types.
    */
   timeoutMs?: number;
-}
+};
 
 /**
  * Return type of {@link withAbortable}.
@@ -95,4 +97,4 @@ export type WithAbortableReturn<Args extends unknown[], R> = {
    * Indicates whether an execution is currently in progress.
    */
   readonly isRunning: boolean;
-}
+};

@@ -8,7 +8,7 @@ import { shrinkImageFile } from "@petr-ptacek/js-core";
 async function uploadMultipleImages(files: FileList): Promise<void> {
   const optimized: File[] = [];
 
-  for ( const file of Array.from(files) ) {
+  for (const file of Array.from(files)) {
     try {
       const shrunk = await shrinkImageFile(file, {
         maxWidth: 1600,
@@ -18,7 +18,7 @@ async function uploadMultipleImages(files: FileList): Promise<void> {
 
       optimized.push(shrunk);
       console.log(`✓ ${file.name} optimized: ${file.size} → ${shrunk.size}`);
-    } catch ( error ) {
+    } catch (error) {
       console.error(`✗ Failed to optimize ${file.name}:`, error);
     }
   }
@@ -67,4 +67,3 @@ async function optimizeWithPresets(file: File): Promise<{
 
   return { thumbnail, display, archive };
 }
-

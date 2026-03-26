@@ -1,5 +1,5 @@
-import { loadImageFromFile }                    from "./helpers";
-import { shrinkImage, type ShrinkImageOptions } from "../shrinkImage";
+import { type ShrinkImageOptions, shrinkImage } from "../shrinkImage";
+import { loadImageFromFile } from "./helpers";
 
 /**
  * Shrinks an image file before upload by limiting its maximum dimensions
@@ -53,16 +53,15 @@ import { shrinkImage, type ShrinkImageOptions } from "../shrinkImage";
  *
  * @since 1.0.0
  */
-export async function shrinkImageFile(file: File, options?: ShrinkImageOptions): Promise<File> {
+export async function shrinkImageFile(
+  file: File,
+  options?: ShrinkImageOptions,
+): Promise<File> {
   const image = await loadImageFromFile(file);
   const blob = await shrinkImage(image, options);
 
-  return new File(
-    [blob],
-    file.name,
-    {
-      type: blob.type || file.type,
-      lastModified: file.lastModified,
-    },
-  );
+  return new File([blob], file.name, {
+    type: blob.type || file.type,
+    lastModified: file.lastModified,
+  });
 }

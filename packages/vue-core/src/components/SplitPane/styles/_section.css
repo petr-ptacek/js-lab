@@ -13,7 +13,6 @@
   overflow: hidden;
 }
 
-
 .ui-split-pane__section {
   min-width: 0;
   min-height: 0;
@@ -23,7 +22,9 @@
    VERTICAL
    ========================= */
 .ui-split-pane[data-orientation="vertical"] {
-  .ui-split-pane__section[data-section="alpha"]:has(.ui-split-pane-section[data-has-scroll-vertical="true"]) {
+  .ui-split-pane__section[data-section="alpha"]:has(
+      .ui-split-pane-section[data-has-scroll-vertical="true"]
+    ) {
     padding-right: calc((var(--ui-split-pane-resizer-size) / 2) - 1px);
   }
 

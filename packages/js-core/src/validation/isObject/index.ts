@@ -1,2 +1,1 @@
 export { isObject } from "./isObject";
-

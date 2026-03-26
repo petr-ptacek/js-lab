@@ -7,9 +7,10 @@
   touch-action: none;
   pointer-events: auto;
 
-  transition: width 150ms ease,
-  height 150ms ease,
-  background-color 150ms ease;
+  transition:
+    width 150ms ease,
+    height 150ms ease,
+    background-color 150ms ease;
 }
 
 /* =========================
@@ -49,6 +50,3 @@
     }
   }
 }
-
-
-

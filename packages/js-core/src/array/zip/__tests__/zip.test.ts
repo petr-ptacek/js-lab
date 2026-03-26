@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import { zip } from "../zip";
 
@@ -37,11 +37,7 @@ describe("zip", () => {
   });
 
   it("maps values when mapper is provided", () => {
-    const result = zip(
-      [1, 2, 3],
-      [10, 20, 30],
-      (a, b) => a + b,
-    );
+    const result = zip([1, 2, 3], [10, 20, 30], (a, b) => a + b);
 
     expect(result).toEqual([11, 22, 33]);
   });
@@ -49,14 +45,10 @@ describe("zip", () => {
   it("passes correct values to mapper", () => {
     const calls: Array<[number, number]> = [];
 
-    zip(
-      [1, 2],
-      [3, 4],
-      (a, b) => {
-        calls.push([a, b]);
-        return a * b;
-      },
-    );
+    zip([1, 2], [3, 4], (a, b) => {
+      calls.push([a, b]);
+      return a * b;
+    });
 
     expect(calls).toEqual([
       [1, 3],

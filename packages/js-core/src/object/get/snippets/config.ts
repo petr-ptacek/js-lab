@@ -9,10 +9,10 @@ const config = {
       host: "db.example.com",
       credentials: {
         username: "admin",
-        password: "secret123"
-      }
-    }
-  }
+        password: "secret123",
+      },
+    },
+  },
 };
 
 // Access configuration values with sensible defaults
@@ -29,5 +29,5 @@ console.log({
   host,
   sslEnabled,
   dbHost,
-  dbUser
+  dbUser,
 });

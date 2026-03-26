@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type NavigationMenuItem } from "@nuxt/ui";
+import type { NavigationMenuItem } from "@nuxt/ui";
 
 import { shallowRef } from "#imports";
 

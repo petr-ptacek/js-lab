@@ -1,22 +1,45 @@
-import { computed, getCurrentInstance, onBeforeUnmount, readonly, shallowRef, toValue } from "vue";
+import {
+  computed,
+  getCurrentInstance,
+  onBeforeUnmount,
+  readonly,
+  shallowRef,
+  toValue,
+} from "vue";
 
-import type { DragAxis, UsePointerDragOptions, UsePointerDragReturn }                         from "./types";
-import { useDragAxisLock, useDragDelta, useDragDirection, useDragThreshold, useDragVelocity } from "./use";
+import type {
+  DragAxis,
+  UsePointerDragOptions,
+  UsePointerDragReturn,
+} from "./types";
+import {
+  useDragAxisLock,
+  useDragDelta,
+  useDragDirection,
+  useDragThreshold,
+  useDragVelocity,
+} from "./use";
 
-export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerDragReturn {
+export function usePointerDrag(
+  options: UsePointerDragOptions = {},
+): UsePointerDragReturn {
   /****************************
    * Default vars
    ***************************/
 
   const isDisabled = computed(() => !!toValue(options.disabled));
   const axis = computed<DragAxis>(() => toValue(options.axis) ?? "both");
-  const threshold = computed(() => Math.max(0, toValue(options.threshold) ?? 0));
-  const lockAxisAfterThreshold = computed(() => !!toValue(options.lockAxisAfterThreshold));
+  const threshold = computed(() =>
+    Math.max(0, toValue(options.threshold) ?? 0),
+  );
+  const lockAxisAfterThreshold = computed(
+    () => !!toValue(options.lockAxisAfterThreshold),
+  );
   const invertAxis = computed<DragAxis | null>(() => {
     const ivAx = toValue(options.invertAxis);
 
-    if ( ivAx === true ) return "both";
-    if ( ivAx === false || ivAx == null ) return null;
+    if (ivAx === true) return "both";
+    if (ivAx === false || ivAx == null) return null;
     return ivAx;
   });
 
@@ -37,11 +60,10 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
   const direction = useDragDirection();
   const velocity = useDragVelocity();
 
-
   /*******************
    * LOGIC
    *******************/
-  if ( getCurrentInstance() ) {
+  if (getCurrentInstance()) {
     onBeforeUnmount(() => cleanup());
   }
 
@@ -50,25 +72,24 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
    ****************/
 
   function onPointerDown(e: PointerEvent) {
-    if (
-      activePointerId.value !== null ||
-      isDisabled.value ||
-      !e.currentTarget
-    ) return;
-
+    if (activePointerId.value !== null || isDisabled.value || !e.currentTarget)
+      return;
 
     startX.value = e.clientX;
     startY.value = e.clientY;
 
-    if ( options.onStart?.({
-      evt: e,
-      startX: startX.value,
-      startY: startY.value,
-      deltaX: 0,
-      deltaY: 0,
-      velocityX: 0,
-      velocityY: 0,
-    }) === false ) return;
+    if (
+      options.onStart?.({
+        evt: e,
+        startX: startX.value,
+        startY: startY.value,
+        deltaX: 0,
+        deltaY: 0,
+        velocityX: 0,
+        velocityY: 0,
+      }) === false
+    )
+      return;
 
     const target = e.currentTarget as HTMLElement;
 
@@ -90,17 +111,17 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
    * */
 
   function onPointerMove(e: PointerEvent) {
-    if ( !isPressed.value || activePointerId.value !== e.pointerId ) return;
+    if (!isPressed.value || activePointerId.value !== e.pointerId) return;
 
     delta.update(startX.value, startY.value, e);
 
-    if ( !thresholdCtrl.check(delta.absX.value, delta.absY.value) ) {
+    if (!thresholdCtrl.check(delta.absX.value, delta.absY.value)) {
       direction.update(0, 0);
       velocity.reset();
       return;
     }
 
-    if ( !isDragging.value ) {
+    if (!isDragging.value) {
       isDragging.value = true;
     }
 
@@ -124,24 +145,24 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
    * */
 
   function onPointerUp(e: PointerEvent) {
-    if ( activePointerId.value !== e.pointerId ) return;
+    if (activePointerId.value !== e.pointerId) return;
     endDrag(e);
   }
 
   function onLostPointerCapture(e: PointerEvent) {
-    if ( activePointerId.value !== e.pointerId ) return;
+    if (activePointerId.value !== e.pointerId) return;
     endDrag(e);
   }
 
   function endDrag(e: PointerEvent) {
-    if ( !isPressed.value ) return;
+    if (!isPressed.value) return;
 
     const wasDragging = isDragging.value;
 
     isDragging.value = false;
     isPressed.value = false;
 
-    if ( wasDragging ) {
+    if (wasDragging) {
       options.onEnd?.({
         evt: e,
         startX: startX.value,
@@ -161,12 +182,16 @@ export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerD
     window.removeEventListener("pointerup", onPointerUp);
     window.removeEventListener("pointercancel", onPointerUp);
 
-    if ( captureEl.value && activePointerId.value !== null ) {
+    if (captureEl.value && activePointerId.value !== null) {
       try {
         captureEl.value.releasePointerCapture(activePointerId.value);
-      } catch { /* empty */
+      } catch {
+        /* empty */
       }
-      captureEl.value.removeEventListener("lostpointercapture", onLostPointerCapture);
+      captureEl.value.removeEventListener(
+        "lostpointercapture",
+        onLostPointerCapture,
+      );
     }
 
     captureEl.value = null;

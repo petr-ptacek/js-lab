@@ -1,4 +1,4 @@
-import { readonly, type Ref, shallowRef } from "vue";
+import { type Ref, readonly, shallowRef } from "vue";
 
 import type { DragAxis } from "../types";
 
@@ -23,10 +23,7 @@ import type { DragAxis } from "../types";
  * - `check(absX, absY)` – evaluates threshold crossing using absolute deltas
  * - `reset()` – clears the threshold state
  */
-export function useDragThreshold(
-  axis: Ref<DragAxis>,
-  threshold: Ref<number>,
-) {
+export function useDragThreshold(axis: Ref<DragAxis>, threshold: Ref<number>) {
   const passed = shallowRef(false);
 
   function check(absX: number, absY: number): boolean {

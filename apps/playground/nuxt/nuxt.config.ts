@@ -13,12 +13,8 @@ export default defineNuxtConfig({
       },
     },
   },
-  css: [
-    "./app/assets/styles/index.css",
-  ],
-  modules: [
-    "@nuxt/ui",
-  ],
+  css: ["./app/assets/styles/index.css"],
+  modules: ["@nuxt/ui"],
   vite: {
     resolve: {
       alias: {
@@ -30,9 +26,7 @@ export default defineNuxtConfig({
         ),
       },
     },
-    plugins: [
-      tailwindcss() as any,
-    ],
+    plugins: [tailwindcss() as any],
   },
   devtools: { enabled: true },
   ssr: false,
@@ -44,27 +38,16 @@ export default defineNuxtConfig({
     tsConfig: {
       compilerOptions: {
         paths: {
-          "@petr-ptacek/vue-core": [
-            "../../../../packages/vue-core/src",
-          ],
-          "@petr-ptacek/js-core": [
-            "../../../../packages/js-core/src",
-          ],
-        }
+          "@petr-ptacek/vue-core": ["../../../../packages/vue-core/src"],
+          "@petr-ptacek/js-core": ["../../../../packages/js-core/src"],
+        },
       },
     },
   },
   ui: {
     colorMode: false,
     theme: {
-      colors: [
-        "primary",
-        "secondary",
-        "info",
-        "success",
-        "warning",
-        "error",
-      ],
+      colors: ["primary", "secondary", "info", "success", "warning", "error"],
     },
   },
 });

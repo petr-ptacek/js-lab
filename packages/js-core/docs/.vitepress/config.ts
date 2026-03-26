@@ -1,9 +1,10 @@
 import { defineConfig } from "vitepress";
-import data             from "./data/utilities.json";
+import data from "./data/utilities.json";
 
 function buildSidebar() {
-  const categories = Object.entries(data.categories)
-                           .sort(([a], [b]) => a.localeCompare(b)); // Sort categories A-Z
+  const categories = Object.entries(data.categories).sort(([a], [b]) =>
+    a.localeCompare(b),
+  ); // Sort categories A-Z
 
   return [
     {
@@ -17,7 +18,7 @@ function buildSidebar() {
             text: "All utilities",
             link: `/api/${category}/`,
           },
-          ...utils.map(u => ({
+          ...utils.map((u) => ({
             text: u.name,
             link: `/api/${u.category}/${u.id}`,
           })),

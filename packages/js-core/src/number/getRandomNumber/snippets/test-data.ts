@@ -37,7 +37,7 @@ class TestDataGenerator {
       firstName: firstNames[this.generateArrayIndex(firstNames.length)],
       lastName: lastNames[this.generateArrayIndex(lastNames.length)],
       age: this.generateAge(),
-      score: this.generateScore()
+      score: this.generateScore(),
     };
   }
 
@@ -50,7 +50,7 @@ class TestDataGenerator {
       product: products[this.generateArrayIndex(products.length)],
       quantity: this.generateQuantity(),
       price: getRandomNumber(10, 1500), // $10 to $1500
-      timestamp: Date.now() - getRandomNumber(0, 30 * 24 * 60 * 60 * 1000) // last 30 days
+      timestamp: Date.now() - getRandomNumber(0, 30 * 24 * 60 * 60 * 1000), // last 30 days
     };
   }
 
@@ -82,7 +82,7 @@ async function simulateApiCall(endpoint: string) {
   const delay = generator.generateDelay();
   console.log(`Calling ${endpoint}... (${delay}ms delay)`);
 
-  await new Promise(resolve => setTimeout(resolve, delay));
+  await new Promise((resolve) => setTimeout(resolve, delay));
 
   // simulate success/error (90% success rate)
   const success = getRandomNumber(1, 100) <= 90;
@@ -90,11 +90,11 @@ async function simulateApiCall(endpoint: string) {
     success,
     data: success ? { result: "Data loaded" } : null,
     error: success ? null : "Network error",
-    responseTime: delay
+    responseTime: delay,
   };
 }
 
 // example usage
-simulateApiCall("/api/users").then(result => {
+simulateApiCall("/api/users").then((result) => {
   console.log("API result:", result);
 });

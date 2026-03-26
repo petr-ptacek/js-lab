@@ -1,8 +1,8 @@
-import type { ShrinkImageOptions } from "./types";
 import { assertPositiveFinite } from "../../_internal";
 import { scaleByAspectRatio } from "../../number";
 import type { Dimensions } from "../../type";
 import { isNumber } from "../../validation";
+import type { ShrinkImageOptions } from "./types";
 
 const DEFAULT_QUALITY = 0.8;
 const DEFAULT_MIME_TYPE = "image/jpeg";
@@ -135,7 +135,7 @@ export function shrinkImage(
 
   return new Promise<Blob>((resolve, reject) => {
     canvas.toBlob(
-      blob => {
+      (blob) => {
         if (!blob) {
           reject(new Error("Failed to crete blob"));
           return;

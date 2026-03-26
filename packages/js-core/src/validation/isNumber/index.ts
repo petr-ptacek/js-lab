@@ -1,2 +1,1 @@
 export { isNumber } from "./isNumber";
-

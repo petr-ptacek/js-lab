@@ -22,7 +22,7 @@ async function previewOptimizedImage(
     previewContainer.appendChild(preview);
 
     console.log("Optimized preview ready for upload");
-  } catch ( error ) {
+  } catch (error) {
     console.error("Failed to create preview:", error);
   }
 }
@@ -33,9 +33,10 @@ async function previewOptimizedImage(
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function optimizeGalleryImages(): Promise<void> {
-  const images = document.querySelectorAll<HTMLImageElement>("img.gallery-item");
+  const images =
+    document.querySelectorAll<HTMLImageElement>("img.gallery-item");
 
-  for ( const img of Array.from(images) ) {
+  for (const img of Array.from(images)) {
     try {
       const optimized = await shrinkImageElement(img, {
         maxWidth: 1600,
@@ -43,7 +44,7 @@ async function optimizeGalleryImages(): Promise<void> {
       });
 
       img.replaceWith(optimized);
-    } catch ( error ) {
+    } catch (error) {
       console.error(`Failed to optimize image: ${img.src}`, error);
     }
   }
@@ -56,7 +57,11 @@ async function optimizeGalleryImages(): Promise<void> {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function createResponsiveVersions(
   sourceImage: HTMLImageElement,
-): Promise<{ small: HTMLImageElement; medium: HTMLImageElement; large: HTMLImageElement }> {
+): Promise<{
+  small: HTMLImageElement;
+  medium: HTMLImageElement;
+  large: HTMLImageElement;
+}> {
   const [small, medium, large] = await Promise.all([
     shrinkImageElement(sourceImage, { maxWidth: 400, maxHeight: 400 }),
     shrinkImageElement(sourceImage, { maxWidth: 800, maxHeight: 800 }),
@@ -65,4 +70,3 @@ async function createResponsiveVersions(
 
   return { small, medium, large };
 }
-

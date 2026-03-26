@@ -7,10 +7,10 @@ const values = [
   { key: "value" },
   null,
   undefined,
-  42
+  42,
 ];
 
-values.forEach(value => {
+values.forEach((value) => {
   console.log(`${JSON.stringify(value)} is array:`, isArray(value));
 });
 

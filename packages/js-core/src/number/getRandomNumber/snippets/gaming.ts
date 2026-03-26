@@ -43,7 +43,7 @@ class GameMechanics {
   getRandomSpawnPoint(mapWidth: number, mapHeight: number) {
     return {
       x: getRandomNumber(0, mapWidth - 1),
-      y: getRandomNumber(0, mapHeight - 1)
+      y: getRandomNumber(0, mapHeight - 1),
     };
   }
 }

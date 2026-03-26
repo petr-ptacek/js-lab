@@ -6,9 +6,9 @@ const user = {
     age: 30,
     contacts: {
       email: "john@example.com",
-      phones: ["+1234567890", "+0987654321"]
-    }
-  }
+      phones: ["+1234567890", "+0987654321"],
+    },
+  },
 };
 
 // Get nested object property

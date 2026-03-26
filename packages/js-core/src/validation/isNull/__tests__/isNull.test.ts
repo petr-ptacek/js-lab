@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isNull } from "../isNull";
 
 describe("isNull", () => {
@@ -23,4 +23,3 @@ describe("isNull", () => {
     }
   });
 });
-

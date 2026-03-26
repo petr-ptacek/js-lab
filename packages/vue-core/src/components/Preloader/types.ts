@@ -18,11 +18,7 @@ import type { CSSClassValue } from "../../types";
  * All size-related styles can be overridden via the `ui` prop, which takes
  * precedence over size presets.
  */
-export type Size =
-  | "sm"
-  | "md"
-  | "lg"
-  | string;
+export type Size = "sm" | "md" | "lg" | string;
 
 /**
  * Optional UI class overrides for Preloader sub-elements.

@@ -1,18 +1,16 @@
 import { withAbortable } from "@petr-ptacek/js-core";
 
 // Basic API call with automatic abort
-const getUser = withAbortable(
-  async ({ signal }, id: string) => {
-    console.log(`Fetching user ${id}...`);
-    const response = await fetch(`/api/users/${id}`, { signal });
+const getUser = withAbortable(async ({ signal }, id: string) => {
+  console.log(`Fetching user ${id}...`);
+  const response = await fetch(`/api/users/${id}`, { signal });
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch user: ${response.status}`);
-    }
-
-    return response.json();
+  if (!response.ok) {
+    throw new Error(`Failed to fetch user: ${response.status}`);
   }
-);
+
+  return response.json();
+});
 
 // Execute the function
 
@@ -39,7 +37,6 @@ async function _example() {
       const err = error as Error;
       console.log("Promise1 was aborted:", err.name === "AbortError");
     }
-
   } catch (error) {
     const err = error as Error;
     console.error("Error:", err.message);

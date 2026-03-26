@@ -1,22 +1,16 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { computed, ref } from "vue";
 import data from "../data/utilities.json";
 
 const selectedTag = ref<string | null>(null);
 
 const utilities = data.utilities;
 
-const tags = Array.from(
-  new Set(
-    utilities.flatMap(u => u.tags ?? []),
-  ),
-).sort();
+const tags = Array.from(new Set(utilities.flatMap((u) => u.tags ?? []))).sort();
 
 const filtered = computed(() => {
   if (!selectedTag.value) return utilities;
-  return utilities.filter(u =>
-    (u.tags ?? []).includes(selectedTag.value!),
-  );
+  return utilities.filter((u) => (u.tags ?? []).includes(selectedTag.value!));
 });
 
 function selectTag(tag: string | null) {

@@ -10,8 +10,8 @@ describe("assertNotUndefined", () => {
   });
 
   it("throws for undefined", () => {
-    expect(() =>
-      assertNonUndefined("value", undefined),
-    ).toThrow("value must be not undefined");
+    expect(() => assertNonUndefined("value", undefined)).toThrow(
+      "value must be not undefined",
+    );
   });
 });

@@ -1,2 +1,2 @@
+export { loadImage } from "./loadImage";
 export type { LoadImageOptions } from "./types";
-export { loadImage }             from "./loadImage";

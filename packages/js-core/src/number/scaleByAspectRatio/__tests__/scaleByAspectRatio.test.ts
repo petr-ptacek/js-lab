@@ -36,62 +36,41 @@ describe("scaleByAspectRatio", () => {
     );
 
     expect(result.width).toBe(500);
-    expect(result.height).toBe(
-      Math.floor(500 / (1000 / 333)),
-    );
+    expect(result.height).toBe(Math.floor(500 / (1000 / 333)));
   });
 
   it("throws when both width and height are provided", () => {
     expect(() =>
-      scaleByAspectRatio(
-        { width: 400, height: 300 },
-        { width: 200, height: 200 } as any,
-      ),
-    ).toThrow(
-      "scaleTo requires exactly one of target.width or target.height",
-    );
+      scaleByAspectRatio({ width: 400, height: 300 }, {
+        width: 200,
+        height: 200,
+      } as any),
+    ).toThrow("scaleTo requires exactly one of target.width or target.height");
   });
 
   it("throws when neither width nor height is provided", () => {
     expect(() =>
-      scaleByAspectRatio(
-        { width: 400, height: 300 },
-        {} as any,
-      ),
-    ).toThrow(
-      "scaleTo requires exactly one of target.width or target.height",
-    );
+      scaleByAspectRatio({ width: 400, height: 300 }, {} as any),
+    ).toThrow("scaleTo requires exactly one of target.width or target.height");
   });
 
   it("throws for invalid size values", () => {
     expect(() =>
-      scaleByAspectRatio(
-        { width: 0, height: 300 },
-        { width: 100 },
-      ),
+      scaleByAspectRatio({ width: 0, height: 300 }, { width: 100 }),
     ).toThrow();
 
     expect(() =>
-      scaleByAspectRatio(
-        { width: 400, height: -1 },
-        { height: 100 },
-      ),
+      scaleByAspectRatio({ width: 400, height: -1 }, { height: 100 }),
     ).toThrow();
   });
 
   it("throws for invalid target values", () => {
     expect(() =>
-      scaleByAspectRatio(
-        { width: 400, height: 300 },
-        { width: 0 },
-      ),
+      scaleByAspectRatio({ width: 400, height: 300 }, { width: 0 }),
     ).toThrow();
 
     expect(() =>
-      scaleByAspectRatio(
-        { width: 400, height: 300 },
-        { height: -50 },
-      ),
+      scaleByAspectRatio({ width: 400, height: 300 }, { height: -50 }),
     ).toThrow();
   });
 });

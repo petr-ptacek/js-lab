@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { UiContentFrame } from "@petr-ptacek/vue-core";
 
-import { ExampleFrame }   from "~/components";
+import { ExampleFrame } from "~/components";
 </script>
 
 <template>

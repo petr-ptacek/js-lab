@@ -36,7 +36,7 @@ function analyzeImageDimensions(width: number, height: number) {
     height,
     aspectRatio,
     orientation,
-    category
+    category,
   };
 }
 
@@ -46,7 +46,7 @@ const images = [
   { name: "Instagram post", width: 1080, height: 1080 },
   { name: "Phone screenshot", width: 375, height: 812 },
   { name: "Traditional photo", width: 800, height: 600 },
-  { name: "Ultrawide monitor", width: 3440, height: 1440 }
+  { name: "Ultrawide monitor", width: 3440, height: 1440 },
 ];
 
 images.forEach(({ name, width, height }) => {
@@ -54,7 +54,7 @@ images.forEach(({ name, width, height }) => {
   console.log(`${name}:`, {
     ratio: analysis.aspectRatio.toFixed(3),
     orientation: analysis.orientation,
-    category: analysis.category
+    category: analysis.category,
   });
 });
 

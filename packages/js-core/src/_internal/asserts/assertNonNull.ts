@@ -5,8 +5,6 @@ export function assertNonNull<T>(
   value: T,
 ): asserts value is Exclude<T, null> {
   if (value === null) {
-    throw new Error(
-      createAssertMessage(name, "not null", value),
-    );
+    throw new Error(createAssertMessage(name, "not null", value));
   }
 }

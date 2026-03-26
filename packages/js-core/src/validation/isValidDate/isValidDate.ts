@@ -33,4 +33,3 @@ import { isNaNValue } from "../isNaNValue";
 export function isValidDate(value: unknown): value is Date {
   return isDate(value) && !isNaNValue(value.getTime());
 }
-

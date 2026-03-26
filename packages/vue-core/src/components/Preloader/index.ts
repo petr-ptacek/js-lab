@@ -1,9 +1,8 @@
 import "./styles.css";
 
+export { default as UiPreloader } from "./Preloader.vue";
 export type {
-  Size as PreloaderSize,
   Props as PreloaderProps,
+  Size as PreloaderSize,
   Slots as PreloaderSlots,
 } from "./types.ts";
-
-export { default as UiPreloader } from "./Preloader.vue";

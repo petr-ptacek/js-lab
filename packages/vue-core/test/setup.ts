@@ -1,4 +1,4 @@
-import { vi, beforeEach, afterEach } from "vitest";
+import { afterEach, beforeEach, vi } from "vitest";
 
 // ---- Fake timers (watchDebounced, setTimeout) ----
 beforeEach(() => {
@@ -16,4 +16,5 @@ class ResizeObserverMock {
   disconnect = vi.fn();
 }
 
-globalThis.ResizeObserver = ResizeObserverMock as unknown as typeof ResizeObserver;
+globalThis.ResizeObserver =
+  ResizeObserverMock as unknown as typeof ResizeObserver;

@@ -5,12 +5,9 @@
 <script setup lang="ts">
 import { normalizeClass } from "vue";
 
-import type { Slots, Props } from "./types";
+import type { Props, Slots } from "./types";
 
-withDefaults(
-  defineProps<Props>(),
-  { scrollable: true },
-);
+withDefaults(defineProps<Props>(), { scrollable: true });
 defineSlots<Slots>();
 </script>
 

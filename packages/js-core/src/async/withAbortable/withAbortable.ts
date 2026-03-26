@@ -1,4 +1,9 @@
-import type { AbortableFn, AbortableContext, WithAbortableOptions, WithAbortableReturn } from "./types";
+import type {
+  AbortableContext,
+  AbortableFn,
+  WithAbortableOptions,
+  WithAbortableReturn,
+} from "./types";
 
 /**
  * Wraps an asynchronous function with AbortController lifecycle management.
@@ -104,7 +109,7 @@ export function withAbortable<Args extends unknown[], R>(
   }
 
   async function execute(...args: Args): Promise<R> {
-    if ( resolvedOptions.autoAbort ) {
+    if (resolvedOptions.autoAbort) {
       abort();
     }
 
@@ -117,7 +122,7 @@ export function withAbortable<Args extends unknown[], R>(
 
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
-    if ( resolvedOptions.timeoutMs != null ) {
+    if (resolvedOptions.timeoutMs != null) {
       timeoutId = setTimeout(() => {
         abort();
       }, resolvedOptions.timeoutMs);
@@ -126,7 +131,7 @@ export function withAbortable<Args extends unknown[], R>(
     try {
       return await fn(context, ...args);
     } finally {
-      if ( timeoutId ) {
+      if (timeoutId) {
         clearTimeout(timeoutId);
       }
       isRunning = false;

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isString } from "../isString";
 
 describe("isString", () => {
@@ -75,10 +75,10 @@ describe("isString", () => {
       [],
       {},
       new String("test"),
-      Symbol("test")
+      Symbol("test"),
     ];
 
-    testCases.forEach(testCase => {
+    testCases.forEach((testCase) => {
       expect(isString(testCase)).toBe(typeof testCase === "string");
     });
   });

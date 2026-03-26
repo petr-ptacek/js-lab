@@ -9,4 +9,4 @@ export type UseStableLoadingReturn = {
   loading: Readonly<Ref<boolean>>;
   isDelaying: Readonly<Ref<boolean>>;
   isHolding: Readonly<Ref<boolean>>;
-}
+};

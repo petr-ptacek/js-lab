@@ -1,5 +1,5 @@
+import { isUndefined } from "../../validation";
 import type { LoadImageOptions } from "./types";
-import { isUndefined }           from "../../validation";
 
 /**
  * Loads an image from the given source URL.
@@ -27,15 +27,18 @@ import { isUndefined }           from "../../validation";
  *
  * @since 1.0.0
  */
-export function loadImage(src: string, options: LoadImageOptions = {}): Promise<HTMLImageElement> {
+export function loadImage(
+  src: string,
+  options: LoadImageOptions = {},
+): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
 
-    if ( !isUndefined(options.crossOrigin) ) {
+    if (!isUndefined(options.crossOrigin)) {
       img.crossOrigin = options.crossOrigin;
     }
 
-    if ( !isUndefined(options.decoding) ) {
+    if (!isUndefined(options.decoding)) {
       img.decoding = options.decoding;
     }
 

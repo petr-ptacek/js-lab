@@ -16,4 +16,4 @@ export type InteractiveElementOptions = {
    * and the function will always return `false`.
    */
   selectors?: readonly Selector[];
-}
+};

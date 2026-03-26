@@ -1,2 +1,1 @@
 export { isBigint } from "./isBigint";
-

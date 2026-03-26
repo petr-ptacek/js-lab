@@ -10,4 +10,3 @@ export const meta = {
   snippets: false,
   since: "1.0.0",
 } satisfies Meta;
-

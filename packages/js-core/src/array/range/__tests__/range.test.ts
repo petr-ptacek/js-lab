@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { range } from "../range";
 
 describe("range", () => {
@@ -32,9 +32,7 @@ describe("range", () => {
   });
 
   it("throws error when step is 0", () => {
-    expect(() => range(0, 10, 0)).toThrow(
-      "range: step must not be 0",
-    );
+    expect(() => range(0, 10, 0)).toThrow("range: step must not be 0");
   });
 
   it("works with negative start and stop", () => {

@@ -7,18 +7,22 @@ const apiResponse = {
         id: 1,
         profile: {
           email: "alice@example.com",
-          preferences: { theme: "dark" }
-        }
-      }
-    ]
-  }
+          preferences: { theme: "dark" },
+        },
+      },
+    ],
+  },
 };
 
 // Safely access nested API data
 const userEmail = get(apiResponse, "data.users.0.profile.email");
 console.log(userEmail); // "alice@example.com"
 
-const userTheme = get(apiResponse, "data.users.0.profile.preferences.theme", "light");
+const userTheme = get(
+  apiResponse,
+  "data.users.0.profile.preferences.theme",
+  "light",
+);
 console.log(userTheme); // "dark"
 
 // Handle missing data gracefully

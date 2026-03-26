@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { UiPreloader } from "@petr-ptacek/vue-core";
 
-import { shallowRef }  from "#imports";
+import { shallowRef } from "#imports";
 import { ExampleFrame } from "~/components";
 
 const preloaderVisible = shallowRef(false);

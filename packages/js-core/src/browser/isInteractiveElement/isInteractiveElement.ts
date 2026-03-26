@@ -53,7 +53,10 @@ export const DEFAULT_INTERACTIVE_SELECTORS = [
  *
  * @since 1.0.0
  */
-export function isInteractiveElement(element: Element | null, options: InteractiveElementOptions = {}): boolean {
+export function isInteractiveElement(
+  element: Element | null,
+  options: InteractiveElementOptions = {},
+): boolean {
   if (!element) return false;
 
   const selectors = options.selectors ?? DEFAULT_INTERACTIVE_SELECTORS;

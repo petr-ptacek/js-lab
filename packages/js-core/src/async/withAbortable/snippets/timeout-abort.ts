@@ -11,33 +11,31 @@ const longTask = withAbortable(
       }, duration);
 
       // Handle abort signal
-      signal.addEventListener('abort', () => {
+      signal.addEventListener("abort", () => {
         clearTimeout(timeoutId);
-        reject(new DOMException('Task was aborted', 'AbortError'));
+        reject(new DOMException("Task was aborted", "AbortError"));
       });
     });
   },
-  { timeoutMs: 3000 } // 3 second timeout
+  { timeoutMs: 3000 }, // 3 second timeout
 );
 
 // Manual abort example
-const downloadFile = withAbortable(
-  async ({ signal }, url: string) => {
-    console.log(`Downloading ${url}...`);
+const downloadFile = withAbortable(async ({ signal }, url: string) => {
+  console.log(`Downloading ${url}...`);
 
-    // Simulate file download with progress
-    for (let i = 0; i <= 100; i += 10) {
-      if (signal.aborted) {
-        throw new DOMException('Download cancelled', 'AbortError');
-      }
-
-      console.log(`Download progress: ${i}%`);
-      await new Promise(resolve => setTimeout(resolve, 200));
+  // Simulate file download with progress
+  for (let i = 0; i <= 100; i += 10) {
+    if (signal.aborted) {
+      throw new DOMException("Download cancelled", "AbortError");
     }
 
-    return `Downloaded ${url} successfully`;
+    console.log(`Download progress: ${i}%`);
+    await new Promise((resolve) => setTimeout(resolve, 200));
   }
-);
+
+  return `Downloaded ${url} successfully`;
+});
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -50,7 +48,7 @@ async function _timeoutExample() {
     console.log(result);
   } catch (error) {
     const err = error as Error;
-    if (err.name === 'AbortError') {
+    if (err.name === "AbortError") {
       console.log("Task was aborted due to timeout");
     } else {
       console.error("Unexpected error:", error);
@@ -76,7 +74,7 @@ async function _manualAbortExample() {
     console.log(result);
   } catch (error) {
     const err = error as Error;
-    if (err.name === 'AbortError') {
+    if (err.name === "AbortError") {
       console.log("Download was manually cancelled");
     }
   }
@@ -87,15 +85,15 @@ const concurrentTask = withAbortable(
   async ({ signal }, taskId: number) => {
     console.log(`Starting concurrent task ${taskId}...`);
 
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     if (signal.aborted) {
-      throw new DOMException(`Task ${taskId} was aborted`, 'AbortError');
+      throw new DOMException(`Task ${taskId} was aborted`, "AbortError");
     }
 
     return `Task ${taskId} completed`;
   },
-  { autoAbort: false } // Allow concurrent executions
+  { autoAbort: false }, // Allow concurrent executions
 );
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -107,13 +105,13 @@ async function _concurrentExample() {
   const promises = [
     concurrentTask.execute(1),
     concurrentTask.execute(2),
-    concurrentTask.execute(3)
+    concurrentTask.execute(3),
   ];
 
   // Wait for all to complete
   const results = await Promise.allSettled(promises);
   results.forEach((result, index) => {
-    if (result.status === 'fulfilled') {
+    if (result.status === "fulfilled") {
       console.log(`Result ${index + 1}:`, result.value);
     } else {
       console.log(`Task ${index + 1} failed:`, result.reason.message);

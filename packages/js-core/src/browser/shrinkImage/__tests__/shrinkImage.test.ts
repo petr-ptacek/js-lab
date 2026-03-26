@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { shrinkImage } from "../shrinkImage";
 
 function createImage(
@@ -39,7 +39,7 @@ describe("shrinkImage", () => {
   };
 
   beforeEach(() => {
-    vi.spyOn(document, "createElement").mockImplementation(tag => {
+    vi.spyOn(document, "createElement").mockImplementation((tag) => {
       if (tag !== "canvas") {
         return originalCreateElement(tag);
       }
@@ -134,9 +134,7 @@ describe("shrinkImage", () => {
   it("throws for invalid image dimensions", () => {
     const img = createImage(0, 1000);
 
-    expect(() =>
-      shrinkImage(img, { maxWidth: 500 }),
-    ).toThrow(
+    expect(() => shrinkImage(img, { maxWidth: 500 })).toThrow(
       "image.naturalWidth must be a positive finite number",
     );
   });

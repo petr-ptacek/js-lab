@@ -1,2 +1,1 @@
 export { isBoolean } from "./isBoolean";
-

@@ -5,8 +5,6 @@ export function assertDefined<T>(
   value: T,
 ): asserts value is NonNullable<T> {
   if (value === undefined || value === null) {
-    throw new Error(
-      createAssertMessage(name, "defined", value),
-    );
+    throw new Error(createAssertMessage(name, "defined", value));
   }
 }

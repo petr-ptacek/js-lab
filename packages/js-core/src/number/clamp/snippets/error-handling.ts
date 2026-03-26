@@ -8,15 +8,19 @@ try {
   const result = clamp(50, 0, 100);
   console.log(`✓ Valid range: clamp(50, 0, 100) = ${result}`);
 } catch (error) {
-  console.error(`✗ Error: ${error instanceof Error ? error.message : String(error)}`);
+  console.error(
+    `✗ Error: ${error instanceof Error ? error.message : String(error)}`,
+  );
 }
 
 // Invalid range - min > max
 try {
-  const result = clamp(50, 100, 0);  // Invalid: min(100) > max(0)
+  const result = clamp(50, 100, 0); // Invalid: min(100) > max(0)
   console.log(`Result: ${result}`);
 } catch (error) {
-  console.error(`✗ Invalid range: ${error instanceof Error ? error.message : String(error)}`);
+  console.error(
+    `✗ Invalid range: ${error instanceof Error ? error.message : String(error)}`,
+  );
 }
 
 // Safe clamp wrapper with validation
@@ -50,8 +54,8 @@ function autoClamp(value: number, bound1: number, bound2: number): number {
 console.log("\n=== Auto-correcting Clamp ===");
 
 // Works regardless of parameter order
-const result1 = autoClamp(50, 0, 100);    // Normal order
-const result2 = autoClamp(50, 100, 0);    // Swapped order - auto-corrected
+const result1 = autoClamp(50, 0, 100); // Normal order
+const result2 = autoClamp(50, 100, 0); // Swapped order - auto-corrected
 
-console.log(`autoClamp(50, 0, 100) = ${result1}`);   // 50
-console.log(`autoClamp(50, 100, 0) = ${result2}`);   // 50
+console.log(`autoClamp(50, 0, 100) = ${result1}`); // 50
+console.log(`autoClamp(50, 100, 0) = ${result2}`); // 50

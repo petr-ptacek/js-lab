@@ -79,7 +79,12 @@ These types enable proper TypeScript integration and ensure type safety when usi
 
 ## Design Notes
 
+
 The implementation uses a "latest execution wins" model by default. When `autoAbort: true`, starting a new execution automatically aborts the previous one, guaranteeing a single active execution at a time.
+
+### Race condition prevention
+
+The implementation uses an internal token (runId) to ensure that only the latest execution can update state and perform cleanup. This prevents race conditions where a slower, earlier promise could otherwise overwrite the state of a newer execution. All state changes and cleanup are performed only if the execution is still current.
 
 The wrapped function MUST properly handle the provided AbortSignal. If it ignores the signal, cancellation cannot be guaranteed. When an execution is aborted, the returned promise typically rejects with a DOMException named "AbortError".
 

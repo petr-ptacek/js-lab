@@ -101,11 +101,13 @@ export function withAbortable<Args extends unknown[], R>(
 
   let controller: AbortController | null = null;
   let isRunning = false;
+  let currentRunId = 0;
 
   function abort() {
     controller?.abort();
     controller = null;
     isRunning = false;
+    currentRunId++;
   }
 
   async function execute(...args: Args): Promise<R> {
@@ -115,6 +117,7 @@ export function withAbortable<Args extends unknown[], R>(
 
     controller = new AbortController();
     isRunning = true;
+    const runId = ++currentRunId;
 
     const context: AbortableContext = {
       signal: controller.signal,
@@ -131,11 +134,14 @@ export function withAbortable<Args extends unknown[], R>(
     try {
       return await fn(context, ...args);
     } finally {
+      // Cleanup a změny stavu pouze pokud je runId aktuální (ochrana proti race condition)
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
-      isRunning = false;
-      controller = null;
+      if (runId === currentRunId) {
+        isRunning = false;
+        controller = null;
+      }
     }
   }
 

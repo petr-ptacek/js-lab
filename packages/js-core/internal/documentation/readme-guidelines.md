@@ -9,9 +9,9 @@ directory.
 
 Example structure:
 
-src/`<category>`{=html}/`<utility>`{=html}/ README.md meta.ts index.ts
+    src/`<category>`/`<utility>`/ README.md meta.ts index.ts
 
-The README structure must follow the sections defined below.
+The `README` structure must follow the sections defined below.
 
 ------------------------------------------------------------------------
 
@@ -79,9 +79,9 @@ Include default values when relevant.
 
 Example:
 
--   `options` (`CreateUUIDOptions`, optional): Configuration options.
-    -   `secure` (`boolean`, default `true`): Prefer cryptographically
-        secure sources when available.
+- `options` (`CreateUUIDOptions`, optional): Configuration options.
+  - `secure` (`boolean`, default `true`): Prefer cryptographically
+    secure sources when available.
 
 ------------------------------------------------------------------------
 
@@ -92,8 +92,8 @@ If the utility is generic, document type parameters (`<T>`,
 
 Example:
 
--   `<T>`: The item type.
--   `<K extends keyof T>`: The key type used for selection.
+- `<T>`: The item type.
+- `<K extends keyof T>`: The key type used for selection.
 
 ------------------------------------------------------------------------
 
@@ -109,7 +109,8 @@ Returns a string containing a UUID v4 identifier in standard format (xxxxxxxx-xx
 
 ## 9. Type Declarations (if applicable)
 
-Document important TypeScript type definitions that are exported alongside the utility. This section should include complex types that users need to understand to effectively use the utility.
+Document important TypeScript type definitions that are exported alongside the utility. This section should include
+complex types that users need to understand to effectively use the utility.
 
 Example:
 
@@ -136,8 +137,8 @@ clearly.
 
 Example:
 
--   Throws `TypeError` when input is not a valid URL.
--   Rejects when `fetch` fails or the request is aborted.
+- Throws `TypeError` when input is not a valid URL.
+- Rejects when `fetch` fails or the request is aborted.
 
 ------------------------------------------------------------------------
 
@@ -147,9 +148,9 @@ Describe environment-specific behavior or fallbacks.
 
 Example:
 
-1.  `crypto.randomUUID`
-2.  `crypto.getRandomValues`
-3.  `Math.random` fallback (non-cryptographic)
+1. `crypto.randomUUID`
+2. `crypto.getRandomValues`
+3. `Math.random` fallback (non-cryptographic)
 
 ------------------------------------------------------------------------
 
@@ -171,9 +172,9 @@ Example:
 
 Use this utility when you need:
 
--   a unique identifier
--   cross-environment compatibility
--   zero dependencies
+- a unique identifier
+- cross-environment compatibility
+- zero dependencies
 
 ------------------------------------------------------------------------
 
@@ -185,8 +186,8 @@ Example:
 
 Avoid when:
 
--   deterministic identifiers are required
--   ULID or NanoID format is needed
+- deterministic identifiers are required
+- ULID or NanoID format is needed
 
 ------------------------------------------------------------------------
 
@@ -218,17 +219,17 @@ Security considerations if applicable.
 
 ## Alternatives
 
-Compare briefly with native APIs or common libs (e.g. native
+Compare briefly with native APIs or common libs (e.g. native
 `crypto.randomUUID`, `uuid`, lodash).
 
 ------------------------------------------------------------------------
 
 # README Rules
 
-1.  Maximum recommended length: \~200--300 lines
-2.  Avoid marketing-style language
-3.  Focus on practical developer information
-4.  Keep section structure consistent
+1. Maximum recommended length: \~200--300 lines
+2. Avoid marketing-style language
+3. Focus on practical developer information
+4. Keep section structure consistent
 
 ------------------------------------------------------------------------
 
@@ -237,15 +238,15 @@ Compare briefly with native APIs or common libs (e.g. native
 Every README should follow this order (omit sections that are not
 applicable):
 
-1.  Title
-2.  Short Description
-3.  Usage
-4.  Why This Utility Exists
-5.  Signature
-6.  Parameters (optional)
-7.  Type Parameters (optional)
-8.  Return Type
-9.  Type Declarations (optional)
+1. Title
+2. Short Description
+3. Usage
+4. Why This Utility Exists
+5. Signature
+6. Parameters (optional)
+7. Type Parameters (optional)
+8. Return Type
+9. Type Declarations (optional)
 10. Throws / Errors (optional)
 11. Environment Strategy (optional)
 12. Design Notes
@@ -260,6 +261,6 @@ applicable):
 The following information belongs in the **library root README**, not in
 individual utilities:
 
--   package installation instructions
--   global library configuration
--   duplicated project documentation
+- package installation instructions
+- global library configuration
+- duplicated project documentation

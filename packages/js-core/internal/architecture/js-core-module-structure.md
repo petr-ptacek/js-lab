@@ -1,4 +1,3 @@
-
 # js-core Module Structure
 
 This document defines the canonical structure of a **utility module**
@@ -29,8 +28,9 @@ Canonical structure:
     createUUIDV4/
       index.ts
       createUUIDV4.ts
-      types.ts
-      utils.ts
+      types.ts or types/
+      utils.ts or utils/
+      helpers.ts or helpers/
       meta.ts
       __tests__/
         createUUIDV4.test.ts
@@ -78,21 +78,18 @@ Contains the **main implementation of the module**.
 
 Example:
 
+```ts
 export function createUUIDV4(): string {
-  return crypto.randomUUID()
+  return crypto.randomUUID();
 }
+```
 
 Rules:
 
 - contains core functionality
 - should be focused and minimal
-- may use helpers from `utils.ts`
-
-If multiple implementations exist:
-
-    withTryCatch/
-      withTryCatch.ts
-      withTryCatchSync.ts
+- may use helpers from `utils.ts` or `helpers.ts`
+- should not contain unrelated logic
 
 ------------------------------------------------------------------------
 
@@ -107,15 +104,19 @@ This file may include:
 
 Example:
 
+```ts
 export type UUID = string
+```
 
 If the number of types grows significantly:
 
     types/
       public.ts
       internal.ts
+       ... etc
 
-For most utilities, a single `types.ts` file is preferred.
+For most utilities, a single `types.ts` file is preferred, but if the module has many types, a `types/` directory can be
+used to organize them.
 
 ------------------------------------------------------------------------
 
@@ -124,6 +125,8 @@ For most utilities, a single `types.ts` file is preferred.
 Contains **internal helper functions** used by the module
 implementation.
 
+If the number of helpers grows significantly, a `utils/` directory can be used to organize them.
+
 These utilities:
 
 - should not be exported through `index.ts`
@@ -131,9 +134,11 @@ These utilities:
 
 Example:
 
+```ts
 export function ensureHex(value: string): string {
   return value.toLowerCase()
 }
+```
 
 Rules:
 
@@ -151,14 +156,18 @@ VitePress) to automatically generate documentation pages and navigation.
 
 Example:
 
+```ts
 export const meta = {
   id: "createUUIDV4",
   name: "createUUIDV4",
+  description: "Generates a random UUID (version 4) string.",
   category: "crypto",
-  description: "Generate RFC4122 UUID v4",
-  demo: true,
-  snippets: true
-}
+  tags: ["uuid", "v4", "random", "string", "crypto"],
+  demo: false,
+  snippets: false,
+  since: "1.0.0",
+} satisfies Meta;
+```
 
 Rules:
 
@@ -182,6 +191,12 @@ Benefits:
 - cleaner implementation files
 - easier tooling configuration
 - tests are never included in production bundles
+- if the number of tests grows significantly, another files can be added to the `__tests__/` directory, for example:
+
+  __tests__/
+  createUUIDV4.test.ts
+  edgeCases.test.ts
+  performance.test.ts
 
 ------------------------------------------------------------------------
 
@@ -196,7 +211,7 @@ README is preferred over `index.md` because:
 - npm users often read documentation directly in the repository
 - AI coding assistants index README files reliably
 
-README files can also be consumed by **VitePress** when generating documentation pages.
+`README` files can also be consumed by **VitePress** when generating documentation pages.
 
 ------------------------------------------------------------------------
 
@@ -245,9 +260,10 @@ For simple utilities, a reduced structure is acceptable:
 
     createUUIDV4/
       index.ts
+      README.md
+      meta.ts
       createUUIDV4.ts
       __tests__/
-      README.md
 
 Additional files should only be introduced when they provide clear value.
 
@@ -296,19 +312,24 @@ These files export reusable types such as:
 
 The `js-core` module architecture follows several principles.
 
-Feature isolation  
+## Feature isolation
+
 Each utility lives in its own directory.
 
-Explicit public API  
+## Explicit public API
+
 `index.ts` defines what is publicly exported.
 
-Implementation separation  
+## Implementation separation
+
 Internal helpers and types are separated from the public API.
 
-Documentation per utility  
+## Documentation per utility
+
 Each module contains its own documentation.
 
-Scalable structure  
+## Scalable structure
+
 The pattern works equally well for small and large utilities.
 
 ------------------------------------------------------------------------

@@ -5,18 +5,18 @@ This document defines naming conventions for utilities inside the
 
 The goal of these conventions is to ensure:
 
--   consistent and predictable API design
--   readable imports
--   easy code navigation
--   long‑term maintainability
--   good compatibility with AI coding assistants
+- consistent and predictable API design
+- readable imports
+- easy code navigation
+- long‑term maintainability
+- good compatibility with AI coding assistants
 
 Naming rules apply to:
 
--   exported functions
--   module names
--   implementation files
--   utility categories
+- exported functions
+- module names
+- implementation files
+- utility categories
 
 ------------------------------------------------------------------------
 
@@ -57,10 +57,10 @@ Example:
 
 Benefits:
 
--   easy code navigation
--   predictable structure
--   improved searchability
--   better AI tooling support
+- easy code navigation
+- predictable structure
+- improved searchability
+- better AI tooling support
 
 ------------------------------------------------------------------------
 
@@ -191,8 +191,8 @@ Examples:
 
 Guidelines:
 
--   prefer clear semantic suffixes
--   avoid cryptic abbreviations
+- prefer clear semantic suffixes
+- avoid cryptic abbreviations
 
 ------------------------------------------------------------------------
 
@@ -251,11 +251,11 @@ Avoid:
 
 When introducing a new utility:
 
-1.  Choose the correct **prefix category**
-2.  Ensure the name clearly describes the behavior
-3.  Ensure the directory name matches the function
-4.  Ensure the implementation file matches the function
-5.  Avoid introducing new verbs unnecessarily
+1. Choose the correct **prefix category**
+2. Ensure the name clearly describes the behavior
+3. Ensure the directory name matches the function
+4. Ensure the implementation file matches the function
+5. Avoid introducing new verbs unnecessarily
 
 ------------------------------------------------------------------------
 
@@ -263,6 +263,7 @@ When introducing a new utility:
 
     createUUIDV4/
       index.ts
+      meta.ts
       createUUIDV4.ts
       __tests__/
       README.md
@@ -287,11 +288,11 @@ const uuid = createUUIDV4()
 
 Key rules:
 
--   function names must describe behavior
--   directory name = function name
--   file name = function name
--   use a consistent set of prefixes
--   avoid generic helper names
+- function names must describe behavior
+- directory name = function name
+- file name = function name
+- use a consistent set of prefixes
+- avoid generic helper names
 
 Recommended prefixes:
 

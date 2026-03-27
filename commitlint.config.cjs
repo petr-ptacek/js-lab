@@ -50,6 +50,6 @@ module.exports = {
     /**
      * Max délka subject line
      */
-    "header-max-length": [2, "always", 80],
+    "header-max-length": [2, "always", 100],
   },
 };

@@ -148,7 +148,7 @@ class ImageGallery {
   }
 
   _cancelImageLoading() {
-    loadImage.abort();
+    loadImage.cancel();
     console.log("Cancelled image loading");
   }
 }

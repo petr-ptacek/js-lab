@@ -65,8 +65,8 @@ async function _manualAbortExample() {
 
   // Abort after 1 second
   setTimeout(() => {
-    console.log("Manually aborting download...");
-    downloadFile.abort();
+    console.log("Manually cancel download...");
+    downloadFile.cancel();
   }, 1000);
 
   try {

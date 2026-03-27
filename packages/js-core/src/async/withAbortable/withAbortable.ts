@@ -90,10 +90,10 @@ import type {
  * task.abort(); // cancels the execution
  * ```
  */
-export function withAbortable<Args extends unknown[], R>(
-  fn: AbortableFn<Args, R>,
+export function withAbortable<Args extends unknown[], TResult>(
+  fn: AbortableFn<Args, TResult>,
   options: WithAbortableOptions = {},
-): WithAbortableReturn<Args, R> {
+): WithAbortableReturn<Args, TResult> {
   const resolvedOptions: WithAbortableOptions = {
     autoAbort: true,
     ...options,
@@ -110,7 +110,7 @@ export function withAbortable<Args extends unknown[], R>(
     currentRunId++;
   }
 
-  async function execute(...args: Args): Promise<R> {
+  async function execute(...args: Args): Promise<TResult> {
     if (resolvedOptions.autoAbort) {
       cancel();
     }

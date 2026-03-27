@@ -77,3 +77,16 @@ Rules:
 - TSDoc should clearly describe behavior and usage
 - tests should verify behavior, not implementation details
 - each utility should be easy to understand and test
+
+## Commit Messages
+
+Use conventional commits format:
+
+    <type>(<scope>): <short summary>
+
+Rules:
+
+- scope is required
+- use kebab-case or path-like scopes (e.g. js-core/crypto)
+- subject must be lower-case
+- no trailing period

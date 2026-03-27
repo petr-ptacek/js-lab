@@ -1,0 +1,31 @@
+# <type>(<scope>): <subject>
+
+# Generate commit message based on staged changes.
+# Focus on WHAT changed, not HOW.
+# Use scope based on package and domain.
+
+# Rules:
+# - type must be one of:
+#   feat, fix, refactor, perf, docs, test, chore, build, ci, style
+#
+# - scope is required
+# - prefer path-like scopes:
+#   <package>/<domain>
+#
+#   examples:
+#   js-core/crypto
+#   js-core/json
+#   vue-core/component
+#   repo
+#
+# - subject:
+#   - lower-case only
+#   - no trailing period
+#   - max 80 characters
+#   - use imperative mood (add, fix, update...)
+
+# Examples:
+# feat(js-core/crypto): add create-uuid-v4 utility
+# fix(js-core/json): handle invalid json input
+# refactor(vue-core/composable): simplify use-fetch logic
+# test(js-core/object): add tests for deep-merge

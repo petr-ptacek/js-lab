@@ -1,9 +1,9 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { parseJSONSafe } from "../parseJSONSafe";
 
 describe("parseJSONSafe", () => {
   it("parses valid JSON string", () => {
-    const json = "{\"name\":\"Bouráku\",\"age\":33}";
+    const json = '{"name":"Bouráku","age":33}';
 
     const result = parseJSONSafe<{ name: string; age: number }>(json);
 
@@ -34,7 +34,7 @@ describe("parseJSONSafe", () => {
   it("parses primitive JSON values", () => {
     expect(parseJSONSafe<number>("123")).toBe(123);
     expect(parseJSONSafe<boolean>("true")).toBe(true);
-    expect(parseJSONSafe<string>("\"hello\"")).toBe("hello");
+    expect(parseJSONSafe<string>('"hello"')).toBe("hello");
     expect(parseJSONSafe<null>("null")).toBeNull();
   });
 

@@ -7,7 +7,7 @@ type GameEvents = {
   playerLeave: (playerId: string) => void;
   scoreUpdate: (playerId: string, score: number) => void;
   gameEnd: (winner: { id: string; name: string; score: number }) => void;
-}
+};
 
 console.log("=== Initial Handlers Example ===");
 
@@ -23,13 +23,13 @@ const gameEmitter = new Emitter<GameEvents>({
     handler: (winner) => {
       console.log(`🏆 Game ended! Winner: ${winner.name} with ${winner.score} points`);
     },
-    once: true  // This handler will only run once
+    once: true, // This handler will only run once
   },
 
   // Multiple initial handlers for the same event type
   playerJoin: (player) => {
     console.log(`👤 ${player.name} joined the game`);
-  }
+  },
 });
 
 // Add more handlers after construction

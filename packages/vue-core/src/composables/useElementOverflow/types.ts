@@ -1,4 +1,4 @@
-import { type MaybeRef, type Ref } from "vue";
+import type { MaybeRef, Ref } from "vue";
 
 export type OverflowDirection = "vertical" | "horizontal" | "both" | "none";
 
@@ -6,7 +6,7 @@ export type UseElementOverflowOptions = {
   disabled?: MaybeRef<boolean>;
   observeContent?: MaybeRef<boolean>;
   debounceDelay?: number;
-}
+};
 
 /**
  * Result object returned by `useElementOverflow`.
@@ -44,4 +44,4 @@ export type UseElementOverflowReturn = {
    * Resets overflow state to `false` in all directions.
    */
   reset: () => void;
-}
+};

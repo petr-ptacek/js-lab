@@ -1,5 +1,5 @@
-import { loadImage }                            from "../loadImage";
-import { shrinkImage, type ShrinkImageOptions } from "../shrinkImage";
+import { loadImage } from "../loadImage";
+import { type ShrinkImageOptions, shrinkImage } from "../shrinkImage";
 
 /**
  * Shrinks an image element and returns a new `HTMLImageElement`.

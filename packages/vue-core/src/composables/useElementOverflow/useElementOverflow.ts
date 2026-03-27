@@ -1,7 +1,16 @@
-import { type MaybeComputedElementRef, useElementSize, useResizeObserver, watchDebounced } from "@vueuse/core";
+import {
+  type MaybeComputedElementRef,
+  useElementSize,
+  useResizeObserver,
+  watchDebounced,
+} from "@vueuse/core";
 import { computed, readonly, shallowRef, toValue } from "vue";
 
-import type { OverflowDirection, UseElementOverflowOptions, UseElementOverflowReturn } from "./types";
+import type {
+  OverflowDirection,
+  UseElementOverflowOptions,
+  UseElementOverflowReturn,
+} from "./types";
 
 /**
  * Reactive utility for detecting element overflow.
@@ -70,22 +79,18 @@ export function useElementOverflow(
     return "none";
   });
 
-  useResizeObserver(
-    targetEl,
-    () => {
-      if (!observeContent.value || disabled.value) {
-        return;
-      }
+  useResizeObserver(targetEl, () => {
+    if (!observeContent.value || disabled.value) {
+      return;
+    }
 
-      update();
-    },
-  );
+    update();
+  });
 
-  watchDebounced(
-    [elSize.width, elSize.height, disabled, targetEl],
-    update,
-    { immediate: true, debounce: debounceDelay },
-  );
+  watchDebounced([elSize.width, elSize.height, disabled, targetEl], update, {
+    immediate: true,
+    debounce: debounceDelay,
+  });
 
   function reset() {
     hasVertical.value = false;

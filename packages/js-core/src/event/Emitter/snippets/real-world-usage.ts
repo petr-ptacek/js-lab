@@ -17,7 +17,7 @@ type AppEvents = {
   // System events
   connectionLost: () => void;
   connectionRestored: () => void;
-}
+};
 
 console.log("=== Application Event System ===");
 
@@ -71,18 +71,17 @@ class DataService {
       this.eventBus.emit("loadingStart", resource);
 
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       const profileData = {
         id: userId,
         name: "John Doe",
         email: "john@example.com",
-        preferences: { theme: "dark" }
+        preferences: { theme: "dark" },
       };
 
       this.eventBus.emit("loadingComplete", resource, profileData);
       return profileData;
-
     } catch (error) {
       this.eventBus.emit("loadingError", resource, error as Error);
       throw error;
@@ -191,7 +190,7 @@ async function simulateAppUsage() {
   console.log("\n=== Connection Issues ===");
   appEventBus.emit("connectionLost");
 
-  await new Promise(resolve => setTimeout(resolve, 500));
+  await new Promise((resolve) => setTimeout(resolve, 500));
 
   appEventBus.emit("connectionRestored");
 

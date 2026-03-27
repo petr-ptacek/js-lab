@@ -1,8 +1,5 @@
-import { describe, it, expect } from "vitest";
-import {
-  isInteractiveElement,
-  DEFAULT_INTERACTIVE_SELECTORS,
-} from "../isInteractiveElement";
+import { describe, expect, it } from "vitest";
+import { DEFAULT_INTERACTIVE_SELECTORS, isInteractiveElement } from "../isInteractiveElement";
 
 describe("isInteractiveElement", () => {
   it("returns false for null element", () => {
@@ -84,10 +81,7 @@ describe("isInteractiveElement", () => {
 
     expect(
       isInteractiveElement(div, {
-        selectors: [
-          ...DEFAULT_INTERACTIVE_SELECTORS,
-          "[role='button']",
-        ],
+        selectors: [...DEFAULT_INTERACTIVE_SELECTORS, "[role='button']"],
       }),
     ).toBe(true);
   });

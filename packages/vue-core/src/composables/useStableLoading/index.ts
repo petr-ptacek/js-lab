@@ -1,5 +1,5 @@
 export type {
-  UseStableLoadingReturn,
   UseStableLoadingOptions,
-}                           from "./types";
+  UseStableLoadingReturn,
+} from "./types";
 export { useStableLoading } from "./useStableLoading";

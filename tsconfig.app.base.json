@@ -4,9 +4,7 @@
     "moduleResolution": "bundler",
     "module": "ESNext",
     "moduleDetection": "force",
-    "lib": [
-      "ES2022"
-    ],
+    "lib": ["ES2022"],
     "target": "ES2022",
     /* Linting */
     "skipLibCheck": true,
@@ -23,7 +21,5 @@
     "forceConsistentCasingInFileNames": true,
     "libReplacement": false
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

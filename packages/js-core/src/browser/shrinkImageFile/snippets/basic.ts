@@ -26,4 +26,3 @@ input.addEventListener("change", async (event) => {
     console.error("Failed to optimize file:", error);
   }
 });
-

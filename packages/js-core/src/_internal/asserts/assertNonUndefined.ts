@@ -5,8 +5,6 @@ export function assertNonUndefined<T>(
   value: T,
 ): asserts value is Exclude<T, undefined> {
   if (value === undefined) {
-    throw new Error(
-      createAssertMessage(name, "not undefined", value),
-    );
+    throw new Error(createAssertMessage(name, "not undefined", value));
   }
 }

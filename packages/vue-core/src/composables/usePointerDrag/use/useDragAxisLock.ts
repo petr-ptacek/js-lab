@@ -1,4 +1,4 @@
-import { readonly, type Ref, shallowRef } from "vue";
+import { type Ref, readonly, shallowRef } from "vue";
 
 import type { DragAxis } from "../types";
 
@@ -21,10 +21,7 @@ import type { DragAxis } from "../types";
  * - `update(absX, absY)` – evaluates and locks the axis based on dominant movement
  * - `reset()` – clears the locked axis
  */
-export function useDragAxisLock(
-  axis: Ref<DragAxis>,
-  enabled: Ref<boolean>,
-) {
+export function useDragAxisLock(axis: Ref<DragAxis>, enabled: Ref<boolean>) {
   const locked = shallowRef<Extract<DragAxis, "x" | "y"> | null>(null);
 
   function update(absX: number, absY: number) {

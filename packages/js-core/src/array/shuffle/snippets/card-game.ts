@@ -5,9 +5,7 @@ const suits = ["♠", "♥", "♦", "♣"];
 const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
 // Create full deck
-const deck = suits.flatMap(suit =>
-  ranks.map(rank => `${rank}${suit}`)
-);
+const deck = suits.flatMap((suit) => ranks.map((rank) => `${rank}${suit}`));
 
 console.log("Original deck (first 5):", deck.slice(0, 5));
 // ["A♠", "2♠", "3♠", "4♠", "5♠"]

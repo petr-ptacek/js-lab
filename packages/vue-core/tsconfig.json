@@ -9,7 +9,6 @@
     },
     {
       "path": "./tsconfig.node.json"
-    },
-
+    }
   ]
 }

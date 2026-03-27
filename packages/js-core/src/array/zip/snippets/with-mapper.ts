@@ -19,12 +19,12 @@ const fullNames = zip(firstNames, lastNames, (first, last) => `${first} ${last}`
 console.log(fullNames); // ["John Doe", "Jane Smith", "Bob Johnson"]
 
 // Creating objects
-const prices = [10.99, 25.50, 7.25];
+const prices = [10.99, 25.5, 7.25];
 const quantities = [2, 1, 3];
 const totals = zip(prices, quantities, (price, qty) => ({
   unitPrice: price,
   quantity: qty,
-  total: price * qty
+  total: price * qty,
 }));
 
 console.log(totals);

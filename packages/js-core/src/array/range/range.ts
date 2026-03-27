@@ -22,11 +22,7 @@ export function range(start: number, stop: number, step: number): number[];
  * range(5, 0, -1)     // [5, 4, 3, 2, 1]
  * range(0)            // []
  */
-export function range(
-  start: number,
-  stop?: number,
-  step: number = 1,
-): number[] {
+export function range(start: number, stop?: number, step: number = 1): number[] {
   const result: number[] = [];
 
   const startValue = stop === undefined ? 0 : start;

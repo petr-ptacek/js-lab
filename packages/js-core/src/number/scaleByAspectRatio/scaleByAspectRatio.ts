@@ -1,13 +1,21 @@
-import { scaleToWidth, scaleToHeight } from "./helpers";
 import { assertPositiveFinite } from "../../_internal";
 import type { Dimensions, DimensionsTarget, RoundValueFn } from "../../type";
+import { scaleToHeight, scaleToWidth } from "./helpers";
 
-export function scaleByAspectRatio(dimensions: Dimensions, target: {
-  width: number;
-}, round?: RoundValueFn): Dimensions;
-export function scaleByAspectRatio(dimensions: Dimensions, target: {
-  height: number;
-}, round?: RoundValueFn): Dimensions;
+export function scaleByAspectRatio(
+  dimensions: Dimensions,
+  target: {
+    width: number;
+  },
+  round?: RoundValueFn,
+): Dimensions;
+export function scaleByAspectRatio(
+  dimensions: Dimensions,
+  target: {
+    height: number;
+  },
+  round?: RoundValueFn,
+): Dimensions;
 /**
  * Scales a dimensions while preserving its aspect ratio.
  *
@@ -56,9 +64,7 @@ export function scaleByAspectRatio(
   const hasHeight = typeof target.height === "number";
 
   if (hasWidth === hasHeight) {
-    throw new Error(
-      "scaleTo requires exactly one of target.width or target.height",
-    );
+    throw new Error("scaleTo requires exactly one of target.width or target.height");
   }
 
   if (hasWidth) {

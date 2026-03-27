@@ -5,14 +5,10 @@ describe("assertOneOf", () => {
   const allowed = ["contain", "cover"] as const;
 
   it("does not throw for allowed values", () => {
-    expect(() =>
-      assertOneOf("mode", "contain", allowed),
-    ).not.toThrow();
+    expect(() => assertOneOf("mode", "contain", allowed)).not.toThrow();
   });
 
   it("throws for disallowed values", () => {
-    expect(() =>
-      assertOneOf("mode", "stretch", allowed),
-    ).toThrow("one of [contain, cover]");
+    expect(() => assertOneOf("mode", "stretch", allowed)).toThrow("one of [contain, cover]");
   });
 });

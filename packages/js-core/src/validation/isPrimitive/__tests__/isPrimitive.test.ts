@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isPrimitive } from "../isPrimitive";
 
 describe("isPrimitive", () => {
@@ -51,8 +51,15 @@ describe("isPrimitive", () => {
 
     if (isPrimitive(value)) {
       // value should be narrowed to PrimitiveValue
-      expect(typeof value === "string" || typeof value === "number" || typeof value === "boolean" || value === null || value === undefined || typeof value === "symbol" || typeof value === "bigint").toBe(true);
+      expect(
+        typeof value === "string" ||
+          typeof value === "number" ||
+          typeof value === "boolean" ||
+          value === null ||
+          value === undefined ||
+          typeof value === "symbol" ||
+          typeof value === "bigint",
+      ).toBe(true);
     }
   });
 });
-

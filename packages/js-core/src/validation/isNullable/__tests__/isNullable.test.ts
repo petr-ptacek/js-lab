@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isNullable } from "../isNullable";
 
 describe("isNullable", () => {
@@ -27,4 +27,3 @@ describe("isNullable", () => {
     }
   });
 });
-

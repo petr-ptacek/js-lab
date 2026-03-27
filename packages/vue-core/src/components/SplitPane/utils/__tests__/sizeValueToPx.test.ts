@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { sizeValueToPx }        from "../sizeValueToPx";
+import { describe, expect, it } from "vitest";
+import { sizeValueToPx } from "../sizeValueToPx";
 
 describe("sizeValueToPx", () => {
   describe("number values", () => {
@@ -8,12 +8,9 @@ describe("sizeValueToPx", () => {
       [50, 200, 50],
       [-20, 200, -20],
       [150.5, 200, 150.5],
-    ])(
-      "returns %o when value is number %o",
-      (value, containerSize, expected) => {
-        expect(sizeValueToPx(value, containerSize)).toBe(expected);
-      },
-    );
+    ])("returns %o when value is number %o", (value, containerSize, expected) => {
+      expect(sizeValueToPx(value, containerSize)).toBe(expected);
+    });
   });
 
   describe("percentage values", () => {
@@ -24,12 +21,9 @@ describe("sizeValueToPx", () => {
       ["100%", 200, 200],
       ["150%", 200, 300],
       ["-50%", 200, -100],
-    ])(
-      "converts %o to px",
-      (value, containerSize, expected) => {
-        expect(sizeValueToPx(value as any, containerSize)).toBe(expected);
-      },
-    );
+    ])("converts %o to px", (value, containerSize, expected) => {
+      expect(sizeValueToPx(value as any, containerSize)).toBe(expected);
+    });
   });
 
   describe("px values", () => {
@@ -39,23 +33,17 @@ describe("sizeValueToPx", () => {
       ["100px", 200, 100],
       ["150.5px", 200, 150.5],
       ["-20px", 200, -20],
-    ])(
-      "parses %o to px",
-      (value, containerSize, expected) => {
-        expect(sizeValueToPx(value as any, containerSize)).toBe(expected);
-      },
-    );
+    ])("parses %o to px", (value, containerSize, expected) => {
+      expect(sizeValueToPx(value as any, containerSize)).toBe(expected);
+    });
   });
 
   describe("containerSize edge cases", () => {
     it.each([
       ["50%", 0, 0],
       ["50%", -100, -50],
-    ])(
-      "handles containerSize %o",
-      (value, containerSize, expected) => {
-        expect(sizeValueToPx(value as any, containerSize)).toBe(expected);
-      },
-    );
+    ])("handles containerSize %o", (value, containerSize, expected) => {
+      expect(sizeValueToPx(value as any, containerSize)).toBe(expected);
+    });
   });
 });

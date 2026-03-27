@@ -9,7 +9,9 @@
   pointer-events: auto;
   background-color: #fff;
   border-radius: 999px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 2px 6px rgba(0, 0, 0, .12);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.12);
   position: relative;
 
   &::before {
@@ -36,8 +38,9 @@
     cursor: col-resize;
 
     &::before {
-      box-shadow: 0 calc(var(--ui-split-pane-grip-dot-gap) * -1) 0 var(--ui-split-pane-grip-dot-color),
-      0 calc(var(--ui-split-pane-grip-dot-gap)) 0 var(--ui-split-pane-grip-dot-color);
+      box-shadow:
+        0 calc(var(--ui-split-pane-grip-dot-gap) * -1) 0 var(--ui-split-pane-grip-dot-color),
+        0 calc(var(--ui-split-pane-grip-dot-gap)) 0 var(--ui-split-pane-grip-dot-color);
     }
   }
 
@@ -93,8 +96,9 @@
     position: relative;
 
     &::before {
-      box-shadow: calc(var(--ui-split-pane-grip-dot-gap) * -1) 0 0 var(--ui-split-pane-grip-dot-color),
-      calc(var(--ui-split-pane-grip-dot-gap)) 0 0 var(--ui-split-pane-grip-dot-color);
+      box-shadow:
+        calc(var(--ui-split-pane-grip-dot-gap) * -1) 0 0 var(--ui-split-pane-grip-dot-color),
+        calc(var(--ui-split-pane-grip-dot-gap)) 0 0 var(--ui-split-pane-grip-dot-color);
     }
   }
 

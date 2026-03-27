@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { withAbortable } from "../withAbortable";
 
 describe("withAbortable", () => {
@@ -161,7 +161,7 @@ describe("withAbortable", () => {
 
       expect(capturedSignal?.aborted).toBe(false);
 
-      abortable.abort();
+      abortable.cancel();
 
       expect(capturedSignal?.aborted).toBe(true);
       expect(abortable.isRunning).toBe(false);
@@ -174,7 +174,7 @@ describe("withAbortable", () => {
       const mockFn = vi.fn().mockResolvedValue("result");
       const abortable = withAbortable(mockFn);
 
-      expect(() => abortable.abort()).not.toThrow();
+      expect(() => abortable.cancel()).not.toThrow();
       expect(abortable.isRunning).toBe(false);
       expect(abortable.signal).toBe(null);
     });
@@ -255,9 +255,7 @@ describe("withAbortable", () => {
     });
 
     it("handles function with multiple executions in sequence", async () => {
-      const mockFn = vi.fn()
-        .mockResolvedValueOnce("first")
-        .mockResolvedValueOnce("second");
+      const mockFn = vi.fn().mockResolvedValueOnce("first").mockResolvedValueOnce("second");
 
       const abortable = withAbortable(mockFn);
 
@@ -271,7 +269,9 @@ describe("withAbortable", () => {
 
     it("works with different return types", async () => {
       const numberFn = withAbortable(async ({ signal: _ }) => 42);
-      const objectFn = withAbortable(async ({ signal: _ }) => ({ key: "value" }));
+      const objectFn = withAbortable(async ({ signal: _ }) => ({
+        key: "value",
+      }));
       const arrayFn = withAbortable(async ({ signal: _ }) => [1, 2, 3]);
 
       await expect(numberFn.execute()).resolves.toBe(42);

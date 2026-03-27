@@ -4,9 +4,7 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@petr-ptacek/js-core": [
-        "../js-core/src/index.ts"
-      ]
+      "@petr-ptacek/js-core": ["../js-core/src/index.ts"]
     }
   },
   "references": [
@@ -14,7 +12,5 @@
       "path": "../js-core"
     }
   ],
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

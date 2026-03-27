@@ -9,12 +9,8 @@ describe("assertInteger", () => {
   });
 
   it("throws for non-integers", () => {
-    expect(() =>
-      assertInteger("value", 1.5),
-    ).toThrow("an integer");
+    expect(() => assertInteger("value", 1.5)).toThrow("an integer");
 
-    expect(() =>
-      assertInteger("value", NaN),
-    ).toThrow("an integer");
+    expect(() => assertInteger("value", NaN)).toThrow("an integer");
   });
 });

@@ -1,8 +1,7 @@
-import { describe, it, expect } from "vitest";
-import { ref }                  from "vue";
-
+import { describe, expect, it } from "vitest";
+import { ref } from "vue";
+import type { DragAxis } from "../../types";
 import { useDragAxisLock } from "../useDragAxisLock";
-import type { DragAxis }   from "../../types";
 
 describe("useDragAxisLock", () => {
   it("starts with locked = null", () => {

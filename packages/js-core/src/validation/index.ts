@@ -1,6 +1,6 @@
+export * from "./isArray";
 export * from "./isBigint";
 export * from "./isBoolean";
-export * from "./isArray";
 export * from "./isDate";
 export * from "./isEmptyString";
 export * from "./isFiniteNumber";

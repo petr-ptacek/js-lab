@@ -5,18 +5,18 @@ const surveyData = {
   totalResponses: 250,
   categories: {
     "Very Satisfied": 125,
-    "Satisfied": 75,
-    "Neutral": 30,
-    "Dissatisfied": 15,
-    "Very Dissatisfied": 5
-  }
+    Satisfied: 75,
+    Neutral: 30,
+    Dissatisfied: 15,
+    "Very Dissatisfied": 5,
+  },
 };
 
 // calculate percentage for each category
 const results = Object.entries(surveyData.categories).map(([category, count]) => ({
   category,
   count,
-  percentage: toPercentage(count, surveyData.totalResponses)
+  percentage: toPercentage(count, surveyData.totalResponses),
 }));
 
 console.log("Survey Results:");

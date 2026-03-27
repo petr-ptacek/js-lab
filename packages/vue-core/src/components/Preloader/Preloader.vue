@@ -18,15 +18,11 @@ const props = withDefaults(defineProps<Props>(), {
   size: "md",
 });
 
-
 defineSlots<Slots>();
 
-const {
-  loading,
-  isHolding,
-  isDelaying,
-  hasMessageSlot,
-} = useController({ props });
+const { loading, isHolding, isDelaying, hasMessageSlot } = useController({
+  props,
+});
 </script>
 
 <template>

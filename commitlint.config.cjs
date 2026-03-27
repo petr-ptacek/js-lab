@@ -8,18 +8,7 @@ module.exports = {
     "type-enum": [
       2,
       "always",
-      [
-        "feat",
-        "fix",
-        "refactor",
-        "perf",
-        "docs",
-        "test",
-        "chore",
-        "build",
-        "ci",
-        "style",
-      ],
+      ["feat", "fix", "refactor", "perf", "docs", "test", "chore", "build", "ci", "style"],
     ],
 
     /**
@@ -27,10 +16,9 @@ module.exports = {
      */
     "scope-empty": [2, "never"],
 
-    /**
-     * Scope musí být kebab-case
-     */
-    "scope-case": [2, "always", "kebab-case"],
+
+    // "scope-case": [2, "always", "kebab-case"],
+    "scope-case": [0],
 
     /**
      * Zakázat tečku na konci subjectu
@@ -62,6 +50,6 @@ module.exports = {
     /**
      * Max délka subject line
      */
-    "header-max-length": [2, "always", 72],
+    "header-max-length": [2, "always", 100],
   },
 };

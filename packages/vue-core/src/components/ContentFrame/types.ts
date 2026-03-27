@@ -6,12 +6,12 @@ export type UI = {
   content?: CSSClassValue;
   contentWrapper?: CSSClassValue;
   footer?: CSSClassValue;
-}
+};
 
 export type Props = {
   ui?: UI;
   scrollable?: boolean;
-}
+};
 
 export type Slots = {
   header: () => void;
@@ -19,4 +19,4 @@ export type Slots = {
   footer: () => void;
   overlay: () => void;
   contentOverlay: () => void;
-}
+};

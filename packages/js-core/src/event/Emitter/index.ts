@@ -1,6 +1,6 @@
+export { Emitter } from "./Emitter";
 export type {
   EmitterEvents,
-  InitialHandlers as EmitterInitialHandlers,
   EventHandler as EmitterEventHandler,
+  InitialHandlers as EmitterInitialHandlers,
 } from "./types";
-export { Emitter } from "./Emitter";

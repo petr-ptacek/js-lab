@@ -1,6 +1,6 @@
-import { assertPositiveFinite }          from "../../_internal";
+import { assertPositiveFinite } from "../../_internal";
 import type { Dimensions, RoundValueFn } from "../../type";
-import { getAspectRatio }                from "../getAspectRatio";
+import { getAspectRatio } from "../getAspectRatio";
 
 export function scaleToWidth(
   dimensions: Dimensions,

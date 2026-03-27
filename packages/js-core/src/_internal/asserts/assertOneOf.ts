@@ -6,12 +6,6 @@ export function assertOneOf<T extends readonly unknown[]>(
   allowed: T,
 ): asserts value is T[number] {
   if (!allowed.includes(value)) {
-    throw new Error(
-      createAssertMessage(
-        name,
-        `must be one of [${allowed.join(", ")}]`,
-        value,
-      ),
-    );
+    throw new Error(createAssertMessage(name, `must be one of [${allowed.join(", ")}]`, value));
   }
 }

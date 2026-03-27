@@ -1,3 +1,3 @@
-export * from "./SplitPane";
 export * from "./ContentFrame";
-export * from "./Preloader"
+export * from "./Preloader";
+export * from "./SplitPane";

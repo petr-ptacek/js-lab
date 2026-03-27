@@ -3,41 +3,32 @@
 </style>
 
 <script setup lang="ts">
-import { isUndefined }              from "@petr-ptacek/js-core";
+import { isUndefined } from "@petr-ptacek/js-core";
 import { computed, normalizeClass } from "vue";
-
-import type {
-  Emits, Expose,
-  ModelValue,
-  Props,
-  Slots,
-}                        from "./types";
 import { useProxyValue } from "../../composables";
+import type { Emits, Expose, ModelValue, Props, Slots } from "./types";
 import { useController } from "./use/useController";
 
-
-const props = withDefaults(
-  defineProps<Props>(),
-  {
-    modelValue: undefined,
-    orientation: "vertical",
-    origin: "alpha",
-    resizeable: true,
-    collapsible: true,
-    expandable: true,
-    animatable: true,
-    defaultValue: "50%",
-    showGrip: false,
-    rememberSize: true,
-  },
-);
+const props = withDefaults(defineProps<Props>(), {
+  modelValue: undefined,
+  orientation: "vertical",
+  origin: "alpha",
+  resizeable: true,
+  collapsible: true,
+  expandable: true,
+  animatable: true,
+  defaultValue: "50%",
+  showGrip: false,
+  rememberSize: true,
+});
 
 const emit = defineEmits<Emits>();
 
-const { value: mv } = useProxyValue<ModelValue>(computed({
+const { value: mv } = useProxyValue<ModelValue>(
+  computed({
     get: () => props.modelValue,
     set: (value) => {
-      if ( isUndefined(value) ) return;
+      if (isUndefined(value)) return;
       emit("update:modelValue", value);
     },
   }),
@@ -48,18 +39,11 @@ const { value: mv } = useProxyValue<ModelValue>(computed({
   },
 );
 
-const {
-  betaStyle,
-  alphaStyle,
-  onPointerDown,
-  expand,
-  collapse,
-  isExpanded,
-  isCollapsed,
-} = useController({
-  modelValue: mv,
-  props,
-});
+const { betaStyle, alphaStyle, onPointerDown, expand, collapse, isExpanded, isCollapsed } =
+  useController({
+    modelValue: mv,
+    props,
+  });
 
 defineSlots<Slots>();
 defineExpose<Expose>({

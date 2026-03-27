@@ -8,10 +8,10 @@ Each complex type should contain its own `README.md` located in the type directo
 
 Example structure:
 
-src/type/`<category>`{=html}/`<type-name>`{=html}/ README.md meta.ts index.ts
+    src/type/`<category>`/`<type-name>`/README.md meta.ts index.ts
 
 **Note: Types do NOT include snippets folders** - examples should be integrated directly into the README sections. The
-Examples must to be short and focused on demonstrating the type usage in practical scenarios.
+Examples must be short and focused on demonstrating the type usage in practical scenarios.
 
 ------------------------------------------------------------------------
 

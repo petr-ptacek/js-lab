@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { withTryCatchSync } from "../withTryCatchSync";
 
 describe("withTryCatchSync", () => {
@@ -95,11 +95,14 @@ describe("withTryCatchSync", () => {
     const error = new Error("fail");
     const onError = vi.fn();
 
-    withTryCatchSync(() => {
-      throw error;
-    }, {
-      onError,
-    });
+    withTryCatchSync(
+      () => {
+        throw error;
+      },
+      {
+        onError,
+      },
+    );
 
     expect(onError).toHaveBeenCalledOnce();
     expect(onError).toHaveBeenCalledWith(error);
@@ -137,11 +140,14 @@ describe("withTryCatchSync", () => {
   it("calls onFinally on failure", () => {
     const onFinally = vi.fn();
 
-    withTryCatchSync(() => {
-      throw new Error("fail");
-    }, {
-      onFinally,
-    });
+    withTryCatchSync(
+      () => {
+        throw new Error("fail");
+      },
+      {
+        onFinally,
+      },
+    );
 
     expect(onFinally).toHaveBeenCalledOnce();
   });

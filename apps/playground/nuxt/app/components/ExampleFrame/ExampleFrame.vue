@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { CSSClassValue } from "@petr-ptacek/vue-core";
-import { normalizeClass }     from "vue";
+import { normalizeClass } from "vue";
 
 defineProps<{
   title?: string;
@@ -8,9 +8,8 @@ defineProps<{
   ui?: {
     contentWrapper: CSSClassValue;
     content: CSSClassValue;
-  }
+  };
 }>();
-
 </script>
 
 <template>

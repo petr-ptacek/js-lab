@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
-import { createUUIDV4 }                        from "../createUUIDV4";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { createUUIDV4 } from "../createUUIDV4";
 
 describe("createUUIDV4", () => {
   const originalCrypto = globalThis.crypto;
@@ -20,8 +20,7 @@ describe("createUUIDV4", () => {
 
   it("returns UUID in correct RFC 4122 v4 format", () => {
     const uuid = createUUIDV4();
-    const uuidRegex =
-      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
     expect(uuid).toMatch(uuidRegex);
   });
@@ -41,7 +40,7 @@ describe("createUUIDV4", () => {
 
   it("uses crypto.getRandomValues when randomUUID is not available", () => {
     const getRandomValuesMock = vi.fn((arr: Uint8Array) => {
-      for ( let i = 0; i < arr.length; i++ ) {
+      for (let i = 0; i < arr.length; i++) {
         arr[i] = i;
       }
       return arr;
@@ -56,8 +55,7 @@ describe("createUUIDV4", () => {
 
     expect(getRandomValuesMock).toHaveBeenCalledTimes(1);
 
-    const uuidRegex =
-      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
     expect(uuid).toMatch(uuidRegex);
   });
@@ -70,8 +68,7 @@ describe("createUUIDV4", () => {
 
     const uuid = createUUIDV4();
 
-    const uuidRegex =
-      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
     expect(uuid).toMatch(uuidRegex);
   });
@@ -80,7 +77,7 @@ describe("createUUIDV4", () => {
     const uuids = new Set<string>();
     const count = 1000;
 
-    for ( let i = 0; i < count; i++ ) {
+    for (let i = 0; i < count; i++) {
       uuids.add(createUUIDV4());
     }
 

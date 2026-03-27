@@ -2,7 +2,6 @@ import { assertPositiveFinite } from "../../_internal";
 import { scaleByAspectRatio } from "../../number";
 import type { Dimensions, DimensionsTarget, RoundValueFn } from "../../type";
 
-
 export function scaleImageByAspectRatio(
   image: HTMLImageElement,
   { width }: { width: number },
@@ -108,11 +107,7 @@ export function scaleImageByAspectRatio(
 
   if (hasWidth) {
     assertPositiveFinite("target.width", target.width);
-    newDimensions = scaleByAspectRatio(
-      dimensions,
-      { width: target.width },
-      roundFn,
-    );
+    newDimensions = scaleByAspectRatio(dimensions, { width: target.width }, roundFn);
   } else {
     assertPositiveFinite("target.height", target.height);
     newDimensions = scaleByAspectRatio(

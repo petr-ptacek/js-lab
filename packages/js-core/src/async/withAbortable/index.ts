@@ -1,7 +1,7 @@
 export type {
+  AbortableContext,
   WithAbortableOptions,
   WithAbortableReturn,
-  AbortableContext,
 } from "./types";
 
 export { withAbortable } from "./withAbortable";

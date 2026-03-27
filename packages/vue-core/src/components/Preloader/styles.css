@@ -83,7 +83,7 @@
  * SIZES
  **************************************************/
 .ui-preloader[data-preloader-size="sm"] {
-  --ui-preloader-spinner-size: 4rem; /*64px*/;
+  --ui-preloader-spinner-size: 4rem; /*64px*/
   --ui-preloader-gap: 0.5rem;
   --ui-preloader-font-size: 0.75rem;
 }

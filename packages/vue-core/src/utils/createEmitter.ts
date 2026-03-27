@@ -3,7 +3,6 @@ import { getCurrentInstance, onBeforeUnmount } from "vue";
 
 import type { VueEmitter } from "./types";
 
-
 /**
  * Creates a Vue-aware event emitter.
  *
@@ -40,11 +39,13 @@ import type { VueEmitter } from "./types";
  * ```
  */
 export function createEmitter<Events extends EmitterEvents>(): VueEmitter<Events>;
-export function createEmitter<Events extends EmitterEvents>(initialHandlers: EmitterInitialHandlers<Events>): VueEmitter<Events>;
-export function createEmitter<Events extends EmitterEvents>(initialHandlers?: EmitterInitialHandlers<Events>): VueEmitter<Events> {
-  const emitter = initialHandlers ?
-                  new Emitter<Events>(initialHandlers) :
-                  new Emitter<Events>();
+export function createEmitter<Events extends EmitterEvents>(
+  initialHandlers: EmitterInitialHandlers<Events>,
+): VueEmitter<Events>;
+export function createEmitter<Events extends EmitterEvents>(
+  initialHandlers?: EmitterInitialHandlers<Events>,
+): VueEmitter<Events> {
+  const emitter = initialHandlers ? new Emitter<Events>(initialHandlers) : new Emitter<Events>();
 
   /**
    * Registers a cleanup function to run on component unmount,
@@ -66,10 +67,7 @@ export function createEmitter<Events extends EmitterEvents>(initialHandlers?: Em
    * @param handler - Event handler function
    * @returns Cleanup function that unregisters the handler
    */
-  function on<TType extends keyof Events>(
-    type: TType,
-    handler: Events[TType],
-  ) {
+  function on<TType extends keyof Events>(type: TType, handler: Events[TType]) {
     const cleanup = emitter.on(type, handler);
     withLifecycleCleanup(cleanup);
     return cleanup;
@@ -85,10 +83,7 @@ export function createEmitter<Events extends EmitterEvents>(initialHandlers?: Em
    * @param handler - Event handler function
    * @returns Cleanup function that unregisters the handler
    */
-  function once<TType extends keyof Events>(
-    type: TType,
-    handler: Events[TType],
-  ) {
+  function once<TType extends keyof Events>(type: TType, handler: Events[TType]) {
     const cleanup = emitter.once(type, handler);
     withLifecycleCleanup(cleanup);
     return cleanup;
@@ -100,10 +95,7 @@ export function createEmitter<Events extends EmitterEvents>(initialHandlers?: Em
    * @param type - Event name
    * @param args - Arguments passed to the event handlers
    */
-  function emit<TType extends keyof Events>(
-    type: TType,
-    ...args: Parameters<Events[TType]>
-  ) {
+  function emit<TType extends keyof Events>(type: TType, ...args: Parameters<Events[TType]>) {
     emitter.emit(type, ...args);
   }
 
@@ -119,10 +111,7 @@ export function createEmitter<Events extends EmitterEvents>(initialHandlers?: Em
    * @param type - Event name
    * @param handler - Optional handler to remove
    */
-  function off<TType extends keyof Events>(
-    type: TType,
-    handler?: Events[TType],
-  ) {
+  function off<TType extends keyof Events>(type: TType, handler?: Events[TType]) {
     if (handler) {
       emitter.off(type, handler);
     } else {

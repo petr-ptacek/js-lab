@@ -62,4 +62,3 @@ async function optimizeAndDisplay(
 
   return { displayImage, uploadBlob };
 }
-

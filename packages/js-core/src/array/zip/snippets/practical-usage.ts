@@ -22,7 +22,7 @@ const userRoles = ["admin", "user", "moderator"];
 const users = zip(userIds, userEmails).map(([id, email], index) => ({
   id,
   email,
-  role: userRoles[index]
+  role: userRoles[index],
 }));
 
 console.log(users);
@@ -37,12 +37,12 @@ const formValues = ["john@email.com", "password123", "John"];
 const validationRules = [
   (val: string) => val.includes("@"),
   (val: string) => val.length >= 8,
-  (val: string) => val.length > 0
+  (val: string) => val.length > 0,
 ];
 
 const validationResults = zip(formValues, validationRules, (value, rule) => ({
   value,
-  isValid: rule(value)
+  isValid: rule(value),
 }));
 
 console.log(validationResults);

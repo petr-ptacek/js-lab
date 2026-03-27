@@ -1,28 +1,26 @@
 import { withAbortable } from "@petr-ptacek/js-core";
 
 // Search with debouncing - cancel previous searches
-const searchUsers = withAbortable(
-  async ({ signal }, query: string) => {
-    if (!query.trim()) {
-      return [];
-    }
-
-    console.log(`Searching for: "${query}"`);
-
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`, {
-      signal
-    });
-
-    if (!response.ok) {
-      throw new Error(`Search failed: ${response.status}`);
-    }
-
-    return response.json();
+const searchUsers = withAbortable(async ({ signal }, query: string) => {
+  if (!query.trim()) {
+    return [];
   }
-);
+
+  console.log(`Searching for: "${query}"`);
+
+  // Simulate API delay
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
+  const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`, {
+    signal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Search failed: ${response.status}`);
+  }
+
+  return response.json();
+});
 
 // Image loading with fallback
 const loadImage = withAbortable(
@@ -34,61 +32,58 @@ const loadImage = withAbortable(
       img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
 
       // Handle abort
-      signal.addEventListener('abort', () => {
-        img.src = ''; // Stop loading
-        reject(new DOMException('Image loading cancelled', 'AbortError'));
+      signal.addEventListener("abort", () => {
+        img.src = ""; // Stop loading
+        reject(new DOMException("Image loading cancelled", "AbortError"));
       });
 
       img.src = src;
     });
   },
-  { timeoutMs: 10000 } // 10 second timeout for images
+  { timeoutMs: 10000 }, // 10 second timeout for images
 );
 
 // Data fetching with retry logic
-const fetchWithRetry = withAbortable(
-  async ({ signal }, url: string, maxRetries: number = 3) => {
-    let lastError: Error = new Error('No attempts made');
+const fetchWithRetry = withAbortable(async ({ signal }, url: string, maxRetries: number = 3) => {
+  let lastError: Error = new Error("No attempts made");
 
-    for (let attempt = 1; attempt <= maxRetries; attempt++) {
-      try {
-        console.log(`Attempt ${attempt}/${maxRetries} for ${url}`);
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      console.log(`Attempt ${attempt}/${maxRetries} for ${url}`);
 
-        const response = await fetch(url, { signal });
+      const response = await fetch(url, { signal });
 
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-
-        return await response.json();
-
-      } catch (error) {
-        lastError = error as Error;
-
-        // Don't retry if aborted
-        if (signal.aborted || (error as Error).name === 'AbortError') {
-          throw error;
-        }
-
-        // Don't retry on last attempt
-        if (attempt === maxRetries) {
-          break;
-        }
-
-        // Exponential backoff
-        const delay = Math.pow(2, attempt - 1) * 1000;
-        console.log(`Retry ${attempt} failed, waiting ${delay}ms...`);
-        await new Promise(resolve => setTimeout(resolve, delay));
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-    }
 
-    throw lastError;
+      return await response.json();
+    } catch (error) {
+      lastError = error as Error;
+
+      // Don't retry if aborted
+      if (signal.aborted || (error as Error).name === "AbortError") {
+        throw error;
+      }
+
+      // Don't retry on last attempt
+      if (attempt === maxRetries) {
+        break;
+      }
+
+      // Exponential backoff
+      const delay = 2 ** (attempt - 1) * 1000;
+      console.log(`Retry ${attempt} failed, waiting ${delay}ms...`);
+      await new Promise((resolve) => setTimeout(resolve, delay));
+    }
   }
-);
+
+  throw lastError;
+});
 
 // Simulated UI component behavior
 class SearchComponent {
-  private currentQuery = '';
+  private currentQuery = "";
 
   async handleSearch(query: string) {
     this.currentQuery = query;
@@ -105,10 +100,9 @@ class SearchComponent {
         console.log(`Discarding stale results for "${query}"`);
         return [];
       }
-
     } catch (error) {
       const err = error as Error;
-      if (err.name === 'AbortError') {
+      if (err.name === "AbortError") {
         console.log(`Search for "${query}" was cancelled`);
         return [];
       }
@@ -125,9 +119,7 @@ class ImageGallery {
     console.log(`Loading ${urls.length} images...`);
 
     // Load images concurrently, but allow cancellation of the whole batch
-    const results = await Promise.allSettled(
-      urls.map(url => loadImage.execute(url))
-    );
+    const results = await Promise.allSettled(urls.map((url) => loadImage.execute(url)));
 
     const successful: HTMLImageElement[] = [];
     const failed: string[] = [];
@@ -136,7 +128,7 @@ class ImageGallery {
       const url = urls[index];
       if (!url) return;
 
-      if (result.status === 'fulfilled') {
+      if (result.status === "fulfilled") {
         const img = result.value;
         this.loadedImages.set(url, img);
         successful.push(img);
@@ -156,7 +148,7 @@ class ImageGallery {
   }
 
   _cancelImageLoading() {
-    loadImage.abort();
+    loadImage.cancel();
     console.log("Cancelled image loading");
   }
 }
@@ -170,7 +162,7 @@ async function _demonstratePatterns() {
 
   // Simulate rapid typing - previous searches get cancelled
   searchComponent.handleSearch("jo");
-  searchComponent.handleSearch("joh");  // cancels "jo"
+  searchComponent.handleSearch("joh"); // cancels "jo"
   await searchComponent.handleSearch("john"); // cancels "joh"
 
   console.log("\n=== Image Loading Pattern ===");
@@ -179,7 +171,7 @@ async function _demonstratePatterns() {
   const imageUrls = [
     "https://picsum.photos/200/200?random=1",
     "https://picsum.photos/200/200?random=2",
-    "https://picsum.photos/200/200?random=3"
+    "https://picsum.photos/200/200?random=3",
   ];
 
   try {

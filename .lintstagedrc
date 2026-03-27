@@ -1,0 +1,5 @@
+{
+  "*.{js,ts,vue}": [
+    "biome check --write",
+  ],
+}

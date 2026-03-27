@@ -10,11 +10,4 @@
  *
  * @since 1.0.0
  */
-export type PrimitiveValue =
-  | string
-  | number
-  | boolean
-  | symbol
-  | bigint
-  | null
-  | undefined;
+export type PrimitiveValue = string | number | boolean | symbol | bigint | null | undefined;

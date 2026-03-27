@@ -1,16 +1,8 @@
 {
-  "extends": [
-    "@vue/tsconfig/tsconfig.dom.json",
-    "../../tsconfig.app.base.json"
-  ],
+  "extends": ["@vue/tsconfig/tsconfig.dom.json", "../../tsconfig.app.base.json"],
   "compilerOptions": {
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "types": [
-      "vite/client"
-    ],
+    "lib": ["ESNext", "DOM"],
+    "types": ["vite/client"],
     // @vue/tsconfig sets noEmit=true by default – override for d.ts emit
     "noEmit": false,
     "composite": true,
@@ -26,7 +18,5 @@
       "path": "../js-core/tsconfig.app.json"
     }
   ],
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }

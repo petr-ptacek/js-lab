@@ -9,7 +9,6 @@ import { withTryCatchSync } from "../withTryCatchSync";
 export function parseJSONSafe<T>(value: string, fallback: T): T;
 export function parseJSONSafe<T>(value: string): T | undefined;
 
-
 /* -------------------------------------------------- */
 /* Implementation */
 
@@ -47,10 +46,9 @@ export function parseJSONSafe<T>(
   value: string,
   fallback?: WithTryCatchOptions<T>["fallback"],
 ): T | undefined {
-  const result = withTryCatchSync<T | undefined>(
-    () => JSON.parse(value) as T,
-    { fallback },
-  );
+  const result = withTryCatchSync<T | undefined>(() => JSON.parse(value) as T, {
+    fallback,
+  });
 
   return result.data;
 }

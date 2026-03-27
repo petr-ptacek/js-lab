@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { withTryCatch } from "../withTryCatch";
 
 describe("withTryCatch (async)", () => {
@@ -95,11 +95,14 @@ describe("withTryCatch (async)", () => {
     const error = new Error("fail");
     const onError = vi.fn();
 
-    await withTryCatch(async () => {
-      throw error;
-    }, {
-      onError,
-    });
+    await withTryCatch(
+      async () => {
+        throw error;
+      },
+      {
+        onError,
+      },
+    );
 
     expect(onError).toHaveBeenCalledOnce();
     expect(onError).toHaveBeenCalledWith(error);
@@ -137,11 +140,14 @@ describe("withTryCatch (async)", () => {
   it("calls onFinally on failure", async () => {
     const onFinally = vi.fn();
 
-    await withTryCatch(async () => {
-      throw new Error("fail");
-    }, {
-      onFinally,
-    });
+    await withTryCatch(
+      async () => {
+        throw new Error("fail");
+      },
+      {
+        onFinally,
+      },
+    );
 
     expect(onFinally).toHaveBeenCalledOnce();
   });

@@ -3,14 +3,14 @@
  * Any value (both objects and primitive values) may be used as either a key or a value.
  * */
 import type {
-  Store,
-  StoreItem,
-  ListenerContext,
   CleanupFn,
   EmitterEvents,
-  InitialHandlers,
   EventHandler,
   InitialHandler,
+  InitialHandlers,
+  ListenerContext,
+  Store,
+  StoreItem,
 } from "./types";
 
 /**
@@ -93,7 +93,10 @@ export class Emitter<Events extends EmitterEvents> {
    * @param handler - Event handler function
    * @returns Cleanup function that unregisters the handler
    */
-  on<TType extends keyof Events, THandler extends Events[TType]>(type: TType, handler: THandler): CleanupFn {
+  on<TType extends keyof Events, THandler extends Events[TType]>(
+    type: TType,
+    handler: THandler,
+  ): CleanupFn {
     return this.#on(type, handler, { once: false });
   }
 
@@ -106,7 +109,10 @@ export class Emitter<Events extends EmitterEvents> {
    * @param handler - Event handler function
    * @returns Cleanup function that unregisters the handler
    */
-  once<TType extends keyof Events, THandler extends Events[TType]>(type: TType, handler: THandler): CleanupFn {
+  once<TType extends keyof Events, THandler extends Events[TType]>(
+    type: TType,
+    handler: THandler,
+  ): CleanupFn {
     return this.#on(type, handler, { once: true });
   }
 
@@ -133,7 +139,6 @@ export class Emitter<Events extends EmitterEvents> {
       }
     }
   }
-
 
   off<TType extends keyof Events>(type: TType): void;
   off<TType extends keyof Events>(type: TType, handler: Events[TType]): void;
@@ -181,7 +186,11 @@ export class Emitter<Events extends EmitterEvents> {
    * Internal method used to register handlers
    * with additional metadata.
    */
-  #on<TType extends keyof Events, THandler extends Events[TType]>(type: TType, handler: THandler, ctx: ListenerContext): CleanupFn {
+  #on<TType extends keyof Events, THandler extends Events[TType]>(
+    type: TType,
+    handler: THandler,
+    ctx: ListenerContext,
+  ): CleanupFn {
     const storeItem: StoreItem<THandler> = this.#eventsStore.get(type) ?? new Map();
 
     const clear = () => {

@@ -51,4 +51,3 @@ async function optimizeWithFormats(imageElement: HTMLImageElement) {
 
   return { thumbnail, display, archive };
 }
-

@@ -1,2 +1,1 @@
 export { isPlainObject } from "./isPlainObject";
-

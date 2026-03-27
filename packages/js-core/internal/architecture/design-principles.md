@@ -8,10 +8,10 @@ utilities belong in the library.
 
 These principles help maintain:
 
--   long-term API consistency
--   minimal complexity
--   predictable behavior
--   high code quality
+- long-term API consistency
+- minimal complexity
+- predictable behavior
+- high code quality
 
 ------------------------------------------------------------------------
 
@@ -22,10 +22,10 @@ solve common problems in a predictable and type-safe way.
 
 The library focuses on:
 
--   practical utility functions
--   small composable primitives
--   zero or minimal dependencies
--   strong TypeScript support
+- practical utility functions
+- small composable primitives
+- zero or minimal dependencies
+- strong TypeScript support
 
 The goal is **not to become a large general-purpose utility framework**.
 
@@ -74,9 +74,9 @@ Utilities should avoid dependencies unless absolutely necessary.
 
 Reasons:
 
--   smaller bundle size
--   easier maintenance
--   fewer breaking changes
+- smaller bundle size
+- easier maintenance
+- fewer breaking changes
 
 If a dependency is required, it must provide clear benefits.
 
@@ -88,9 +88,9 @@ Utilities should behave in a **simple and predictable way**.
 
 Rules:
 
--   avoid hidden side effects
--   avoid implicit global state
--   prefer explicit inputs and outputs
+- avoid hidden side effects
+- avoid implicit global state
+- prefer explicit inputs and outputs
 
 Example:
 
@@ -106,9 +106,10 @@ Type safety is a primary design goal.
 
 Utilities should:
 
--   provide accurate TypeScript types
--   support type inference
--   avoid `any` whenever possible
+- provide accurate TypeScript types
+- support type inference
+- avoid `any` whenever possible
+- use `unknown` instead of `any` when necessary
 
 When applicable, prefer **type guards**:
 
@@ -149,9 +150,9 @@ Utilities should remain simple.
 
 Avoid:
 
--   complex configuration objects
--   excessive abstraction
--   unnecessary options
+- complex configuration objects
+- excessive abstraction
+- unnecessary options
 
 Prefer simple APIs.
 
@@ -183,11 +184,11 @@ If changes are necessary, follow semantic versioning.
 
 A new utility should be added if:
 
--   the functionality is generally useful
--   the implementation is small
--   it solves a common problem
--   it improves developer experience
--   it fits the design principles of the library
+- the functionality is generally useful
+- the implementation is small
+- it solves a common problem
+- it improves developer experience
+- it fits the design principles of the library
 
 ------------------------------------------------------------------------
 
@@ -195,16 +196,16 @@ A new utility should be added if:
 
 Do not add utilities that:
 
--   duplicate native JavaScript APIs
--   introduce heavy dependencies
--   solve very specific edge cases
--   belong to a higher-level framework
+- duplicate native JavaScript APIs
+- introduce heavy dependencies
+- solve very specific edge cases
+- belong to a higher-level framework
 
 Example utilities that do **not belong** in `js-core`:
 
--   UI helpers
--   DOM manipulation helpers
--   framework-specific logic
+- UI helpers
+- DOM manipulation helpers
+- framework-specific logic
 
 Those should belong to other packages such as `vue-core`.
 
@@ -226,9 +227,9 @@ This separation keeps the core library portable and reusable.
 
 The long-term vision for `js-core` is to maintain:
 
--   a small but high-quality utility set
--   predictable API design
--   minimal maintenance overhead
--   strong TypeScript support
+- a small but high-quality utility set
+- predictable API design
+- minimal maintenance overhead
+- strong TypeScript support
 
 The library should prioritize **quality over quantity**.

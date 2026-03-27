@@ -1,9 +1,6 @@
 import { isFunction } from "../../validation";
 
-export function zip<T, U>(
-  arrayOne: readonly T[],
-  arrayTwo: readonly U[],
-): [T, U][];
+export function zip<T, U>(arrayOne: readonly T[], arrayTwo: readonly U[]): [T, U][];
 
 export function zip<T, U, R>(
   arrayOne: readonly T[],

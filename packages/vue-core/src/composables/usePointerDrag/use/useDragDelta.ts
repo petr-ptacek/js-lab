@@ -1,4 +1,4 @@
-import { readonly, type Ref, shallowRef } from "vue";
+import { type Ref, readonly, shallowRef } from "vue";
 
 import type { DragAxis } from "../types";
 

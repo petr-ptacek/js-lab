@@ -5,11 +5,11 @@ module** to the `@petr-ptacek/js-core` package.
 
 The goal is to guarantee:
 
--   consistent project structure
--   predictable API design
--   proper test coverage
--   documentation for every utility
--   maintainable long‑term architecture
+- consistent project structure
+- predictable API design
+- proper test coverage
+- documentation for every utility
+- maintainable long‑term architecture
 
 Every new utility should follow this process.
 
@@ -23,9 +23,9 @@ Follow the rules defined in:
 
 The name should:
 
--   describe the behavior
--   follow the allowed prefix vocabulary
--   be unique within the library
+- describe the behavior
+- follow the allowed prefix vocabulary
+- be unique within the library
 
 Examples:
 
@@ -55,6 +55,7 @@ Inside the directory create the following files:
     createUUIDV4/
       index.ts
       createUUIDV4.ts
+      meta.ts
       __tests__/
       README.md
 
@@ -62,6 +63,7 @@ Optional files when needed:
 
     types.ts
     utils.ts
+    helpers.ts
 
 Final example:
 
@@ -84,17 +86,20 @@ Create the main implementation file:
 
 Example:
 
-``` ts
+```ts
 export function createUUIDV4(): string {
-  return crypto.randomUUID()
+  return crypto.randomUUID();
 }
 ```
 
 Guidelines:
 
--   implementation should be small and focused
--   avoid unnecessary dependencies
--   prefer platform APIs when possible
+- implementation should be small and focused
+- avoid unnecessary dependencies
+- prefer platform APIs when possible
+- split complex logic into internal helper functions if needed
+- add comments for non-obvious logic, but avoid over-commenting
+- strongly type all functions and variables
 
 ------------------------------------------------------------------------
 
@@ -104,7 +109,8 @@ Edit:
 
     index.ts
 
-Only export the public API.
+Only export the public API. Not all types and functions need to be exported. Internal helpers should not be exported,
+same types that are not part of the public API should not be exported.
 
 Example:
 
@@ -114,9 +120,9 @@ export { createUUIDV4 } from "./createUUIDV4"
 
 Rules:
 
--   no implementation logic
--   no internal helpers
--   export only stable public API
+- no implementation logic
+- no internal helpers
+- export only stable public API
 
 ------------------------------------------------------------------------
 
@@ -142,46 +148,16 @@ describe("createUUIDV4", () => {
 
 Guidelines:
 
--   test behavior, not implementation details
--   include edge cases
--   aim for deterministic tests
+- test behavior, not implementation details
+- include edge cases
+- aim for deterministic tests
+- if the number of tests grows significantly, consider organizing them into multiple files or using test suites
 
 ------------------------------------------------------------------------
 
 # 7. Write Documentation
 
-Create:
-
-    README.md
-
-Recommended structure:
-
-    # createUUIDV4
-
-    Short description.
-
-    ## Usage
-
-    Code example.
-
-    ## Why this utility exists
-
-    Explain motivation.
-
-    ## Design notes
-
-    Explain trade-offs and decisions.
-
-    ## When to use
-
-    Explain typical use cases.
-
-Documentation should focus on:
-
--   purpose of the utility
--   usage examples
--   design reasoning
--   limitations
+- follow `documentation/readme-guidelines.md`
 
 ------------------------------------------------------------------------
 
@@ -213,8 +189,8 @@ Run the project test suite:
 
 Ensure:
 
--   all tests pass
--   no regressions occur
+- all tests pass
+- no regressions occur
 
 ------------------------------------------------------------------------
 
@@ -242,13 +218,13 @@ Example message:
 
 Adding a new utility always requires:
 
--   module directory
--   implementation
--   public API export
--   tests
--   documentation
--   root export
--   changeset
+- module directory
+- implementation
+- public API export
+- tests
+- documentation
+- root export
+- changeset
 
 Following this checklist guarantees that every utility in `js-core`
 meets the same quality and structure standards.

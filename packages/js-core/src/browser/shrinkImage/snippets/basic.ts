@@ -28,4 +28,3 @@ imageInput.addEventListener("change", async (event) => {
   // Load image from file
   img.src = URL.createObjectURL(file);
 });
-

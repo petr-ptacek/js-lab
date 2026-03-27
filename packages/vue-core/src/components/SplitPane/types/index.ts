@@ -1,5 +1,5 @@
 import type { UsePointerDragReturn } from "../../../composables";
-import type { CSSClassValue }        from "../../../types";
+import type { CSSClassValue } from "../../../types";
 
 export type SizeValueUnit = `${number}%` | `${number}px`;
 
@@ -8,7 +8,6 @@ export type SizeValue = number | SizeValueUnit;
 export type OriginValue = "alpha" | "beta";
 
 export type OrientationValue = "horizontal" | "vertical";
-
 
 export type UI = {
   root?: CSSClassValue;
@@ -22,7 +21,7 @@ export type UI = {
   gripWrapper?: CSSClassValue;
   grip?: CSSClassValue;
   resizeHandler?: CSSClassValue;
-}
+};
 
 /** =============================================================
  * PUBLIC API
@@ -86,28 +85,22 @@ export type Props = {
 export type Slots = {
   alpha: () => void;
   beta: () => void;
-  actions: (
-    props: {
-      ui: CSSClassValue,
-      expand: () => void;
-      collapse: () => void;
-      isCollapsed: boolean;
-      isExpanded: boolean;
-    },
-  ) => void;
-  grip: (
-    props: {
-      onPointerDown: UsePointerDragReturn["onPointerDown"]
-      ui: CSSClassValue,
-    },
-  ) => void;
-}
+  actions: (props: {
+    ui: CSSClassValue;
+    expand: () => void;
+    collapse: () => void;
+    isCollapsed: boolean;
+    isExpanded: boolean;
+  }) => void;
+  grip: (props: {
+    onPointerDown: UsePointerDragReturn["onPointerDown"];
+    ui: CSSClassValue;
+  }) => void;
+};
 
-export type Emits = {
-  (e: "update:modelValue", payload: ModelValue): void;
-}
+export type Emits = (e: "update:modelValue", payload: ModelValue) => void;
 
 export type Expose = {
   expand: () => void;
   collapse: () => void;
-}
+};

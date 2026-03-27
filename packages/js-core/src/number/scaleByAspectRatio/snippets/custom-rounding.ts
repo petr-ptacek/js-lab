@@ -30,14 +30,10 @@ console.log("Even round:", evenRound);
 
 // precision rounding (to specific decimal places)
 const roundToDecimal = (decimals: number) => (value: number) => {
-  const factor = Math.pow(10, decimals);
+  const factor = 10 ** decimals;
   return Math.round(value * factor) / factor;
 };
 
-const precisionRound = scaleByAspectRatio(
-  dimensions,
-  { width: 33.33 },
-  roundToDecimal(1)
-);
+const precisionRound = scaleByAspectRatio(dimensions, { width: 33.33 }, roundToDecimal(1));
 console.log("Precision round:", precisionRound);
 // Rounds to 1 decimal place

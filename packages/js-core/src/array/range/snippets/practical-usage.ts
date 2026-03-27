@@ -21,7 +21,7 @@ const testUsers = range(1, 6).map((id: number) => ({
   id,
   name: `User ${id}`,
   email: `user${id}@example.com`,
-  active: id % 2 === 0
+  active: id % 2 === 0,
 }));
 
 console.log("Test users:", testUsers);

@@ -9,7 +9,6 @@
   "updateInternalDependencies": "patch",
   "ignore": [
     "@petr-ptacek/vue-core",
-    "@petr-ptacek/playground-nuxt",
-    "@petr-ptacek/storybook"
+    "@petr-ptacek/playground-nuxt"
   ]
 }

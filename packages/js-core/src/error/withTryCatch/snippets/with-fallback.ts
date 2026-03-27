@@ -20,8 +20,8 @@ const result = await withTryCatch(
         return { message: e.message, code: "FETCH_ERROR" };
       }
       return { message: "Unknown error", code: "UNKNOWN" };
-    }
-  }
+    },
+  },
 );
 
 // Result always has data due to fallback
@@ -32,5 +32,5 @@ if (!result.ok) {
 }
 
 function fetchUserProfile() {
-  return fetch("/api/user/profile").then(r => r.json());
+  return fetch("/api/user/profile").then((r) => r.json());
 }

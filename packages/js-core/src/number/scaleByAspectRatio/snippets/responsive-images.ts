@@ -10,12 +10,16 @@ class ResponsiveImage {
 
   // scale to fit within container width
   scaleToFitWidth(containerWidth: number) {
-    return scaleByAspectRatio(this.originalDimensions, { width: containerWidth });
+    return scaleByAspectRatio(this.originalDimensions, {
+      width: containerWidth,
+    });
   }
 
   // scale to fit within container height
   scaleToFitHeight(containerHeight: number) {
-    return scaleByAspectRatio(this.originalDimensions, { height: containerHeight });
+    return scaleByAspectRatio(this.originalDimensions, {
+      height: containerHeight,
+    });
   }
 
   // scale to fit within container (uses smallest dimension)
@@ -32,8 +36,8 @@ class ResponsiveImage {
 
   // generate multiple sizes for srcset
   generateSizes(widths: number[]) {
-    return widths.map(width => ({
-      ...scaleByAspectRatio(this.originalDimensions, { width })
+    return widths.map((width) => ({
+      ...scaleByAspectRatio(this.originalDimensions, { width }),
     }));
   }
 }

@@ -1,9 +1,9 @@
-export type { Getter }         from "./Getter";
-export type { ValueOrGetter }  from "./ValueOrGetter";
-export type { Factory }        from "./Factory";
+export type { AsyncFn } from "./AsyncFn";
+export type { Comparator } from "./Comparator";
+export type { Factory } from "./Factory";
+export type { Getter } from "./Getter";
+export type { Identity } from "./Identity";
+export type { RoundValueFn } from "./RoundValueFn";
+export type { SyncFn } from "./SyncFn";
 export type { ValueOrFactory } from "./ValueOrFactory";
-export type { RoundValueFn }   from "./RoundValueFn";
-export type { AsyncFn }        from "./AsyncFn";
-export type { SyncFn }         from "./SyncFn";
-export type { Identity }       from "./Identity";
-export type { Comparator }     from "./Comparator";
+export type { ValueOrGetter } from "./ValueOrGetter";

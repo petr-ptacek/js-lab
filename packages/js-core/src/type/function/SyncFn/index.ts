@@ -14,5 +14,6 @@
  *
  * @since 1.0.0
  */
-export type SyncFn<TArgs extends unknown[] = unknown[], TResult = unknown> =
-  (...args: TArgs) => TResult;
+export type SyncFn<TArgs extends unknown[] = unknown[], TResult = unknown> = (
+  ...args: TArgs
+) => TResult;

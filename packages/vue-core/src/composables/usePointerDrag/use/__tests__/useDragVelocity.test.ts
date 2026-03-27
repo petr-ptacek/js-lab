@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import { useDragVelocity } from "../useDragVelocity";
 
@@ -25,8 +25,8 @@ describe("useDragVelocity", () => {
     update(0, 0, 1000);
     update(10, 20, 1010); // dt = 10
 
-    expect(vx.value).toBe(1);  // (10 - 0) / 10
-    expect(vy.value).toBe(2);  // (20 - 0) / 10
+    expect(vx.value).toBe(1); // (10 - 0) / 10
+    expect(vy.value).toBe(2); // (20 - 0) / 10
   });
 
   it("updates velocity on subsequent updates", () => {
@@ -36,7 +36,7 @@ describe("useDragVelocity", () => {
     update(10, 10, 1010);
     update(30, 25, 1020); // dt = 10
 
-    expect(vx.value).toBe(2);   // (30 - 10) / 10
+    expect(vx.value).toBe(2); // (30 - 10) / 10
     expect(vy.value).toBe(1.5); // (25 - 10) / 10
   });
 

@@ -7,11 +7,11 @@ const apiResponse = {
         id: 1,
         profile: {
           email: "alice@example.com",
-          preferences: { theme: "dark" }
-        }
-      }
-    ]
-  }
+          preferences: { theme: "dark" },
+        },
+      },
+    ],
+  },
 };
 
 // Safely access nested API data

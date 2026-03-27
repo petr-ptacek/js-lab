@@ -9,12 +9,8 @@ describe("assertFiniteNumber", () => {
   });
 
   it("throws for NaN or Infinity", () => {
-    expect(() =>
-      assertFiniteNumber("value", NaN),
-    ).toThrow("a finite number");
+    expect(() => assertFiniteNumber("value", NaN)).toThrow("a finite number");
 
-    expect(() =>
-      assertFiniteNumber("value", Infinity),
-    ).toThrow("a finite number");
+    expect(() => assertFiniteNumber("value", Infinity)).toThrow("a finite number");
   });
 });

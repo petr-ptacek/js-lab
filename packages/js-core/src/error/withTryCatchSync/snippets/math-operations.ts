@@ -18,8 +18,8 @@ function safeDivision(a: number, b: number) {
           return { code: "MATH_ERROR", message: e.message };
         }
         return { code: "UNKNOWN", message: String(e) };
-      }
-    }
+      },
+    },
   );
 }
 

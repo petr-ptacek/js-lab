@@ -17,4 +17,7 @@
  *
  * @since 1.0.0
  */
-export type Dict<TValue = unknown, TKey extends string | number | symbol = string> = Record<TKey, TValue>;
+export type Dict<TValue = unknown, TKey extends string | number | symbol = string> = Record<
+  TKey,
+  TValue
+>;

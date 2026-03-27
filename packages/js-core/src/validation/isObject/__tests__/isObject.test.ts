@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isObject } from "../isObject";
 
 describe("isObject", () => {
@@ -34,7 +34,7 @@ describe("isObject", () => {
 
   it("returns false for functions", () => {
     expect(isObject(() => {})).toBe(false);
-    expect(isObject(function() {})).toBe(false);
+    expect(isObject(() => {})).toBe(false);
   });
 
   it("works as type guard", () => {
@@ -45,4 +45,3 @@ describe("isObject", () => {
     }
   });
 });
-

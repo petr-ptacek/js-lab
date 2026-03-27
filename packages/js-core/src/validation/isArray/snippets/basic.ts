@@ -1,16 +1,9 @@
 import { isArray } from "@petr-ptacek/js-core";
 
 // basic type checking
-const values = [
-  [1, 2, 3],
-  "not an array",
-  { key: "value" },
-  null,
-  undefined,
-  42
-];
+const values = [[1, 2, 3], "not an array", { key: "value" }, null, undefined, 42];
 
-values.forEach(value => {
+values.forEach((value) => {
   console.log(`${JSON.stringify(value)} is array:`, isArray(value));
 });
 

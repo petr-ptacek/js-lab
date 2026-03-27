@@ -1,19 +1,14 @@
 import type { PrimitiveValue } from "../../type";
 
-export type Path<T> =
-  T extends PrimitiveValue
+export type Path<T> = T extends PrimitiveValue
   ? never
   : T extends readonly (infer U)[]
     ? `${number}` | `${number}.${Path<U>}`
     : {
-      [K in keyof T & string]:
-      T[K] extends PrimitiveValue
-      ? K
-      : K | `${K}.${Path<T[K]>}`;
-    }[keyof T & string];
+        [K in keyof T & string]: T[K] extends PrimitiveValue ? K : K | `${K}.${Path<T[K]>}`;
+      }[keyof T & string];
 
-export type PathValue<T, P extends string> =
-  T extends readonly (infer U)[]
+export type PathValue<T, P extends string> = T extends readonly (infer U)[]
   ? P extends `${number}.${infer Rest}`
     ? PathValue<U, Rest>
     : P extends `${number}`

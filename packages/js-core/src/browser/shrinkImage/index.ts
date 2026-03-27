@@ -1,2 +1,2 @@
-export type { ShrinkImageOptions } from "./types";
 export { shrinkImage } from "./shrinkImage";
+export type { ShrinkImageOptions } from "./types";

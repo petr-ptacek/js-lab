@@ -24,8 +24,8 @@ const result = withTryCatchSync(
         return { type: "VALIDATION_ERROR", message: e.message };
       }
       return { type: "UNKNOWN_ERROR", message: String(e) };
-    }
-  }
+    },
+  },
 );
 
 // Result always has data due to fallback

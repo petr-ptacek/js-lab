@@ -13,7 +13,6 @@ try {
   img.replaceWith(resized);
 
   console.log("Image resized and displayed");
-} catch ( error ) {
+} catch (error) {
   console.error("Failed to resize image:", error);
 }
-

@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import { loadImage }                                   from "../loadImage";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { loadImage } from "../loadImage";
 
 describe("loadImage", () => {
   let originalImage: typeof Image;

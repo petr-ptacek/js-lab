@@ -1,11 +1,11 @@
 import type { PrimitiveValue } from "../../type";
-import { isBigint }            from "../isBigint";
-import { isBoolean }           from "../isBoolean";
-import { isNull }              from "../isNull";
-import { isNumber }            from "../isNumber";
-import { isString }            from "../isString";
-import { isSymbol }            from "../isSymbol";
-import { isUndefined }         from "../isUndefined";
+import { isBigint } from "../isBigint";
+import { isBoolean } from "../isBoolean";
+import { isNull } from "../isNull";
+import { isNumber } from "../isNumber";
+import { isString } from "../isString";
+import { isSymbol } from "../isSymbol";
+import { isUndefined } from "../isUndefined";
 
 /**
  * Checks whether the given value is a JavaScript primitive.
@@ -49,6 +49,3 @@ export function isPrimitive(value: unknown): value is PrimitiveValue {
     isBigint(value)
   );
 }
-
-
-

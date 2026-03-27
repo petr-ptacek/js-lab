@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { isSymbol } from "../isSymbol";
 
 describe("isSymbol", () => {
@@ -26,4 +26,3 @@ describe("isSymbol", () => {
     }
   });
 });
-

@@ -45,4 +45,3 @@ async function submitFormWithOptimizedImage(
 // const form = document.querySelector("form")!;
 // const img = document.querySelector("img")!;
 // await submitFormWithOptimizedImage(form, img, 1600, 1600);
-

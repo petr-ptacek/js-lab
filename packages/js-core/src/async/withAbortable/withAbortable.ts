@@ -1,4 +1,9 @@
-import type { AbortableFn, AbortableContext, WithAbortableOptions, WithAbortableReturn } from "./types";
+import type {
+  AbortableContext,
+  AbortableFn,
+  WithAbortableOptions,
+  WithAbortableReturn,
+} from "./types";
 
 /**
  * Wraps an asynchronous function with AbortController lifecycle management.
@@ -85,10 +90,10 @@ import type { AbortableFn, AbortableContext, WithAbortableOptions, WithAbortable
  * task.abort(); // cancels the execution
  * ```
  */
-export function withAbortable<Args extends unknown[], R>(
-  fn: AbortableFn<Args, R>,
+export function withAbortable<Args extends unknown[], TResult>(
+  fn: AbortableFn<Args, TResult>,
   options: WithAbortableOptions = {},
-): WithAbortableReturn<Args, R> {
+): WithAbortableReturn<Args, TResult> {
   const resolvedOptions: WithAbortableOptions = {
     autoAbort: true,
     ...options,
@@ -96,20 +101,23 @@ export function withAbortable<Args extends unknown[], R>(
 
   let controller: AbortController | null = null;
   let isRunning = false;
+  let currentRunId = 0;
 
-  function abort() {
+  function cancel() {
     controller?.abort();
     controller = null;
     isRunning = false;
+    currentRunId++;
   }
 
-  async function execute(...args: Args): Promise<R> {
-    if ( resolvedOptions.autoAbort ) {
-      abort();
+  async function execute(...args: Args): Promise<TResult> {
+    if (resolvedOptions.autoAbort) {
+      cancel();
     }
 
     controller = new AbortController();
     isRunning = true;
+    const runId = ++currentRunId;
 
     const context: AbortableContext = {
       signal: controller.signal,
@@ -117,26 +125,29 @@ export function withAbortable<Args extends unknown[], R>(
 
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
-    if ( resolvedOptions.timeoutMs != null ) {
+    if (resolvedOptions.timeoutMs != null) {
       timeoutId = setTimeout(() => {
-        abort();
+        cancel();
       }, resolvedOptions.timeoutMs);
     }
 
     try {
       return await fn(context, ...args);
     } finally {
-      if ( timeoutId ) {
+      // Cleanup a změny stavu pouze pokud je runId aktuální (ochrana proti race condition)
+      if (timeoutId) {
         clearTimeout(timeoutId);
       }
-      isRunning = false;
-      controller = null;
+      if (runId === currentRunId) {
+        isRunning = false;
+        controller = null;
+      }
     }
   }
 
   return {
     execute,
-    abort,
+    cancel,
     get signal() {
       return controller?.signal ?? null;
     },

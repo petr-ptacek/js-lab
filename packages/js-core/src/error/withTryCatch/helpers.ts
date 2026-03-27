@@ -1,11 +1,13 @@
-import type { TryCatchResult, TryCatchResultFailure, WithTryCatchOptions } from "./types";
 import type { ValueOrFactory } from "../../type";
 import { isFunction } from "../../validation";
+import type { TryCatchResult, TryCatchResultFailure, WithTryCatchOptions } from "./types";
 
 /**
  * @internal
  */
-export function isFallbackFn<TResult, TError>(v: ValueOrFactory<TResult, [TError]>): v is (e: TError) => TResult {
+export function isFallbackFn<TResult, TError>(
+  v: ValueOrFactory<TResult, [TError]>,
+): v is (e: TError) => TResult {
   return isFunction(v);
 }
 

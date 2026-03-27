@@ -3,7 +3,7 @@ title: withAbortable
 category: async
 tags:
   - async
-  - abort
+  - cancel
   - controller
   - cancellation
   - timeout
@@ -14,7 +14,7 @@ since: 1.0.0
 
 > **Category:** async
 > **Since:** 1.0.0
-> **Tags:** async, abort, controller, cancellation, timeout, lifecycle
+> **Tags:** async, cancel, controller, cancellation, timeout, lifecycle
 
 
 # withAbortable
@@ -53,8 +53,8 @@ function withAbortable<Args extends unknown[], R>(
 
 - `fn` (`AbortableFn<Args, R>`): An asynchronous function that receives an AbortableContext containing an AbortSignal. The function MUST respect the provided signal to ensure proper cancellation behavior.
 - `options` (`WithAbortableOptions`, optional): Configuration options.
-  - `autoAbort` (`boolean`, default `true`): Automatically aborts the previous execution before starting a new one.
-  - `timeoutMs` (`number`, optional): Automatically aborts the execution if it does not complete within the specified milliseconds.
+  - `autoAbort` (`boolean`, default `true`): Automatically cancels the previous execution before starting a new one.
+  - `timeoutMs` (`number`, optional): Automatically cancels the execution if it does not complete within the specified milliseconds.
 
 ## Type Parameters
 
@@ -64,10 +64,10 @@ function withAbortable<Args extends unknown[], R>(
 ## Return Type
 
 Returns an object containing:
-- `execute(...args)` — executes the wrapped function with the provided arguments.
-- `abort()` — aborts the currently active execution.
-- `signal` — the current AbortSignal or null if idle.
-- `isRunning` — indicates whether an execution is currently in progress.
+- `execute(...args)`  executes the wrapped function with the provided arguments.
+- `cancel()`  cancels the currently active execution.
+- `signal`  the current AbortSignal or null if idle.
+- `isRunning`  indicates whether an execution is currently in progress.
 
 ## Type Declarations
 
@@ -88,7 +88,7 @@ type WithAbortableOptions = {
 
 type WithAbortableReturn<Args extends unknown[], R> = {
   execute: (...args: Args) => Promise<R>;
-  abort: () => void;
+  cancel: () => void;
   readonly signal: AbortSignal | null;
   readonly isRunning: boolean;
 }
@@ -98,9 +98,9 @@ These types enable proper TypeScript integration and ensure type safety when usi
 
 ## Design Notes
 
-The implementation uses a "latest execution wins" model by default. When `autoAbort: true`, starting a new execution automatically aborts the previous one, guaranteeing a single active execution at a time.
+The implementation uses a "latest execution wins" model by default. When `autoAbort: true`, starting a new execution automatically cancels the previous one, guaranteeing a single active execution at a time.
 
-The wrapped function MUST properly handle the provided AbortSignal. If it ignores the signal, cancellation cannot be guaranteed. When an execution is aborted, the returned promise typically rejects with a DOMException named "AbortError".
+The wrapped function MUST properly handle the provided AbortSignal. If it ignores the signal, cancellation cannot be guaranteed. When an execution is canceled, the returned promise typically rejects with a DOMException named "AbortError".
 
 Timeout functionality is implemented via AbortController without introducing custom error types, maintaining consistency with native cancellation patterns.
 
@@ -134,7 +134,7 @@ Avoid when:
 ```ts
 import { withAbortable } from "@petr-ptacek/js-core";
 
-// Basic API call with automatic abort
+// Basic API call with automatic cancel
 const getUser = withAbortable(
   async ({ signal }, id: string) => {
     console.log(`Fetching user ${id}...`);
@@ -160,18 +160,18 @@ async function _example() {
     const user1 = await getUser.execute("123");
     console.log("User 1:", user1);
 
-    // Start multiple executions - previous will be auto-aborted
+    // Start multiple executions - previous will be auto-canceled
     const promise1 = getUser.execute("456");
-    const promise2 = getUser.execute("789"); // This aborts promise1
+    const promise2 = getUser.execute("789"); // This cancels promise1
 
     const user2 = await promise2;
     console.log("User 2:", user2);
 
     try {
-      await promise1; // This will likely be aborted
+      await promise1; // This will likely be canceled
     } catch (error) {
       const err = error as Error;
-      console.log("Promise1 was aborted:", err.name === "AbortError");
+      console.log("Promise1 was canceled:", err.name === "AbortError");
     }
 
   } catch (error) {
@@ -356,7 +356,7 @@ class ImageGallery {
   }
 
   _cancelImageLoading() {
-    loadImage.abort();
+    loadImage.cancel();
     console.log("Cancelled image loading");
   }
 }
@@ -475,7 +475,7 @@ async function _manualAbortExample() {
   // Abort after 1 second
   setTimeout(() => {
     console.log("Manually aborting download...");
-    downloadFile.abort();
+    downloadFile.cancel();
   }, 1000);
 
   try {
@@ -534,7 +534,3 @@ async function _concurrentExample() {
 // _concurrentExample();
 
 ```
-
-
-
-

@@ -161,7 +161,7 @@ describe("withAbortable", () => {
 
       expect(capturedSignal?.aborted).toBe(false);
 
-      abortable.abort();
+      abortable.cancel();
 
       expect(capturedSignal?.aborted).toBe(true);
       expect(abortable.isRunning).toBe(false);
@@ -174,7 +174,7 @@ describe("withAbortable", () => {
       const mockFn = vi.fn().mockResolvedValue("result");
       const abortable = withAbortable(mockFn);
 
-      expect(() => abortable.abort()).not.toThrow();
+      expect(() => abortable.cancel()).not.toThrow();
       expect(abortable.isRunning).toBe(false);
       expect(abortable.signal).toBe(null);
     });

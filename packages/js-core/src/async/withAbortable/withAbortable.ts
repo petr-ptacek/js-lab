@@ -103,7 +103,7 @@ export function withAbortable<Args extends unknown[], R>(
   let isRunning = false;
   let currentRunId = 0;
 
-  function abort() {
+  function cancel() {
     controller?.abort();
     controller = null;
     isRunning = false;
@@ -112,7 +112,7 @@ export function withAbortable<Args extends unknown[], R>(
 
   async function execute(...args: Args): Promise<R> {
     if (resolvedOptions.autoAbort) {
-      abort();
+      cancel();
     }
 
     controller = new AbortController();
@@ -127,7 +127,7 @@ export function withAbortable<Args extends unknown[], R>(
 
     if (resolvedOptions.timeoutMs != null) {
       timeoutId = setTimeout(() => {
-        abort();
+        cancel();
       }, resolvedOptions.timeoutMs);
     }
 
@@ -147,7 +147,7 @@ export function withAbortable<Args extends unknown[], R>(
 
   return {
     execute,
-    abort,
+    cancel,
     get signal() {
       return controller?.signal ?? null;
     },

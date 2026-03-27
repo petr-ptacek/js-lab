@@ -81,11 +81,11 @@ export type WithAbortableReturn<Args extends unknown[], R> = {
   execute: (...args: Args) => Promise<R>;
 
   /**
-   * Aborts the currently active execution, if any.
+   * Cancels the currently active execution, if any.
    *
    * If no execution is active, this method has no effect.
    */
-  abort: () => void;
+  cancel: () => void;
 
   /**
    * The `AbortSignal` of the currently active execution,

@@ -28,7 +28,7 @@ module.exports = {
     /**
      * Subject musí být lower-case (add, fix, rename...)
      */
-    "subject-case": [2, "always", ["lower-case"]],
+    "subject-case": [0],
 
     /**
      * Whitelist povolených scope

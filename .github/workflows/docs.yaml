@@ -50,6 +50,11 @@ jobs:
       #      - name: Move vue-core docs
       #        run: cp -r packages/vue-core/docs/.vitepress/dist site/vue-core
 
+      - name: Add SPA fallback
+        run: |
+          cp site/index.html site/404.html
+          cp site/js-core/index.html site/js-core/404.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

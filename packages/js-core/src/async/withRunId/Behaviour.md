@@ -92,7 +92,7 @@ If you need real cancellation → combine with an abort mechanism.
 
 ---
 
-## TL;DR
+## Summary
 
 * `drop` → ignore extra calls
 * `queue` → run everything in order

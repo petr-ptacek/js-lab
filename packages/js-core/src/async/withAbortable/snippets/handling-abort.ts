@@ -1,4 +1,4 @@
-import { withAbortable } from "@petr-ptacek/js-core";
+import { isAbortError, withAbortable } from "@petr-ptacek/js-core";
 
 const fetchUser = withAbortable(async ({ signal }, id: string) => {
   const response = await fetch(`/api/users/${id}`, { signal });
@@ -9,12 +9,6 @@ const fetchUser = withAbortable(async ({ signal }, id: string) => {
 
   return response.json() as Promise<{ id: string; name: string }>;
 });
-
-// --- Helper: check if an error is an AbortError ---
-
-function isAbortError(error: unknown): boolean {
-  return error instanceof DOMException && error.name === "AbortError";
-}
 
 // --- Pattern 1: try/catch — explicit abort handling ---
 // Use when you need to distinguish abort from other errors.

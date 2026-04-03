@@ -1,3 +1,4 @@
+import { withRunId } from "../withRunId";
 import type {
   AbortableContext,
   AbortableFn,
@@ -12,22 +13,20 @@ import type {
  * (typically API calls) by automatically creating and controlling an
  * `AbortController` instance for each execution.
  *
- * By default, the previous execution is aborted before a new one starts
- * (`autoAbort: true`), enforcing a "latest execution wins" model.
+ * Starting a new execution always aborts the previous one ("latest execution wins"),
+ * guaranteeing a single active execution at a time.
  *
  * @param fn - An asynchronous function that receives a {@link AbortableContext}
  * containing an `AbortSignal`. The function MUST respect the provided signal
  * to ensure proper cancellation behavior.
  *
  * @param options - Optional configuration:
- * - `autoAbort` (default: `true`) — automatically aborts the previous execution
- *   before starting a new one.
  * - `timeoutMs` — automatically aborts the execution if it does not complete
  *   within the specified number of milliseconds.
  *
  * @returns An object containing:
  * - `execute(...args)` — executes the wrapped function.
- * - `abort()` — aborts the currently active execution.
+ * - `cancel()` — aborts the currently active execution.
  * - `signal` — the current `AbortSignal` or `null` if idle.
  * - `isRunning` — indicates whether an execution is currently in progress.
  *
@@ -43,13 +42,11 @@ import type {
  *
  * ### Concurrency model
  *
- * With `autoAbort: true` (default):
- * - Starting a new execution aborts the previous one.
- * - Guarantees a single active execution at a time.
+ * Starting a new execution always aborts the previous one.
+ * This guarantees a single active execution at a time.
  *
- * With `autoAbort: false`:
- * - Multiple executions may run concurrently.
- * - Only the most recent execution can be aborted via `abort()`.
+ * Stale result protection is handled internally via {@link withRunId} with
+ * `strategy: "replace"`, ensuring that only the latest execution can resolve.
  *
  * ### Timeout behavior
  *
@@ -80,69 +77,76 @@ import type {
  * ```
  *
  * @example
- * Manual abort:
+ * Manual cancel:
  * ```ts
  * const task = withAbortable(async ({ signal }) => {
  *   return longRunningOperation(signal);
  * });
  *
  * const promise = task.execute();
- * task.abort(); // cancels the execution
+ * task.cancel(); // aborts the execution
  * ```
  */
 export function withAbortable<Args extends unknown[], TResult>(
   fn: AbortableFn<Args, TResult>,
   options: WithAbortableOptions = {},
 ): WithAbortableReturn<Args, TResult> {
-  const resolvedOptions: WithAbortableOptions = {
-    autoAbort: true,
-    ...options,
-  };
-
+  // Holds the AbortController of the currently active execution.
+  // Managed inside the wrapped fn and cleared on completion or cancellation.
   let controller: AbortController | null = null;
-  let isRunning = false;
-  let currentRunId = 0;
 
-  function cancel() {
+  // Internal runner delegates concurrency control and stale result protection
+  // to withRunId. "replace" strategy ensures only the latest execution is active.
+  // throwOnError: true propagates errors directly as Promise rejections.
+  const runner = withRunId(
+    async (_ctx, ...args: Args): Promise<TResult> => {
+      const currentController = new AbortController();
+      controller = currentController;
+
+      let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+      if (options.timeoutMs != null) {
+        timeoutId = setTimeout(() => {
+          currentController.abort();
+        }, options.timeoutMs);
+      }
+
+      const context: AbortableContext = { signal: currentController.signal };
+
+      try {
+        return await fn(context, ...args);
+      } finally {
+        if (timeoutId !== null) {
+          clearTimeout(timeoutId);
+        }
+        // Only clear the outer reference if this execution is still current.
+        // A newer execution may have already replaced the controller.
+        if (controller === currentController) {
+          controller = null;
+        }
+      }
+    },
+    { strategy: "replace", throwOnError: true },
+  );
+
+  function cancel(): void {
     controller?.abort();
     controller = null;
-    isRunning = false;
-    currentRunId++;
+    runner.cancel();
   }
 
   async function execute(...args: Args): Promise<TResult> {
-    if (resolvedOptions.autoAbort) {
-      cancel();
+    // Always abort the previous execution before starting a new one.
+    controller?.abort();
+
+    const result = await runner.execute(...args);
+
+    if (result.status === "success") {
+      return result.result;
     }
 
-    controller = new AbortController();
-    isRunning = true;
-    const runId = ++currentRunId;
-
-    const context: AbortableContext = {
-      signal: controller.signal,
-    };
-
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-
-    if (resolvedOptions.timeoutMs != null) {
-      timeoutId = setTimeout(() => {
-        cancel();
-      }, resolvedOptions.timeoutMs);
-    }
-
-    try {
-      return await fn(context, ...args);
-    } finally {
-      // Cleanup a změny stavu pouze pokud je runId aktuální (ochrana proti race condition)
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      if (runId === currentRunId) {
-        isRunning = false;
-        controller = null;
-      }
-    }
+    // "replaced" — execution was superseded by a newer call; treat as aborted.
+    throw new DOMException("Aborted", "AbortError");
   }
 
   return {
@@ -152,7 +156,7 @@ export function withAbortable<Args extends unknown[], TResult>(
       return controller?.signal ?? null;
     },
     get isRunning() {
-      return isRunning;
+      return runner.isRunning;
     },
   };
 }

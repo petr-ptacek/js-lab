@@ -43,15 +43,6 @@ export type AbortableFn<Args extends unknown[], R> = (
  */
 export type WithAbortableOptions = {
   /**
-   * If `true` (default), the previous execution is aborted before a new one starts.
-   *
-   * This enforces a single-active-execution model ("latest execution wins").
-   *
-   * If `false`, multiple executions may run concurrently.
-   */
-  autoAbort?: boolean;
-
-  /**
    * Optional timeout in milliseconds.
    *
    * If specified, the execution will be automatically aborted after

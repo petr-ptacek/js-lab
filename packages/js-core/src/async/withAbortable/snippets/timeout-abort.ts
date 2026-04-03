@@ -80,46 +80,6 @@ async function _manualAbortExample() {
   }
 }
 
-// Concurrent executions with autoAbort: false
-const concurrentTask = withAbortable(
-  async ({ signal }, taskId: number) => {
-    console.log(`Starting concurrent task ${taskId}...`);
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    if (signal.aborted) {
-      throw new DOMException(`Task ${taskId} was aborted`, "AbortError");
-    }
-
-    return `Task ${taskId} completed`;
-  },
-  { autoAbort: false }, // Allow concurrent executions
-);
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-async function _concurrentExample() {
-  console.log("\n=== Concurrent Example ===");
-
-  // Start multiple tasks concurrently
-  const promises = [
-    concurrentTask.execute(1),
-    concurrentTask.execute(2),
-    concurrentTask.execute(3),
-  ];
-
-  // Wait for all to complete
-  const results = await Promise.allSettled(promises);
-  results.forEach((result, index) => {
-    if (result.status === "fulfilled") {
-      console.log(`Result ${index + 1}:`, result.value);
-    } else {
-      console.log(`Task ${index + 1} failed:`, result.reason.message);
-    }
-  });
-}
-
 // Run examples
 // _timeoutExample();
 // _manualAbortExample();
-// _concurrentExample();

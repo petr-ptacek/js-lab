@@ -81,7 +81,7 @@ describe("withAbortable", () => {
   });
 
   describe("auto abort behavior", () => {
-    it("aborts previous execution when starting new one (default behavior)", async () => {
+    it("aborts previous execution when starting a new one", async () => {
       let firstSignal: AbortSignal | undefined;
       let secondSignal: AbortSignal | undefined;
 
@@ -110,34 +110,6 @@ describe("withAbortable", () => {
       expect(secondSignal?.aborted).toBe(false);
 
       await expect(firstPromise).rejects.toThrow("Aborted");
-      await expect(secondPromise).resolves.toBe("completed");
-    });
-
-    it("allows concurrent executions when autoAbort is false", async () => {
-      let firstSignal: AbortSignal | undefined;
-      let secondSignal: AbortSignal | undefined;
-
-      const mockFn = vi.fn().mockImplementation(({ signal }: { signal: AbortSignal }) => {
-        return new Promise<string>((resolve) => {
-          if (firstSignal === undefined) {
-            firstSignal = signal;
-          } else {
-            secondSignal = signal;
-          }
-
-          setTimeout(() => resolve("completed"), 50);
-        });
-      });
-
-      const abortable = withAbortable(mockFn, { autoAbort: false });
-
-      const firstPromise = abortable.execute();
-      const secondPromise = abortable.execute();
-
-      expect(firstSignal?.aborted).toBe(false);
-      expect(secondSignal?.aborted).toBe(false);
-
-      await expect(firstPromise).resolves.toBe("completed");
       await expect(secondPromise).resolves.toBe("completed");
     });
   });

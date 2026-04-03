@@ -2,4 +2,4 @@
 "@petr-ptacek/js-core": patch
 ---
 
-with-abortable: Fix race condition bug
+with-run-id: improve documentation

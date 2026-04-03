@@ -1,5 +1,11 @@
 # @petr-ptacek/js-core
 
+## 1.0.2
+
+### Patch Changes
+
+- Fix documentation deployment workflow
+
 ## 1.0.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @petr-ptacek/js-core
 
+## 1.0.1
+
+### Patch Changes
+
+- Add meta info to withRunId to generate DOCS
+
 ## 1.0.0
 
 ### Major Changes

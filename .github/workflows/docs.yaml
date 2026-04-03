@@ -1,8 +1,14 @@
 name: Deploy documentation
 
 on:
-  release:
-    types: [ published ]
+  push:
+    tags:
+      - '@petr-ptacek/js-core@*'
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -10,7 +16,6 @@ permissions:
   id-token: write
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
 
@@ -28,32 +33,38 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - name: Prepare site
+        run: mkdir -p site
+
       - name: Build root docs
         run: pnpm docs:build
 
-      - name: Move root docs
-        run: |
-          mkdir -p site
-          cp -r docs/.vitepress/dist/* site
+      - name: Copy root docs
+        run: cp -r docs/.vitepress/dist/* site
 
       - name: Build js-core docs
         run: pnpm docs:js-core
 
-      - name: Move js-core docs
+      - name: Copy js-core docs
         run: |
-          mkdir -p site/js-core
-          cp -r packages/js-core/docs/.vitepress/dist/* site/js-core
+          if [ -d "packages/js-core/docs/.vitepress/dist" ]; then
+            mkdir -p site/js-core
+            cp -r packages/js-core/docs/.vitepress/dist/* site/js-core
+          fi
 
-      #      - name: Build vue-core docs
-      #        run: pnpm --filter "@petr-ptacek/vue-core" run docs:build
-      #
-      #      - name: Move vue-core docs
-      #        run: cp -r packages/vue-core/docs/.vitepress/dist site/vue-core
+      - name: Validate site
+        run: |
+          if [ ! -f "site/index.html" ]; then
+            echo "Root docs missing"
+            exit 1
+          fi
 
       - name: Add SPA fallback
         run: |
           cp site/index.html site/404.html
-          cp site/js-core/index.html site/js-core/404.html
+          if [ -f "site/js-core/index.html" ]; then
+            cp site/js-core/index.html site/js-core/404.html
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -264,3 +264,41 @@ individual utilities:
 - package installation instructions
 - global library configuration
 - duplicated project documentation
+
+------------------------------------------------------------------------
+
+# `since` Tag — Versioning Rules
+
+Every new utility must declare the version in which it was introduced.
+This applies to both the TSDoc `@since` tag and the `meta.ts` `since` field.
+
+## Rule
+
+When creating a new utility:
+
+1. Check the current version in `packages/js-core/package.json`.
+2. Increment the **minor** version.
+3. Use the resulting version as the `since` value.
+
+Example: current version is `1.0.2` → new utility uses `since: "1.1.0"`.
+
+## Where to apply
+
+- `meta.ts` — `since` field
+- TSDoc in the implementation file — `@since` tag
+
+## Example
+
+```ts
+// meta.ts
+export const meta = {
+  since: "1.1.0",
+} satisfies Meta;
+
+// isAbortError.ts
+/**
+ * @since 1.1.0
+ */
+export function isAbortError(...) {}
+```
+

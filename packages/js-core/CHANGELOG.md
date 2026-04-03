@@ -1,5 +1,22 @@
 # @petr-ptacek/js-core
 
+## 1.0.0
+
+### Major Changes
+
+- Initial public release
+
+### Minor Changes
+
+- ab3e870: with-run-id: implementation
+- 350b394: Add isEmptyString utility.
+
+### Patch Changes
+
+- c139b7c: with-run-id: improve documentation
+- 589c241: with-abortable: Fix race condition bug
+- 3e5fff3: with-abortable: rename abort to cancel for consistency in API documentation
+
 ## 0.2.1
 
 ### Patch Changes

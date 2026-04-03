@@ -8,7 +8,7 @@ module.exports = {
     "type-enum": [
       2,
       "always",
-      ["feat", "fix", "refactor", "perf", "docs", "test", "chore", "build", "ci", "style"],
+      ["release", "feat", "fix", "refactor", "perf", "docs", "test", "chore", "build", "ci", "style"],
     ],
 
     /**

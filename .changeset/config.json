@@ -7,8 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": [
-    "@petr-ptacek/vue-core",
-    "@petr-ptacek/playground-nuxt"
-  ]
+  "ignore": ["@petr-ptacek/vue-core", "@petr-ptacek/playground-nuxt", "@petr-ptacek/vue-test-utils"]
 }

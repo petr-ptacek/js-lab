@@ -1,5 +1,12 @@
 # @petr-ptacek/js-core
 
+## 1.1.0
+
+### Minor Changes
+
+- add isAbortError utility
+- bc92a39: Simplify abortable execution handling
+
 ## 1.0.2
 
 ### Patch Changes

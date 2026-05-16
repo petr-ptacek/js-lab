@@ -1,6 +1,6 @@
 import type { Meta } from "../../_internal/meta";
 
-export const meta = {
+export const meta: Meta = {
   id: "isNullable",
   name: "isNullable",
   description: "Checks whether the given value is null or undefined.",
@@ -9,4 +9,4 @@ export const meta = {
   demo: false,
   snippets: false,
   since: "1.0.0",
-} satisfies Meta;
+};

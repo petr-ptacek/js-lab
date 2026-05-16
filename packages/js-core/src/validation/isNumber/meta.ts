@@ -1,6 +1,6 @@
 import type { Meta } from "../../_internal/meta";
 
-export const meta = {
+export const meta: Meta = {
   id: "isNumber",
   name: "isNumber",
   description: "Checks whether the given value is a number.",
@@ -9,4 +9,4 @@ export const meta = {
   demo: false,
   snippets: false,
   since: "1.0.0",
-} satisfies Meta;
+};

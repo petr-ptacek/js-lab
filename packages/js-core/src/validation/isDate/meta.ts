@@ -1,6 +1,6 @@
 import type { Meta } from "../../_internal/meta";
 
-export const meta = {
+export const meta: Meta = {
   id: "isDate",
   name: "isDate",
   description: "Checks whether the given value is a Date instance.",
@@ -9,4 +9,4 @@ export const meta = {
   demo: false,
   snippets: false,
   since: "1.0.0",
-} satisfies Meta;
+};

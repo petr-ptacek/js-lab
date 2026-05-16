@@ -1,6 +1,6 @@
 import type { Meta } from "../../_internal/meta";
 
-export const meta = {
+export const meta: Meta = {
   id: "shrinkImageFile",
   name: "shrinkImageFile",
   description:
@@ -10,4 +10,4 @@ export const meta = {
   demo: false,
   snippets: true,
   since: "1.0.0",
-} satisfies Meta;
+};

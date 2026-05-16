@@ -1,6 +1,6 @@
 import type { Meta } from "../../_internal/meta";
 
-export const meta = {
+export const meta: Meta = {
   id: "getRandomNumber",
   name: "getRandomNumber",
   description: "Returns a random integer within the given inclusive range.",
@@ -9,4 +9,4 @@ export const meta = {
   demo: false,
   snippets: true,
   since: "1.0.0",
-} satisfies Meta;
+};

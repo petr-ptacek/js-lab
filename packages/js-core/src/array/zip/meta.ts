@@ -1,6 +1,6 @@
 import type { Meta } from "../../_internal/meta";
 
-export const meta = {
+export const meta: Meta = {
   id: "zip",
   name: "zip",
   description: "Combines two arrays element-wise into pairs or applies a mapping function to each pair.",
@@ -9,4 +9,4 @@ export const meta = {
   demo: false,
   snippets: true,
   since: "1.0.0",
-} satisfies Meta;
+};

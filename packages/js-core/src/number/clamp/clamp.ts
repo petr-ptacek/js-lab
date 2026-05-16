@@ -19,7 +19,7 @@
  * clamp(-5, 0, 10); // 0
  * clamp(20, 0, 10); // 10
  */
-export function clamp(value: number, min: number, max: number) {
+export function clamp(value: number, min: number, max: number): number {
   if (min > max) {
     throw new Error("clamp: min must be <= max");
   }

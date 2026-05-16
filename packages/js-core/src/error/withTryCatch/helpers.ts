@@ -45,7 +45,7 @@ export function resolveFailureResult<TResult, TError = unknown>(
 export function invokeCallbacks<TResult, TError = unknown>(
   result: TryCatchResult<TResult, TError>,
   options: WithTryCatchOptions<TResult, TError>
-) {
+): void {
   if (result.ok) {
     options.onSuccess?.(result.data);
   } else {

@@ -1,6 +1,6 @@
 import type { Meta } from "../../_internal/meta";
 
-export const meta = {
+export const meta: Meta = {
   id: "withTryCatchSync",
   name: "withTryCatchSync",
   description: "Executes a synchronous function and returns its outcome as a discriminated union.",
@@ -9,4 +9,4 @@ export const meta = {
   demo: false,
   snippets: true,
   since: "1.0.0",
-} satisfies Meta;
+};

@@ -1,6 +1,6 @@
 import type { Meta } from "../../_internal/meta";
 
-export const meta = {
+export const meta: Meta = {
   id: "withRunId",
   name: "withRunId",
   description: "Wraps a function with controlled execution semantics based on a configurable concurrency strategy.",
@@ -9,4 +9,4 @@ export const meta = {
   demo: false,
   snippets: true,
   since: "1.0.0",
-} satisfies Meta;
+};

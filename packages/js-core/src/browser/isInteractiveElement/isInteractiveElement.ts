@@ -10,14 +10,14 @@ import type { InteractiveElementOptions, Selector } from "./types";
  *
  * @since 1.0.0
  */
-export const DEFAULT_INTERACTIVE_SELECTORS = [
+export const DEFAULT_INTERACTIVE_SELECTORS: readonly Selector[] = [
   "button",
   "a",
   "input",
   "textarea",
   "select",
   "[contenteditable='true']",
-] as const satisfies readonly Selector[];
+] as const;
 
 /**
  * Determines whether the given element is interactive or is contained

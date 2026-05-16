@@ -4,16 +4,22 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prebuild": "pnpm clear",
+    "dev": "vite",
+    "prebuild": "pnpm clean",
     "build": "vite build",
     "build:types": "tsc -b ./tsconfig.types.json",
-    "type:check": "vue-tsc -b ./tsconfig.app.json",
-    "type:watch": "vue-tsc -b ./tsconfig.app.json --watch",
+    "typecheck": "vue-tsc -b ./tsconfig.app.json",
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "clear": "rimraf ./dist ./node_modules/.tmp",
-    "dev": "vite"
+    "coverage:ui": "vitest --ui --coverage",
+    "clean": "rimraf ./dist ./node_modules/.tmp",
+    "docs:dev": "echo 'docs not yet configured'",
+    "docs:build": "echo 'docs not yet configured'",
+    "docs:preview": "echo 'docs not yet configured'",
+    "release:check": "echo 'not publish ready'",
+    "release:dry": "echo 'not publish ready'",
+    "prepublishOnly": "echo 'not publish ready'"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 import type { Meta } from "../../_internal/meta";
 
-export const meta = {
+export const meta: Meta = {
   id: "has",
   name: "has",
   description:
@@ -9,5 +9,5 @@ export const meta = {
   tags: ["object", "nested", "path", "existence", "typed", "dot-notation"],
   demo: false,
   snippets: true,
-  since: "1.0.0",
-} satisfies Meta;
+  since: "1.2.0",
+};

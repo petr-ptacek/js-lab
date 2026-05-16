@@ -42,7 +42,7 @@ import type { Path } from "../get/types";
  * // → false  (key does not exist)
  * ```
  *
- * @since 1.0.0
+ * @since 1.2.0
  */
 export function has<T extends object, P extends Path<T>>(obj: T, path: P): boolean {
   const keys = (path as string).split(".");

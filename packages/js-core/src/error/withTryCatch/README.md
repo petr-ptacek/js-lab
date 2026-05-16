@@ -5,17 +5,17 @@ Executes a function and returns its outcome as a discriminated union.
 ## Usage
 
 ```ts
-import { withTryCatch } from "@petr-ptacek/js-core"
+import { withTryCatch } from "@petr-ptacek/js-core";
 
 const result = await withTryCatch(async () => {
-  const response = await fetch("/api/data")
-  return response.json()
-})
+  const response = await fetch("/api/data");
+  return response.json();
+});
 
 if (result.ok) {
-  console.log(result.data)
+  console.log(result.data);
 } else {
-  console.error(result.error)
+  console.error(result.error);
 }
 ```
 
@@ -29,18 +29,12 @@ Error handling in JavaScript requires consistent try-catch patterns that can bec
 function withTryCatch<TResult, TError = unknown>(
   fn: () => Promise<TResult> | TResult,
   options: WithTryCatchOptions<TResult, TError> & { fallback: ValueOrFactory<TResult, [TError]> }
-): Promise<
-  | TryCatchResultSuccess<TResult>
-  | TryCatchResultFailureWithData<TResult, TError>
->
+): Promise<TryCatchResultSuccess<TResult> | TryCatchResultFailureWithData<TResult, TError>>;
 
 function withTryCatch<TResult, TError = unknown>(
   fn: () => Promise<TResult> | TResult,
   options?: WithTryCatchOptions<TResult, TError>
-): Promise<
-  | TryCatchResultSuccess<TResult>
-  | TryCatchResultFailureNoData<TError>
->
+): Promise<TryCatchResultSuccess<TResult> | TryCatchResultFailureNoData<TError>>;
 ```
 
 ## Parameters
@@ -70,32 +64,32 @@ type WithTryCatchOptions<TResult, TError = unknown> = {
   onFinally?: () => void;
   fallback?: ValueOrFactory<TResult, [TError]>;
   mapError?: (e: unknown) => TError;
-}
+};
 
 type TryCatchResult<TResult, TError = unknown> =
   | TryCatchResultSuccess<TResult>
-  | TryCatchResultFailure<TResult, TError>
+  | TryCatchResultFailure<TResult, TError>;
 
 type TryCatchResultSuccess<TResult> = {
   ok: true;
   data: TResult;
-}
+};
 
 type TryCatchResultFailure<TResult, TError = unknown> =
   | TryCatchResultFailureWithData<TResult, TError>
-  | TryCatchResultFailureNoData<TError>
+  | TryCatchResultFailureNoData<TError>;
 
 type TryCatchResultFailureNoData<TError = unknown> = {
   ok: false;
   error: TError;
   data?: never;
-}
+};
 
 type TryCatchResultFailureWithData<TResult, TError = unknown> = {
   ok: false;
   error: TError;
   data: TResult;
-}
+};
 ```
 
 ## Design Notes

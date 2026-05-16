@@ -92,10 +92,7 @@ export type Slots = {
     isCollapsed: boolean;
     isExpanded: boolean;
   }) => void;
-  grip: (props: {
-    onPointerDown: UsePointerDragReturn["onPointerDown"];
-    ui: CSSClassValue;
-  }) => void;
+  grip: (props: { onPointerDown: UsePointerDragReturn["onPointerDown"]; ui: CSSClassValue }) => void;
 };
 
 export type Emits = (e: "update:modelValue", payload: ModelValue) => void;

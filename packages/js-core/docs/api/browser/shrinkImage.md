@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** browser
 > **Since:** 1.0.0
 > **Tags:** image, compression, canvas, blob, resize, optimization
-
 
 # shrinkImage
 
@@ -24,7 +22,7 @@ Shrinks an image by limiting its maximum dimensions and optionally reducing outp
 ## Usage
 
 ```ts
-import { shrinkImage } from "@petr-ptacek/js-core"
+import { shrinkImage } from "@petr-ptacek/js-core";
 
 const img = document.querySelector("img")!;
 
@@ -44,10 +42,7 @@ utility handles canvas rendering, blob creation, and error handling in a single 
 ## Signature
 
 ```typescript
-function shrinkImage(
-  image: HTMLImageElement,
-  options?: ShrinkImageOptions,
-): Promise<Blob>
+function shrinkImage(image: HTMLImageElement, options?: ShrinkImageOptions): Promise<Blob>;
 ```
 
 ## Parameters
@@ -74,7 +69,7 @@ type ShrinkImageOptions = {
   maxHeight?: number;
   quality?: number;
   mimeType?: string;
-}
+};
 ```
 
 ## Throws / Errors
@@ -127,8 +122,6 @@ Avoid when:
 preserving aspect ratio and allows optional quality control. The result is a `Blob` ready for upload or further
 processing.
 
-
-
 ## Snippets
 
 ### basic.ts
@@ -164,8 +157,6 @@ imageInput.addEventListener("change", async (event) => {
   // Load image from file
   img.src = URL.createObjectURL(file);
 });
-
-
 ```
 
 ### form-upload.ts
@@ -182,7 +173,7 @@ async function submitFormWithOptimizedImage(
   formElement: HTMLFormElement,
   imageElement: HTMLImageElement,
   maxWidth: number,
-  maxHeight: number,
+  maxHeight: number
 ): Promise<void> {
   try {
     // Optimize the image
@@ -218,8 +209,6 @@ async function submitFormWithOptimizedImage(
 // const form = document.querySelector("form")!;
 // const img = document.querySelector("img")!;
 // await submitFormWithOptimizedImage(form, img, 1600, 1600);
-
-
 ```
 
 ### multiple-formats.ts
@@ -278,10 +267,4 @@ async function optimizeWithFormats(imageElement: HTMLImageElement) {
 
   return { thumbnail, display, archive };
 }
-
-
 ```
-
-
-
-

@@ -5,21 +5,21 @@ Checks whether the given value is an array.
 ## Usage
 
 ```ts
-import { isArray } from "@petr-ptacek/js-core"
+import { isArray } from "@petr-ptacek/js-core";
 
 // Basic type checking
-console.log(isArray([1, 2, 3])) // true
-console.log(isArray("text"))    // false
-console.log(isArray({}))        // false
-console.log(isArray(null))      // false
+console.log(isArray([1, 2, 3])); // true
+console.log(isArray("text")); // false
+console.log(isArray({})); // false
+console.log(isArray(null)); // false
 
 // Type guard usage
-const value: unknown = ["a", "b", "c"]
+const value: unknown = ["a", "b", "c"];
 
 if (isArray<string>(value)) {
   // value is now typed as string[]
-  const uppercased = value.map(v => v.toUpperCase())
-  console.log(uppercased) // ["A", "B", "C"]
+  const uppercased = value.map((v) => v.toUpperCase());
+  console.log(uppercased); // ["A", "B", "C"]
 }
 ```
 
@@ -30,7 +30,7 @@ While JavaScript provides `Array.isArray()`, this utility adds TypeScript type g
 ## Signature
 
 ```ts
-function isArray<T = unknown>(value: unknown): value is T[]
+function isArray<T = unknown>(value: unknown): value is T[];
 ```
 
 ## Parameters

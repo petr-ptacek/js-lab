@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** type
 > **Since:** 1.0.0
 > **Tags:** type, null, union, nullable, optional
-
 
 # MaybeNull
 
@@ -23,14 +21,14 @@ Represents a value that may be `null`.
 ## Usage
 
 ```ts
-import type { MaybeNull } from "@petr-ptacek/js-core"
+import type { MaybeNull } from "@petr-ptacek/js-core";
 
 function getUserName(): MaybeNull<string> {
-  const user = getCurrentUser()
-  return user ? user.name : null
+  const user = getCurrentUser();
+  return user ? user.name : null;
 }
 
-const name: MaybeNull<string> = getUserName()
+const name: MaybeNull<string> = getUserName();
 // Type: string | null
 ```
 
@@ -41,7 +39,7 @@ In JavaScript/TypeScript, values can often be `null` when they represent the int
 ## Type Declaration
 
 ```ts
-type MaybeNull<T> = T | null
+type MaybeNull<T> = T | null;
 ```
 
 ## Type Parameters
@@ -98,6 +96,7 @@ Avoid when:
 ## Design Notes
 
 This type follows the semantic distinction where:
+
 - `null` represents intentional absence of a value
 - `undefined` represents uninitialized or missing properties
 - `MaybeNull<T>` specifically handles the `null` case
@@ -107,8 +106,3 @@ The type is a simple union that preserves all properties of the base type `T` wh
 ## Summary
 
 `MaybeNull<T>` provides semantic clarity for values that can be intentionally absent, represented by `null`, making nullable types explicit and improving type safety in scenarios where `null` is used to indicate missing or unavailable data.
-
-
-
-
-

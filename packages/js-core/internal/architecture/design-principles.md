@@ -13,7 +13,7 @@ These principles help maintain:
 - predictable behavior
 - high code quality
 
-------------------------------------------------------------------------
+---
 
 # Purpose of js-core
 
@@ -29,7 +29,7 @@ The library focuses on:
 
 The goal is **not to become a large general-purpose utility framework**.
 
-------------------------------------------------------------------------
+---
 
 # Core Philosophy
 
@@ -49,7 +49,7 @@ Bad example:
 
     processDataAndHandleErrors()
 
-------------------------------------------------------------------------
+---
 
 ## Prefer Platform APIs
 
@@ -57,8 +57,8 @@ Whenever possible, rely on **native JavaScript or Web APIs**.
 
 Example:
 
-``` ts
-crypto.randomUUID()
+```ts
+crypto.randomUUID();
 ```
 
 instead of introducing external dependencies.
@@ -66,7 +66,7 @@ instead of introducing external dependencies.
 External libraries should only be used if they provide **significant
 value**.
 
-------------------------------------------------------------------------
+---
 
 ## Zero or Minimal Dependencies
 
@@ -80,7 +80,7 @@ Reasons:
 
 If a dependency is required, it must provide clear benefits.
 
-------------------------------------------------------------------------
+---
 
 ## Predictable Behavior
 
@@ -98,7 +98,7 @@ Example:
 
 rather than throwing unexpected errors.
 
-------------------------------------------------------------------------
+---
 
 ## TypeScript First
 
@@ -115,7 +115,7 @@ When applicable, prefer **type guards**:
 
     isDefined(value): value is NonNullable<T>
 
-------------------------------------------------------------------------
+---
 
 ## Composability
 
@@ -130,7 +130,7 @@ Example:
 Composable primitives allow building more complex behaviors without
 increasing library complexity.
 
-------------------------------------------------------------------------
+---
 
 # API Design Guidelines
 
@@ -142,7 +142,7 @@ Naming must follow the rules defined in:
 
 Function names must clearly describe behavior.
 
-------------------------------------------------------------------------
+---
 
 ## Avoid Over-engineering
 
@@ -168,7 +168,7 @@ Bad:
       allowComments: false
     })
 
-------------------------------------------------------------------------
+---
 
 ## Stable Public API
 
@@ -178,7 +178,7 @@ Avoid breaking changes whenever possible.
 
 If changes are necessary, follow semantic versioning.
 
-------------------------------------------------------------------------
+---
 
 # When to Add a New Utility
 
@@ -190,7 +190,7 @@ A new utility should be added if:
 - it improves developer experience
 - it fits the design principles of the library
 
-------------------------------------------------------------------------
+---
 
 # When NOT to Add a Utility
 
@@ -209,7 +209,7 @@ Example utilities that do **not belong** in `js-core`:
 
 Those should belong to other packages such as `vue-core`.
 
-------------------------------------------------------------------------
+---
 
 # Relationship to Other Packages
 
@@ -221,7 +221,7 @@ Framework-specific utilities belong in separate packages such as:
 
 This separation keeps the core library portable and reusable.
 
-------------------------------------------------------------------------
+---
 
 # Long-Term Goals
 

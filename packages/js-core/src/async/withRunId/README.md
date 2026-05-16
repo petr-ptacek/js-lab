@@ -5,20 +5,20 @@ Wraps a function with controlled execution semantics based on a configurable con
 ## Usage
 
 ```ts
-import { withRunId } from "@petr-ptacek/js-core"
+import { withRunId } from "@petr-ptacek/js-core";
 
 const fetchUser = withRunId(
   async (_ctx, id: string) => {
-    const res = await fetch(`/api/users/${id}`)
-    return res.json()
+    const res = await fetch(`/api/users/${id}`);
+    return res.json();
   },
   { strategy: "replace" }
-)
+);
 
-const result = await fetchUser.execute("123")
+const result = await fetchUser.execute("123");
 
 if (result.status === "success") {
-  console.log(result.result)
+  console.log(result.result);
 }
 ```
 
@@ -35,9 +35,9 @@ determines what happens to concurrent calls: ignore them, queue them, or replace
 
 Imagine you press a button many times:
 
-* Should it ignore extra clicks?
-* Should it remember them and run later?
-* Or should it stop the old work and only care about the newest click?
+- Should it ignore extra clicks?
+- Should it remember them and run later?
+- Or should it stop the old work and only care about the newest click?
 
 That is exactly what the strategies solve.
 
@@ -47,7 +47,7 @@ That is exactly what the strategies solve.
 function withRunId<TArgs extends unknown[], TResult>(
   fn: (ctx: WithRunIdContext, ...args: TArgs) => MaybePromise<TResult>,
   options?: WithRunIdOptions
-): WithRunIdReturn<TArgs, TResult>
+): WithRunIdReturn<TArgs, TResult>;
 ```
 
 ## Parameters
@@ -78,7 +78,7 @@ Returns a `WithRunIdReturn<TArgs, TResult>` controller object:
 ## Type Declarations
 
 ```ts
-type WithRunIdStrategy = "drop" | "queue" | "replace"
+type WithRunIdStrategy = "drop" | "queue" | "replace";
 
 interface WithRunIdOptions {
   strategy?: WithRunIdStrategy;
@@ -95,7 +95,7 @@ type WithRunIdResult<TResult> =
   | { status: "skipped" }
   | { status: "replaced" }
   | { status: "canceled" }
-  | { status: "error"; error: unknown }
+  | { status: "error"; error: unknown };
 
 interface WithRunIdReturn<TArgs extends unknown[], TResult> {
   execute: (...args: TArgs) => Promise<WithRunIdResult<TResult>>;
@@ -111,57 +111,57 @@ interface WithRunIdReturn<TArgs extends unknown[], TResult> {
 
 ### `"drop"`
 
-👉 *“Ignore new calls if something is already running.”*
+👉 _“Ignore new calls if something is already running.”_
 
-* First call → runs
-* Next calls → ignored
+- First call → runs
+- Next calls → ignored
 
 Use this when:
 
-* You want to prevent spam (e.g. button clicks)
-* Only one execution matters
+- You want to prevent spam (e.g. button clicks)
+- Only one execution matters
 
 ---
 
 ### `"queue"`
 
-👉 *“Wait your turn.”*
+👉 _“Wait your turn.”_
 
-* First call → runs
-* Next calls → wait in line
-* Everything runs one by one
+- First call → runs
+- Next calls → wait in line
+- Everything runs one by one
 
 Use this when:
 
-* Order matters
-* Nothing should be lost
+- Order matters
+- Nothing should be lost
 
 ---
 
 ### `"replace"`
 
-👉 *“Only the latest call matters.”*
+👉 _“Only the latest call matters.”_
 
-* First call → starts
-* New call → replaces it
-* Old result is ignored
+- First call → starts
+- New call → replaces it
+- Old result is ignored
 
 ⚠️ Important:
 
-* Old function is **not stopped**
-* Its result is just **ignored**
+- Old function is **not stopped**
+- Its result is just **ignored**
 
 Use this when:
 
-* You only care about the latest result (e.g. search input)
+- You only care about the latest result (e.g. search input)
 
 ### Comparison
 
 | Strategy | What happens with new calls? | Order guaranteed | Old result used? | Typical use case      |
-|----------|------------------------------|------------------|------------------|-----------------------|
-| drop     | Ignored                      | ❌                | ✔                | Prevent spam clicks   |
+| -------- | ---------------------------- | ---------------- | ---------------- | --------------------- |
+| drop     | Ignored                      | ❌               | ✔                | Prevent spam clicks   |
 | queue    | Added to queue               | ✔                | ✔                | Sequential operations |
-| replace  | Replaces current             | ❌                | ❌ (ignored)      | Search / latest wins  |
+| replace  | Replaces current             | ❌               | ❌ (ignored)     | Search / latest wins  |
 
 ## Stale result protection
 
@@ -171,8 +171,8 @@ This prevents outdated responses from overwriting newer data.
 
 ## Cancellation semantics
 
-Calling `cancel()` clears the active run and resolves all pending queued calls with `{ status: "canceled" }`. It does *
-*not** cancel the underlying async operation — it only discards its result. For actual cancellation, combine with
+Calling `cancel()` clears the active run and resolves all pending queued calls with `{ status: "canceled" }`. It does \*
+\*not\*\* cancel the underlying async operation — it only discards its result. For actual cancellation, combine with
 `AbortSignal` passed to the wrapped function.
 
 ## Error handling

@@ -9,10 +9,13 @@
 ## Naming
 
 ### Functions:
+
 camelCase
 
 ### Types:
+
 PascalCase
 
 ### Constants:
+
 UPPER_CASE

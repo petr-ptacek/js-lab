@@ -1,16 +1,7 @@
-import {
-  type MaybeComputedElementRef,
-  useElementSize,
-  useResizeObserver,
-  watchDebounced,
-} from "@vueuse/core";
+import { type MaybeComputedElementRef, useElementSize, useResizeObserver, watchDebounced } from "@vueuse/core";
 import { computed, readonly, shallowRef, toValue } from "vue";
 
-import type {
-  OverflowDirection,
-  UseElementOverflowOptions,
-  UseElementOverflowReturn,
-} from "./types";
+import type { OverflowDirection, UseElementOverflowOptions, UseElementOverflowReturn } from "./types";
 
 /**
  * Reactive utility for detecting element overflow.
@@ -60,7 +51,7 @@ import type {
  */
 export function useElementOverflow(
   target: MaybeComputedElementRef<HTMLElement | null>,
-  options: UseElementOverflowOptions = {},
+  options: UseElementOverflowOptions = {}
 ): UseElementOverflowReturn {
   const disabled = computed(() => toValue(options.disabled) ?? false);
   const observeContent = computed(() => toValue(options.observeContent) ?? true);

@@ -5,20 +5,20 @@ Checks whether the given value is a JavaScript primitive.
 ## Usage
 
 ```ts
-import { isPrimitive } from "@petr-ptacek/js-core"
+import { isPrimitive } from "@petr-ptacek/js-core";
 
 // Type checking
-console.log(isPrimitive("text"));     // true
-console.log(isPrimitive(42));         // true
-console.log(isPrimitive(true));       // true
-console.log(isPrimitive(null));       // true
-console.log(isPrimitive(undefined));  // true
+console.log(isPrimitive("text")); // true
+console.log(isPrimitive(42)); // true
+console.log(isPrimitive(true)); // true
+console.log(isPrimitive(null)); // true
+console.log(isPrimitive(undefined)); // true
 console.log(isPrimitive(Symbol("id"))); // true
-console.log(isPrimitive(100n));       // true
+console.log(isPrimitive(100n)); // true
 
-console.log(isPrimitive({}));         // false
-console.log(isPrimitive([]));         // false
-console.log(isPrimitive(() => {}));   // false
+console.log(isPrimitive({})); // false
+console.log(isPrimitive([])); // false
+console.log(isPrimitive(() => {})); // false
 
 // Type guard usage
 const value: unknown = "hello";
@@ -35,7 +35,7 @@ Checking whether a value is a primitive is a fundamental operation in JavaScript
 ## Signature
 
 ```typescript
-function isPrimitive(value: unknown): value is PrimitiveValue
+function isPrimitive(value: unknown): value is PrimitiveValue;
 ```
 
 ## Parameters
@@ -49,7 +49,7 @@ Returns a boolean indicating whether the value is a primitive. When `true`, Type
 ## Type Declarations
 
 ```typescript
-type PrimitiveValue = string | number | boolean | symbol | bigint | null | undefined
+type PrimitiveValue = string | number | boolean | symbol | bigint | null | undefined;
 ```
 
 ## Design Notes
@@ -87,4 +87,3 @@ Avoid when:
 ## Summary
 
 `isPrimitive` provides a convenient type guard for checking whether a value is any of the seven JavaScript primitive types, making it ideal for validation and type narrowing scenarios where primitive vs. complex type distinction is important.
-

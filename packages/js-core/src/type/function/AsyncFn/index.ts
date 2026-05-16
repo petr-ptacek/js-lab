@@ -17,6 +17,4 @@
  *
  * @since 1.0.0
  */
-export type AsyncFn<TArgs extends unknown[] = unknown[], TResult = unknown> = (
-  ...args: TArgs
-) => Promise<TResult>;
+export type AsyncFn<TArgs extends unknown[] = unknown[], TResult = unknown> = (...args: TArgs) => Promise<TResult>;

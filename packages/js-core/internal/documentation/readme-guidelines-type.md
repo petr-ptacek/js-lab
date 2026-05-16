@@ -13,7 +13,7 @@ Example structure:
 **Note: Types do NOT include snippets folders** - examples should be integrated directly into the README sections. The
 Examples must be short and focused on demonstrating the type usage in practical scenarios.
 
-------------------------------------------------------------------------
+---
 
 ## 1. Title
 
@@ -23,7 +23,7 @@ Example:
 
 # MaybeNull
 
-------------------------------------------------------------------------
+---
 
 ## 2. Short Description
 
@@ -33,25 +33,25 @@ Example:
 
 Represents a value that may be `null`.
 
-------------------------------------------------------------------------
+---
 
 ## 3. Usage
 
 Basic usage example showing how to use the type in practice.
 
-``` ts
-import type { MaybeNull } from "@petr-ptacek/js-core"
+```ts
+import type { MaybeNull } from "@petr-ptacek/js-core";
 
 function getUserName(): MaybeNull<string> {
-  const user = getCurrentUser()
-  return user ? user.name : null
+  const user = getCurrentUser();
+  return user ? user.name : null;
 }
 
-const name: MaybeNull<string> = getUserName()
+const name: MaybeNull<string> = getUserName();
 // Type: string | null
 ```
 
-------------------------------------------------------------------------
+---
 
 ## 4. Why This Type Exists
 
@@ -62,17 +62,17 @@ Example:
 In JavaScript/TypeScript, values can often be `null` when they represent the intentional absence of a value.
 `MaybeNull<T>` provides a clear, semantic way to express that a value might be either of type `T` or `null`.
 
-------------------------------------------------------------------------
+---
 
 ## 5. Type Declaration
 
 Document the actual TypeScript type definition.
 
-``` ts
-type MaybeNull<T> = T | null
+```ts
+type MaybeNull<T> = T | null;
 ```
 
-------------------------------------------------------------------------
+---
 
 ## 6. Type Parameters (if applicable)
 
@@ -83,7 +83,7 @@ Example:
 - `<T>`: The base type that may also be `null`.
 - `<K extends keyof T>`: The key type used for property access.
 
-------------------------------------------------------------------------
+---
 
 ## 7. When To Use
 
@@ -97,7 +97,7 @@ Use `MaybeNull<T>` when:
 - working with APIs that return `null` for missing values
 - you need to distinguish between "no value" (`null`) and "uninitialized" (`undefined`)
 
-------------------------------------------------------------------------
+---
 
 ## 8. When Not To Use
 
@@ -111,7 +111,7 @@ Avoid when:
 - you need both `null` and `undefined` (use `MaybeNullable<T>`)
 - the value should never be nullable (use `T` directly)
 
-------------------------------------------------------------------------
+---
 
 ## 9. Design Notes
 
@@ -124,7 +124,7 @@ This type follows the semantic distinction where:
 - `null` represents intentional absence of a value
 - `undefined` represents uninitialized or missing properties
 
-------------------------------------------------------------------------
+---
 
 ## 10. Summary
 
@@ -135,7 +135,7 @@ Example:
 `MaybeNull<T>` provides semantic clarity for values that can be intentionally absent, making nullable types explicit and
 improving type safety.
 
-------------------------------------------------------------------------
+---
 
 # Type-Specific Guidelines
 
@@ -162,7 +162,7 @@ folders. Include:
 - Subfolder for each type with full structure
 - Individual README files for each type
 
-------------------------------------------------------------------------
+---
 
 # Standard Section Order
 
@@ -179,7 +179,7 @@ Every type README should follow this order:
 9. Design Notes
 10. Summary
 
-------------------------------------------------------------------------
+---
 
 # What Should NOT Be in Type READMEs
 
@@ -188,7 +188,7 @@ Every type README should follow this order:
 - Implementation details of type checking
 - Package installation instructions (belongs in library root)
 
-------------------------------------------------------------------------
+---
 
 # File Structure Rules
 
@@ -208,7 +208,7 @@ Every type README should follow this order:
 
 Types should have rich inline documentation in `index.ts`:
 
-```ts
+````ts
 /**
  * Represents a value that may be `null`.
  *
@@ -221,8 +221,7 @@ Types should have rich inline documentation in `index.ts`:
 *
 * @since 1.0.0
   */
-  export type MaybeNull<T> = T | null;
-
-```
+export type MaybeNull<T> = T | null;
+````
 
 This serves as the primary documentation source for IDE integration while README provides comprehensive usage guidance.

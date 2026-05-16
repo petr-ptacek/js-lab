@@ -15,7 +15,7 @@ The goal of this structure is to ensure:
 Each utility must live in its **own directory**, representing a
 self-contained module.
 
-------------------------------------------------------------------------
+---
 
 # Module Directory Layout
 
@@ -42,7 +42,7 @@ Canonical structure:
 
 Not all files are mandatory. Minimal modules may contain fewer files.
 
-------------------------------------------------------------------------
+---
 
 # File Responsibilities
 
@@ -70,7 +70,7 @@ Benefits:
 - clear separation between internal and public code
 - predictable import structure
 
-------------------------------------------------------------------------
+---
 
 ## `<feature>`.ts
 
@@ -91,7 +91,7 @@ Rules:
 - may use helpers from `utils.ts` or `helpers.ts`
 - should not contain unrelated logic
 
-------------------------------------------------------------------------
+---
 
 ## types.ts
 
@@ -105,7 +105,7 @@ This file may include:
 Example:
 
 ```ts
-export type UUID = string
+export type UUID = string;
 ```
 
 If the number of types grows significantly:
@@ -118,7 +118,7 @@ If the number of types grows significantly:
 For most utilities, a single `types.ts` file is preferred, but if the module has many types, a `types/` directory can be
 used to organize them.
 
-------------------------------------------------------------------------
+---
 
 ## utils.ts
 
@@ -136,7 +136,7 @@ Example:
 
 ```ts
 export function ensureHex(value: string): string {
-  return value.toLowerCase()
+  return value.toLowerCase();
 }
 ```
 
@@ -145,7 +145,7 @@ Rules:
 - avoid exporting helpers publicly
 - keep helpers small and focused
 
-------------------------------------------------------------------------
+---
 
 ## meta.ts
 
@@ -175,9 +175,9 @@ Rules:
 - metadata is used only by tooling
 - metadata should remain small and stable
 
-------------------------------------------------------------------------
+---
 
-## __tests__/
+## **tests**/
 
 Contains **Vitest test files** for the module.
 
@@ -193,12 +193,12 @@ Benefits:
 - tests are never included in production bundles
 - if the number of tests grows significantly, another files can be added to the `__tests__/` directory, for example:
 
-  __tests__/
+  **tests**/
   createUUIDV4.test.ts
   edgeCases.test.ts
   performance.test.ts
 
-------------------------------------------------------------------------
+---
 
 ## README.md
 
@@ -213,7 +213,7 @@ README is preferred over `index.md` because:
 
 `README` files can also be consumed by **VitePress** when generating documentation pages.
 
-------------------------------------------------------------------------
+---
 
 ## demo/
 
@@ -232,7 +232,7 @@ Rules:
 - demo files are not part of the public API
 - demo files exist only for documentation purposes
 
-------------------------------------------------------------------------
+---
 
 ## snippets/
 
@@ -252,7 +252,7 @@ Rules:
 - snippets are used only for documentation
 - snippets are not part of the public API
 
-------------------------------------------------------------------------
+---
 
 # Minimal Module Variant
 
@@ -267,7 +267,7 @@ For simple utilities, a reduced structure is acceptable:
 
 Additional files should only be introduced when they provide clear value.
 
-------------------------------------------------------------------------
+---
 
 # Root Export Structure
 
@@ -277,13 +277,13 @@ Example:
 
     src/index.ts
 
-export * from './createUUIDV4'
-export * from './parseJSONSafe'
-export * from './withTryCatch'
+export _ from './createUUIDV4'
+export _ from './parseJSONSafe'
+export \* from './withTryCatch'
 
 This allows consumers to import utilities from a single entry point.
 
-------------------------------------------------------------------------
+---
 
 # Special Case: Type Utilities
 
@@ -306,7 +306,7 @@ These files export reusable types such as:
     Dictionary<K, V>
     Primitive
 
-------------------------------------------------------------------------
+---
 
 # Design Principles
 
@@ -332,7 +332,7 @@ Each module contains its own documentation.
 
 The pattern works equally well for small and large utilities.
 
-------------------------------------------------------------------------
+---
 
 # Naming Conventions
 
@@ -342,7 +342,7 @@ Recommended file:
 
     docs/architecture/naming-conventions.md
 
-------------------------------------------------------------------------
+---
 
 # Summary
 

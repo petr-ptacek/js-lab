@@ -5,7 +5,7 @@ Loads an image from a given source URL with optional configuration.
 ## Usage
 
 ```ts
-import { loadImage } from "@petr-ptacek/js-core"
+import { loadImage } from "@petr-ptacek/js-core";
 
 const image = await loadImage("/image.png");
 document.body.appendChild(image);
@@ -18,7 +18,7 @@ Loading images dynamically is a common task in web applications. While the nativ
 ## Signature
 
 ```typescript
-function loadImage(src: string, options?: LoadImageOptions): Promise<HTMLImageElement>
+function loadImage(src: string, options?: LoadImageOptions): Promise<HTMLImageElement>;
 ```
 
 ## Parameters
@@ -38,7 +38,7 @@ Returns a promise that resolves with the loaded `HTMLImageElement` or rejects wi
 type LoadImageOptions = {
   crossOrigin?: HTMLImageElement["crossOrigin"];
   decoding?: HTMLImageElement["decoding"];
-}
+};
 ```
 
 ## Throws / Errors
@@ -73,4 +73,3 @@ Avoid when:
 ## Summary
 
 `loadImage` provides a simple, promise-based API for dynamically loading images with optional cross-origin and decoding configuration. It abstracts away the boilerplate of manual image element creation and event handling.
-

@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** number
 > **Since:** 1.0.0
 > **Tags:** aspect-ratio, dimensions, ratio, calculation, image
-
 
 # getAspectRatio
 
@@ -23,16 +21,16 @@ Computes the aspect ratio from given dimensions.
 ## Usage
 
 ```ts
-import { getAspectRatio } from "@petr-ptacek/js-core"
+import { getAspectRatio } from "@petr-ptacek/js-core";
 
-const aspectRatio = getAspectRatio(1920, 1080)
-console.log(aspectRatio) // 1.7777777777777777 (16:9 ratio)
+const aspectRatio = getAspectRatio(1920, 1080);
+console.log(aspectRatio); // 1.7777777777777777 (16:9 ratio)
 
-const square = getAspectRatio(400, 400)
-console.log(square) // 1 (1:1 ratio)
+const square = getAspectRatio(400, 400);
+console.log(square); // 1 (1:1 ratio)
 
-const portrait = getAspectRatio(300, 400)
-console.log(portrait) // 0.75 (3:4 ratio)
+const portrait = getAspectRatio(300, 400);
+console.log(portrait); // 0.75 (3:4 ratio)
 ```
 
 ## Why This Utility Exists
@@ -42,7 +40,7 @@ Aspect ratio calculations are fundamental in image processing, responsive design
 ## Signature
 
 ```ts
-function getAspectRatio(width: number, height: number): number
+function getAspectRatio(width: number, height: number): number;
 ```
 
 ## Parameters
@@ -55,6 +53,7 @@ function getAspectRatio(width: number, height: number): number
 Returns a `number` representing the aspect ratio calculated as `width / height`.
 
 Common aspect ratio values:
+
 - `1.777...` (16:9 widescreen)
 - `1.333...` (4:3 traditional)
 - `1.0` (1:1 square)
@@ -99,7 +98,6 @@ Avoid when:
 
 `getAspectRatio` provides a simple, validated way to compute aspect ratios from dimensions with proper error handling for edge cases and consistent behavior across different scaling and layout scenarios.
 
-
 ## Snippets
 
 ### basic.ts
@@ -126,7 +124,6 @@ console.log("21:9 ultrawide:", ultrawide); // 2.388888888888889
 
 const cinematic = getAspectRatio(2048, 858);
 console.log("2.39:1 cinematic:", cinematic); // 2.387645787545787
-
 ```
 
 ### image-analysis.ts
@@ -170,7 +167,7 @@ function analyzeImageDimensions(width: number, height: number) {
     height,
     aspectRatio,
     orientation,
-    category
+    category,
   };
 }
 
@@ -180,7 +177,7 @@ const images = [
   { name: "Instagram post", width: 1080, height: 1080 },
   { name: "Phone screenshot", width: 375, height: 812 },
   { name: "Traditional photo", width: 800, height: 600 },
-  { name: "Ultrawide monitor", width: 3440, height: 1440 }
+  { name: "Ultrawide monitor", width: 3440, height: 1440 },
 ];
 
 images.forEach(({ name, width, height }) => {
@@ -188,7 +185,7 @@ images.forEach(({ name, width, height }) => {
   console.log(`${name}:`, {
     ratio: analysis.aspectRatio.toFixed(3),
     orientation: analysis.orientation,
-    category: analysis.category
+    category: analysis.category,
   });
 });
 
@@ -198,7 +195,6 @@ images.forEach(({ name, width, height }) => {
 // Phone screenshot: { ratio: '0.462', orientation: 'portrait', category: 'custom ratio' }
 // Traditional photo: { ratio: '1.333', orientation: 'landscape', category: '4:3 traditional' }
 // Ultrawide monitor: { ratio: '2.389', orientation: 'landscape', category: 'ultra-wide' }
-
 ```
 
 ### responsive-layout.ts
@@ -211,10 +207,7 @@ class ResponsiveContainer {
   private width: number;
   private height: number;
 
-  constructor(
-    width: number,
-    height: number
-  ) {
+  constructor(width: number, height: number) {
     this.width = width;
     this.height = height;
   }
@@ -254,18 +247,18 @@ class ResponsiveContainer {
     if (targetWidth) {
       return {
         width: targetWidth,
-        height: Math.round(targetWidth / ratio)
+        height: Math.round(targetWidth / ratio),
       };
     } else if (targetHeight) {
       return {
         width: Math.round(targetHeight * ratio),
-        height: targetHeight
+        height: targetHeight,
       };
     } else {
       // suggest based on container dimensions
       return {
         width: this.width,
-        height: this.height
+        height: this.height,
       };
     }
   }
@@ -280,7 +273,7 @@ const videos = [
   { name: "YouTube video", width: 1920, height: 1080 },
   { name: "Old TV show", width: 640, height: 480 },
   { name: "Vertical TikTok", width: 608, height: 1080 },
-  { name: "Square Instagram", width: 1080, height: 1080 }
+  { name: "Square Instagram", width: 1080, height: 1080 },
 ];
 
 videos.forEach(({ name, width, height }) => {
@@ -290,9 +283,7 @@ videos.forEach(({ name, width, height }) => {
 });
 
 // generate optimal thumbnail sizes
-const thumbnailSizes = [200, 400, 600].map(width =>
-  videoPlayer.getOptimalContentSize(width)
-);
+const thumbnailSizes = [200, 400, 600].map((width) => videoPlayer.getOptimalContentSize(width));
 
 console.log("Optimal thumbnail sizes:", thumbnailSizes);
 // [
@@ -300,9 +291,4 @@ console.log("Optimal thumbnail sizes:", thumbnailSizes);
 //   { width: 400, height: 225 },
 //   { width: 600, height: 338 }
 // ]
-
 ```
-
-
-
-

@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** browser
 > **Since:** 1.0.0
 > **Tags:** dom, element, interactive, event, button, form
-
 
 # isInteractiveElement
 
@@ -24,11 +22,11 @@ Determines whether an element is interactive or is contained within an interacti
 ## Usage
 
 ```ts
-import { isInteractiveElement } from "@petr-ptacek/js-core"
+import { isInteractiveElement } from "@petr-ptacek/js-core";
 
 document.addEventListener("click", (event) => {
   const target = event.target as Element;
-  
+
   if (isInteractiveElement(target)) {
     console.log("User clicked an interactive element");
   } else {
@@ -44,7 +42,7 @@ Distinguishing between clicks on interactive elements (buttons, links, form cont
 ## Signature
 
 ```typescript
-function isInteractiveElement(element: Element | null, options?: InteractiveElementOptions): boolean
+function isInteractiveElement(element: Element | null, options?: InteractiveElementOptions): boolean;
 ```
 
 ## Parameters
@@ -64,7 +62,7 @@ type Selector = keyof HTMLElementTagNameMap | string;
 
 type InteractiveElementOptions = {
   selectors?: readonly Selector[];
-}
+};
 ```
 
 ## Default Interactive Selectors
@@ -81,18 +79,11 @@ The following CSS selectors are considered interactive by default:
 These can be imported and extended:
 
 ```ts
-import { 
-  isInteractiveElement, 
-  DEFAULT_INTERACTIVE_SELECTORS 
-} from "@petr-ptacek/js-core"
+import { isInteractiveElement, DEFAULT_INTERACTIVE_SELECTORS } from "@petr-ptacek/js-core";
 
 isInteractiveElement(element, {
-  selectors: [
-    ...DEFAULT_INTERACTIVE_SELECTORS,
-    "[role='button']",
-    ".custom-interactive",
-  ],
-})
+  selectors: [...DEFAULT_INTERACTIVE_SELECTORS, "[role='button']", ".custom-interactive"],
+});
 ```
 
 ## Design Notes
@@ -128,9 +119,3 @@ Avoid when:
 ## Summary
 
 `isInteractiveElement` provides a reliable, flexible way to detect interactive elements in the DOM. By leveraging CSS selectors and the native `closest()` API, it handles both direct matches and nested scenarios with minimal performance overhead.
-
-
-
-
-
-

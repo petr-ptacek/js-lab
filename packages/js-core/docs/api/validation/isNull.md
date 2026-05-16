@@ -9,11 +9,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** validation
 > **Since:** 1.0.0
 > **Tags:** validation, type-guard, null, typescript
-
 
 # isNull
 
@@ -22,13 +20,13 @@ Checks whether the given value is null.
 ## Usage
 
 ```ts
-import { isNull } from "@petr-ptacek/js-core"
+import { isNull } from "@petr-ptacek/js-core";
 
 // Type checking
-console.log(isNull(null));       // true
-console.log(isNull(undefined));  // false
-console.log(isNull(0));          // false
-console.log(isNull(""));         // false
+console.log(isNull(null)); // true
+console.log(isNull(undefined)); // false
+console.log(isNull(0)); // false
+console.log(isNull("")); // false
 
 // Type guard usage
 const value: unknown = null;
@@ -45,7 +43,7 @@ While `typeof value === 'object' && value === null` works, it's verbose. This ut
 ## Signature
 
 ```typescript
-function isNull(value: unknown): value is null
+function isNull(value: unknown): value is null;
 ```
 
 ## Parameters
@@ -82,9 +80,3 @@ Avoid when:
 `isNull` provides a precise type guard for the `null` value, useful when you need to distinguish null from undefined and other values.
 
 See also: `isUndefined` (check for undefined), `isNullable` (check for both null and undefined).
-
-
-
-
-
-

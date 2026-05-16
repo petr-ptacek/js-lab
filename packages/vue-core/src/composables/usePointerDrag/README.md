@@ -34,17 +34,10 @@ import { usePointerDrag } from "@petr-ptacek/vue-core";
 ## Basic Usage
 
 ```vue
-
 <script lang="ts" setup>
-  import { usePointerDrag } from "@petr-ptacek/vue-core";
+import { usePointerDrag } from "@petr-ptacek/vue-core";
 
-  const {
-    onPointerDown,
-    isDragging,
-    deltaX,
-    deltaY,
-  } = usePointerDrag();
-
+const { onPointerDown, isDragging, deltaX, deltaY } = usePointerDrag();
 </script>
 
 <template>
@@ -96,10 +89,10 @@ axis (`x` or `y`) after the threshold is crossed.
 Inverts the delta sign on selected axes.
 
 ```ts
-invertAxis: "x";      // invert horizontal direction
-invertAxis: "y";      // invert vertical direction
-invertAxis: "both";   // invert both axes
-invertAxis: true;     // same as "both"
+invertAxis: "x"; // invert horizontal direction
+invertAxis: "y"; // invert vertical direction
+invertAxis: "both"; // invert both axes
+invertAxis: true; // same as "both"
 ```
 
 Commonly used for left / top resize handles.

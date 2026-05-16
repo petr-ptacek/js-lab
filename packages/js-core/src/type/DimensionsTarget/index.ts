@@ -16,6 +16,4 @@
  *
  * @since 1.0.0
  */
-export type DimensionsTarget =
-  | { width: number; height?: never }
-  | { height: number; width?: never };
+export type DimensionsTarget = { width: number; height?: never } | { height: number; width?: never };

@@ -7,7 +7,7 @@ const props = withDefaults(
   defineProps<{
     scrollable?: boolean;
   }>(),
-  { scrollable: true },
+  { scrollable: true }
 );
 
 const scrollable = toRef(props, "scrollable");

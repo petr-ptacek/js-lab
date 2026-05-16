@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.node.base.json",
-  "include": ["eslint.config.js", "docs/.vitepress/config.ts", "scripts/**/*.ts"]
+  "include": ["eslint.config.ts", "docs/.vitepress/config.ts", "scripts/**/*.ts"]
 }

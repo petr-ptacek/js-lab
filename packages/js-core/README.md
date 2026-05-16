@@ -53,4 +53,3 @@ the [API Reference](https://petr-ptacek.github.io/js-lab/js-core/api/).
 
 [MIT License](https://github.com/petr-ptacek/js-lab/blob/main/LICENSE) ©
 2026-PRESENT [Petr Ptáček](https://github.com/petr-ptacek)
-

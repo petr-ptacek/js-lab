@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** type
 > **Since:** 1.0.0
 > **Tags:** type, null, undefined, union, nullable, optional
-
 
 # MaybeNullable
 
@@ -24,18 +22,19 @@ Represents a value that may be `null` or `undefined`.
 ## Usage
 
 ```ts
-import type { MaybeNullable } from "@petr-ptacek/js-core"
+import type { MaybeNullable } from "@petr-ptacek/js-core";
 
 function processUserInput(input: MaybeNullable<string>): string {
-  if (input != null) { // checks for both null and undefined
-    return input.trim()
+  if (input != null) {
+    // checks for both null and undefined
+    return input.trim();
   }
-  return "No input provided"
+  return "No input provided";
 }
 
-const result1 = processUserInput("hello") // "hello"
-const result2 = processUserInput(null)    // "No input provided"  
-const result3 = processUserInput(undefined) // "No input provided"
+const result1 = processUserInput("hello"); // "hello"
+const result2 = processUserInput(null); // "No input provided"
+const result3 = processUserInput(undefined); // "No input provided"
 ```
 
 ## Why This Type Exists
@@ -45,7 +44,7 @@ Many APIs and JavaScript operations can return either `null` or `undefined` to r
 ## Type Declaration
 
 ```ts
-type MaybeNullable<T> = T | null | undefined
+type MaybeNullable<T> = T | null | undefined;
 ```
 
 ## Type Parameters
@@ -73,15 +72,15 @@ interface FormData {
 
 function processForm(data: FormData): string {
   let result = `${data.name} (${data.email})`;
-  
+
   // Handle both null and undefined with single check
   if (data.phone != null) {
     result += `, Phone: ${data.phone}`;
   }
-  
+
   const company = data.company ?? "No company";
   result += `, Company: ${company}`;
-  
+
   return result;
 }
 
@@ -105,6 +104,7 @@ Avoid when:
 ## Design Notes
 
 This type combines both `null` and `undefined` into a single union, allowing for:
+
 - Unified null checking with `!= null` (checks both `null` and `undefined`)
 - Consistent handling with nullish coalescing operator (`??`)
 - Simplified type annotations for values that could be missing in either form
@@ -114,8 +114,3 @@ The type is equivalent to `T | null | undefined` and works well with JavaScript'
 ## Summary
 
 `MaybeNullable<T>` provides a unified approach to handling values that might be absent as either `null` or `undefined`, enabling consistent null-checking patterns and simplifying type annotations for APIs with mixed null/undefined semantics.
-
-
-
-
-

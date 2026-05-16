@@ -14,7 +14,7 @@ export function createPointerEvent(
     pointerId?: number;
     timeStamp?: number;
     target?: HTMLElement;
-  } = {},
+  } = {}
 ) {
   const evt = new PointerEvent(type, {
     clientX: x,

@@ -5,9 +5,7 @@ import type { TryCatchResult, TryCatchResultFailure, WithTryCatchOptions } from 
 /**
  * @internal
  */
-export function isFallbackFn<TResult, TError>(
-  v: ValueOrFactory<TResult, [TError]>,
-): v is (e: TError) => TResult {
+export function isFallbackFn<TResult, TError>(v: ValueOrFactory<TResult, [TError]>): v is (e: TError) => TResult {
   return isFunction(v);
 }
 
@@ -16,7 +14,7 @@ export function isFallbackFn<TResult, TError>(
  */
 export function resolveFailureResult<TResult, TError = unknown>(
   e: unknown,
-  options: WithTryCatchOptions<TResult, TError>,
+  options: WithTryCatchOptions<TResult, TError>
 ): TryCatchResultFailure<TResult, TError> {
   const error = options.mapError ? options.mapError(e) : (e as TError);
 
@@ -46,7 +44,7 @@ export function resolveFailureResult<TResult, TError = unknown>(
  */
 export function invokeCallbacks<TResult, TError = unknown>(
   result: TryCatchResult<TResult, TError>,
-  options: WithTryCatchOptions<TResult, TError>,
+  options: WithTryCatchOptions<TResult, TError>
 ) {
   if (result.ok) {
     options.onSuccess?.(result.data);

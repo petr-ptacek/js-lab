@@ -3,7 +3,7 @@
 This utility controls **what happens when you try to run a function multiple times** while it is already running.
 
 Think of it like a gatekeeper:
-👉 *“Should I run this now, later, or not at all?”*
+👉 _“Should I run this now, later, or not at all?”_
 
 ---
 
@@ -11,9 +11,9 @@ Think of it like a gatekeeper:
 
 Imagine you press a button many times:
 
-* Should it ignore extra clicks?
-* Should it remember them and run later?
-* Or should it stop the old work and only care about the newest click?
+- Should it ignore extra clicks?
+- Should it remember them and run later?
+- Or should it stop the old work and only care about the newest click?
 
 That is exactly what the strategies solve.
 
@@ -23,59 +23,59 @@ That is exactly what the strategies solve.
 
 ### `"drop"`
 
-👉 *“Ignore new calls if something is already running.”*
+👉 _“Ignore new calls if something is already running.”_
 
-* First call → runs
-* Next calls → ignored
+- First call → runs
+- Next calls → ignored
 
 Use this when:
 
-* You want to prevent spam (e.g. button clicks)
-* Only one execution matters
+- You want to prevent spam (e.g. button clicks)
+- Only one execution matters
 
 ---
 
 ### `"queue"`
 
-👉 *“Wait your turn.”*
+👉 _“Wait your turn.”_
 
-* First call → runs
-* Next calls → wait in line
-* Everything runs one by one
+- First call → runs
+- Next calls → wait in line
+- Everything runs one by one
 
 Use this when:
 
-* Order matters
-* Nothing should be lost
+- Order matters
+- Nothing should be lost
 
 ---
 
 ### `"replace"`
 
-👉 *“Only the latest call matters.”*
+👉 _“Only the latest call matters.”_
 
-* First call → starts
-* New call → replaces it
-* Old result is ignored
+- First call → starts
+- New call → replaces it
+- Old result is ignored
 
 ⚠️ Important:
 
-* Old function is **not stopped**
-* Its result is just **ignored**
+- Old function is **not stopped**
+- Its result is just **ignored**
 
 Use this when:
 
-* You only care about the latest result (e.g. search input)
+- You only care about the latest result (e.g. search input)
 
 ---
 
 ## Comparison
 
 | Strategy | What happens with new calls? | Order guaranteed | Old result used? | Typical use case      |
-|----------|------------------------------|------------------|------------------|-----------------------|
-| drop     | Ignored                      | ❌                | ✔                | Prevent spam clicks   |
+| -------- | ---------------------------- | ---------------- | ---------------- | --------------------- |
+| drop     | Ignored                      | ❌               | ✔                | Prevent spam clicks   |
 | queue    | Added to queue               | ✔                | ✔                | Sequential operations |
-| replace  | Replaces current             | ❌                | ❌ (ignored)      | Search / latest wins  |
+| replace  | Replaces current             | ❌               | ❌ (ignored)     | Search / latest wins  |
 
 ---
 
@@ -85,8 +85,8 @@ This utility does **not cancel async work**.
 
 It only decides:
 
-* what runs
-* and which result is valid
+- what runs
+- and which result is valid
 
 If you need real cancellation → combine with an abort mechanism.
 
@@ -94,6 +94,6 @@ If you need real cancellation → combine with an abort mechanism.
 
 ## Summary
 
-* `drop` → ignore extra calls
-* `queue` → run everything in order
-* `replace` → only last call matters
+- `drop` → ignore extra calls
+- `queue` → run everything in order
+- `replace` → only last call matters

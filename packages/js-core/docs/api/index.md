@@ -4,7 +4,6 @@ Collection of utilities available in **@petr-ptacek/js-core**.
 
 <div class="vp-grid">
 
-
 <a class="vp-card" href="./type/">
 <h3>type</h3>
 <p>17 utilities</p>

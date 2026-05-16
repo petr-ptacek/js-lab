@@ -5,7 +5,7 @@ Checks whether a value is a `DOMException` with `name === "AbortError"`.
 ## Usage
 
 ```ts
-import { isAbortError } from "@petr-ptacek/js-core"
+import { isAbortError } from "@petr-ptacek/js-core";
 
 try {
   await fetch("/api/data", { signal });
@@ -26,7 +26,7 @@ TypeScript type guard.
 ## Signature
 
 ```ts
-function isAbortError(error: unknown): error is DOMException
+function isAbortError(error: unknown): error is DOMException;
 ```
 
 ## Parameters
@@ -64,4 +64,3 @@ Avoid when:
 
 `isAbortError` is a minimal type guard for identifying `AbortError` instances, eliminating repetitive inline checks in
 async error handling.
-

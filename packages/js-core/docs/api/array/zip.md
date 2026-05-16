@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** array
 > **Since:** 1.0.0
 > **Tags:** array, zip, combine, pairs, mapping, transform
-
 
 # zip
 
@@ -24,7 +22,7 @@ Combines two arrays element-wise into pairs or applies a mapping function to eac
 ## Usage
 
 ```ts
-import { zip } from "@petr-ptacek/js-core"
+import { zip } from "@petr-ptacek/js-core";
 
 // Basic pairing
 const numbers = [1, 2, 3];
@@ -47,17 +45,10 @@ transformation.
 
 ```ts
 // Without mapper - returns tuples
-function zip<T, U>(
-  arrayOne: readonly T[],
-  arrayTwo: readonly U[],
-): [T, U][]
+function zip<T, U>(arrayOne: readonly T[], arrayTwo: readonly U[]): [T, U][];
 
 // With mapper - returns transformed values
-function zip<T, U, R>(
-  arrayOne: readonly T[],
-  arrayTwo: readonly U[],
-  mapper: (a: T, b: U) => R,
-): R[]
+function zip<T, U, R>(arrayOne: readonly T[], arrayTwo: readonly U[], mapper: (a: T, b: U) => R): R[];
 ```
 
 ## Parameters
@@ -108,7 +99,6 @@ Avoid when:
 `zip` provides a clean way to combine two arrays element-wise with optional transformation, handling type safety and
 length differences automatically.
 
-
 ## Snippets
 
 ### basic.ts
@@ -136,7 +126,6 @@ console.log(users);
 for (const [id, name] of users) {
   console.log(`User ${id}: ${name}`);
 }
-
 ```
 
 ### practical-usage.ts
@@ -166,7 +155,7 @@ const userRoles = ["admin", "user", "moderator"];
 const users = zip(userIds, userEmails).map(([id, email], index) => ({
   id,
   email,
-  role: userRoles[index]
+  role: userRoles[index],
 }));
 
 console.log(users);
@@ -181,12 +170,12 @@ const formValues = ["john@email.com", "password123", "John"];
 const validationRules = [
   (val: string) => val.includes("@"),
   (val: string) => val.length >= 8,
-  (val: string) => val.length > 0
+  (val: string) => val.length > 0,
 ];
 
 const validationResults = zip(formValues, validationRules, (value, rule) => ({
   value,
-  isValid: rule(value)
+  isValid: rule(value),
 }));
 
 console.log(validationResults);
@@ -195,7 +184,6 @@ console.log(validationResults);
 //   { value: "password123", isValid: true },
 //   { value: "John", isValid: true }
 // ]
-
 ```
 
 ### with-mapper.ts
@@ -222,12 +210,12 @@ const fullNames = zip(firstNames, lastNames, (first, last) => `${first} ${last}`
 console.log(fullNames); // ["John Doe", "Jane Smith", "Bob Johnson"]
 
 // Creating objects
-const prices = [10.99, 25.50, 7.25];
+const prices = [10.99, 25.5, 7.25];
 const quantities = [2, 1, 3];
 const totals = zip(prices, quantities, (price, qty) => ({
   unitPrice: price,
   quantity: qty,
-  total: price * qty
+  total: price * qty,
 }));
 
 console.log(totals);
@@ -236,9 +224,4 @@ console.log(totals);
 //   { unitPrice: 25.50, quantity: 1, total: 25.50 },
 //   { unitPrice: 7.25, quantity: 3, total: 21.75 }
 // ]
-
 ```
-
-
-
-

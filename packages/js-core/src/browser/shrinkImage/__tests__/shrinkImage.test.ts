@@ -1,11 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { shrinkImage } from "../shrinkImage";
 
-function createImage(
-  naturalWidth: number,
-  naturalHeight: number,
-  src = "test.png",
-): HTMLImageElement {
+function createImage(naturalWidth: number, naturalHeight: number, src = "test.png"): HTMLImageElement {
   const img = new Image();
 
   Object.defineProperty(img, "naturalWidth", {
@@ -31,10 +27,10 @@ describe("shrinkImage", () => {
     height: number;
     getContext: () => { drawImage: ReturnType<typeof vi.fn> };
     toBlob: (
-      // eslint-disable-next-line no-undef
+       
       cb: BlobCallback,
       type?: string,
-      quality?: number,
+      quality?: number
     ) => void;
   };
 
@@ -130,8 +126,6 @@ describe("shrinkImage", () => {
   it("throws for invalid image dimensions", () => {
     const img = createImage(0, 1000);
 
-    expect(() => shrinkImage(img, { maxWidth: 500 })).toThrow(
-      "image.naturalWidth must be a positive finite number",
-    );
+    expect(() => shrinkImage(img, { maxWidth: 500 })).toThrow("image.naturalWidth must be a positive finite number");
   });
 });

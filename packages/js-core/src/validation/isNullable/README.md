@@ -8,15 +8,15 @@ Checks whether the given value is null or undefined.
 import { isNullable } from "@petr-ptacek/js-core";
 
 // Type checking
-console.log(isNullable(null));       // true
-console.log(isNullable(undefined));  // true
-console.log(isNullable(0));          // false
-console.log(isNullable(""));         // false
+console.log(isNullable(null)); // true
+console.log(isNullable(undefined)); // true
+console.log(isNullable(0)); // false
+console.log(isNullable("")); // false
 
 // Type guard usage
 const value: unknown = null;
 
-if ( isNullable(value) ) {
+if (isNullable(value)) {
   // value is now typed as null | undefined
 }
 ```
@@ -28,7 +28,7 @@ The concept of "nullable" or "nullish" values (both `null` and `undefined`) is v
 ## Signature
 
 ```typescript
-function isNullable(value: unknown): value is null | undefined
+function isNullable(value: unknown): value is null | undefined;
 ```
 
 ## Parameters
@@ -66,4 +66,3 @@ Avoid when:
 `isNullable` provides a type guard for checking both `null` and `undefined` simultaneously, useful for validating optional or missing values.
 
 See also: `isNull` (check for null only), `isUndefined` (check for undefined only).
-

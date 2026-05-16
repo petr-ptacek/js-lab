@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** validation
 > **Since:** 1.0.0
 > **Tags:** validation, type-guard, array, generic, typescript
-
 
 # isArray
 
@@ -23,21 +21,21 @@ Checks whether the given value is an array.
 ## Usage
 
 ```ts
-import { isArray } from "@petr-ptacek/js-core"
+import { isArray } from "@petr-ptacek/js-core";
 
 // Basic type checking
-console.log(isArray([1, 2, 3])) // true
-console.log(isArray("text"))    // false
-console.log(isArray({}))        // false
-console.log(isArray(null))      // false
+console.log(isArray([1, 2, 3])); // true
+console.log(isArray("text")); // false
+console.log(isArray({})); // false
+console.log(isArray(null)); // false
 
 // Type guard usage
-const value: unknown = ["a", "b", "c"]
+const value: unknown = ["a", "b", "c"];
 
 if (isArray<string>(value)) {
   // value is now typed as string[]
-  const uppercased = value.map(v => v.toUpperCase())
-  console.log(uppercased) // ["A", "B", "C"]
+  const uppercased = value.map((v) => v.toUpperCase());
+  console.log(uppercased); // ["A", "B", "C"]
 }
 ```
 
@@ -48,7 +46,7 @@ While JavaScript provides `Array.isArray()`, this utility adds TypeScript type g
 ## Signature
 
 ```ts
-function isArray<T = unknown>(value: unknown): value is T[]
+function isArray<T = unknown>(value: unknown): value is T[];
 ```
 
 ## Parameters
@@ -97,7 +95,6 @@ Avoid when:
 
 `isArray<T>` provides type-safe array validation with TypeScript type guard functionality, enabling runtime type checking with compile-time type narrowing for safer array operations in generic and mixed-type scenarios.
 
-
 ## Snippets
 
 ### basic.ts
@@ -106,16 +103,9 @@ Avoid when:
 import { isArray } from "@petr-ptacek/js-core";
 
 // basic type checking
-const values = [
-  [1, 2, 3],
-  "not an array",
-  { key: "value" },
-  null,
-  undefined,
-  42
-];
+const values = [[1, 2, 3], "not an array", { key: "value" }, null, undefined, 42];
 
-values.forEach(value => {
+values.forEach((value) => {
   console.log(`${JSON.stringify(value)} is array:`, isArray(value));
 });
 
@@ -126,9 +116,4 @@ values.forEach(value => {
 // null is array: false
 // undefined is array: false
 // 42 is array: false
-
 ```
-
-
-
-

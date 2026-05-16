@@ -121,12 +121,10 @@ import type { UseProxyValueOptions, UseProxyValueReturn } from "./types";
 export function useProxyValue<TValue>(
   sourceValue: Ref<TValue | undefined>,
   defaultValue: ValueOrGetter<TValue>,
-  options: UseProxyValueOptions = {},
+  options: UseProxyValueOptions = {}
 ): UseProxyValueReturn<TValue> {
   const autoSync = shallowRef(options.autoSync ?? true);
-  const internalValue = shallowRef<TValue>(
-    isUndefined(sourceValue.value) ? resolveDefaultValue() : sourceValue.value,
-  );
+  const internalValue = shallowRef<TValue>(isUndefined(sourceValue.value) ? resolveDefaultValue() : sourceValue.value);
   const isSynced = shallowRef(!isUndefined(sourceValue.value));
 
   const value = computed<TValue>({
@@ -172,9 +170,7 @@ export function useProxyValue<TValue>(
   }
 
   function reset() {
-    internalValue.value = isUndefined(sourceValue.value)
-      ? resolveDefaultValue()
-      : sourceValue.value;
+    internalValue.value = isUndefined(sourceValue.value) ? resolveDefaultValue() : sourceValue.value;
 
     isSynced.value = !isUndefined(sourceValue.value);
   }

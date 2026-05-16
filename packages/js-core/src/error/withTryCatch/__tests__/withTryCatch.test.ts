@@ -32,7 +32,7 @@ describe("withTryCatch (async)", () => {
       },
       {
         fallback: null,
-      },
+      }
     );
 
     expect(result.ok).toBe(false);
@@ -51,7 +51,7 @@ describe("withTryCatch (async)", () => {
       },
       {
         fallback,
-      },
+      }
     );
 
     expect(result.ok).toBe(false);
@@ -71,7 +71,7 @@ describe("withTryCatch (async)", () => {
       },
       {
         mapError: (e) => (e instanceof Error ? e.message : "unknown"),
-      },
+      }
     );
 
     expect(result.ok).toBe(false);
@@ -101,7 +101,7 @@ describe("withTryCatch (async)", () => {
       },
       {
         onError,
-      },
+      }
     );
 
     expect(onError).toHaveBeenCalledOnce();
@@ -119,7 +119,7 @@ describe("withTryCatch (async)", () => {
       {
         fallback: 123,
         onError,
-      },
+      }
     );
 
     expect(result.ok).toBe(false);
@@ -146,7 +146,7 @@ describe("withTryCatch (async)", () => {
       },
       {
         onFinally,
-      },
+      }
     );
 
     expect(onFinally).toHaveBeenCalledOnce();
@@ -163,7 +163,7 @@ describe("withTryCatch (async)", () => {
       {
         onSuccess: () => calls.push("onSuccess"),
         onFinally: () => calls.push("onFinally"),
-      },
+      }
     );
 
     expect(result.ok).toBe(true);

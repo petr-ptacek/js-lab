@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** number
 > **Since:** 1.0.0
 > **Tags:** number, clamp, constrain, bounds, range, limit
-
 
 # clamp
 
@@ -24,7 +22,7 @@ Constrains a numeric value between specified minimum and maximum boundaries.
 ## Usage
 
 ```ts
-import { clamp } from "@petr-ptacek/js-core"
+import { clamp } from "@petr-ptacek/js-core";
 
 const result = clamp(15, 0, 10);
 console.log(result); // 10
@@ -43,7 +41,7 @@ JavaScript lacks a built-in clamp function for constraining values within bounds
 ## Signature
 
 ```ts
-function clamp(value: number, min: number, max: number): number
+function clamp(value: number, min: number, max: number): number;
 ```
 
 ## Parameters
@@ -71,7 +69,7 @@ The bounds are inclusive, meaning both `min` and `max` values are considered val
 Use `clamp` when you need to:
 
 - constrain user input within valid ranges
-- limit calculated values to acceptable bounds  
+- limit calculated values to acceptable bounds
 - implement slider controls or progress bars
 - ensure values stay within domain-specific limits
 
@@ -87,7 +85,6 @@ Avoid when:
 ## Summary
 
 `clamp` provides a safe and efficient way to constrain numeric values within specified boundaries with proper validation and error handling.
-
 
 ## Snippets
 
@@ -117,7 +114,6 @@ console.log(`clamp(0, 0, 10) = ${exactMin}`); // 0
 
 const exactMax = clamp(10, 0, 10);
 console.log(`clamp(10, 0, 10) = ${exactMax}`); // 10
-
 ```
 
 ### error-handling.ts
@@ -138,7 +134,7 @@ try {
 
 // Invalid range - min > max
 try {
-  const result = clamp(50, 100, 0);  // Invalid: min(100) > max(0)
+  const result = clamp(50, 100, 0); // Invalid: min(100) > max(0)
   console.log(`Result: ${result}`);
 } catch (error) {
   console.error(`✗ Invalid range: ${error instanceof Error ? error.message : String(error)}`);
@@ -175,12 +171,11 @@ function autoClamp(value: number, bound1: number, bound2: number): number {
 console.log("\n=== Auto-correcting Clamp ===");
 
 // Works regardless of parameter order
-const result1 = autoClamp(50, 0, 100);    // Normal order
-const result2 = autoClamp(50, 100, 0);    // Swapped order - auto-corrected
+const result1 = autoClamp(50, 0, 100); // Normal order
+const result2 = autoClamp(50, 100, 0); // Swapped order - auto-corrected
 
-console.log(`autoClamp(50, 0, 100) = ${result1}`);   // 50
-console.log(`autoClamp(50, 100, 0) = ${result2}`);   // 50
-
+console.log(`autoClamp(50, 0, 100) = ${result1}`); // 50
+console.log(`autoClamp(50, 100, 0) = ${result2}`); // 50
 ```
 
 ### practical-usage.ts
@@ -200,9 +195,9 @@ function processUserInput(userValue: string) {
 }
 
 console.log("=== User Input Validation ===");
-processUserInput("50");   // 50%
-processUserInput("150");  // 100%
-processUserInput("-20");  // 0%
+processUserInput("50"); // 50%
+processUserInput("150"); // 100%
+processUserInput("-20"); // 0%
 
 // Slider/Progress bar implementation
 class Slider {
@@ -230,15 +225,15 @@ class Slider {
 }
 
 console.log("\n=== Slider Control ===");
-const slider = new Slider(0, 255);  // RGB color slider
+const slider = new Slider(0, 255); // RGB color slider
 
 slider.setValue(128);
 console.log(`Value: ${slider.getValue()}, Percentage: ${slider.getPercentage().toFixed(1)}%`);
 
-slider.setValue(300);  // Clamped to 255
+slider.setValue(300); // Clamped to 255
 console.log(`Value: ${slider.getValue()}, Percentage: ${slider.getPercentage().toFixed(1)}%`);
 
-slider.setValue(-50);  // Clamped to 0
+slider.setValue(-50); // Clamped to 0
 console.log(`Value: ${slider.getValue()}, Percentage: ${slider.getPercentage().toFixed(1)}%`);
 
 // Game physics - velocity limiting
@@ -253,14 +248,9 @@ function updatePlayerVelocity(currentVelocity: number, acceleration: number) {
 console.log("\n=== Game Physics ===");
 let velocity = 0;
 
-velocity = updatePlayerVelocity(velocity, 5);   // 5
-velocity = updatePlayerVelocity(velocity, 8);   // 10 (clamped)
+velocity = updatePlayerVelocity(velocity, 5); // 5
+velocity = updatePlayerVelocity(velocity, 8); // 10 (clamped)
 velocity = updatePlayerVelocity(velocity, -25); // -10 (clamped)
 
 console.log(`Final velocity: ${velocity}`);
-
 ```
-
-
-
-

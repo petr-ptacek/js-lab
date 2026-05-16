@@ -4,11 +4,8 @@ import { shrinkImageElement } from "@petr-ptacek/js-core";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-async function previewOptimizedImage(
-  sourceImage: HTMLImageElement,
-  previewContainer: HTMLElement,
-): Promise<void> {
+ 
+async function previewOptimizedImage(sourceImage: HTMLImageElement, previewContainer: HTMLElement): Promise<void> {
   try {
     // Create optimized preview (smaller quality/size for display)
     const preview = await shrinkImageElement(sourceImage, {
@@ -31,7 +28,7 @@ async function previewOptimizedImage(
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
 async function optimizeGalleryImages(): Promise<void> {
   const images = document.querySelectorAll<HTMLImageElement>("img.gallery-item");
 
@@ -53,7 +50,7 @@ async function optimizeGalleryImages(): Promise<void> {
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
 async function createResponsiveVersions(sourceImage: HTMLImageElement): Promise<{
   small: HTMLImageElement;
   medium: HTMLImageElement;

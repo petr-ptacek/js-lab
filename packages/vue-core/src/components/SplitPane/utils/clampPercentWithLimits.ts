@@ -9,7 +9,7 @@ export function clampPercentWithLimits(
   options: {
     minSize?: SizeValue;
     maxSize?: SizeValue;
-  },
+  }
 ): number {
   let value = clamp(percent, 0, 100);
 

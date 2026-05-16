@@ -1,3 +1,3 @@
 # VUE CORE
 
-##  not public API yet!
+## not public API yet!

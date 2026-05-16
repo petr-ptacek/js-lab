@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** browser
 > **Since:** 1.0.0
 > **Tags:** image, scaling, aspect-ratio, dimensions, responsive
-
 
 # scaleImageByAspectRatio
 
@@ -23,18 +21,18 @@ Scales an image to a target width or height while preserving its aspect ratio.
 ## Usage
 
 ```ts
-import { scaleImageByAspectRatio } from "@petr-ptacek/js-core"
+import { scaleImageByAspectRatio } from "@petr-ptacek/js-core";
 
 const img = document.querySelector("img")!;
 
 // Scale to fixed width
 const scaled = scaleImageByAspectRatio(img, { width: 300 });
-console.log(scaled.width);  // 300
+console.log(scaled.width); // 300
 console.log(scaled.height); // calculated automatically
 
 // Scale to fixed height
 const scaledHeight = scaleImageByAspectRatio(img, { height: 200 });
-console.log(scaledHeight.width);  // calculated automatically
+console.log(scaledHeight.width); // calculated automatically
 console.log(scaledHeight.height); // 200
 ```
 
@@ -48,8 +46,8 @@ When working with images dynamically, you often need to resize them while mainta
 function scaleImageByAspectRatio(
   image: HTMLImageElement,
   target: DimensionsTarget,
-  roundFn?: RoundValueFn,
-): HTMLImageElement
+  roundFn?: RoundValueFn
+): HTMLImageElement;
 ```
 
 ## Parameters
@@ -61,6 +59,7 @@ function scaleImageByAspectRatio(
 ## Return Type
 
 Returns a new `HTMLImageElement` with:
+
 - The specified target dimension matching your requirement
 - The other dimension automatically calculated to preserve aspect ratio
 - The same `src` as the original image
@@ -72,13 +71,11 @@ Returns a new `HTMLImageElement` with:
 type Dimensions = {
   width: number;
   height: number;
-}
+};
 
-type DimensionsTarget = 
-  | { width: number; height?: never }
-  | { height: number; width?: never }
+type DimensionsTarget = { width: number; height?: never } | { height: number; width?: never };
 
-type RoundValueFn = (value: number) => number
+type RoundValueFn = (value: number) => number;
 ```
 
 ## Throws / Errors
@@ -99,6 +96,7 @@ The implementation:
 5. **Customizable rounding** - allows different rounding strategies (Math.round, Math.floor, Math.ceil, etc.)
 
 The utility is a thin, DOM-oriented wrapper that combines:
+
 - Image element handling
 - Natural dimension extraction
 - Aspect ratio preservation via `scaleByAspectRatio`
@@ -126,9 +124,3 @@ Avoid when:
 ## Summary
 
 `scaleImageByAspectRatio` provides a simple, type-safe way to scale `HTMLImageElement` objects to target widths or heights while preserving their natural aspect ratios. It returns a new image instance with calculated dimensions, making it ideal for responsive image handling and thumbnail generation.
-
-
-
-
-
-

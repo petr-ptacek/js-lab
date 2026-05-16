@@ -5,26 +5,26 @@ Strongly-typed event emitter with type-safe event definitions and handler manage
 ## Usage
 
 ```ts
-import { Emitter } from "@petr-ptacek/js-core"
+import { Emitter } from "@petr-ptacek/js-core";
 
 type Events = {
   userLogin: (user: { id: string; name: string }) => void;
   dataReceived: (data: unknown[]) => void;
   error: (message: string) => void;
-}
+};
 
-const emitter = new Emitter<Events>()
+const emitter = new Emitter<Events>();
 
 // Register handlers
 const cleanup = emitter.on("userLogin", (user) => {
-  console.log(`Welcome ${user.name}!`)
-})
+  console.log(`Welcome ${user.name}!`);
+});
 
 // Emit events
-emitter.emit("userLogin", { id: "123", name: "John" })
+emitter.emit("userLogin", { id: "123", name: "John" });
 
 // Cleanup
-cleanup()
+cleanup();
 ```
 
 ## Why This Utility Exists
@@ -37,19 +37,19 @@ payloads, ensuring type safety across event-driven architectures.
 
 ```ts
 class Emitter<Events extends EmitterEvents> {
-  constructor()
-  constructor(initialHandlers: EmitterInitialHandlers<Events>)
+  constructor();
+  constructor(initialHandlers: EmitterInitialHandlers<Events>);
 
-  on<TType extends keyof Events>(type: TType, handler: Events[TType]): CleanupFn
+  on<TType extends keyof Events>(type: TType, handler: Events[TType]): CleanupFn;
 
-  once<TType extends keyof Events>(type: TType, handler: Events[TType]): CleanupFn
+  once<TType extends keyof Events>(type: TType, handler: Events[TType]): CleanupFn;
 
-  emit<TType extends keyof Events>(type: TType, ...args: Parameters<Events[TType]>): void
+  emit<TType extends keyof Events>(type: TType, ...args: Parameters<Events[TType]>): void;
 
-  off<TType extends keyof Events>(type: TType): void
-  off<TType extends keyof Events>(type: TType, handler: Events[TType]): void
+  off<TType extends keyof Events>(type: TType): void;
+  off<TType extends keyof Events>(type: TType, handler: Events[TType]): void;
 
-  clear(): void
+  clear(): void;
 }
 ```
 
@@ -90,16 +90,18 @@ The utility exports several TypeScript types for proper integration:
 ```ts
 type EmitterEvents = {
   [event: string | symbol]: (...args: any[]) => void;
-}
+};
 
 type EmitterInitialHandlers<E extends EmitterEvents> = {
   [K in keyof E]?: InitialHandler<E[K]>;
-}
+};
 
-type InitialHandler<THandler> = THandler | {
-  handler: THandler;
-  once?: boolean;
-}
+type InitialHandler<THandler> =
+  | THandler
+  | {
+      handler: THandler;
+      once?: boolean;
+    };
 
 type EmitterEventHandler = (...args: any[]) => void;
 

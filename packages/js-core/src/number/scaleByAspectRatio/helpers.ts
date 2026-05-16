@@ -2,11 +2,7 @@ import { assertPositiveFinite } from "../../_internal";
 import type { Dimensions, RoundValueFn } from "../../type";
 import { getAspectRatio } from "../getAspectRatio";
 
-export function scaleToWidth(
-  dimensions: Dimensions,
-  newWidth: number,
-  round: RoundValueFn = Math.round,
-): Dimensions {
+export function scaleToWidth(dimensions: Dimensions, newWidth: number, round: RoundValueFn = Math.round): Dimensions {
   assertPositiveFinite("dimensions.width", dimensions.width);
   assertPositiveFinite("dimensions.height", dimensions.height);
   assertPositiveFinite("newWidth", newWidth);
@@ -20,11 +16,7 @@ export function scaleToWidth(
   };
 }
 
-export function scaleToHeight(
-  dimensions: Dimensions,
-  newHeight: number,
-  round: RoundValueFn = Math.round,
-): Dimensions {
+export function scaleToHeight(dimensions: Dimensions, newHeight: number, round: RoundValueFn = Math.round): Dimensions {
   assertPositiveFinite("dimensions.width", dimensions.width);
   assertPositiveFinite("dimensions.height", dimensions.height);
   assertPositiveFinite("newHeight", newHeight);

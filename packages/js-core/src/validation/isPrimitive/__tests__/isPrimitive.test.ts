@@ -58,7 +58,7 @@ describe("isPrimitive", () => {
           value === null ||
           value === undefined ||
           typeof value === "symbol" ||
-          typeof value === "bigint",
+          typeof value === "bigint"
       ).toBe(true);
     }
   });

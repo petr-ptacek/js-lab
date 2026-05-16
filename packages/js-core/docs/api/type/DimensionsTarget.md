@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** type
 > **Since:** 1.0.0
 > **Tags:** type, dimensions, target, scaling, exclusive, union
-
 
 # DimensionsTarget
 
@@ -24,27 +22,27 @@ Defines a target dimension using a single axis.
 ## Usage
 
 ```ts
-import type { DimensionsTarget } from "@petr-ptacek/js-core"
+import type { DimensionsTarget } from "@petr-ptacek/js-core";
 
 // Target specific width
-const targetWidth: DimensionsTarget = { width: 800 }
+const targetWidth: DimensionsTarget = { width: 800 };
 
-// Target specific height  
-const targetHeight: DimensionsTarget = { height: 600 }
+// Target specific height
+const targetHeight: DimensionsTarget = { height: 600 };
 
 function scaleToTarget(original: Dimensions, target: DimensionsTarget): Dimensions {
-  if ('width' in target) {
-    const ratio = target.width / original.width
+  if ("width" in target) {
+    const ratio = target.width / original.width;
     return {
       width: target.width,
-      height: Math.round(original.height * ratio)
-    }
+      height: Math.round(original.height * ratio),
+    };
   } else {
-    const ratio = target.height / original.height
+    const ratio = target.height / original.height;
     return {
-      width: Math.round(original.width * ratio), 
-      height: target.height
-    }
+      width: Math.round(original.width * ratio),
+      height: target.height,
+    };
   }
 }
 ```
@@ -56,9 +54,7 @@ Many scaling and resizing operations need to constrain only one dimension while 
 ## Type Declaration
 
 ```ts
-type DimensionsTarget =
-  | { width: number; height?: never }
-  | { height: number; width?: never }
+type DimensionsTarget = { width: number; height?: never } | { height: number; width?: never };
 ```
 
 ## When To Use
@@ -74,50 +70,50 @@ Use `DimensionsTarget` when:
 ```ts
 // Responsive image sizing
 function generateResponsiveSizes(original: Dimensions, targets: DimensionsTarget[]): Dimensions[] {
-  return targets.map(target => scaleToTarget(original, target))
+  return targets.map((target) => scaleToTarget(original, target));
 }
 
 const breakpoints: DimensionsTarget[] = [
-  { width: 320 },  // mobile
-  { width: 768 },  // tablet
+  { width: 320 }, // mobile
+  { width: 768 }, // tablet
   { width: 1200 }, // desktop
-  { height: 400 }  // specific height constraint
-]
+  { height: 400 }, // specific height constraint
+];
 
 // Thumbnail generation
 class ThumbnailGenerator {
   generateThumbnail(image: Dimensions, constraint: DimensionsTarget): Dimensions {
-    if ('width' in constraint) {
-      return this.scaleByWidth(image, constraint.width)
+    if ("width" in constraint) {
+      return this.scaleByWidth(image, constraint.width);
     } else {
-      return this.scaleByHeight(image, constraint.height)  
+      return this.scaleByHeight(image, constraint.height);
     }
   }
-  
+
   private scaleByWidth(image: Dimensions, targetWidth: number): Dimensions {
-    const aspectRatio = image.height / image.width
+    const aspectRatio = image.height / image.width;
     return {
       width: targetWidth,
-      height: Math.round(targetWidth * aspectRatio)
-    }
+      height: Math.round(targetWidth * aspectRatio),
+    };
   }
-  
+
   private scaleByHeight(image: Dimensions, targetHeight: number): Dimensions {
-    const aspectRatio = image.width / image.height
+    const aspectRatio = image.width / image.height;
     return {
       width: Math.round(targetHeight * aspectRatio),
-      height: targetHeight
-    }
+      height: targetHeight,
+    };
   }
 }
 
 // Form validation
 function validateTarget(target: DimensionsTarget): boolean {
-  const hasWidth = 'width' in target && typeof target.width === 'number'
-  const hasHeight = 'height' in target && typeof target.height === 'number'
-  
+  const hasWidth = "width" in target && typeof target.width === "number";
+  const hasHeight = "height" in target && typeof target.height === "number";
+
   // TypeScript ensures exactly one is present, but runtime validation
-  return hasWidth !== hasHeight // XOR: exactly one should be true
+  return hasWidth !== hasHeight; // XOR: exactly one should be true
 }
 ```
 
@@ -144,8 +140,3 @@ The `never` type ensures that if one property is present, the other cannot be de
 ## Summary
 
 `DimensionsTarget` provides type-safe, mutually exclusive dimension targeting for aspect ratio preserving operations, ensuring exactly one axis is constrained while maintaining clear intent and preventing invalid scaling configurations.
-
-
-
-
-

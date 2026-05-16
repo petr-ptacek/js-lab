@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** browser
 > **Since:** 1.0.0
 > **Tags:** file, image, compression, upload, optimization, blob
-
 
 # shrinkImageFile
 
@@ -24,7 +22,7 @@ Shrinks an image file before upload by limiting its maximum dimensions and optio
 ## Usage
 
 ```ts
-import { shrinkImageFile } from "@petr-ptacek/js-core"
+import { shrinkImageFile } from "@petr-ptacek/js-core";
 
 const input = document.querySelector<HTMLInputElement>("input[type='file']")!;
 const file = input.files![0];
@@ -55,7 +53,7 @@ This eliminates boilerplate and provides an intuitive API for the most common us
 ## Comparison to Related Utilities
 
 | Utility              | Input            | Output           | Use Case             |
-|----------------------|------------------|------------------|----------------------|
+| -------------------- | ---------------- | ---------------- | -------------------- |
 | `shrinkImage`        | HTMLImageElement | Blob             | Generic optimization |
 | `shrinkImageElement` | HTMLImageElement | HTMLImageElement | DOM display          |
 | `shrinkImageFile`    | File             | File             | Upload optimization  |
@@ -66,10 +64,7 @@ This eliminates boilerplate and provides an intuitive API for the most common us
 ## Signature
 
 ```typescript
-function shrinkImageFile(
-  file: File,
-  options?: ShrinkImageOptions,
-): Promise<File>
+function shrinkImageFile(file: File, options?: ShrinkImageOptions): Promise<File>;
 ```
 
 ## Parameters
@@ -93,7 +88,7 @@ type ShrinkImageOptions = {
   maxHeight?: number;
   quality?: number;
   mimeType?: string;
-}
+};
 ```
 
 ## Throws / Errors
@@ -165,8 +160,6 @@ for upload with metadata preserved.
 
 See also: `shrinkImage` (generic optimization), `shrinkImageElement` (DOM display), `loadImage` (URL loading).
 
-
-
 ## Snippets
 
 ### basic.ts
@@ -200,8 +193,6 @@ input.addEventListener("change", async (event) => {
     console.error("Failed to optimize file:", error);
   }
 });
-
-
 ```
 
 ### batch-upload.ts
@@ -217,7 +208,7 @@ import { shrinkImageFile } from "@petr-ptacek/js-core";
 async function uploadMultipleImages(files: FileList): Promise<void> {
   const optimized: File[] = [];
 
-  for ( const file of Array.from(files) ) {
+  for (const file of Array.from(files)) {
     try {
       const shrunk = await shrinkImageFile(file, {
         maxWidth: 1600,
@@ -227,7 +218,7 @@ async function uploadMultipleImages(files: FileList): Promise<void> {
 
       optimized.push(shrunk);
       console.log(`✓ ${file.name} optimized: ${file.size} → ${shrunk.size}`);
-    } catch ( error ) {
+    } catch (error) {
       console.error(`✗ Failed to optimize ${file.name}:`, error);
     }
   }
@@ -276,8 +267,6 @@ async function optimizeWithPresets(file: File): Promise<{
 
   return { thumbnail, display, archive };
 }
-
-
 ```
 
 ### file-vs-image.ts
@@ -369,10 +358,4 @@ async function uploadAvatarForm(event: Event): Promise<void> {
     console.error("Failed to upload avatar:", error);
   }
 }
-
-
 ```
-
-
-
-

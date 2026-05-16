@@ -5,18 +5,18 @@ Checks whether the given value is an object (including arrays, but excluding nul
 ## Usage
 
 ```ts
-import { isObject } from "@petr-ptacek/js-core"
+import { isObject } from "@petr-ptacek/js-core";
 
 // Type checking
-console.log(isObject({}));              // true
-console.log(isObject({ a: 1 }));        // true
-console.log(isObject([]));              // true
-console.log(isObject(new Date()));      // true
-console.log(isObject(() => {}));        // true
+console.log(isObject({})); // true
+console.log(isObject({ a: 1 })); // true
+console.log(isObject([])); // true
+console.log(isObject(new Date())); // true
+console.log(isObject(() => {})); // true
 
-console.log(isObject(null));            // false (null is not an object)
-console.log(isObject(42));              // false
-console.log(isObject("text"));          // false
+console.log(isObject(null)); // false (null is not an object)
+console.log(isObject(42)); // false
+console.log(isObject("text")); // false
 
 // Type guard usage
 const value: unknown = {};
@@ -34,7 +34,7 @@ In JavaScript, `typeof null === 'object'` (a historical quirk), making the nativ
 ## Signature
 
 ```typescript
-function isObject(value: unknown): value is object
+function isObject(value: unknown): value is object;
 ```
 
 ## Parameters
@@ -77,4 +77,3 @@ Avoid when:
 `isObject` provides a precise type guard for any object type while correctly excluding `null` and primitives, making it ideal for distinguishing complex from simple types.
 
 See also: `isPlainObject` (plain objects only), `isArray` (arrays only), `isNull` (null specifically).
-

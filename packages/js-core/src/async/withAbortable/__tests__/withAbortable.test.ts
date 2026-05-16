@@ -15,11 +15,7 @@ describe("withAbortable", () => {
 
       expect(result).toBe("result");
       expect(mockFn).toHaveBeenCalledOnce();
-      expect(mockFn).toHaveBeenCalledWith(
-        expect.objectContaining({ signal: expect.any(AbortSignal) }),
-        "arg1",
-        42,
-      );
+      expect(mockFn).toHaveBeenCalledWith(expect.objectContaining({ signal: expect.any(AbortSignal) }), "arg1", 42);
     });
 
     it("provides AbortSignal in context", async () => {
@@ -221,9 +217,7 @@ describe("withAbortable", () => {
 
       expect(result).toBe("no-args");
       expect(mockFn).toHaveBeenCalledOnce();
-      expect(mockFn).toHaveBeenCalledWith(
-        expect.objectContaining({ signal: expect.any(AbortSignal) }),
-      );
+      expect(mockFn).toHaveBeenCalledWith(expect.objectContaining({ signal: expect.any(AbortSignal) }));
     });
 
     it("handles function with multiple executions in sequence", async () => {

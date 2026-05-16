@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** error
 > **Since:** 1.0.0
 > **Tags:** json, parse, safe, fallback, error-handling
-
 
 # parseJSONSafe
 
@@ -23,19 +21,19 @@ Safely parses a JSON string with optional fallback handling.
 ## Usage
 
 ```ts
-import { parseJSONSafe } from "@petr-ptacek/js-core"
+import { parseJSONSafe } from "@petr-ptacek/js-core";
 
 // with fallback
-const data = parseJSONSafe('{"name": "Alice"}', { name: "Unknown" })
-console.log(data) // { name: "Alice" }
+const data = parseJSONSafe('{"name": "Alice"}', { name: "Unknown" });
+console.log(data); // { name: "Alice" }
 
 // invalid JSON with fallback
-const fallbackData = parseJSONSafe('invalid json', { name: "Unknown" })
-console.log(fallbackData) // { name: "Unknown" }
+const fallbackData = parseJSONSafe("invalid json", { name: "Unknown" });
+console.log(fallbackData); // { name: "Unknown" }
 
 // without fallback
-const result = parseJSONSafe<{name: string}>('{"name": "Alice"}')
-console.log(result) // { name: "Alice" } or undefined if invalid
+const result = parseJSONSafe<{ name: string }>('{"name": "Alice"}');
+console.log(result); // { name: "Alice" } or undefined if invalid
 ```
 
 ## Why This Utility Exists
@@ -45,8 +43,8 @@ JSON parsing with `JSON.parse()` throws exceptions on invalid input, requiring t
 ## Signature
 
 ```ts
-function parseJSONSafe<T>(value: string, fallback: T): T
-function parseJSONSafe<T>(value: string): T | undefined
+function parseJSONSafe<T>(value: string, fallback: T): T;
+function parseJSONSafe<T>(value: string): T | undefined;
 ```
 
 ## Parameters
@@ -95,7 +93,6 @@ Avoid when:
 
 `parseJSONSafe` provides a simple, safe alternative to `JSON.parse()` with optional fallback handling, built on structured error handling principles while maintaining a clean, focused API for common JSON parsing scenarios.
 
-
 ## Snippets
 
 ### basic.ts
@@ -106,7 +103,7 @@ import { parseJSONSafe } from "@petr-ptacek/js-core";
 // basic JSON parsing without fallback
 const jsonString = '{"name": "Alice", "age": 30}';
 
-const result = parseJSONSafe<{name: string; age: number}>(jsonString);
+const result = parseJSONSafe<{ name: string; age: number }>(jsonString);
 
 if (result) {
   console.log("Name:", result.name);
@@ -119,7 +116,6 @@ if (result) {
 const invalidJson = '{"name": "Alice", "age":}'; // missing value
 const invalidResult = parseJSONSafe(invalidJson);
 console.log(invalidResult); // undefined
-
 ```
 
 ### data-types.ts
@@ -173,7 +169,6 @@ if (user) {
   console.log("Theme:", user.profile.preferences.theme);
   console.log("Roles:", user.roles.join(", "));
 }
-
 ```
 
 ### with-fallback.ts
@@ -187,7 +182,7 @@ const configJson = localStorage.getItem("userConfig");
 const config = parseJSONSafe(configJson || "", {
   theme: "light",
   language: "en",
-  notifications: true
+  notifications: true,
 });
 
 // config is always defined due to fallback
@@ -206,12 +201,7 @@ const apiResponse = '{"users": [{"id": 1, "name": "Alice"}]}';
 const data = parseJSONSafe(apiResponse, { users: [] as User[] });
 
 // data.users is always an array, even if parsing fails
-data.users.forEach(user => {
+data.users.forEach((user) => {
   console.log(`User: ${user.name} (ID: ${user.id})`);
 });
-
 ```
-
-
-
-

@@ -5,15 +5,15 @@ Safely gets a nested value from an object using a dot-separated path with full T
 ## Usage
 
 ```ts
-import { get } from "@petr-ptacek/js-core"
+import { get } from "@petr-ptacek/js-core";
 
 const user = {
   profile: {
     name: "John",
     contacts: {
-      email: "john@example.com"
-    }
-  }
+      email: "john@example.com",
+    },
+  },
 };
 
 const name = get(user, "profile.name");
@@ -28,17 +28,14 @@ Direct property access can throw runtime errors when intermediate properties are
 
 ```ts
 // Without default value
-function get<T extends object, P extends Path<T>>(
-  obj: T,
-  path: P,
-): PathValue<T, P> | undefined
+function get<T extends object, P extends Path<T>>(obj: T, path: P): PathValue<T, P> | undefined;
 
 // With default value
 function get<T extends object, P extends Path<T>, D>(
   obj: T,
   path: P,
-  defaultValue: D,
-): Exclude<PathValue<T, P>, undefined> | D
+  defaultValue: D
+): Exclude<PathValue<T, P>, undefined> | D;
 ```
 
 ## Parameters

@@ -5,17 +5,16 @@ Represents an asynchronous function.
 ## Usage
 
 ```ts
-import type { AsyncFn } from "@petr-ptacek/js-lab"
+import type { AsyncFn } from "@petr-ptacek/js-lab";
 
 const fetchUser: AsyncFn<[id: string], User> = async (id) => {
-  const response = await fetch(`/api/users/${id}`)
-  return response.json()
-}
+  const response = await fetch(`/api/users/${id}`);
+  return response.json();
+};
 
-const saveData: AsyncFn<[data: object, filename: string], void> = 
-  async (data, filename) => {
-    await fs.writeFile(filename, JSON.stringify(data))
-  }
+const saveData: AsyncFn<[data: object, filename: string], void> = async (data, filename) => {
+  await fs.writeFile(filename, JSON.stringify(data));
+};
 
 // Retry utility
 async function withRetry<TArgs extends unknown[], TResult>(
@@ -25,13 +24,13 @@ async function withRetry<TArgs extends unknown[], TResult>(
 ): Promise<TResult> {
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
-      return await fn(...args)
+      return await fn(...args);
     } catch (error) {
-      if (attempt === maxAttempts) throw error
-      await new Promise(resolve => setTimeout(resolve, 1000 * attempt))
+      if (attempt === maxAttempts) throw error;
+      await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
     }
   }
-  throw new Error("Max attempts reached")
+  throw new Error("Max attempts reached");
 }
 ```
 
@@ -42,8 +41,7 @@ Asynchronous operations are fundamental in modern JavaScript applications. `Asyn
 ## Type Declaration
 
 ```ts
-type AsyncFn<TArgs extends unknown[] = unknown[], TResult = unknown> =
-  (...args: TArgs) => Promise<TResult>
+type AsyncFn<TArgs extends unknown[] = unknown[], TResult = unknown> = (...args: TArgs) => Promise<TResult>;
 ```
 
 ## Type Parameters

@@ -5,18 +5,18 @@ Checks whether the given value is a function.
 ## Usage
 
 ```ts
-import { isFunction } from "@petr-ptacek/js-core"
+import { isFunction } from "@petr-ptacek/js-core";
 
 // Functions
-console.log(isFunction(() => {}));           // true
-console.log(isFunction(function() {}));      // true
-console.log(isFunction(Math.min));           // true
-console.log(isFunction(class {}));           // true
+console.log(isFunction(() => {})); // true
+console.log(isFunction(function () {})); // true
+console.log(isFunction(Math.min)); // true
+console.log(isFunction(class {})); // true
 
 // Not functions
-console.log(isFunction("callback"));         // false
-console.log(isFunction({} ));                // false
-console.log(isFunction(null));               // false
+console.log(isFunction("callback")); // false
+console.log(isFunction({})); // false
+console.log(isFunction(null)); // false
 
 // Type guard usage
 const value: unknown = () => "hello";
@@ -34,7 +34,7 @@ While `typeof value === 'function'` works, this utility provides TypeScript type
 ## Signature
 
 ```typescript
-function isFunction(value: unknown): value is Function
+function isFunction(value: unknown): value is Function;
 ```
 
 ## Parameters
@@ -79,4 +79,3 @@ Avoid when:
 `isFunction` provides a type guard for function values, enabling safe type narrowing in TypeScript for any callable value.
 
 See also: `isPrimitive` (check for primitive types).
-

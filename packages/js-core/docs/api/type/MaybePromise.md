@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** type
 > **Since:** 1.0.0
 > **Tags:** type, promise, async, sync, union, flexible
-
 
 # MaybePromise
 
@@ -24,19 +22,19 @@ Represents a value that may be returned synchronously or as a Promise.
 ## Usage
 
 ```ts
-import type { MaybePromise } from "@petr-ptacek/js-core"
+import type { MaybePromise } from "@petr-ptacek/js-core";
 
 function getData(useCache: boolean): MaybePromise<string> {
   if (useCache) {
-    return "cached data" // synchronous
+    return "cached data"; // synchronous
   }
-  return fetch("/api/data").then(r => r.text()) // asynchronous
+  return fetch("/api/data").then((r) => r.text()); // asynchronous
 }
 
 // Handle both sync and async cases
 async function processData(useCache: boolean) {
-  const data = await getData(useCache) // works for both cases
-  console.log(data)
+  const data = await getData(useCache); // works for both cases
+  console.log(data);
 }
 ```
 
@@ -47,7 +45,7 @@ Many functions can return values either synchronously (when cached or computed i
 ## Type Declaration
 
 ```ts
-type MaybePromise<T> = T | Promise<T>
+type MaybePromise<T> = T | Promise<T>;
 ```
 
 ## Type Parameters
@@ -73,7 +71,8 @@ class DataCache {
     if (this.cache.has(key)) {
       return this.cache.get(key); // synchronous
     }
-    return fetcher().then(data => { // asynchronous
+    return fetcher().then((data) => {
+      // asynchronous
       this.cache.set(key, data);
       return data;
     });
@@ -86,14 +85,15 @@ interface Plugin {
 }
 
 const syncPlugin: Plugin = {
-  process: (data) => ({ ...data, validated: true }) // sync
+  process: (data) => ({ ...data, validated: true }), // sync
 };
 
 const asyncPlugin: Plugin = {
-  process: async (data) => { // async
-    await new Promise(resolve => setTimeout(resolve, 100));
+  process: async (data) => {
+    // async
+    await new Promise((resolve) => setTimeout(resolve, 100));
     return { ...data, enriched: true };
-  }
+  },
 };
 
 // Usage - await works for both
@@ -112,6 +112,7 @@ Avoid when:
 ## Design Notes
 
 This type enables flexible function implementations that can:
+
 - Return cached values synchronously for better performance
 - Fall back to async operations when needed
 - Maintain a consistent interface regardless of execution path
@@ -121,8 +122,3 @@ The type works seamlessly with `await`, which handles both sync values and Promi
 ## Summary
 
 `MaybePromise<T>` enables flexible APIs that can return values either synchronously or asynchronously based on runtime conditions, providing performance benefits when possible while maintaining type safety and consistent interfaces for consumers.
-
-
-
-
-

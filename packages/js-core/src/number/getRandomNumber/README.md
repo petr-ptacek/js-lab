@@ -5,19 +5,19 @@ Returns a random integer within the given inclusive range.
 ## Usage
 
 ```ts
-import { getRandomNumber } from "@petr-ptacek/js-core"
+import { getRandomNumber } from "@petr-ptacek/js-core";
 
 // random number between 1 and 6 (dice roll)
-const dice = getRandomNumber(1, 6)
-console.log(dice) // 1, 2, 3, 4, 5, or 6
+const dice = getRandomNumber(1, 6);
+console.log(dice); // 1, 2, 3, 4, 5, or 6
 
 // random number from 0 to 100
-const percentage = getRandomNumber(0, 100)
-console.log(percentage) // 0 to 100
+const percentage = getRandomNumber(0, 100);
+console.log(percentage); // 0 to 100
 
 // using defaults (0 to MAX_SAFE_INTEGER)
-const largeRandom = getRandomNumber()
-console.log(largeRandom) // 0 to 9007199254740991
+const largeRandom = getRandomNumber();
+console.log(largeRandom); // 0 to 9007199254740991
 ```
 
 ## Why This Utility Exists
@@ -27,7 +27,7 @@ JavaScript's `Math.random()` returns floating-point values between 0 and 1, requ
 ## Signature
 
 ```ts
-function getRandomNumber(from?: number, to?: number): number
+function getRandomNumber(from?: number, to?: number): number;
 ```
 
 ## Parameters
@@ -48,7 +48,7 @@ Returns a `number` representing a random integer within the specified range (inc
 The implementation uses the standard formula for converting `Math.random()` to an integer range:
 
 ```ts
-Math.floor(Math.random() * (to - from + 1)) + from
+Math.floor(Math.random() * (to - from + 1)) + from;
 ```
 
 Key design decisions:

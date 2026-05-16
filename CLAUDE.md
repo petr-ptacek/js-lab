@@ -24,7 +24,8 @@ applications.
 **Package Manager:** pnpm 10.33.0 (required)  
 **Node Version:** >=22  
 **Language:** TypeScript 5.9+ with strict mode  
-**Linter/Formatter:** Biome 2.4.10  
+**Linter:** ESLint 10 + typescript-eslint 8 + eslint-plugin-vue 10  
+**Formatter:** Prettier 3  
 **Test Framework:** Vitest 4.1.2 with v8 coverage provider  
 **Build Tool:** Vite (per-package)  
 **Documentation:** VitePress 1.6.4  
@@ -77,9 +78,10 @@ pnpm --filter @petr-ptacek/js-core run test:watch
 pnpm typecheck
 
 # Linting and formatting
-pnpm lint                 # Check code quality
-pnpm lint:fix             # Auto-fix issues
-pnpm format               # Format all code
+pnpm lint                 # ESLint check
+pnpm lint:fix             # ESLint auto-fix
+pnpm format               # Prettier write
+pnpm format:check         # Prettier check (CI)
 
 # Build
 pnpm --filter @petr-ptacek/js-core run build
@@ -133,22 +135,24 @@ pnpm --filter @petr-ptacek/js-core run docs:dev    # Per-package docs
   - `verbatimModuleSyntax`, `forceConsistentCasingInFileNames`
   - `noExplicitAny` (warn in linter, off in playground and tests)
 
-## Biome Configuration
+## ESLint + Prettier Configuration
 
-**Linting:**
+**ESLint** (`eslint.config.ts` — flat config):
 
-- Recommended rules enabled
-- `noExplicitAny` set to warn (strict mode)
-- Playground (`apps/playground/**`) has looser rules for experimentation
-- Test files (`**/*.test.*`, `**/*.spec.*`) allow `any` and unused variables
+- `typescript-eslint` recommended rules for all `.ts` files
+- `eslint-plugin-vue` vue3-recommended rules for `.vue` files
+- `vue-eslint-parser` as main parser for `.vue`, `@typescript-eslint/parser` as sub-parser inside `<script lang="ts">`
+- `@typescript-eslint/no-explicit-any`: warn globally, off in tests and playground
+- `@typescript-eslint/consistent-type-imports`: enforced (use `import type`)
+- Test files (`**/*.test.ts`, `**/*.spec.ts`): `no-explicit-any` off, `no-unused-vars` off
+- Playground (`apps/playground/**`): `no-explicit-any` off, `no-console` off
 
-**Formatting:**
+**Prettier** (`.prettierrc`):
 
-- 2-space indentation, 100-character line width
-- Double quotes for JavaScript
-- TailwindCSS directives supported
-
-**Import Organization:** Enabled (can be auto-fixed with `pnpm lint:fix`)
+- 2-space indentation, 120-character line width
+- Double quotes, semicolons, trailing commas (es5)
+- `singleAttributePerLine`, `endOfLine: lf`, `htmlWhitespaceSensitivity: ignore`
+- `eslint-config-prettier` disables conflicting ESLint rules (applied last in ESLint config)
 
 ## Test Setup
 
@@ -259,7 +263,7 @@ Commits are enforced via commitlint (Husky pre-commit hook).
 
 **Pre-commit Hooks:**
 
-- `pnpm lint-staged` runs Biome check on staged files
+- `pnpm lint-staged` runs Prettier + ESLint on staged files (Prettier first, then ESLint)
 - commitlint validates commit message format
 
 ## When Adding New Utilities
@@ -271,4 +275,3 @@ Commits are enforced via commitlint (Husky pre-commit hook).
 5. **Create changeset** for release tracking
 6. **Update documentation** if public API is significant
 7. **Run full checks:** `pnpm typecheck`, `pnpm test`, `pnpm lint`
-

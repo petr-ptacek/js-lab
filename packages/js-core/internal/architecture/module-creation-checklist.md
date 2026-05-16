@@ -13,7 +13,7 @@ The goal is to guarantee:
 
 Every new utility should follow this process.
 
-------------------------------------------------------------------------
+---
 
 # 1. Choose a Proper Name
 
@@ -34,7 +34,7 @@ Examples:
     withTryCatch
     isPromise
 
-------------------------------------------------------------------------
+---
 
 # 2. Create Module Directory
 
@@ -46,7 +46,7 @@ Example:
 
     src/createUUIDV4/
 
-------------------------------------------------------------------------
+---
 
 # 3. Create Canonical Module Structure
 
@@ -76,7 +76,7 @@ Final example:
         createUUIDV4.test.ts
       README.md
 
-------------------------------------------------------------------------
+---
 
 # 4. Implement the Utility
 
@@ -101,7 +101,7 @@ Guidelines:
 - add comments for non-obvious logic, but avoid over-commenting
 - strongly type all functions and variables
 
-------------------------------------------------------------------------
+---
 
 # 5. Define the Public API
 
@@ -114,8 +114,8 @@ same types that are not part of the public API should not be exported.
 
 Example:
 
-``` ts
-export { createUUIDV4 } from "./createUUIDV4"
+```ts
+export { createUUIDV4 } from "./createUUIDV4";
 ```
 
 Rules:
@@ -124,7 +124,7 @@ Rules:
 - no internal helpers
 - export only stable public API
 
-------------------------------------------------------------------------
+---
 
 # 6. Add Tests
 
@@ -134,16 +134,16 @@ Create test file:
 
 Example:
 
-``` ts
-import { describe, it, expect } from "vitest"
-import { createUUIDV4 } from "../createUUIDV4"
+```ts
+import { describe, it, expect } from "vitest";
+import { createUUIDV4 } from "../createUUIDV4";
 
 describe("createUUIDV4", () => {
   it("returns a string", () => {
-    const uuid = createUUIDV4()
-    expect(typeof uuid).toBe("string")
-  })
-})
+    const uuid = createUUIDV4();
+    expect(typeof uuid).toBe("string");
+  });
+});
 ```
 
 Guidelines:
@@ -153,13 +153,13 @@ Guidelines:
 - aim for deterministic tests
 - if the number of tests grows significantly, consider organizing them into multiple files or using test suites
 
-------------------------------------------------------------------------
+---
 
 # 7. Write Documentation
 
 - follow `documentation/readme-guidelines.md`
 
-------------------------------------------------------------------------
+---
 
 # 8. Export From Package Root
 
@@ -169,17 +169,17 @@ Add export to:
 
 Example:
 
-``` ts
-export * from "./createUUIDV4"
+```ts
+export * from "./createUUIDV4";
 ```
 
 This makes the utility available via:
 
-``` ts
-import { createUUIDV4 } from "@petr-ptacek/js-core"
+```ts
+import { createUUIDV4 } from "@petr-ptacek/js-core";
 ```
 
-------------------------------------------------------------------------
+---
 
 # 9. Run Tests
 
@@ -192,7 +192,7 @@ Ensure:
 - all tests pass
 - no regressions occur
 
-------------------------------------------------------------------------
+---
 
 # 10. Create Changeset
 
@@ -212,7 +212,7 @@ Example message:
 
     Add createUUIDV4 utility
 
-------------------------------------------------------------------------
+---
 
 # Summary
 

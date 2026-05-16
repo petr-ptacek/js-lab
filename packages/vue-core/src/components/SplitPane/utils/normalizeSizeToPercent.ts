@@ -11,7 +11,7 @@ export type NormalizeSizeOptions = {
 export function normalizeSizeToPercent(
   value: SizeValue,
   containerSize: number,
-  options: NormalizeSizeOptions = {},
+  options: NormalizeSizeOptions = {}
 ): number {
   if (!containerSize || containerSize <= 0) {
     return 0;

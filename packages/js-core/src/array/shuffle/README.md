@@ -5,7 +5,7 @@ Returns a new array with elements shuffled in random order using the Fisher–Ya
 ## Usage
 
 ```ts
-import { shuffle } from "@petr-ptacek/js-core"
+import { shuffle } from "@petr-ptacek/js-core";
 
 const numbers = [1, 2, 3, 4, 5];
 const shuffled = shuffle(numbers);
@@ -20,7 +20,7 @@ JavaScript doesn't provide a built-in shuffle method, and common approaches like
 ## Signature
 
 ```ts
-function shuffle<T>(array: readonly T[]): T[]
+function shuffle<T>(array: readonly T[]): T[];
 ```
 
 ## Parameters
@@ -38,11 +38,11 @@ Returns a new array containing all elements from the input array in randomized o
 ## Design Notes
 
 The implementation uses the modern Fisher–Yates shuffle algorithm:
+
 - Creates a copy of the input array to maintain immutability
 - Iterates from the last element backward
 - For each position, selects a random element from the remaining unshuffled portion
 - Swaps the current element with the randomly selected one
-
 
 ## When To Use
 

@@ -1,11 +1,5 @@
 import type { MaybePromise } from "../../type";
-import type {
-  WithRunIdContext,
-  WithRunIdOptions,
-  WithRunIdResult,
-  WithRunIdReturn,
-  WithRunIdStrategy,
-} from "./types";
+import type { WithRunIdContext, WithRunIdOptions, WithRunIdResult, WithRunIdReturn, WithRunIdStrategy } from "./types";
 
 /**
  * Wraps a function with controlled execution semantics based on a run identifier (`runId`).
@@ -146,7 +140,7 @@ import type {
  */
 export function withRunId<TArgs extends unknown[], TResult>(
   fn: (ctx: WithRunIdContext, ...args: TArgs) => MaybePromise<TResult>,
-  options: WithRunIdOptions = {},
+  options: WithRunIdOptions = {}
 ): WithRunIdReturn<TArgs, TResult> {
   const strategy: WithRunIdStrategy = options.strategy ?? "drop";
   const throwOnError = options.throwOnError ?? false;
@@ -177,10 +171,7 @@ export function withRunId<TArgs extends unknown[], TResult>(
     executeInternal(nextId, item.args).then(item.resolve).catch(item.reject);
   }
 
-  async function executeInternal(
-    runIdLocal: number,
-    args: TArgs,
-  ): Promise<WithRunIdResult<TResult>> {
+  async function executeInternal(runIdLocal: number, args: TArgs): Promise<WithRunIdResult<TResult>> {
     try {
       if (options.signal?.aborted) {
         return { status: "canceled" };

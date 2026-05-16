@@ -1,6 +1,5 @@
-import { fileURLToPath, URL } from "node:url";
-
 import tailwindcss from "@tailwindcss/vite";
+import { fileURLToPath, URL } from "node:url";
 import { defineNuxtConfig } from "nuxt/config";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -18,12 +17,8 @@ export default defineNuxtConfig({
   vite: {
     resolve: {
       alias: {
-        "@petr-ptacek/js-core": fileURLToPath(
-          new URL("../../../packages/js-core/src", import.meta.url),
-        ),
-        "@petr-ptacek/vue-core": fileURLToPath(
-          new URL("../../../packages/vue-core/src", import.meta.url),
-        ),
+        "@petr-ptacek/js-core": fileURLToPath(new URL("../../../packages/js-core/src", import.meta.url)),
+        "@petr-ptacek/vue-core": fileURLToPath(new URL("../../../packages/vue-core/src", import.meta.url)),
       },
     },
     plugins: [tailwindcss() as any],

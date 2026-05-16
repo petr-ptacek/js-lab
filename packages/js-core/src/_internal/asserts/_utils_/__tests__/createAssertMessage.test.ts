@@ -9,12 +9,8 @@ describe("createAssertMessage", () => {
   });
 
   it("stringifies special values correctly", () => {
-    expect(createAssertMessage("value", "defined", undefined)).toBe(
-      "value must be defined, got: undefined",
-    );
+    expect(createAssertMessage("value", "defined", undefined)).toBe("value must be defined, got: undefined");
 
-    expect(createAssertMessage("value", "a finite number", NaN)).toBe(
-      "value must be a finite number, got: NaN",
-    );
+    expect(createAssertMessage("value", "a finite number", NaN)).toBe("value must be a finite number, got: NaN");
   });
 });

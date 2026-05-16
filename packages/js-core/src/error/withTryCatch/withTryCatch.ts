@@ -12,12 +12,12 @@ export function withTryCatch<TResult, TError = unknown>(
   fn: () => Promise<TResult> | TResult,
   options: WithTryCatchOptions<TResult, TError> & {
     fallback: ValueOrFactory<TResult, [TError]>;
-  },
+  }
 ): Promise<TryCatchResultSuccess<TResult> | TryCatchResultFailureWithData<TResult, TError>>;
 
 export function withTryCatch<TResult, TError = unknown>(
   fn: () => Promise<TResult> | TResult,
-  options?: WithTryCatchOptions<TResult, TError>,
+  options?: WithTryCatchOptions<TResult, TError>
 ): Promise<TryCatchResultSuccess<TResult> | TryCatchResultFailureNoData<TError>>;
 
 /**
@@ -110,7 +110,7 @@ export function withTryCatch<TResult, TError = unknown>(
  */
 export async function withTryCatch<TResult, TError = unknown>(
   fn: () => Promise<TResult> | TResult,
-  options: WithTryCatchOptions<TResult, TError> = {},
+  options: WithTryCatchOptions<TResult, TError> = {}
 ): Promise<TryCatchResult<TResult, TError>> {
   let result: TryCatchResult<TResult, TError>;
 

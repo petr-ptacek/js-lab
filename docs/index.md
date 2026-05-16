@@ -8,11 +8,9 @@ Collection of JavaScript libraries.
     <p>JavaScript & TypeScript utility library</p>
   </a>
 
-[//]: # (  <a class="vp-card" href="./vue-core/">)
+[//]: # '  <a class="vp-card" href="./vue-core/">'
+[//]: # "    <h3>@petr-ptacek/vue-core</h3>"
+[//]: # "    <p>Vue composables and components</p>"
+[//]: # "  </a>"
 
-[//]: # (    <h3>@petr-ptacek/vue-core</h3>)
-
-[//]: # (    <p>Vue composables and components</p>)
-
-[//]: # (  </a>)
 </div>

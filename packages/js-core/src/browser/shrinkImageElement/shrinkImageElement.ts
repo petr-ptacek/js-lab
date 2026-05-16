@@ -1,5 +1,5 @@
 import { loadImage } from "../loadImage";
-import { type ShrinkImageOptions, shrinkImage } from "../shrinkImage";
+import { shrinkImage, type ShrinkImageOptions } from "../shrinkImage";
 
 /**
  * Shrinks an image element and returns a new `HTMLImageElement`.
@@ -62,7 +62,7 @@ import { type ShrinkImageOptions, shrinkImage } from "../shrinkImage";
  */
 export async function shrinkImageElement(
   image: HTMLImageElement,
-  options?: ShrinkImageOptions,
+  options?: ShrinkImageOptions
 ): Promise<HTMLImageElement> {
   const blob = await shrinkImage(image, options);
 

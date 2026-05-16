@@ -28,7 +28,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         x: 0,
         y: 0,
         target,
-      }),
+      })
     );
 
     expect(isPressed.value).toBe(false);
@@ -47,7 +47,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         x: 10,
         y: 20,
         target,
-      }),
+      })
     );
 
     expect(isPressed.value).toBe(true);
@@ -68,7 +68,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         x: 0,
         y: 0,
         target,
-      }),
+      })
     );
 
     expect(isPressed.value).toBe(false);
@@ -87,7 +87,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         x: 0,
         y: 0,
         target,
-      }),
+      })
     );
 
     window.dispatchEvent(
@@ -96,7 +96,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         y: 0,
         pointerId: 1,
         timeStamp: 10,
-      }),
+      })
     );
 
     expect(isDragging.value).toBe(false);
@@ -116,7 +116,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         x: 0,
         y: 0,
         target,
-      }),
+      })
     );
 
     window.dispatchEvent(
@@ -125,7 +125,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         y: 0,
         pointerId: 1,
         timeStamp: 10,
-      }),
+      })
     );
 
     expect(isDragging.value).toBe(true);
@@ -145,7 +145,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         x: 0,
         y: 0,
         target,
-      }),
+      })
     );
 
     window.dispatchEvent(
@@ -154,7 +154,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         y: 0,
         pointerId: 1,
         timeStamp: 10,
-      }),
+      })
     );
 
     window.dispatchEvent(
@@ -163,7 +163,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         y: 0,
         pointerId: 1,
         timeStamp: 20,
-      }),
+      })
     );
 
     expect(onEnd).toHaveBeenCalledOnce();
@@ -182,7 +182,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         x: 0,
         y: 0,
         target,
-      }),
+      })
     );
 
     window.dispatchEvent(
@@ -191,7 +191,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         y: 0,
         pointerId: 1,
         timeStamp: 10,
-      }),
+      })
     );
 
     expect(onEnd).not.toHaveBeenCalled();
@@ -207,7 +207,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         x: 0,
         y: 0,
         target,
-      }),
+      })
     );
 
     window.dispatchEvent(
@@ -216,7 +216,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         y: 0,
         pointerId: 1,
         timeStamp: 10,
-      }),
+      })
     );
 
     window.dispatchEvent(
@@ -225,7 +225,7 @@ describeVue("usePointerDrag – threshold behavior", () => {
         y: 0,
         pointerId: 1,
         timeStamp: 20,
-      }),
+      })
     );
 
     expect(isPressed.value).toBe(false);

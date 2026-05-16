@@ -10,7 +10,7 @@ const submitForm = withRunId(
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return { success: true };
   },
-  { strategy: "drop" },
+  { strategy: "drop" }
 );
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -35,7 +35,7 @@ const saveRecord = withRunId(
     await new Promise((resolve) => setTimeout(resolve, 300));
     return { saved: true, id: record.id };
   },
-  { strategy: "queue" },
+  { strategy: "queue" }
 );
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -63,7 +63,7 @@ const search = withRunId(
     await new Promise((resolve) => setTimeout(resolve, 500));
     return [`result for "${query}"`];
   },
-  { strategy: "replace" },
+  { strategy: "replace" }
 );
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

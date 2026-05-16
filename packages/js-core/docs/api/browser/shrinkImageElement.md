@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** browser
 > **Since:** 1.0.0
 > **Tags:** image, compression, element, resize, dom, optimization
-
 
 # shrinkImageElement
 
@@ -24,7 +22,7 @@ Shrinks an image element and returns a new `HTMLImageElement` with the optimized
 ## Usage
 
 ```ts
-import { shrinkImageElement } from "@petr-ptacek/js-core"
+import { shrinkImageElement } from "@petr-ptacek/js-core";
 
 const img = document.querySelector("img")!;
 
@@ -46,7 +44,7 @@ into an `HTMLImageElement`. This is ideal for direct DOM manipulation and intera
 ## Comparison to shrinkImage
 
 | Aspect           | `shrinkImage`     | `shrinkImageElement`           |
-|------------------|-------------------|--------------------------------|
+| ---------------- | ----------------- | ------------------------------ |
 | **Input**        | HTMLImageElement  | HTMLImageElement               |
 | **Output**       | Blob (file-like)  | HTMLImageElement (DOM element) |
 | **Use case**     | Uploads, storage  | Display, DOM insertion         |
@@ -58,10 +56,7 @@ Use `shrinkImageElement` when you want a new DOM element (e.g., for display or r
 ## Signature
 
 ```typescript
-function shrinkImageElement(
-  image: HTMLImageElement,
-  options?: ShrinkImageOptions,
-): Promise<HTMLImageElement>
+function shrinkImageElement(image: HTMLImageElement, options?: ShrinkImageOptions): Promise<HTMLImageElement>;
 ```
 
 ## Parameters
@@ -86,7 +81,7 @@ type ShrinkImageOptions = {
   maxHeight?: number;
   quality?: number;
   mimeType?: string;
-}
+};
 ```
 
 ## Throws / Errors
@@ -148,8 +143,6 @@ the "image in → image out" model is more intuitive than working with `Blob` ob
 See also: `shrinkImage` (Blob output), `scaleImageByAspectRatio` (scaling only, no compression), `loadImage` (loading
 images from URLs).
 
-
-
 ## Snippets
 
 ### basic.ts
@@ -170,11 +163,9 @@ try {
   img.replaceWith(resized);
 
   console.log("Image resized and displayed");
-} catch ( error ) {
+} catch (error) {
   console.error("Failed to resize image:", error);
 }
-
-
 ```
 
 ### blob-vs-element.ts
@@ -228,7 +219,7 @@ async function displayOptimizedImage(imageElement: HTMLImageElement): Promise<vo
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function optimizeAndDisplay(
-  originalImg: HTMLImageElement,
+  originalImg: HTMLImageElement
 ): Promise<{ displayImage: HTMLImageElement; uploadBlob: Blob }> {
   const options = {
     maxWidth: 2000,
@@ -244,8 +235,6 @@ async function optimizeAndDisplay(
 
   return { displayImage, uploadBlob };
 }
-
-
 ```
 
 ### gallery-optimization.ts
@@ -258,10 +247,7 @@ import { shrinkImageElement } from "@petr-ptacek/js-core";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-async function previewOptimizedImage(
-  sourceImage: HTMLImageElement,
-  previewContainer: HTMLElement,
-): Promise<void> {
+async function previewOptimizedImage(sourceImage: HTMLImageElement, previewContainer: HTMLElement): Promise<void> {
   try {
     // Create optimized preview (smaller quality/size for display)
     const preview = await shrinkImageElement(sourceImage, {
@@ -275,7 +261,7 @@ async function previewOptimizedImage(
     previewContainer.appendChild(preview);
 
     console.log("Optimized preview ready for upload");
-  } catch ( error ) {
+  } catch (error) {
     console.error("Failed to create preview:", error);
   }
 }
@@ -288,7 +274,7 @@ async function previewOptimizedImage(
 async function optimizeGalleryImages(): Promise<void> {
   const images = document.querySelectorAll<HTMLImageElement>("img.gallery-item");
 
-  for ( const img of Array.from(images) ) {
+  for (const img of Array.from(images)) {
     try {
       const optimized = await shrinkImageElement(img, {
         maxWidth: 1600,
@@ -296,7 +282,7 @@ async function optimizeGalleryImages(): Promise<void> {
       });
 
       img.replaceWith(optimized);
-    } catch ( error ) {
+    } catch (error) {
       console.error(`Failed to optimize image: ${img.src}`, error);
     }
   }
@@ -308,7 +294,7 @@ async function optimizeGalleryImages(): Promise<void> {
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function createResponsiveVersions(
-  sourceImage: HTMLImageElement,
+  sourceImage: HTMLImageElement
 ): Promise<{ small: HTMLImageElement; medium: HTMLImageElement; large: HTMLImageElement }> {
   const [small, medium, large] = await Promise.all([
     shrinkImageElement(sourceImage, { maxWidth: 400, maxHeight: 400 }),
@@ -318,10 +304,4 @@ async function createResponsiveVersions(
 
   return { small, medium, large };
 }
-
-
 ```
-
-
-
-

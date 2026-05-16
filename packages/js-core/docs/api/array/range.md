@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** array
 > **Since:** 1.0.0
 > **Tags:** array, range, numbers, sequence, python, iteration
-
 
 # range
 
@@ -24,7 +22,7 @@ Creates an array of numbers following the same semantics as Python's range.
 ## Usage
 
 ```ts
-import { range } from "@petr-ptacek/js-core"
+import { range } from "@petr-ptacek/js-core";
 
 // Single argument - generates 0 to n-1
 const numbers = range(5);
@@ -46,9 +44,9 @@ JavaScript lacks a built-in range function for generating numeric sequences. Com
 ## Signature
 
 ```ts
-function range(stop: number): number[]
-function range(start: number, stop: number): number[]
-function range(start: number, stop: number, step: number): number[]
+function range(stop: number): number[];
+function range(start: number, stop: number): number[];
+function range(start: number, stop: number, step: number): number[];
 ```
 
 ## Parameters
@@ -65,10 +63,10 @@ Returns an array of numbers generated according to the specified range parameter
 
 - Throws `Error` when `step` is 0.
 
-
 ## Design Notes
 
 The function follows Python's `range()` semantics exactly:
+
 - Single argument: `range(stop)` generates [0, 1, ..., stop-1]
 - Two arguments: `range(start, stop)` generates [start, start+1, ..., stop-1]
 - Three arguments: `range(start, stop, step)` generates [start, start+step, ..., last] where last < stop
@@ -97,7 +95,6 @@ Avoid when:
 
 `range` provides a Python-compatible way to generate numeric sequences in JavaScript with familiar API and identical behavior to Python's `range()`.
 
-
 ## Snippets
 
 ### basic.ts
@@ -120,7 +117,6 @@ console.log(evens); // [0, 2, 4, 6, 8]
 // Negative step for countdown
 const countdown = range(5, 0, -1);
 console.log(countdown); // [5, 4, 3, 2, 1]
-
 ```
 
 ### math-sequences.ts
@@ -156,7 +152,6 @@ const fibonacci = range(10).reduce((acc, i) => {
   return acc;
 }, [] as number[]);
 console.log(fibonacci); // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
-
 ```
 
 ### practical-usage.ts
@@ -185,7 +180,7 @@ const testUsers = range(1, 6).map((id: number) => ({
   id,
   name: `User ${id}`,
   email: `user${id}@example.com`,
-  active: id % 2 === 0
+  active: id % 2 === 0,
 }));
 
 console.log("Test users:", testUsers);
@@ -199,9 +194,4 @@ console.log("Test users:", testUsers);
 const businessHours = range(9, 18).map((hour: number) => `${hour}:00`);
 console.log("Business hours:", businessHours);
 // ["9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
-
 ```
-
-
-
-

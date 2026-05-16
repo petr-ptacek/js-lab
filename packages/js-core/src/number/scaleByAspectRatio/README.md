@@ -5,21 +5,15 @@ Scales dimensions while preserving aspect ratio to a target width or height.
 ## Usage
 
 ```ts
-import { scaleByAspectRatio } from "@petr-ptacek/js-core"
+import { scaleByAspectRatio } from "@petr-ptacek/js-core";
 
 // scale to specific width
-const scaled = scaleByAspectRatio(
-  { width: 400, height: 300 },
-  { width: 200 }
-)
-console.log(scaled) // { width: 200, height: 150 }
+const scaled = scaleByAspectRatio({ width: 400, height: 300 }, { width: 200 });
+console.log(scaled); // { width: 200, height: 150 }
 
 // scale to specific height
-const scaledHeight = scaleByAspectRatio(
-  { width: 800, height: 600 },
-  { height: 300 }
-)
-console.log(scaledHeight) // { width: 400, height: 300 }
+const scaledHeight = scaleByAspectRatio({ width: 800, height: 600 }, { height: 300 });
+console.log(scaledHeight); // { width: 400, height: 300 }
 ```
 
 ## Why This Utility Exists
@@ -29,17 +23,9 @@ When working with images, videos, or responsive layouts, maintaining aspect rati
 ## Signature
 
 ```ts
-function scaleByAspectRatio(
-  dimensions: Dimensions, 
-  target: { width: number }, 
-  round?: RoundValueFn
-): Dimensions
+function scaleByAspectRatio(dimensions: Dimensions, target: { width: number }, round?: RoundValueFn): Dimensions;
 
-function scaleByAspectRatio(
-  dimensions: Dimensions, 
-  target: { height: number }, 
-  round?: RoundValueFn
-): Dimensions
+function scaleByAspectRatio(dimensions: Dimensions, target: { height: number }, round?: RoundValueFn): Dimensions;
 ```
 
 ## Parameters
@@ -59,6 +45,7 @@ The utility uses these type definitions:
 ## Return Type
 
 Returns a `Dimensions` object with both `width` and `height` properties, where:
+
 - The specified target dimension matches the input
 - The other dimension is calculated to preserve the original aspect ratio
 - Both values are rounded using the provided rounding function
@@ -69,13 +56,11 @@ Returns a `Dimensions` object with both `width` and `height` properties, where:
 type Dimensions = {
   width: number;
   height: number;
-}
+};
 
-type DimensionsTarget = 
-  | { width: number; height?: never }
-  | { height: number; width?: never }
+type DimensionsTarget = { width: number; height?: never } | { height: number; width?: never };
 
-type RoundValueFn = (value: number) => number
+type RoundValueFn = (value: number) => number;
 ```
 
 ## Throws

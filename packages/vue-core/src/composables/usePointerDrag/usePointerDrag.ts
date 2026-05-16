@@ -1,13 +1,7 @@
 import { computed, getCurrentInstance, onBeforeUnmount, readonly, shallowRef, toValue } from "vue";
 
 import type { DragAxis, UsePointerDragOptions, UsePointerDragReturn } from "./types";
-import {
-  useDragAxisLock,
-  useDragDelta,
-  useDragDirection,
-  useDragThreshold,
-  useDragVelocity,
-} from "./use";
+import { useDragAxisLock, useDragDelta, useDragDirection, useDragThreshold, useDragVelocity } from "./use";
 
 export function usePointerDrag(options: UsePointerDragOptions = {}): UsePointerDragReturn {
   /****************************

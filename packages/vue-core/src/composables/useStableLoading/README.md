@@ -106,7 +106,7 @@ With the default configuration:
 **`source`**
 
 ```ts
-Ref<boolean>
+Ref<boolean>;
 ```
 
 Reactive boolean indicating whether an operation is currently in progress.

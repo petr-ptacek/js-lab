@@ -5,13 +5,13 @@ Checks whether the provided value is the empty string literal.
 ## Usage
 
 ```ts
-import { isEmptyString } from "@petr-ptacek/js-core"
+import { isEmptyString } from "@petr-ptacek/js-core";
 
-const values = ["", "text", null, undefined]
+const values = ["", "text", null, undefined];
 
-values.forEach(value => {
-  console.log(`${JSON.stringify(value)} is empty string:`, isEmptyString(value))
-})
+values.forEach((value) => {
+  console.log(`${JSON.stringify(value)} is empty string:`, isEmptyString(value));
+});
 ```
 
 ## Why This Utility Exists
@@ -23,7 +23,7 @@ type information straight in generic code, validation flows, and unknown inputs.
 ## Signature
 
 ```ts
-function isEmptyString(value: unknown): value is ""
+function isEmptyString(value: unknown): value is "";
 ```
 
 ## Parameters

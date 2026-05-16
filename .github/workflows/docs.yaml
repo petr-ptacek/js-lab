@@ -3,7 +3,7 @@ name: Deploy documentation
 on:
   push:
     tags:
-      - '@petr-ptacek/js-core@*'
+      - "@petr-ptacek/js-core@*"
   workflow_dispatch:
 
 concurrency:

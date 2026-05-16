@@ -5,28 +5,28 @@ Represents a JavaScript primitive value.
 ## Usage
 
 ```ts
-import type { PrimitiveValue } from "@petr-ptacek/js-core"
+import type { PrimitiveValue } from "@petr-ptacek/js-core";
 
 function isPrimitive(value: unknown): value is PrimitiveValue {
-  const type = typeof value
-  return type !== "object" || value === null
+  const type = typeof value;
+  return type !== "object" || value === null;
 }
 
 function processPrimitive(value: PrimitiveValue): string {
-  if (value === null) return "null"
-  if (value === undefined) return "undefined"
-  return String(value)
+  if (value === null) return "null";
+  if (value === undefined) return "undefined";
+  return String(value);
 }
 
 const examples: PrimitiveValue[] = [
-  "hello",      // string
-  42,           // number  
-  true,         // boolean
+  "hello", // string
+  42, // number
+  true, // boolean
   Symbol("id"), // symbol
-  123n,         // bigint
-  null,         // null
-  undefined     // undefined
-]
+  123n, // bigint
+  null, // null
+  undefined, // undefined
+];
 ```
 
 ## Why This Type Exists
@@ -36,14 +36,7 @@ JavaScript has seven primitive types, and distinguishing them from objects is fu
 ## Type Declaration
 
 ```ts
-type PrimitiveValue =
-  | string
-  | number
-  | boolean
-  | symbol
-  | bigint
-  | null
-  | undefined
+type PrimitiveValue = string | number | boolean | symbol | bigint | null | undefined;
 ```
 
 ## When To Use
@@ -59,27 +52,27 @@ Use `PrimitiveValue` when:
 ```ts
 // Serialization example
 function serializePrimitive(value: PrimitiveValue): string {
-  if (value === null) return "null"
-  if (value === undefined) return "undefined" 
-  if (typeof value === "symbol") return value.toString()
-  if (typeof value === "bigint") return value.toString() + "n"
-  return JSON.stringify(value)
+  if (value === null) return "null";
+  if (value === undefined) return "undefined";
+  if (typeof value === "symbol") return value.toString();
+  if (typeof value === "bigint") return value.toString() + "n";
+  return JSON.stringify(value);
 }
 
-// Type guard example  
+// Type guard example
 function isPrimitiveValue(value: unknown): value is PrimitiveValue {
-  return value === null || typeof value !== "object"
+  return value === null || typeof value !== "object";
 }
 
 // Data processing example
 function extractPrimitives(obj: Record<string, unknown>): Record<string, PrimitiveValue> {
-  const result: Record<string, PrimitiveValue> = {}
+  const result: Record<string, PrimitiveValue> = {};
   for (const [key, value] of Object.entries(obj)) {
     if (isPrimitiveValue(value)) {
-      result[key] = value
+      result[key] = value;
     }
   }
-  return result
+  return result;
 }
 ```
 

@@ -2,11 +2,7 @@ import { isFunction } from "../../validation";
 
 export function zip<T, U>(arrayOne: readonly T[], arrayTwo: readonly U[]): [T, U][];
 
-export function zip<T, U, R>(
-  arrayOne: readonly T[],
-  arrayTwo: readonly U[],
-  mapper: (a: T, b: U) => R,
-): R[];
+export function zip<T, U, R>(arrayOne: readonly T[], arrayTwo: readonly U[], mapper: (a: T, b: U) => R): R[];
 
 /**
  * Zips two arrays element-wise.
@@ -33,7 +29,7 @@ export function zip<T, U, R>(
 export function zip<T, U, R>(
   arrayOne: readonly T[],
   arrayTwo: readonly U[],
-  mapper?: (a: T, b: U) => R,
+  mapper?: (a: T, b: U) => R
 ): [T, U][] | R[] {
   const length = Math.min(arrayOne.length, arrayTwo.length);
 

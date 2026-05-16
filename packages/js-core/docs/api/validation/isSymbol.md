@@ -9,11 +9,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** validation
 > **Since:** 1.0.0
 > **Tags:** validation, type-guard, symbol, typescript
-
 
 # isSymbol
 
@@ -22,16 +20,16 @@ Checks whether the given value is a symbol.
 ## Usage
 
 ```ts
-import { isSymbol } from "@petr-ptacek/js-core"
+import { isSymbol } from "@petr-ptacek/js-core";
 
 // Symbols
-console.log(isSymbol(Symbol("id")));      // true
-console.log(isSymbol(Symbol.iterator));   // true
+console.log(isSymbol(Symbol("id"))); // true
+console.log(isSymbol(Symbol.iterator)); // true
 
 // Not symbols
-console.log(isSymbol("id"));              // false
-console.log(isSymbol(null));              // false
-console.log(isSymbol({}));                // false
+console.log(isSymbol("id")); // false
+console.log(isSymbol(null)); // false
+console.log(isSymbol({})); // false
 
 // Type guard usage
 const value: unknown = Symbol("unique");
@@ -49,7 +47,7 @@ While `typeof value === 'symbol'` works, this utility provides TypeScript type g
 ## Signature
 
 ```typescript
-function isSymbol(value: unknown): value is symbol
+function isSymbol(value: unknown): value is symbol;
 ```
 
 ## Parameters
@@ -65,6 +63,7 @@ Returns a boolean indicating whether the value is a symbol. When `true`, TypeScr
 The implementation uses `typeof value === "symbol"` for runtime checking, which correctly identifies symbol values while excluding all other types.
 
 Symbols are unique and immutable identifiers, commonly used for:
+
 - Private property keys
 - Well-known symbols (`Symbol.iterator`, `Symbol.hasInstance`, etc.)
 - Unique object keys
@@ -91,9 +90,3 @@ Avoid when:
 `isSymbol` provides a type guard for symbol values, enabling safe type narrowing in TypeScript.
 
 See also: `isPrimitive` (check for any primitive type).
-
-
-
-
-
-

@@ -21,7 +21,7 @@ const result = await withTryCatch(
       }
       return { message: "Unknown error", code: "UNKNOWN" };
     },
-  },
+  }
 );
 
 // Result always has data due to fallback

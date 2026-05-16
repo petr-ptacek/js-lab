@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** type
 > **Since:** 1.0.0
 > **Tags:** type, function, factory, creation, parameters
-
 
 # Factory
 
@@ -23,34 +21,34 @@ Represents a factory function.
 ## Usage
 
 ```ts
-import type { Factory } from "@petr-ptacek/js-core"
+import type { Factory } from "@petr-ptacek/js-core";
 
 interface User {
-  name: string
-  age: number
-  id: string
+  name: string;
+  age: number;
+  id: string;
 }
 
 // Factory with multiple parameters
 const createUser: Factory<User, [name: string, age: number]> = (name, age) => ({
   name,
-  age, 
-  id: crypto.randomUUID()
-})
+  age,
+  id: crypto.randomUUID(),
+});
 
 // Parameterless factory
-const createTimestamp: Factory<string> = () => new Date().toISOString()
+const createTimestamp: Factory<string> = () => new Date().toISOString();
 
 // Factory with optional parameters
 const createConfig: Factory<object, [env?: string]> = (env = "development") => ({
   environment: env,
   debug: env !== "production",
-  apiUrl: env === "production" ? "https://api.com" : "http://localhost:3000"
-})
+  apiUrl: env === "production" ? "https://api.com" : "http://localhost:3000",
+});
 
-const user = createUser("Alice", 30)
-const timestamp = createTimestamp()
-const config = createConfig("staging")
+const user = createUser("Alice", 30);
+const timestamp = createTimestamp();
+const config = createConfig("staging");
 ```
 
 ## Why This Type Exists
@@ -60,7 +58,7 @@ Factory functions are fundamental in object-oriented and functional programming 
 ## Type Declaration
 
 ```ts
-type Factory<TResult, TArgs extends unknown[] = []> = (...args: TArgs) => TResult
+type Factory<TResult, TArgs extends unknown[] = []> = (...args: TArgs) => TResult;
 ```
 
 ## Type Parameters
@@ -81,50 +79,49 @@ Use `Factory<TResult, TArgs>` when:
 ```ts
 // Dependency injection example
 interface Logger {
-  log(message: string): void
+  log(message: string): void;
 }
 
-type LoggerFactory = Factory<Logger, [level: string]>
+type LoggerFactory = Factory<Logger, [level: string]>;
 
 const createConsoleLogger: LoggerFactory = (level) => ({
-  log: (message) => console.log(`[${level.toUpperCase()}] ${message}`)
-})
+  log: (message) => console.log(`[${level.toUpperCase()}] ${message}`),
+});
 
 const createFileLogger: LoggerFactory = (level) => ({
-  log: (message) => fs.appendFileSync(`${level}.log`, message + '\n')
-})
+  log: (message) => fs.appendFileSync(`${level}.log`, message + "\n"),
+});
 
 // Factory registry
 class FactoryRegistry<T, TArgs extends unknown[]> {
-  private factories = new Map<string, Factory<T, TArgs>>()
-  
+  private factories = new Map<string, Factory<T, TArgs>>();
+
   register(name: string, factory: Factory<T, TArgs>): void {
-    this.factories.set(name, factory)
+    this.factories.set(name, factory);
   }
-  
+
   create(name: string, ...args: TArgs): T {
-    const factory = this.factories.get(name)
-    if (!factory) throw new Error(`Factory '${name}' not found`)
-    return factory(...args)
+    const factory = this.factories.get(name);
+    if (!factory) throw new Error(`Factory '${name}' not found`);
+    return factory(...args);
   }
 }
 
 // Usage
-const loggerRegistry = new FactoryRegistry<Logger, [string]>()
-loggerRegistry.register("console", createConsoleLogger)
-loggerRegistry.register("file", createFileLogger)
+const loggerRegistry = new FactoryRegistry<Logger, [string]>();
+loggerRegistry.register("console", createConsoleLogger);
+loggerRegistry.register("file", createFileLogger);
 
-const logger = loggerRegistry.create("console", "debug")
+const logger = loggerRegistry.create("console", "debug");
 
 // Configuration factory
-type ConfigFactory<T> = Factory<T, [environment: string, overrides?: Partial<T>]>
+type ConfigFactory<T> = Factory<T, [environment: string, overrides?: Partial<T>]>;
 
-const createDatabaseConfig: ConfigFactory<{ host: string; port: number }> = 
-  (env, overrides = {}) => ({
-    host: env === "production" ? "prod.db.com" : "localhost",
-    port: env === "production" ? 5432 : 5433,
-    ...overrides
-  })
+const createDatabaseConfig: ConfigFactory<{ host: string; port: number }> = (env, overrides = {}) => ({
+  host: env === "production" ? "prod.db.com" : "localhost",
+  port: env === "production" ? 5432 : 5433,
+  ...overrides,
+});
 ```
 
 ## When Not To Use
@@ -151,8 +148,3 @@ The type supports both simple and complex factory patterns while maintaining str
 ## Summary
 
 `Factory<TResult, TArgs>` provides type-safe factory function signatures for parameterized object creation, enabling dependency injection, plugin systems, and flexible instance generation with proper argument and return type validation.
-
-
-
-
-

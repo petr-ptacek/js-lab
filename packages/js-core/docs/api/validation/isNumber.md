@@ -9,11 +9,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** validation
 > **Since:** 1.0.0
 > **Tags:** validation, type-guard, number, typescript
-
 
 # isNumber
 
@@ -25,21 +23,21 @@ Checks whether the given value is a number.
 import { isNumber } from "@petr-ptacek/js-core";
 
 // Type checking
-console.log(isNumber(42));       // true
-console.log(isNumber(3.14));     // true
-console.log(isNumber(0));        // true
-console.log(isNumber(-5));       // true
-console.log(isNumber(NaN));      // true
+console.log(isNumber(42)); // true
+console.log(isNumber(3.14)); // true
+console.log(isNumber(0)); // true
+console.log(isNumber(-5)); // true
+console.log(isNumber(NaN)); // true
 console.log(isNumber(Infinity)); // true
 
-console.log(isNumber("42"));     // false
-console.log(isNumber(null));     // false
-console.log(isNumber([]));       // false
+console.log(isNumber("42")); // false
+console.log(isNumber(null)); // false
+console.log(isNumber([])); // false
 
 // Type guard usage
 const value: unknown = 42;
 
-if ( isNumber(value) ) {
+if (isNumber(value)) {
   // value is now typed as number
   const squared = value * value;
 }
@@ -52,7 +50,7 @@ While JavaScript provides `typeof value === 'number'`, this utility provides Typ
 ## Signature
 
 ```typescript
-function isNumber(value: unknown): value is number
+function isNumber(value: unknown): value is number;
 ```
 
 ## Parameters
@@ -97,9 +95,3 @@ Avoid when:
 `isNumber` provides a type guard for numeric values, enabling safe type narrowing in TypeScript while properly handling edge cases like `NaN` and `Infinity`.
 
 See also: `isFiniteNumber` (finite numbers only), `isNaNValue` (specifically NaN).
-
-
-
-
-
-

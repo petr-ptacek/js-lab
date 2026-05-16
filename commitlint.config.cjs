@@ -16,7 +16,6 @@ module.exports = {
      */
     "scope-empty": [2, "never"],
 
-
     // "scope-case": [2, "always", "kebab-case"],
     "scope-case": [0],
 

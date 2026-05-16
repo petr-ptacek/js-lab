@@ -1,15 +1,12 @@
 import { isArray, isObject } from "../../validation";
 import type { Path, PathValue } from "./types";
 
-export function get<T extends object, P extends Path<T>>(
-  obj: T,
-  path: P,
-): PathValue<T, P> | undefined;
+export function get<T extends object, P extends Path<T>>(obj: T, path: P): PathValue<T, P> | undefined;
 
 export function get<T extends object, P extends Path<T>, D>(
   obj: T,
   path: P,
-  defaultValue: D,
+  defaultValue: D
 ): Exclude<PathValue<T, P>, undefined> | D;
 
 /**

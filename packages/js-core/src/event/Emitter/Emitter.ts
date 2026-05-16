@@ -93,10 +93,7 @@ export class Emitter<Events extends EmitterEvents> {
    * @param handler - Event handler function
    * @returns Cleanup function that unregisters the handler
    */
-  on<TType extends keyof Events, THandler extends Events[TType]>(
-    type: TType,
-    handler: THandler,
-  ): CleanupFn {
+  on<TType extends keyof Events, THandler extends Events[TType]>(type: TType, handler: THandler): CleanupFn {
     return this.#on(type, handler, { once: false });
   }
 
@@ -109,10 +106,7 @@ export class Emitter<Events extends EmitterEvents> {
    * @param handler - Event handler function
    * @returns Cleanup function that unregisters the handler
    */
-  once<TType extends keyof Events, THandler extends Events[TType]>(
-    type: TType,
-    handler: THandler,
-  ): CleanupFn {
+  once<TType extends keyof Events, THandler extends Events[TType]>(type: TType, handler: THandler): CleanupFn {
     return this.#on(type, handler, { once: true });
   }
 
@@ -189,7 +183,7 @@ export class Emitter<Events extends EmitterEvents> {
   #on<TType extends keyof Events, THandler extends Events[TType]>(
     type: TType,
     handler: THandler,
-    ctx: ListenerContext,
+    ctx: ListenerContext
   ): CleanupFn {
     const storeItem: StoreItem<THandler> = this.#eventsStore.get(type) ?? new Map();
 

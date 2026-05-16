@@ -74,10 +74,7 @@ export type EmitterEvents = {
   [event: EventType]: EventHandler;
 };
 
-export type Store<TEvents extends EmitterEvents> = Map<
-  keyof TEvents,
-  StoreItem<TEvents[keyof TEvents]>
->;
+export type Store<TEvents extends EmitterEvents> = Map<keyof TEvents, StoreItem<TEvents[keyof TEvents]>>;
 export type StoreItem<TKey> = Map<TKey, { handler: TKey; ctx: ListenerContext }>;
 
 export type CleanupFn = () => void;

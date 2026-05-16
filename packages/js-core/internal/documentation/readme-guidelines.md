@@ -13,7 +13,7 @@ Example structure:
 
 The `README` structure must follow the sections defined below.
 
-------------------------------------------------------------------------
+---
 
 ## 1. Title
 
@@ -23,7 +23,7 @@ Example:
 
 # createUUIDV4
 
-------------------------------------------------------------------------
+---
 
 ## 2. Short Description
 
@@ -33,19 +33,19 @@ Example:
 
 Generate a UUID version 4 string.
 
-------------------------------------------------------------------------
+---
 
 ## 3. Usage
 
 Basic usage example.
 
-``` ts
-import { createUUIDV4 } from "@petr-ptacek/js-core"
+```ts
+import { createUUIDV4 } from "@petr-ptacek/js-core";
 
-const id = createUUIDV4()
+const id = createUUIDV4();
 ```
 
-------------------------------------------------------------------------
+---
 
 ## 4. Why This Utility Exists
 
@@ -56,17 +56,17 @@ Example:
 JavaScript environments provide different ways to generate UUIDs. This
 utility provides a consistent cross-environment solution.
 
-------------------------------------------------------------------------
+---
 
 ## 5. Signature
 
 Document the function signature and return type.
 
-``` ts
-function createUUIDV4(): string
+```ts
+function createUUIDV4(): string;
 ```
 
-------------------------------------------------------------------------
+---
 
 ## 6. Parameters (if applicable)
 
@@ -83,7 +83,7 @@ Example:
   - `secure` (`boolean`, default `true`): Prefer cryptographically
     secure sources when available.
 
-------------------------------------------------------------------------
+---
 
 ## 7. Type Parameters (if applicable)
 
@@ -95,7 +95,7 @@ Example:
 - `<T>`: The item type.
 - `<K extends keyof T>`: The key type used for selection.
 
-------------------------------------------------------------------------
+---
 
 ## 8. Return Type
 
@@ -105,7 +105,7 @@ Example:
 
 Returns a string containing a UUID v4 identifier in standard format (xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx).
 
-------------------------------------------------------------------------
+---
 
 ## 9. Type Declarations (if applicable)
 
@@ -118,17 +118,17 @@ Example:
 type WithAbortableOptions = {
   autoAbort?: boolean;
   timeoutMs?: number;
-}
+};
 
 type WithAbortableReturn<Args extends unknown[], R> = {
   execute: (...args: Args) => Promise<R>;
   abort: () => void;
   readonly signal: AbortSignal | null;
   readonly isRunning: boolean;
-}
+};
 ```
 
-------------------------------------------------------------------------
+---
 
 ## 10. Throws / Errors (if applicable)
 
@@ -140,7 +140,7 @@ Example:
 - Throws `TypeError` when input is not a valid URL.
 - Rejects when `fetch` fails or the request is aborted.
 
-------------------------------------------------------------------------
+---
 
 ## 11. Environment Strategy (if relevant)
 
@@ -152,7 +152,7 @@ Example:
 2. `crypto.getRandomValues`
 3. `Math.random` fallback (non-cryptographic)
 
-------------------------------------------------------------------------
+---
 
 ## 12. Design Notes
 
@@ -162,7 +162,7 @@ Example:
 
 The implementation prefers Web Crypto APIs when available.
 
-------------------------------------------------------------------------
+---
 
 ## 13. When To Use
 
@@ -176,7 +176,7 @@ Use this utility when you need:
 - cross-environment compatibility
 - zero dependencies
 
-------------------------------------------------------------------------
+---
 
 ## 14. When Not To Use
 
@@ -189,7 +189,7 @@ Avoid when:
 - deterministic identifiers are required
 - ULID or NanoID format is needed
 
-------------------------------------------------------------------------
+---
 
 ## 15. Summary
 
@@ -199,7 +199,7 @@ Example:
 
 createUUIDV4 provides a simple cross-environment UUID generator.
 
-------------------------------------------------------------------------
+---
 
 # Optional Sections
 
@@ -222,7 +222,7 @@ Security considerations if applicable.
 Compare briefly with native APIs or common libs (e.g. native
 `crypto.randomUUID`, `uuid`, lodash).
 
-------------------------------------------------------------------------
+---
 
 # README Rules
 
@@ -231,7 +231,7 @@ Compare briefly with native APIs or common libs (e.g. native
 3. Focus on practical developer information
 4. Keep section structure consistent
 
-------------------------------------------------------------------------
+---
 
 # Standard Section Order
 
@@ -254,7 +254,7 @@ applicable):
 14. When Not To Use
 15. Summary
 
-------------------------------------------------------------------------
+---
 
 # What Should NOT Be in Utility READMEs
 
@@ -265,7 +265,7 @@ individual utilities:
 - global library configuration
 - duplicated project documentation
 
-------------------------------------------------------------------------
+---
 
 # `since` Tag — Versioning Rules
 
@@ -301,4 +301,3 @@ export const meta = {
  */
 export function isAbortError(...) {}
 ```
-

@@ -6,7 +6,7 @@ import { shrinkImage, shrinkImageElement } from "@petr-ptacek/js-core";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
 async function uploadOptimizedImage(imageElement: HTMLImageElement): Promise<void> {
   // Get blob for upload
   const blob = await shrinkImage(imageElement, {
@@ -28,7 +28,7 @@ async function uploadOptimizedImage(imageElement: HTMLImageElement): Promise<voi
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
 async function displayOptimizedImage(imageElement: HTMLImageElement): Promise<void> {
   // Get element for display
   const resized = await shrinkImageElement(imageElement, {
@@ -44,9 +44,9 @@ async function displayOptimizedImage(imageElement: HTMLImageElement): Promise<vo
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
 async function optimizeAndDisplay(
-  originalImg: HTMLImageElement,
+  originalImg: HTMLImageElement
 ): Promise<{ displayImage: HTMLImageElement; uploadBlob: Blob }> {
   const options = {
     maxWidth: 2000,

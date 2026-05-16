@@ -53,17 +53,16 @@ export function useController(options: UseControllerOptions) {
     isDragging,
   });
 
-  const { isCollapsed, collapse, toggle, isExpanded, expand, setLastRestoredPercent } =
-    useResizeActions({
-      containerSize,
-      currentPercent,
-      minSize: computed(() => options.props.minSize),
-      maxSize: computed(() => options.props.maxSize),
-      restorable: computed(() => !!options.props.rememberSize),
-      onChange: (percent) => {
-        options.modelValue.value = `${percent}%`;
-      },
-    });
+  const { isCollapsed, collapse, toggle, isExpanded, expand, setLastRestoredPercent } = useResizeActions({
+    containerSize,
+    currentPercent,
+    minSize: computed(() => options.props.minSize),
+    maxSize: computed(() => options.props.maxSize),
+    restorable: computed(() => !!options.props.rememberSize),
+    onChange: (percent) => {
+      options.modelValue.value = `${percent}%`;
+    },
+  });
 
   // při startu dragu
   watch(isDragging, (dragging, wasDragging) => {

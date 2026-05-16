@@ -1,4 +1,4 @@
-import { type Ref, readonly, shallowRef } from "vue";
+import { readonly, type Ref, shallowRef } from "vue";
 
 import type { DragAxis } from "../types";
 
@@ -28,7 +28,7 @@ import type { DragAxis } from "../types";
 export function useDragDelta(
   axis: Ref<DragAxis>,
   invertAxis: Ref<DragAxis | null>,
-  lockedAxis: Ref<Extract<DragAxis, "x" | "y"> | null>,
+  lockedAxis: Ref<Extract<DragAxis, "x" | "y"> | null>
 ) {
   const rawX = shallowRef(0);
   const rawY = shallowRef(0);

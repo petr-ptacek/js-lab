@@ -40,10 +40,10 @@ import type { VueEmitter } from "./types";
  */
 export function createEmitter<Events extends EmitterEvents>(): VueEmitter<Events>;
 export function createEmitter<Events extends EmitterEvents>(
-  initialHandlers: EmitterInitialHandlers<Events>,
+  initialHandlers: EmitterInitialHandlers<Events>
 ): VueEmitter<Events>;
 export function createEmitter<Events extends EmitterEvents>(
-  initialHandlers?: EmitterInitialHandlers<Events>,
+  initialHandlers?: EmitterInitialHandlers<Events>
 ): VueEmitter<Events> {
   const emitter = initialHandlers ? new Emitter<Events>(initialHandlers) : new Emitter<Events>();
 

@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** type
 > **Since:** 1.0.0
 > **Tags:** type, function, async, promise, generic
-
 
 # AsyncFn
 
@@ -23,17 +21,16 @@ Represents an asynchronous function.
 ## Usage
 
 ```ts
-import type { AsyncFn } from "@petr-ptacek/js-lab"
+import type { AsyncFn } from "@petr-ptacek/js-lab";
 
 const fetchUser: AsyncFn<[id: string], User> = async (id) => {
-  const response = await fetch(`/api/users/${id}`)
-  return response.json()
-}
+  const response = await fetch(`/api/users/${id}`);
+  return response.json();
+};
 
-const saveData: AsyncFn<[data: object, filename: string], void> = 
-  async (data, filename) => {
-    await fs.writeFile(filename, JSON.stringify(data))
-  }
+const saveData: AsyncFn<[data: object, filename: string], void> = async (data, filename) => {
+  await fs.writeFile(filename, JSON.stringify(data));
+};
 
 // Retry utility
 async function withRetry<TArgs extends unknown[], TResult>(
@@ -43,13 +40,13 @@ async function withRetry<TArgs extends unknown[], TResult>(
 ): Promise<TResult> {
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
-      return await fn(...args)
+      return await fn(...args);
     } catch (error) {
-      if (attempt === maxAttempts) throw error
-      await new Promise(resolve => setTimeout(resolve, 1000 * attempt))
+      if (attempt === maxAttempts) throw error;
+      await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
     }
   }
-  throw new Error("Max attempts reached")
+  throw new Error("Max attempts reached");
 }
 ```
 
@@ -60,8 +57,7 @@ Asynchronous operations are fundamental in modern JavaScript applications. `Asyn
 ## Type Declaration
 
 ```ts
-type AsyncFn<TArgs extends unknown[] = unknown[], TResult = unknown> =
-  (...args: TArgs) => Promise<TResult>
+type AsyncFn<TArgs extends unknown[] = unknown[], TResult = unknown> = (...args: TArgs) => Promise<TResult>;
 ```
 
 ## Type Parameters
@@ -76,8 +72,3 @@ Use `AsyncFn` when building generic async utilities, middleware systems, or APIs
 ## Summary
 
 `AsyncFn` provides a standardized type for asynchronous functions with flexible parameter and return type constraints, enabling type-safe async utilities and composition patterns.
-
-
-
-
-

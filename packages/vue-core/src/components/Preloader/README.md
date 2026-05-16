@@ -16,6 +16,7 @@ Naive loaders often suffer from two UX issues:
 2. They disappear immediately, resulting in brief flashes.
 
 `UiPreloader` solves this by:
+
 - delaying appearance of the loader
 - enforcing a minimum visible duration once shown
 - separating **behavior** from **presentation**
@@ -49,18 +50,16 @@ The preloader is positioned absolutely and covers its nearest positioned ancesto
 Internally, the component uses `useStableLoading`.
 
 Default timing:
+
 - `delay`: 250 ms
 - `minVisible`: 300 ms
 
 ```vue
-<UiPreloader
-  :visible="loading"
-  :delay="400"
-  :min-visible="600"
-/>
+<UiPreloader :visible="loading" :delay="400" :min-visible="600" />
 ```
 
 Behavior summary:
+
 - short operations never show the loader
 - once visible, the loader stays visible for at least `minVisible`
 - transitions are predictable and flicker-free
@@ -198,7 +197,7 @@ Overrides the entire preloader content.
   :visible="loading"
   :ui="{
     spinner: 'size-18!',
-    message: 'text-xl!'
+    message: 'text-xl!',
   }"
 />
 ```
@@ -224,6 +223,7 @@ Overrides the entire preloader content.
 ## Backdrop Behavior
 
 When `backdrop` is enabled:
+
 - a pseudo-element overlay is rendered
 - pointer events are blocked
 - a subtle glass (blur) effect is applied
@@ -237,6 +237,7 @@ The backdrop is implemented without additional DOM nodes.
 `UiPreloader` uses `position: absolute` by default.
 
 Typical patterns:
+
 - wrap content in a `position: relative` container
 - use fixed dimensions for block-level loaders
 - combine with grid/flex layouts
@@ -266,11 +267,13 @@ The component itself does not enforce layout constraints.
 ## When to Use
 
 Use `UiPreloader` when:
+
 - you need consistent loading UX
 - loading duration is unpredictable
 - UI flicker must be avoided
 
 Avoid when:
+
 - loading is instantaneous and purely synchronous
 - skeletons or inline placeholders are more appropriate
 

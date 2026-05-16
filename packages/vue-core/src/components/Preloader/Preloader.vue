@@ -1,7 +1,3 @@
-<style>
-@import "./styles.css";
-</style>
-
 <script setup lang="ts">
 import { normalizeClass } from "vue";
 
@@ -45,7 +41,6 @@ const { loading, isHolding, isDelaying, hasMessageSlot } = useController({
         :size="size"
         :message="message"
       >
-
         <div
           v-if="spinner"
           class="ui-preloader__spinner"
@@ -70,8 +65,11 @@ const { loading, isHolding, isDelaying, hasMessageSlot } = useController({
             {{ message }}
           </slot>
         </div>
-
       </slot>
     </div>
   </div>
 </template>
+
+<style>
+@import "./styles.css";
+</style>

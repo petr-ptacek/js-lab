@@ -5,13 +5,13 @@ Converts a numeric value to a percentage relative to a given base.
 ## Usage
 
 ```ts
-import { toPercentage } from "@petr-ptacek/js-core"
+import { toPercentage } from "@petr-ptacek/js-core";
 
-const percentage = toPercentage(25, 100)
-console.log(percentage) // 25
+const percentage = toPercentage(25, 100);
+console.log(percentage); // 25
 
-const result = toPercentage(3, 4)
-console.log(result) // 75
+const result = toPercentage(3, 4);
+console.log(result); // 75
 ```
 
 ## Why This Utility Exists
@@ -21,7 +21,7 @@ Converting values to percentages is a common operation in data visualization, pr
 ## Signature
 
 ```ts
-function toPercentage(value: number, base: number): number
+function toPercentage(value: number, base: number): number;
 ```
 
 ## Parameters

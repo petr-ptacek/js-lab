@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** object
 > **Since:** 1.0.0
 > **Tags:** object, entries, typed, key-value, iteration
-
 
 # entries
 
@@ -23,7 +21,7 @@ Returns the enumerable own property [key, value] pairs of an object with preserv
 ## Usage
 
 ```ts
-import { entries } from "@petr-ptacek/js-core"
+import { entries } from "@petr-ptacek/js-core";
 
 const user = {
   id: 1,
@@ -43,9 +41,11 @@ The native `Object.entries()` loses TypeScript type information, returning `[str
 ## Signature
 
 ```ts
-function entries<T extends object>(obj: T): {
+function entries<T extends object>(
+  obj: T
+): {
   [K in keyof T]: [K, T[K]];
-}[keyof T][]
+}[keyof T][];
 ```
 
 ## Parameters
@@ -59,7 +59,6 @@ function entries<T extends object>(obj: T): {
 ## Return Type
 
 Returns an array of tuples where each tuple contains a property key and its corresponding value, with full type preservation. Only enumerable own properties are included.
-
 
 ## Design Notes
 
@@ -81,7 +80,7 @@ Use `entries` when you need to:
 Avoid when:
 
 - you need all properties including non-enumerable ones (use `Object.getOwnPropertyNames`)
-- you need properties from the prototype chain (use `for...in` loop)  
+- you need properties from the prototype chain (use `for...in` loop)
 - you only need keys (use the `keys` utility)
 - you only need values (use the `values` utility)
 - working with objects where type safety is not a concern
@@ -89,7 +88,6 @@ Avoid when:
 ## Summary
 
 `entries` provides a type-safe way to work with object key-value pairs while maintaining full type preservation and familiar `Object.entries` API.
-
 
 ## Snippets
 
@@ -109,7 +107,6 @@ for (const [key, value] of entries(user)) {
   // value: number | string | boolean
   console.log(`${key}: ${value}`);
 }
-
 ```
 
 ### filter.ts
@@ -125,13 +122,10 @@ const data = {
 };
 
 // Filter out internal properties
-const publicData = Object.fromEntries(
-  entries(data).filter(([key]) => key !== "internal")
-);
+const publicData = Object.fromEntries(entries(data).filter(([key]) => key !== "internal"));
 
 console.log(publicData);
 // Output: { id: 1, name: "Product", price: 99.99 }
-
 ```
 
 ### transform.ts
@@ -146,15 +140,8 @@ const original = {
 };
 
 // Transform object values while preserving types
-const doubled = Object.fromEntries(
-  entries(original).map(([key, value]) => [key, value * 2])
-);
+const doubled = Object.fromEntries(entries(original).map(([key, value]) => [key, value * 2]));
 
 console.log(doubled);
 // Output: { a: 2, b: 4, c: 6 }
-
 ```
-
-
-
-

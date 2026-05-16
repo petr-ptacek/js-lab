@@ -5,17 +5,17 @@ Checks whether the given value is NaN (Not-a-Number).
 ## Usage
 
 ```ts
-import { isNaNValue } from "@petr-ptacek/js-core"
+import { isNaNValue } from "@petr-ptacek/js-core";
 
 // NaN values
-console.log(isNaNValue(NaN));              // true
-console.log(isNaNValue(0 / 0));            // true
+console.log(isNaNValue(NaN)); // true
+console.log(isNaNValue(0 / 0)); // true
 
 // Not NaN
-console.log(isNaNValue("NaN"));            // false (string)
-console.log(isNaNValue(undefined));        // false
-console.log(isNaNValue(Infinity));         // false
-console.log(isNaNValue(42));               // false
+console.log(isNaNValue("NaN")); // false (string)
+console.log(isNaNValue(undefined)); // false
+console.log(isNaNValue(Infinity)); // false
+console.log(isNaNValue(42)); // false
 
 // Type guard usage
 const value: unknown = NaN;
@@ -33,7 +33,7 @@ if (isNaNValue(value)) {
 ## Signature
 
 ```typescript
-function isNaNValue(value: unknown): value is number
+function isNaNValue(value: unknown): value is number;
 ```
 
 ## Parameters
@@ -47,10 +47,12 @@ Returns a boolean indicating whether the value is NaN. When `true`, TypeScript n
 ## Design Notes
 
 The implementation uses both:
+
 1. `typeof value === "number"` - ensures the value is numeric type
 2. `Number.isNaN(value)` - checks specifically for NaN
 
 This dual-check is necessary because:
+
 - `NaN` is a special numeric value
 - `Number.isNaN()` is safer than global `isNaN()` (which has coercion issues)
 - Type narrowing requires `typeof "number"` check
@@ -77,4 +79,3 @@ Avoid when:
 `isNaNValue` provides a type guard for NaN values, enabling safe type narrowing in TypeScript while avoiding the pitfalls of global `isNaN()`.
 
 See also: `isNumber` (any number including NaN), `isFiniteNumber` (finite numbers only).
-

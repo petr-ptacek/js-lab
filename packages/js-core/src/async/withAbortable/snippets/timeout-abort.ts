@@ -17,7 +17,7 @@ const longTask = withAbortable(
       });
     });
   },
-  { timeoutMs: 3000 }, // 3 second timeout
+  { timeoutMs: 3000 } // 3 second timeout
 );
 
 // Manual abort example

@@ -1,7 +1,3 @@
-<style>
-@import "./styles/index.css";
-</style>
-
 <script setup lang="ts">
 import { isUndefined } from "@petr-ptacek/js-core";
 import { computed, normalizeClass } from "vue";
@@ -36,14 +32,13 @@ const { value: mv } = useProxyValue<ModelValue>(
   {
     autoSync: true,
     debounce: 150,
-  },
+  }
 );
 
-const { betaStyle, alphaStyle, onPointerDown, expand, collapse, isExpanded, isCollapsed } =
-  useController({
-    modelValue: mv,
-    props,
-  });
+const { betaStyle, alphaStyle, onPointerDown, expand, collapse, isExpanded, isCollapsed } = useController({
+  modelValue: mv,
+  props,
+});
 
 defineSlots<Slots>();
 defineExpose<Expose>({
@@ -65,9 +60,9 @@ defineExpose<Expose>({
     :data-expandable="expandable"
   >
     <div
+      ref="content"
       class="ui-split-pane__content"
       :class="props.ui?.content"
-      ref="content"
       data-slot="content"
     >
       <div
@@ -98,7 +93,7 @@ defineExpose<Expose>({
         >
           <slot
             name="grip"
-            :onPointerDown="onPointerDown"
+            :on-pointer-down="onPointerDown"
             :ui="normalizeClass(['ui-split-pane__grip', ui?.grip])"
           >
             <div
@@ -117,8 +112,8 @@ defineExpose<Expose>({
         >
           <slot
             name="actions"
-            :isCollapsed="isCollapsed"
-            :isExpanded="isExpanded"
+            :is-collapsed="isCollapsed"
+            :is-expanded="isExpanded"
             :collapse="collapse"
             :expand="expand"
             :ui="normalizeClass(['ui-split-pane__actions', ui?.actions])"
@@ -126,11 +121,9 @@ defineExpose<Expose>({
             <div
               class="ui-split-pane__actions"
               :class="normalizeClass(ui?.actions)"
-            >
-            </div>
+            ></div>
           </slot>
         </div>
-
       </div>
 
       <div
@@ -145,3 +138,7 @@ defineExpose<Expose>({
     </div>
   </div>
 </template>
+
+<style>
+@import "./styles/index.css";
+</style>

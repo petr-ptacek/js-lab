@@ -3,6 +3,6 @@ packages:
   - apps/**/*
 
 onlyBuiltDependencies:
-  - '@parcel/watcher'
+  - "@parcel/watcher"
   - esbuild
   - vue-demi

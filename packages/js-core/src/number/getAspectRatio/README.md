@@ -5,16 +5,16 @@ Computes the aspect ratio from given dimensions.
 ## Usage
 
 ```ts
-import { getAspectRatio } from "@petr-ptacek/js-core"
+import { getAspectRatio } from "@petr-ptacek/js-core";
 
-const aspectRatio = getAspectRatio(1920, 1080)
-console.log(aspectRatio) // 1.7777777777777777 (16:9 ratio)
+const aspectRatio = getAspectRatio(1920, 1080);
+console.log(aspectRatio); // 1.7777777777777777 (16:9 ratio)
 
-const square = getAspectRatio(400, 400)
-console.log(square) // 1 (1:1 ratio)
+const square = getAspectRatio(400, 400);
+console.log(square); // 1 (1:1 ratio)
 
-const portrait = getAspectRatio(300, 400)
-console.log(portrait) // 0.75 (3:4 ratio)
+const portrait = getAspectRatio(300, 400);
+console.log(portrait); // 0.75 (3:4 ratio)
 ```
 
 ## Why This Utility Exists
@@ -24,7 +24,7 @@ Aspect ratio calculations are fundamental in image processing, responsive design
 ## Signature
 
 ```ts
-function getAspectRatio(width: number, height: number): number
+function getAspectRatio(width: number, height: number): number;
 ```
 
 ## Parameters
@@ -37,6 +37,7 @@ function getAspectRatio(width: number, height: number): number
 Returns a `number` representing the aspect ratio calculated as `width / height`.
 
 Common aspect ratio values:
+
 - `1.777...` (16:9 widescreen)
 - `1.333...` (4:3 traditional)
 - `1.0` (1:1 square)

@@ -5,33 +5,24 @@ Represents a value or a factory function that produces a value.
 ## Usage
 
 ```ts
-import type { ValueOrFactory } from "@petr-ptacek/js-core"
+import type { ValueOrFactory } from "@petr-ptacek/js-core";
 
-function processWithFallback<T>(
-  primary: ValueOrFactory<T, [string]>, 
-  context: string
-): T {
-  return typeof primary === "function" ? primary(context) : primary
+function processWithFallback<T>(primary: ValueOrFactory<T, [string]>, context: string): T {
+  return typeof primary === "function" ? primary(context) : primary;
 }
 
 // Direct value
-const staticMessage = processWithFallback("Hello World", "greeting")
+const staticMessage = processWithFallback("Hello World", "greeting");
 
 // Factory function
-const dynamicMessage = processWithFallback(
-  (context) => `Generated message for ${context}`, 
-  "user123"
-)
+const dynamicMessage = processWithFallback((context) => `Generated message for ${context}`, "user123");
 
 // Error handling with fallback
-function withFallback<T>(
-  valueOrFactory: ValueOrFactory<T, [Error]>,
-  error: Error
-): T {
+function withFallback<T>(valueOrFactory: ValueOrFactory<T, [Error]>, error: Error): T {
   if (typeof valueOrFactory === "function") {
-    return valueOrFactory(error)
+    return valueOrFactory(error);
   }
-  return valueOrFactory
+  return valueOrFactory;
 }
 ```
 
@@ -42,8 +33,7 @@ APIs often need to accept either static values or parameterized factory function
 ## Type Declaration
 
 ```ts
-type ValueOrFactory<TResult, TArgs extends unknown[] = []> =
-  TResult | Factory<TResult, TArgs>
+type ValueOrFactory<TResult, TArgs extends unknown[] = []> = TResult | Factory<TResult, TArgs>;
 ```
 
 ## Type Parameters
@@ -64,32 +54,27 @@ Use `ValueOrFactory<TResult, TArgs>` when:
 ```ts
 // Configuration with context-aware factories
 interface ErrorConfig {
-  message: ValueOrFactory<string, [Error, string]>
-  shouldRetry: ValueOrFactory<boolean, [Error, number]>
-  retryDelay: ValueOrFactory<number, [number]>
+  message: ValueOrFactory<string, [Error, string]>;
+  shouldRetry: ValueOrFactory<boolean, [Error, number]>;
+  retryDelay: ValueOrFactory<number, [number]>;
 }
 
 class ErrorHandler {
   constructor(private config: ErrorConfig) {}
-  
+
   handleError(error: Error, operation: string, attemptCount: number): void {
-    const message = this.resolveValue(this.config.message, [error, operation])
-    const shouldRetry = this.resolveValue(this.config.shouldRetry, [error, attemptCount])
-    const delay = this.resolveValue(this.config.retryDelay, [attemptCount])
-    
-    console.error(message)
+    const message = this.resolveValue(this.config.message, [error, operation]);
+    const shouldRetry = this.resolveValue(this.config.shouldRetry, [error, attemptCount]);
+    const delay = this.resolveValue(this.config.retryDelay, [attemptCount]);
+
+    console.error(message);
     if (shouldRetry && attemptCount < 3) {
-      setTimeout(() => this.retry(operation), delay)
+      setTimeout(() => this.retry(operation), delay);
     }
   }
-  
-  private resolveValue<T, TArgs extends unknown[]>(
-    valueOrFactory: ValueOrFactory<T, TArgs>,
-    args: TArgs
-  ): T {
-    return typeof valueOrFactory === "function" 
-      ? (valueOrFactory as Factory<T, TArgs>)(...args)
-      : valueOrFactory
+
+  private resolveValue<T, TArgs extends unknown[]>(valueOrFactory: ValueOrFactory<T, TArgs>, args: TArgs): T {
+    return typeof valueOrFactory === "function" ? (valueOrFactory as Factory<T, TArgs>)(...args) : valueOrFactory;
   }
 }
 
@@ -97,38 +82,34 @@ class ErrorHandler {
 const basicErrorConfig: ErrorConfig = {
   message: "An error occurred",
   shouldRetry: true,
-  retryDelay: 1000
-}
+  retryDelay: 1000,
+};
 
 const advancedErrorConfig: ErrorConfig = {
   message: (error, operation) => `Failed to ${operation}: ${error.message}`,
-  shouldRetry: (error, attemptCount) => 
-    !error.message.includes("unauthorized") && attemptCount < 3,
-  retryDelay: (attemptCount) => Math.pow(2, attemptCount) * 1000 // exponential backoff
-}
+  shouldRetry: (error, attemptCount) => !error.message.includes("unauthorized") && attemptCount < 3,
+  retryDelay: (attemptCount) => Math.pow(2, attemptCount) * 1000, // exponential backoff
+};
 
 // Validation system
 type ValidatorConfig<T> = {
-  defaultValue: ValueOrFactory<T, [ValidationError]>
-  formatError: ValueOrFactory<string, [ValidationError, T]>
-}
+  defaultValue: ValueOrFactory<T, [ValidationError]>;
+  formatError: ValueOrFactory<string, [ValidationError, T]>;
+};
 
 function createValidator<T>(config: ValidatorConfig<T>) {
   return (value: T, isValid: boolean): T => {
-    if (isValid) return value
-    
-    const error = new ValidationError("Invalid value")
-    const defaultValue = typeof config.defaultValue === "function"
-      ? config.defaultValue(error)
-      : config.defaultValue
-      
-    const errorMessage = typeof config.formatError === "function"
-      ? config.formatError(error, value)
-      : config.formatError
-      
-    console.warn(errorMessage)
-    return defaultValue
-  }
+    if (isValid) return value;
+
+    const error = new ValidationError("Invalid value");
+    const defaultValue = typeof config.defaultValue === "function" ? config.defaultValue(error) : config.defaultValue;
+
+    const errorMessage =
+      typeof config.formatError === "function" ? config.formatError(error, value) : config.formatError;
+
+    console.warn(errorMessage);
+    return defaultValue;
+  };
 }
 ```
 

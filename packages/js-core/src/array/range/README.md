@@ -5,7 +5,7 @@ Creates an array of numbers following the same semantics as Python's range.
 ## Usage
 
 ```ts
-import { range } from "@petr-ptacek/js-core"
+import { range } from "@petr-ptacek/js-core";
 
 // Single argument - generates 0 to n-1
 const numbers = range(5);
@@ -27,9 +27,9 @@ JavaScript lacks a built-in range function for generating numeric sequences. Com
 ## Signature
 
 ```ts
-function range(stop: number): number[]
-function range(start: number, stop: number): number[]
-function range(start: number, stop: number, step: number): number[]
+function range(stop: number): number[];
+function range(start: number, stop: number): number[];
+function range(start: number, stop: number, step: number): number[];
 ```
 
 ## Parameters
@@ -46,10 +46,10 @@ Returns an array of numbers generated according to the specified range parameter
 
 - Throws `Error` when `step` is 0.
 
-
 ## Design Notes
 
 The function follows Python's `range()` semantics exactly:
+
 - Single argument: `range(stop)` generates [0, 1, ..., stop-1]
 - Two arguments: `range(start, stop)` generates [start, start+1, ..., stop-1]
 - Three arguments: `range(start, stop, step)` generates [start, start+step, ..., last] where last < stop

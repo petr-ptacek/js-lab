@@ -12,7 +12,7 @@ const parseResult = await withTryCatch(
       }
       return { type: "UNKNOWN_ERROR", message: String(e) };
     },
-  },
+  }
 );
 
 if (parseResult.ok) {

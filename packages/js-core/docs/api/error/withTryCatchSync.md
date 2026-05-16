@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** error
 > **Since:** 1.0.0
 > **Tags:** error, try-catch, sync, result, union, handling
-
 
 # withTryCatchSync
 
@@ -24,17 +22,17 @@ Executes a synchronous function and returns its outcome as a discriminated union
 ## Usage
 
 ```ts
-import { withTryCatchSync } from "@petr-ptacek/js-core"
+import { withTryCatchSync } from "@petr-ptacek/js-core";
 
 const result = withTryCatchSync(() => {
-  const data = JSON.parse(jsonString)
-  return data
-})
+  const data = JSON.parse(jsonString);
+  return data;
+});
 
 if (result.ok) {
-  console.log(result.data)
+  console.log(result.data);
 } else {
-  console.error(result.error)
+  console.error(result.error);
 }
 ```
 
@@ -48,12 +46,12 @@ This is the synchronous variant of `withTryCatch`. While the async version handl
 function withTryCatchSync<TResult, TError = unknown>(
   fn: () => TResult,
   options: WithTryCatchOptions<TResult, TError> & { fallback: ValueOrFactory<TResult, [TError]> }
-): TryCatchResultSuccess<TResult> | TryCatchResultFailureWithData<TResult, TError>
+): TryCatchResultSuccess<TResult> | TryCatchResultFailureWithData<TResult, TError>;
 
 function withTryCatchSync<TResult, TError = unknown>(
   fn: () => TResult,
   options?: WithTryCatchOptions<TResult, TError>
-): TryCatchResultSuccess<TResult> | TryCatchResultFailureNoData<TError>
+): TryCatchResultSuccess<TResult> | TryCatchResultFailureNoData<TError>;
 ```
 
 ## Parameters
@@ -85,32 +83,32 @@ type WithTryCatchOptions<TResult, TError = unknown> = {
   onFinally?: () => void;
   fallback?: ValueOrFactory<TResult, [TError]>;
   mapError?: (e: unknown) => TError;
-}
+};
 
 type TryCatchResult<TResult, TError = unknown> =
   | TryCatchResultSuccess<TResult>
-  | TryCatchResultFailure<TResult, TError>
+  | TryCatchResultFailure<TResult, TError>;
 
 type TryCatchResultSuccess<TResult> = {
   ok: true;
   data: TResult;
-}
+};
 
 type TryCatchResultFailure<TResult, TError = unknown> =
   | TryCatchResultFailureWithData<TResult, TError>
-  | TryCatchResultFailureNoData<TError>
+  | TryCatchResultFailureNoData<TError>;
 
 type TryCatchResultFailureNoData<TError = unknown> = {
   ok: false;
   error: TError;
   data?: never;
-}
+};
 
 type TryCatchResultFailureWithData<TResult, TError = unknown> = {
   ok: false;
   error: TError;
   data: TResult;
-}
+};
 ```
 
 ## Design Notes
@@ -148,7 +146,6 @@ Avoid when:
 
 `withTryCatchSync` is the synchronous variant of `withTryCatch`, providing structured error handling by converting synchronous function execution outcomes into discriminated unions with optional recovery mechanisms and lifecycle callbacks.
 
-
 ## Snippets
 
 ### basic.ts
@@ -168,7 +165,6 @@ if (result.ok) {
 } else {
   console.error("Parse failed:", result.error);
 }
-
 ```
 
 ### math-operations.ts
@@ -194,7 +190,7 @@ function safeDivision(a: number, b: number) {
           return { code: "MATH_ERROR", message: e.message };
         }
         return { code: "UNKNOWN", message: String(e) };
-      }
+      },
     }
   );
 }
@@ -209,7 +205,6 @@ const result2 = safeDivision(10, 0);
 if (!result2.ok) {
   console.error("Error:", result2.error); // { code: "MATH_ERROR", message: "Division by zero" }
 }
-
 ```
 
 ### with-fallback.ts
@@ -241,7 +236,7 @@ const result = withTryCatchSync(
         return { type: "VALIDATION_ERROR", message: e.message };
       }
       return { type: "UNKNOWN_ERROR", message: String(e) };
-    }
+    },
   }
 );
 
@@ -267,9 +262,4 @@ function validateConfig(config: any) {
     throw new ValidationError("Missing required config fields");
   }
 }
-
 ```
-
-
-
-

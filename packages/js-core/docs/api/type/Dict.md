@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** type
 > **Since:** 1.0.0
 > **Tags:** type, dictionary, record, object, mapping, key-value
-
 
 # Dict
 
@@ -24,28 +22,28 @@ Represents a dictionary object with arbitrary keys and values.
 ## Usage
 
 ```ts
-import type { Dict } from "@petr-ptacek/js-core"
+import type { Dict } from "@petr-ptacek/js-core";
 
 // String values with string keys (default)
 const userPreferences: Dict<string> = {
   theme: "dark",
   language: "en",
-  timezone: "UTC"
-}
+  timezone: "UTC",
+};
 
 // Number values with specific keys
 const scores: Dict<number, "alice" | "bob" | "charlie"> = {
   alice: 95,
   bob: 87,
-  charlie: 92
-}
+  charlie: 92,
+};
 
 // Mixed values
 const config: Dict<string | number | boolean> = {
   apiUrl: "https://api.example.com",
   timeout: 5000,
-  enableLogging: true
-}
+  enableLogging: true,
+};
 ```
 
 ## Why This Type Exists
@@ -55,7 +53,7 @@ While TypeScript's `Record<K, V>` is powerful, `Dict<TValue, TKey>` provides a m
 ## Type Declaration
 
 ```ts
-type Dict<TValue = unknown, TKey extends string | number | symbol = string> = Record<TKey, TValue>
+type Dict<TValue = unknown, TKey extends string | number | symbol = string> = Record<TKey, TValue>;
 ```
 
 ## Type Parameters
@@ -81,14 +79,14 @@ interface AppSettings {
   limits: Dict<number>; // rate limits, timeouts, etc.
 }
 
-// Cache implementation  
+// Cache implementation
 class SimpleCache<T> {
   private data: Dict<T> = {};
-  
+
   set(key: string, value: T): void {
     this.data[key] = value;
   }
-  
+
   get(key: string): T | undefined {
     return this.data[key];
   }
@@ -98,16 +96,16 @@ class SimpleCache<T> {
 type ApiEndpoints = Dict<string, "users" | "posts" | "comments">;
 const endpoints: ApiEndpoints = {
   users: "/api/users",
-  posts: "/api/posts", 
-  comments: "/api/comments"
+  posts: "/api/posts",
+  comments: "/api/comments",
 };
 
 // Translation/localization
 type Translations = Dict<string>;
 const messages: Translations = {
-  "welcome": "Welcome!",
-  "goodbye": "Goodbye!",
-  "error.notFound": "Not found"
+  welcome: "Welcome!",
+  goodbye: "Goodbye!",
+  "error.notFound": "Not found",
 };
 ```
 
@@ -134,8 +132,3 @@ The type maintains full compatibility with `Record` while providing more intuiti
 ## Summary
 
 `Dict<TValue, TKey>` provides a semantic, readable alternative to `Record` for dictionary-like objects, with intuitive parameter ordering and sensible defaults for common key-value mapping scenarios.
-
-
-
-
-

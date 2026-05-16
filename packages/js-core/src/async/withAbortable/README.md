@@ -5,14 +5,12 @@ Wraps an asynchronous function with AbortController lifecycle management.
 ## Usage
 
 ```ts
-import { withAbortable } from "@petr-ptacek/js-core"
+import { withAbortable } from "@petr-ptacek/js-core";
 
-const getUser = withAbortable(
-  async ({ signal }, id: string) => {
-    const res = await fetch(`/api/users/${id}`, { signal });
-    return res.json();
-  }
-);
+const getUser = withAbortable(async ({ signal }, id: string) => {
+  const res = await fetch(`/api/users/${id}`, { signal });
+  return res.json();
+});
 
 const user = await getUser.execute("123");
 ```
@@ -29,7 +27,7 @@ instances. It enforces a "latest execution wins" model, preventing race conditio
 function withAbortable<Args extends unknown[], R>(
   fn: AbortableFn<Args, R>,
   options?: WithAbortableOptions
-): WithAbortableReturn<Args, R>
+): WithAbortableReturn<Args, R>;
 ```
 
 ## Parameters
@@ -59,21 +57,20 @@ Returns an object containing:
 ```ts
 type AbortableContext = {
   signal: AbortSignal;
-}
+};
 
-type AbortableFn<Args extends unknown[], R> =
-  (context: AbortableContext, ...args: Args) => Promise<R>
+type AbortableFn<Args extends unknown[], R> = (context: AbortableContext, ...args: Args) => Promise<R>;
 
 type WithAbortableOptions = {
   timeoutMs?: number;
-}
+};
 
 type WithAbortableReturn<Args extends unknown[], R> = {
   execute: (...args: Args) => Promise<R>;
   cancel: () => void;
   readonly signal: AbortSignal | null;
   readonly isRunning: boolean;
-}
+};
 ```
 
 ## Design Notes

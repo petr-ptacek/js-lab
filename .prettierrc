@@ -5,7 +5,6 @@
   "printWidth": 120,
   "tabWidth": 2,
   "useTabs": false,
-  "editorconfig": true,
   "vueIndentScriptAndStyle": false,
   "singleAttributePerLine": true,
   "endOfLine": "lf",

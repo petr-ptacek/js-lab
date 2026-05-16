@@ -62,7 +62,7 @@ describe("normalizeSizeToPercent", () => {
         normalizeSizeToPercent(30, 200, {
           minSize: 50,
           maxSize: 100,
-        }),
+        })
       ).toBe(25);
     });
 
@@ -71,7 +71,7 @@ describe("normalizeSizeToPercent", () => {
         normalizeSizeToPercent(10, 200, {
           minSize: 80,
           maxSize: 120,
-        }),
+        })
       ).toBe(40);
     });
 
@@ -80,7 +80,7 @@ describe("normalizeSizeToPercent", () => {
         normalizeSizeToPercent(180, 200, {
           minSize: 40,
           maxSize: 100,
-        }),
+        })
       ).toBe(50);
     });
   });

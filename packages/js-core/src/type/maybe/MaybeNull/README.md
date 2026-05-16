@@ -5,14 +5,14 @@ Represents a value that may be `null`.
 ## Usage
 
 ```ts
-import type { MaybeNull } from "@petr-ptacek/js-core"
+import type { MaybeNull } from "@petr-ptacek/js-core";
 
 function getUserName(): MaybeNull<string> {
-  const user = getCurrentUser()
-  return user ? user.name : null
+  const user = getCurrentUser();
+  return user ? user.name : null;
 }
 
-const name: MaybeNull<string> = getUserName()
+const name: MaybeNull<string> = getUserName();
 // Type: string | null
 ```
 
@@ -23,7 +23,7 @@ In JavaScript/TypeScript, values can often be `null` when they represent the int
 ## Type Declaration
 
 ```ts
-type MaybeNull<T> = T | null
+type MaybeNull<T> = T | null;
 ```
 
 ## Type Parameters
@@ -80,6 +80,7 @@ Avoid when:
 ## Design Notes
 
 This type follows the semantic distinction where:
+
 - `null` represents intentional absence of a value
 - `undefined` represents uninitialized or missing properties
 - `MaybeNull<T>` specifically handles the `null` case

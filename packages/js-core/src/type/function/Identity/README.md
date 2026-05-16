@@ -5,44 +5,41 @@ Represents an identity function.
 ## Usage
 
 ```ts
-import type { Identity } from "@petr-ptacek/js-core"
+import type { Identity } from "@petr-ptacek/js-core";
 
 // Basic identity functions
-const identityNumber: Identity<number> = (value) => value
-const identityString: Identity<string> = (value) => value
-const identityUser: Identity<User> = (user) => user
+const identityNumber: Identity<number> = (value) => value;
+const identityString: Identity<string> = (value) => value;
+const identityUser: Identity<User> = (user) => user;
 
 // Default projections
-function processItems<T, U>(
-  items: T[],
-  projection: (item: T) => U = identityNumber as any
-): U[] {
-  return items.map(projection)
+function processItems<T, U>(items: T[], projection: (item: T) => U = identityNumber as any): U[] {
+  return items.map(projection);
 }
 
 // Passthrough in pipelines
 function createPipeline<T>() {
-  const transformers: Array<(value: T) => T> = []
-  
+  const transformers: Array<(value: T) => T> = [];
+
   return {
     add(transformer: Identity<T> = (x) => x) {
-      transformers.push(transformer)
-      return this
+      transformers.push(transformer);
+      return this;
     },
-    
+
     execute(value: T): T {
-      return transformers.reduce((acc, fn) => fn(acc), value)
-    }
-  }
+      return transformers.reduce((acc, fn) => fn(acc), value);
+    },
+  };
 }
 
 // Usage examples
 const numberPipeline = createPipeline<number>()
   .add((x) => x * 2)
   .add((x) => x) // identity - no transformation
-  .add((x) => x + 1)
+  .add((x) => x + 1);
 
-const result = numberPipeline.execute(5) // ((5 * 2) * 1) + 1 = 11
+const result = numberPipeline.execute(5); // ((5 * 2) * 1) + 1 = 11
 ```
 
 ## Why This Type Exists
@@ -52,7 +49,7 @@ Identity functions are fundamental in functional programming as neutral elements
 ## Type Declaration
 
 ```ts
-type Identity<T> = (value: T) => T
+type Identity<T> = (value: T) => T;
 ```
 
 ## Type Parameters
@@ -71,33 +68,26 @@ Use `Identity<T>` when:
 
 ```ts
 // Conditional transformation
-function conditionalTransform<T>(
-  value: T,
-  condition: boolean,
-  transform: Identity<T>
-): T {
-  return condition ? transform(value) : value
+function conditionalTransform<T>(value: T, condition: boolean, transform: Identity<T>): T {
+  return condition ? transform(value) : value;
 }
 
 // Utility with optional transformation
-function mapWithOptionalTransform<T>(
-  array: T[],
-  transform?: Identity<T>
-): T[] {
-  const fn = transform || ((x: T) => x)
-  return array.map(fn)
+function mapWithOptionalTransform<T>(array: T[], transform?: Identity<T>): T[] {
+  const fn = transform || ((x: T) => x);
+  return array.map(fn);
 }
 
 // Composition with neutral element
 function compose<T>(...fns: Identity<T>[]): Identity<T> {
-  return (value: T) => fns.reduce((acc, fn) => fn(acc), value)
+  return (value: T) => fns.reduce((acc, fn) => fn(acc), value);
 }
 
 const composed = compose<number>(
   (x) => x * 2,
   (x) => x, // identity - neutral element
   (x) => x + 1
-)
+);
 ```
 
 ## When Not To Use
@@ -114,7 +104,7 @@ Avoid when:
 Identity functions serve as:
 
 1. **Neutral elements**: Don't change values in composition
-2. **Default parameters**: Safe fallback for optional transformations  
+2. **Default parameters**: Safe fallback for optional transformations
 3. **Type preservation**: Maintain input type as output type
 4. **Functional purity**: No side effects, referentially transparent
 

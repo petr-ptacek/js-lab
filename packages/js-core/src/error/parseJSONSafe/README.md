@@ -5,19 +5,19 @@ Safely parses a JSON string with optional fallback handling.
 ## Usage
 
 ```ts
-import { parseJSONSafe } from "@petr-ptacek/js-core"
+import { parseJSONSafe } from "@petr-ptacek/js-core";
 
 // with fallback
-const data = parseJSONSafe('{"name": "Alice"}', { name: "Unknown" })
-console.log(data) // { name: "Alice" }
+const data = parseJSONSafe('{"name": "Alice"}', { name: "Unknown" });
+console.log(data); // { name: "Alice" }
 
 // invalid JSON with fallback
-const fallbackData = parseJSONSafe('invalid json', { name: "Unknown" })
-console.log(fallbackData) // { name: "Unknown" }
+const fallbackData = parseJSONSafe("invalid json", { name: "Unknown" });
+console.log(fallbackData); // { name: "Unknown" }
 
 // without fallback
-const result = parseJSONSafe<{name: string}>('{"name": "Alice"}')
-console.log(result) // { name: "Alice" } or undefined if invalid
+const result = parseJSONSafe<{ name: string }>('{"name": "Alice"}');
+console.log(result); // { name: "Alice" } or undefined if invalid
 ```
 
 ## Why This Utility Exists
@@ -27,8 +27,8 @@ JSON parsing with `JSON.parse()` throws exceptions on invalid input, requiring t
 ## Signature
 
 ```ts
-function parseJSONSafe<T>(value: string, fallback: T): T
-function parseJSONSafe<T>(value: string): T | undefined
+function parseJSONSafe<T>(value: string, fallback: T): T;
+function parseJSONSafe<T>(value: string): T | undefined;
 ```
 
 ## Parameters

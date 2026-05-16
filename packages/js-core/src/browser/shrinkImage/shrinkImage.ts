@@ -93,10 +93,7 @@ const DEFAULT_MIME_TYPE = "image/jpeg";
  *
  * @since 1.0.0
  */
-export function shrinkImage(
-  image: HTMLImageElement,
-  options: ShrinkImageOptions = {},
-): Promise<Blob> {
+export function shrinkImage(image: HTMLImageElement, options: ShrinkImageOptions = {}): Promise<Blob> {
   assertPositiveFinite("image.naturalWidth", image.naturalWidth);
   assertPositiveFinite("image.naturalHeight", image.naturalHeight);
 
@@ -139,7 +136,7 @@ export function shrinkImage(
         resolve(blob);
       },
       mimeType,
-      quality,
+      quality
     );
   });
 }

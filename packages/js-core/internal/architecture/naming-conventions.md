@@ -18,7 +18,7 @@ Naming rules apply to:
 - implementation files
 - utility categories
 
-------------------------------------------------------------------------
+---
 
 # Core Principles
 
@@ -41,7 +41,7 @@ Bad examples:
     doJSON()
     helperFunction()
 
-------------------------------------------------------------------------
+---
 
 ## File name = exported function name
 
@@ -62,7 +62,7 @@ Benefits:
 - improved searchability
 - better AI tooling support
 
-------------------------------------------------------------------------
+---
 
 ## Module name = function name
 
@@ -79,14 +79,14 @@ Avoid structures like:
     uuid/
       create.ts
 
-------------------------------------------------------------------------
+---
 
 # Standard Naming Prefixes
 
 Utilities should follow a **small and consistent vocabulary of
 prefixes**.
 
-------------------------------------------------------------------------
+---
 
 ## create
 
@@ -105,7 +105,7 @@ Avoid:
 
 Use `create` as the default creation verb.
 
-------------------------------------------------------------------------
+---
 
 ## parse
 
@@ -116,7 +116,7 @@ Examples:
     parseJSONSafe
     parseQueryString
 
-------------------------------------------------------------------------
+---
 
 ## to
 
@@ -128,7 +128,7 @@ Examples:
     toBoolean
     toArray
 
-------------------------------------------------------------------------
+---
 
 ## is
 
@@ -142,7 +142,7 @@ Examples:
     isDefined
     isPlainObject
 
-------------------------------------------------------------------------
+---
 
 ## has
 
@@ -153,7 +153,7 @@ Examples:
     hasProperty
     hasOwnKey
 
-------------------------------------------------------------------------
+---
 
 ## assert
 
@@ -164,7 +164,7 @@ Examples:
     assertDefined
     assertNever
 
-------------------------------------------------------------------------
+---
 
 ## with
 
@@ -178,7 +178,7 @@ Examples:
 
 This naming pattern is common in functional utilities.
 
-------------------------------------------------------------------------
+---
 
 # Suffix Conventions
 
@@ -194,7 +194,7 @@ Guidelines:
 - prefer clear semantic suffixes
 - avoid cryptic abbreviations
 
-------------------------------------------------------------------------
+---
 
 # Avoid These Naming Patterns
 
@@ -211,7 +211,7 @@ Better:
 
     createUUIDV4()
 
-------------------------------------------------------------------------
+---
 
 ## Generic names
 
@@ -225,7 +225,7 @@ Avoid generic terms such as:
 
 These names lose semantic meaning and make searching difficult.
 
-------------------------------------------------------------------------
+---
 
 ## Unclear abbreviations
 
@@ -245,7 +245,7 @@ Avoid:
     val
     tmp
 
-------------------------------------------------------------------------
+---
 
 # API Consistency Rules
 
@@ -257,7 +257,7 @@ When introducing a new utility:
 4. Ensure the implementation file matches the function
 5. Avoid introducing new verbs unnecessarily
 
-------------------------------------------------------------------------
+---
 
 # Example Module
 
@@ -270,19 +270,19 @@ When introducing a new utility:
 
 Export:
 
-``` ts
-export { createUUIDV4 } from "./createUUIDV4"
+```ts
+export { createUUIDV4 } from "./createUUIDV4";
 ```
 
 Usage:
 
-``` ts
-import { createUUIDV4 } from "@petr-ptacek/js-core"
+```ts
+import { createUUIDV4 } from "@petr-ptacek/js-core";
 
-const uuid = createUUIDV4()
+const uuid = createUUIDV4();
 ```
 
-------------------------------------------------------------------------
+---
 
 # Summary
 

@@ -5,7 +5,7 @@ Constrains a numeric value between specified minimum and maximum boundaries.
 ## Usage
 
 ```ts
-import { clamp } from "@petr-ptacek/js-core"
+import { clamp } from "@petr-ptacek/js-core";
 
 const result = clamp(15, 0, 10);
 console.log(result); // 10
@@ -24,7 +24,7 @@ JavaScript lacks a built-in clamp function for constraining values within bounds
 ## Signature
 
 ```ts
-function clamp(value: number, min: number, max: number): number
+function clamp(value: number, min: number, max: number): number;
 ```
 
 ## Parameters
@@ -52,7 +52,7 @@ The bounds are inclusive, meaning both `min` and `max` values are considered val
 Use `clamp` when you need to:
 
 - constrain user input within valid ranges
-- limit calculated values to acceptable bounds  
+- limit calculated values to acceptable bounds
 - implement slider controls or progress bars
 - ensure values stay within domain-specific limits
 

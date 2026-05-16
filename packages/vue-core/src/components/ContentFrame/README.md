@@ -18,7 +18,7 @@ The component **does not manage page or viewport layout**. It expects to receive
 - provides a clear `header → content → footer` structure
 - isolates scrolling inside the content section
 - behaves predictably inside flex-based layouts
-- defines an explicit contract for *scrollable* vs *auto-grow* behavior
+- defines an explicit contract for _scrollable_ vs _auto-grow_ behavior
 
 ---
 
@@ -34,7 +34,6 @@ The component **does not manage page or viewport layout**. It expects to receive
 ## Basic usage
 
 ```vue
-
 <UiContentFrame>
   <template #header>
     Header
@@ -57,7 +56,6 @@ The component **does not manage page or viewport layout**. It expects to receive
 ### Simple layout with header and footer
 
 ```vue
-
 <UiContentFrame>
   <template #header>
     <h1>Page Title</h1>
@@ -74,7 +72,6 @@ The component **does not manage page or viewport layout**. It expects to receive
 ### With custom styling using CSS variables
 
 ```vue
-
 <UiContentFrame style="--ui-content-frame-padding: 2rem; --ui-content-frame-border: 2px solid blue;">
   <template #header>Custom Styled Header</template>
   <div>Content with custom padding</div>
@@ -85,7 +82,6 @@ The component **does not manage page or viewport layout**. It expects to receive
 ### Non-scrollable mode for short content
 
 ```vue
-
 <UiContentFrame :scrollable="false">
   <template #header>Short Page</template>
   <div>Short content that grows naturally.</div>
@@ -96,7 +92,6 @@ The component **does not manage page or viewport layout**. It expects to receive
 ### Using additional slots
 
 ```vue
-
 <UiContentFrame>
   <template #contentBefore>
     <div>Content before main slot</div>
@@ -121,7 +116,6 @@ Default behavior:
 - header and footer remain fixed within the frame
 
 ```vue
-
 <UiContentFrame>
   <template #header>Header</template>
 
@@ -166,7 +160,6 @@ Examples:
 - virtual lists, maps, or canvas-based content
 
 ```vue
-
 <UiContentFrame :scrollable="false">
   <template #header>Header</template>
 
@@ -196,7 +189,7 @@ scrollable ? : boolean; // default: true
 ```
 
 | Value   | Behavior                                        |
-|---------|-------------------------------------------------|
+| ------- | ----------------------------------------------- |
 | `true`  | internal scrolling inside the content section   |
 | `false` | auto-grow layout, scrolling delegated to parent |
 
@@ -218,13 +211,13 @@ Allows custom CSS classes for different parts of the component.
 
 ## Slots
 
-| Slot            | Description                                                                 | Type         |
-|-----------------|-----------------------------------------------------------------------------|--------------|
-| `header`        | top section                                                                 | `() => void` |
-| `default`       | main content                                                                | `() => void` |
-| `footer`        | bottom section                                                              | `() => void` |
-| `overlay`       | overlay for absolutely positioned elements relative to the component root   | `() => void` |
-| `contentOverlay`| overlay for elements positioned within the content wrapper                  | `() => void` |
+| Slot             | Description                                                               | Type         |
+| ---------------- | ------------------------------------------------------------------------- | ------------ |
+| `header`         | top section                                                               | `() => void` |
+| `default`        | main content                                                              | `() => void` |
+| `footer`         | bottom section                                                            | `() => void` |
+| `overlay`        | overlay for absolutely positioned elements relative to the component root | `() => void` |
+| `contentOverlay` | overlay for elements positioned within the content wrapper                | `() => void` |
 
 ---
 
@@ -241,8 +234,8 @@ You can override these variables to customize the appearance:
 
 ```css
 .ui-content-frame {
-    --ui-content-frame-padding: 2rem;
-    --ui-content-frame-border: 2px solid blue;
+  --ui-content-frame-padding: 2rem;
+  --ui-content-frame-border: 2px solid blue;
 }
 ```
 

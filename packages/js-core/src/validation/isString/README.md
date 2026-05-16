@@ -5,21 +5,21 @@ Checks whether the given value is a string.
 ## Usage
 
 ```ts
-import { isString } from "@petr-ptacek/js-core"
+import { isString } from "@petr-ptacek/js-core";
 
 // Basic type checking
-console.log(isString("hello"))     // true
-console.log(isString(123))         // false
-console.log(isString(null))        // false
-console.log(isString(undefined))   // false
+console.log(isString("hello")); // true
+console.log(isString(123)); // false
+console.log(isString(null)); // false
+console.log(isString(undefined)); // false
 
 // Type guard usage
-const value: unknown = "some text"
+const value: unknown = "some text";
 
 if (isString(value)) {
   // value is now typed as string
-  console.log(value.toUpperCase())  // "SOME TEXT"
-  console.log(value.length)         // 9
+  console.log(value.toUpperCase()); // "SOME TEXT"
+  console.log(value.length); // 9
 }
 ```
 
@@ -30,7 +30,7 @@ While JavaScript provides `typeof value === "string"`, this utility adds TypeScr
 ## Signature
 
 ```ts
-function isString(value: unknown): value is string
+function isString(value: unknown): value is string;
 ```
 
 ## Parameters

@@ -273,10 +273,7 @@ describeVue("useProxyValue", () => {
   it("syncs automatically again after autoSync is re-enabled", () => {
     const source = ref<string | undefined>("initial");
 
-    const { value, buffer, isSynced, disableAutoSync, enableAutoSync } = useProxyValue(
-      source,
-      "default",
-    );
+    const { value, buffer, isSynced, disableAutoSync, enableAutoSync } = useProxyValue(source, "default");
 
     disableAutoSync();
     value.value = "changed";

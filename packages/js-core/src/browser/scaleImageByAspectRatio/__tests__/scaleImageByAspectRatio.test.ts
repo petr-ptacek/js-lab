@@ -1,11 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { scaleImageByAspectRatio } from "../scaleImageByAspectRatio";
 
-function createImage(
-  naturalWidth: number,
-  naturalHeight: number,
-  src = "test.png",
-): HTMLImageElement {
+function createImage(naturalWidth: number, naturalHeight: number, src = "test.png"): HTMLImageElement {
   const img = new Image();
 
   Object.defineProperty(img, "naturalWidth", {

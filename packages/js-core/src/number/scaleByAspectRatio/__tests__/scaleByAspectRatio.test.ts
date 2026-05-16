@@ -34,13 +34,13 @@ describe("scaleByAspectRatio", () => {
       scaleByAspectRatio({ width: 400, height: 300 }, {
         width: 200,
         height: 200,
-      } as any),
+      } as any)
     ).toThrow("scaleTo requires exactly one of target.width or target.height");
   });
 
   it("throws when neither width nor height is provided", () => {
     expect(() => scaleByAspectRatio({ width: 400, height: 300 }, {} as any)).toThrow(
-      "scaleTo requires exactly one of target.width or target.height",
+      "scaleTo requires exactly one of target.width or target.height"
     );
   });
 

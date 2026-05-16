@@ -65,18 +65,7 @@ describe("isString", () => {
   });
 
   it("matches typeof behavior exactly", () => {
-    const testCases = [
-      "string",
-      "",
-      123,
-      true,
-      null,
-      undefined,
-      [],
-      {},
-      new String("test"),
-      Symbol("test"),
-    ];
+    const testCases = ["string", "", 123, true, null, undefined, [], {}, new String("test"), Symbol("test")];
 
     testCases.forEach((testCase) => {
       expect(isString(testCase)).toBe(typeof testCase === "string");

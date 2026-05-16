@@ -19,7 +19,7 @@ describe("clampPercentWithLimits", () => {
         clampPercentWithLimits(150, containerSize, {
           minSize: 50,
           maxSize: 100,
-        }),
+        })
       ).toBe(100);
     });
   });
@@ -58,7 +58,7 @@ describe("clampPercentWithLimits", () => {
         clampPercentWithLimits(20, 200, {
           minSize: 50,
           maxSize: 120,
-        }),
+        })
       ).toBe(25);
     });
 
@@ -67,7 +67,7 @@ describe("clampPercentWithLimits", () => {
         clampPercentWithLimits(5, 200, {
           minSize: 60,
           maxSize: 160,
-        }),
+        })
       ).toBe(30);
     });
 
@@ -76,7 +76,7 @@ describe("clampPercentWithLimits", () => {
         clampPercentWithLimits(90, 200, {
           minSize: 40,
           maxSize: 80,
-        }),
+        })
       ).toBe(40);
     });
   });

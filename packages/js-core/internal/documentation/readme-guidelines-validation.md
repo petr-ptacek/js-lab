@@ -3,7 +3,7 @@
 This document defines specific guidelines for **validation utility documentation** that extend the general utility
 README guidelines. Validation utilities have unique characteristics that require specialized documentation approaches.
 
-------------------------------------------------------------------------
+---
 
 ## Validation-Specific Rules
 
@@ -33,14 +33,9 @@ The basic snippet should demonstrate:
 
 ```ts
 // Different input types being tested
-const testValues = [
-  validCase1,
-  validCase2,
-  invalidCase1,
-  invalidCase2
-];
+const testValues = [validCase1, validCase2, invalidCase1, invalidCase2];
 
-testValues.forEach(value => {
+testValues.forEach((value) => {
   console.log(`${JSON.stringify(value)} is valid:`, utilityFunction(value));
 });
 ```
@@ -54,7 +49,7 @@ For type guard utilities, emphasis should be on:
 - Generic type parameter usage (if applicable)
 - Integration with conditional logic
 
-------------------------------------------------------------------------
+---
 
 ## Section Guidelines for Validation Utilities
 
@@ -110,7 +105,7 @@ Common anti-patterns:
 - Over-validation in performance-critical code
 - Validation without TypeScript benefits
 
-------------------------------------------------------------------------
+---
 
 ## Examples
 
@@ -120,15 +115,9 @@ Common anti-patterns:
 // basic.ts
 import { isString } from "@petr-ptacek/js-core";
 
-const values = [
-  "hello world",
-  123,
-  null,
-  undefined,
-  ["array"]
-];
+const values = ["hello world", 123, null, undefined, ["array"]];
 
-values.forEach(value => {
+values.forEach((value) => {
   console.log(`${JSON.stringify(value)} is string:`, isString(value));
 });
 ```
@@ -144,7 +133,7 @@ class ApiValidator {
 }
 ```
 
-------------------------------------------------------------------------
+---
 
 ## Meta Configuration
 
@@ -156,14 +145,14 @@ export const meta = {
   name: "utilityName",
   description: "Brief description of validation purpose",
   category: "validation",
-  tags: ["validation", "type-guard", /* specific tags */],
+  tags: ["validation", "type-guard" /* specific tags */],
   demo: false,
   snippets: true, // only basic snippet
   since: "1.0.0",
 } satisfies Meta;
 ```
 
-------------------------------------------------------------------------
+---
 
 ## README Template for Validation Utilities
 
@@ -215,7 +204,7 @@ Known type scenarios and performance considerations.
 Brief summary emphasizing type safety benefits.
 ```
 
-------------------------------------------------------------------------
+---
 
 ## Compliance
 

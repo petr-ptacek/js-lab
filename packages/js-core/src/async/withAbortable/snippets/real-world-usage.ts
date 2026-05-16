@@ -40,7 +40,7 @@ const loadImage = withAbortable(
       img.src = src;
     });
   },
-  { timeoutMs: 10000 }, // 10 second timeout for images
+  { timeoutMs: 10000 } // 10 second timeout for images
 );
 
 // Data fetching with retry logic

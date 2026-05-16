@@ -5,14 +5,14 @@ Checks whether the given value is a boolean.
 ## Usage
 
 ```ts
-import { isBoolean } from "@petr-ptacek/js-core"
+import { isBoolean } from "@petr-ptacek/js-core";
 
 // Type checking
-console.log(isBoolean(true));        // true
-console.log(isBoolean(false));       // true
-console.log(isBoolean(1));           // false
-console.log(isBoolean("true"));      // false
-console.log(isBoolean(null));        // false
+console.log(isBoolean(true)); // true
+console.log(isBoolean(false)); // true
+console.log(isBoolean(1)); // false
+console.log(isBoolean("true")); // false
+console.log(isBoolean(null)); // false
 
 // Type guard usage
 const value: unknown = true;
@@ -30,7 +30,7 @@ While `typeof value === 'boolean'` works, this utility provides TypeScript type 
 ## Signature
 
 ```typescript
-function isBoolean(value: unknown): value is boolean
+function isBoolean(value: unknown): value is boolean;
 ```
 
 ## Parameters
@@ -67,4 +67,3 @@ Avoid when:
 `isBoolean` provides a type guard for boolean values, enabling safe type narrowing in TypeScript.
 
 See also: `isPrimitive` (check for any primitive type).
-

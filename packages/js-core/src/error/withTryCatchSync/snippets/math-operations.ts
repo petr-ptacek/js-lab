@@ -19,7 +19,7 @@ function safeDivision(a: number, b: number) {
         }
         return { code: "UNKNOWN", message: String(e) };
       },
-    },
+    }
   );
 }
 

@@ -36,14 +36,14 @@ export function useResizeActions(options: UseResizeActionsOptions) {
     normalizeSizeToPercent(options.minSize?.value ?? "0%", options.containerSize.value, {
       minSize: options.minSize?.value,
       maxSize: options.maxSize?.value,
-    }),
+    })
   );
 
   const maxPercent = computed(() =>
     normalizeSizeToPercent(options.maxSize?.value ?? "100%", options.containerSize.value, {
       minSize: options.minSize?.value,
       maxSize: options.maxSize?.value,
-    }),
+    })
   );
 
   const isCollapsed = computed(() => {

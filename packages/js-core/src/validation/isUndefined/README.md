@@ -5,13 +5,13 @@ Checks whether the given value is undefined.
 ## Usage
 
 ```ts
-import { isUndefined } from "@petr-ptacek/js-core"
+import { isUndefined } from "@petr-ptacek/js-core";
 
 // Type checking
 console.log(isUndefined(undefined)); // true
-console.log(isUndefined(null));      // false
-console.log(isUndefined(0));         // false
-console.log(isUndefined(""));        // false
+console.log(isUndefined(null)); // false
+console.log(isUndefined(0)); // false
+console.log(isUndefined("")); // false
 
 // Type guard usage
 const value: unknown = undefined;
@@ -28,7 +28,7 @@ While `typeof value === 'undefined'` works, this utility provides TypeScript typ
 ## Signature
 
 ```typescript
-function isUndefined(value: unknown): value is undefined
+function isUndefined(value: unknown): value is undefined;
 ```
 
 ## Parameters
@@ -65,4 +65,3 @@ Avoid when:
 `isUndefined` provides a precise type guard for the `undefined` value, useful when you need to distinguish undefined from null and other values.
 
 See also: `isNull` (check for null), `isNullable` (check for both null and undefined).
-

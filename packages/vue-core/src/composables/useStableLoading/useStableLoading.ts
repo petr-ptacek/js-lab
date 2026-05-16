@@ -1,5 +1,5 @@
 import { useTimeoutFn } from "@vueuse/core";
-import { type Ref, readonly, shallowRef, watch } from "vue";
+import { readonly, type Ref, shallowRef, watch } from "vue";
 
 import type { UseStableLoadingOptions, UseStableLoadingReturn } from "./types";
 
@@ -38,10 +38,7 @@ const MIN_VISIBLE = 300;
  *
  * @returns An object containing stabilized loading state and diagnostic flags.
  */
-export function useStableLoading(
-  source: Ref<boolean>,
-  options: UseStableLoadingOptions = {},
-): UseStableLoadingReturn {
+export function useStableLoading(source: Ref<boolean>, options: UseStableLoadingOptions = {}): UseStableLoadingReturn {
   const delay = options?.delay ?? DELAY;
   const minVisible = options?.minVisible ?? MIN_VISIBLE;
 
@@ -61,7 +58,7 @@ export function useStableLoading(
       visibleSince.value = Date.now();
     },
     delayMs,
-    { immediate: false },
+    { immediate: false }
   );
 
   const { start: startHideAfter, stop: stopHideAfter } = useTimeoutFn(
@@ -71,7 +68,7 @@ export function useStableLoading(
       visibleSince.value = null;
     },
     hideAfterMs,
-    { immediate: false },
+    { immediate: false }
   );
 
   watch(
@@ -107,7 +104,7 @@ export function useStableLoading(
         }
       }
     },
-    { immediate: true },
+    { immediate: true }
   );
 
   return {

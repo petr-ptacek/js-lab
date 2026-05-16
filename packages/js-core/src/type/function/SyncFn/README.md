@@ -5,20 +5,19 @@ Represents a synchronous function.
 ## Usage
 
 ```ts
-import type { SyncFn } from "@petr-ptacek/js-core"
+import type { SyncFn } from "@petr-ptacek/js-core";
 
-const add: SyncFn<[a: number, b: number], number> = (a, b) => a + b
-const isEven: SyncFn<[n: number], boolean> = (n) => n % 2 === 0
-const format: SyncFn<[name: string, age: number], string> = 
-  (name, age) => `${name} is ${age} years old`
+const add: SyncFn<[a: number, b: number], number> = (a, b) => a + b;
+const isEven: SyncFn<[n: number], boolean> = (n) => n % 2 === 0;
+const format: SyncFn<[name: string, age: number], string> = (name, age) => `${name} is ${age} years old`;
 
 // Generic utility functions
 function map<T, U>(array: T[], fn: SyncFn<[T], U>): U[] {
-  return array.map(fn)
+  return array.map(fn);
 }
 
 function filter<T>(array: T[], predicate: SyncFn<[T], boolean>): T[] {
-  return array.filter(predicate)
+  return array.filter(predicate);
 }
 ```
 
@@ -29,8 +28,7 @@ Synchronous functions are fundamental building blocks for data transformation, v
 ## Type Declaration
 
 ```ts
-type SyncFn<TArgs extends unknown[] = unknown[], TResult = unknown> =
-  (...args: TArgs) => TResult
+type SyncFn<TArgs extends unknown[] = unknown[], TResult = unknown> = (...args: TArgs) => TResult;
 ```
 
 ## Type Parameters

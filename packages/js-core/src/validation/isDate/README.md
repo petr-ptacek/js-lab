@@ -5,16 +5,16 @@ Checks whether the given value is a Date instance.
 ## Usage
 
 ```ts
-import { isDate } from "@petr-ptacek/js-core"
+import { isDate } from "@petr-ptacek/js-core";
 
 // Valid dates
-console.log(isDate(new Date()));              // true
-console.log(isDate(new Date("invalid")));    // true (still a Date instance)
+console.log(isDate(new Date())); // true
+console.log(isDate(new Date("invalid"))); // true (still a Date instance)
 
 // Not dates
-console.log(isDate("2024-01-01"));           // false
-console.log(isDate(1704067200000));          // false (timestamp, not Date)
-console.log(isDate(null));                   // false
+console.log(isDate("2024-01-01")); // false
+console.log(isDate(1704067200000)); // false (timestamp, not Date)
+console.log(isDate(null)); // false
 
 // Type guard usage
 const value: unknown = new Date();
@@ -32,7 +32,7 @@ While `instanceof Date` works, this utility provides TypeScript type guard funct
 ## Signature
 
 ```typescript
-function isDate(value: unknown): value is Date
+function isDate(value: unknown): value is Date;
 ```
 
 ## Parameters
@@ -51,6 +51,7 @@ The implementation uses `instanceof Date` for runtime checking, which correctly 
 - Invalid dates like `new Date("invalid")` (still instances, just with NaN internal time)
 
 It excludes:
+
 - Date strings ("2024-01-01")
 - Timestamps (numbers)
 - `null` and `undefined`
@@ -79,4 +80,3 @@ Avoid when:
 `isDate` provides a type guard for `Date` instances, enabling safe type narrowing in TypeScript without verifying date validity.
 
 See also: `isValidDate` (valid dates only, excluding NaN).
-

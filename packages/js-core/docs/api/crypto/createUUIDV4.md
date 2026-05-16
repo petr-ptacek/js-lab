@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** crypto
 > **Since:** 1.0.0
 > **Tags:** uuid, v4, random, string, crypto
-
 
 # createUUIDV4
 
@@ -23,11 +21,11 @@ Generate a UUID version 4 string.
 ## Usage
 
 ```ts
-import { createUUIDV4 } from "@petr-ptacek/js-core"
+import { createUUIDV4 } from "@petr-ptacek/js-core";
 
-const id = createUUIDV4()
+const id = createUUIDV4();
 
-console.log(id)
+console.log(id);
 // example: "3c7b9b8a-92fa-4b91-9d8b-bbbd6e0c88d1"
 ```
 
@@ -38,7 +36,7 @@ While modern environments support `crypto.randomUUID()`, there are still cases w
 ## Signature
 
 ```ts
-function createUUIDV4(): string
+function createUUIDV4(): string;
 ```
 
 ## Return Type
@@ -50,7 +48,7 @@ Returns a string in standard UUID v4 format (`xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxx
 The function progressively selects the strongest available source:
 
 | Strategy                   | Security                         | Requirement            |
-|----------------------------|----------------------------------|------------------------|
+| -------------------------- | -------------------------------- | ---------------------- |
 | `crypto.randomUUID()`      | cryptographically secure         | modern browsers / Node |
 | `crypto.getRandomValues()` | cryptographically secure         | Web Crypto API         |
 | `Math.random()`            | **not cryptographically secure** | universal fallback     |
@@ -62,8 +60,8 @@ The fallback exists purely to ensure the function never throws due to missing AP
 When `getRandomValues` is used, the implementation explicitly sets version bits (`0100`) and variant bits to ensure RFC 4122 v4 compliance:
 
 ```ts
-bytes[6] = (bytes[6] & 0x0f) | 0x40
-bytes[8] = (bytes[8] & 0x3f) | 0x80
+bytes[6] = (bytes[6] & 0x0f) | 0x40;
+bytes[8] = (bytes[8] & 0x3f) | 0x80;
 ```
 
 The utility intentionally avoids external packages like `uuid` or `nanoid` to keep the library lightweight, dependency-free, and suitable for browser and server environments.
@@ -88,7 +86,6 @@ Avoid when:
 
 `createUUIDV4` provides a simple and reliable way to generate UUID v4 identifiers across environments while maintaining RFC 4122 compatibility, zero dependencies, and graceful fallbacks.
 
-
 ## Snippets
 
 ### basic.ts
@@ -102,7 +99,6 @@ const id = createUUIDV4();
 console.log(id);
 // example output:
 // "7f3c9c7e-0c52-4c6c-8a6a-8c6e8f1b5f0a"
-
 ```
 
 ### object-id.ts
@@ -116,9 +112,4 @@ const user = {
 };
 
 console.log(user);
-
 ```
-
-
-
-

@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** event
 > **Since:** 1.0.0
 > **Tags:** event, emitter, typed, observer, pubsub, handler
-
 
 # Emitter
 
@@ -24,26 +22,26 @@ Strongly-typed event emitter with type-safe event definitions and handler manage
 ## Usage
 
 ```ts
-import { Emitter } from "@petr-ptacek/js-core"
+import { Emitter } from "@petr-ptacek/js-core";
 
 type Events = {
   userLogin: (user: { id: string; name: string }) => void;
   dataReceived: (data: unknown[]) => void;
   error: (message: string) => void;
-}
+};
 
-const emitter = new Emitter<Events>()
+const emitter = new Emitter<Events>();
 
 // Register handlers
 const cleanup = emitter.on("userLogin", (user) => {
-  console.log(`Welcome ${user.name}!`)
-})
+  console.log(`Welcome ${user.name}!`);
+});
 
 // Emit events
-emitter.emit("userLogin", { id: "123", name: "John" })
+emitter.emit("userLogin", { id: "123", name: "John" });
 
 // Cleanup
-cleanup()
+cleanup();
 ```
 
 ## Why This Utility Exists
@@ -56,19 +54,19 @@ payloads, ensuring type safety across event-driven architectures.
 
 ```ts
 class Emitter<Events extends EmitterEvents> {
-  constructor()
-  constructor(initialHandlers: EmitterInitialHandlers<Events>)
+  constructor();
+  constructor(initialHandlers: EmitterInitialHandlers<Events>);
 
-  on<TType extends keyof Events>(type: TType, handler: Events[TType]): CleanupFn
+  on<TType extends keyof Events>(type: TType, handler: Events[TType]): CleanupFn;
 
-  once<TType extends keyof Events>(type: TType, handler: Events[TType]): CleanupFn
+  once<TType extends keyof Events>(type: TType, handler: Events[TType]): CleanupFn;
 
-  emit<TType extends keyof Events>(type: TType, ...args: Parameters<Events[TType]>): void
+  emit<TType extends keyof Events>(type: TType, ...args: Parameters<Events[TType]>): void;
 
-  off<TType extends keyof Events>(type: TType): void
-  off<TType extends keyof Events>(type: TType, handler: Events[TType]): void
+  off<TType extends keyof Events>(type: TType): void;
+  off<TType extends keyof Events>(type: TType, handler: Events[TType]): void;
 
-  clear(): void
+  clear(): void;
 }
 ```
 
@@ -109,16 +107,18 @@ The utility exports several TypeScript types for proper integration:
 ```ts
 type EmitterEvents = {
   [event: string | symbol]: (...args: any[]) => void;
-}
+};
 
 type EmitterInitialHandlers<E extends EmitterEvents> = {
   [K in keyof E]?: InitialHandler<E[K]>;
-}
+};
 
-type InitialHandler<THandler> = THandler | {
-  handler: THandler;
-  once?: boolean;
-}
+type InitialHandler<THandler> =
+  | THandler
+  | {
+      handler: THandler;
+      once?: boolean;
+    };
 
 type EmitterEventHandler = (...args: any[]) => void;
 
@@ -161,7 +161,6 @@ Avoid when:
 `Emitter` provides a type-safe event emitter with automatic handler cleanup, compile-time event validation, and
 predictable execution order for building robust event-driven applications.
 
-
 ## Snippets
 
 ### basic.ts
@@ -175,7 +174,7 @@ type AppEvents = {
   userLogout: (userId: string) => void;
   dataReceived: (data: unknown[], timestamp: number) => void;
   error: (message: string, code?: number) => void;
-}
+};
 
 console.log("=== Basic Event Emitter Usage ===");
 
@@ -196,14 +195,14 @@ const dataCleanup = emitter.on("dataReceived", (data, timestamp) => {
 });
 
 const errorCleanup = emitter.on("error", (message, code) => {
-  console.error(`❌ Error ${code ? `[${code}]` : ''}: ${message}`);
+  console.error(`❌ Error ${code ? `[${code}]` : ""}: ${message}`);
 });
 
 // Emit events
 emitter.emit("userLogin", {
   id: "user123",
   name: "Alice Johnson",
-  email: "alice@example.com"
+  email: "alice@example.com",
 });
 
 emitter.emit("dataReceived", [{ id: 1 }, { id: 2 }, { id: 3 }], Date.now());
@@ -236,7 +235,6 @@ console.log("All handlers cleaned up");
 // Verify cleanup worked
 emitter.emit("userLogin", { id: "user456", name: "Bob", email: "bob@example.com" });
 console.log("No output above means handlers were properly removed");
-
 ```
 
 ### initial-handlers.ts
@@ -251,7 +249,7 @@ type GameEvents = {
   playerLeave: (playerId: string) => void;
   scoreUpdate: (playerId: string, score: number) => void;
   gameEnd: (winner: { id: string; name: string; score: number }) => void;
-}
+};
 
 console.log("=== Initial Handlers Example ===");
 
@@ -267,13 +265,13 @@ const gameEmitter = new Emitter<GameEvents>({
     handler: (winner) => {
       console.log(`🏆 Game ended! Winner: ${winner.name} with ${winner.score} points`);
     },
-    once: true  // This handler will only run once
+    once: true, // This handler will only run once
   },
 
   // Multiple initial handlers for the same event type
   playerJoin: (player) => {
     console.log(`👤 ${player.name} joined the game`);
-  }
+  },
 });
 
 // Add more handlers after construction
@@ -319,7 +317,6 @@ console.log("No playerJoin output above - all handlers were removed");
 // Clear all remaining handlers
 gameEmitter.clear();
 console.log("All handlers cleared from emitter");
-
 ```
 
 ### real-world-usage.ts
@@ -344,7 +341,7 @@ type AppEvents = {
   // System events
   connectionLost: () => void;
   connectionRestored: () => void;
-}
+};
 
 console.log("=== Application Event System ===");
 
@@ -398,18 +395,17 @@ class DataService {
       this.eventBus.emit("loadingStart", resource);
 
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       const profileData = {
         id: userId,
         name: "John Doe",
         email: "john@example.com",
-        preferences: { theme: "dark" }
+        preferences: { theme: "dark" },
       };
 
       this.eventBus.emit("loadingComplete", resource, profileData);
       return profileData;
-
     } catch (error) {
       this.eventBus.emit("loadingError", resource, error as Error);
       throw error;
@@ -518,7 +514,7 @@ async function simulateAppUsage() {
   console.log("\n=== Connection Issues ===");
   appEventBus.emit("connectionLost");
 
-  await new Promise(resolve => setTimeout(resolve, 500));
+  await new Promise((resolve) => setTimeout(resolve, 500));
 
   appEventBus.emit("connectionRestored");
 
@@ -529,9 +525,4 @@ async function simulateAppUsage() {
 
 // Run simulation
 simulateAppUsage();
-
 ```
-
-
-
-

@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** validation
 > **Since:** 1.0.0
 > **Tags:** validation, type-guard, object, plain, typescript
-
 
 # isPlainObject
 
@@ -23,18 +21,18 @@ Checks whether the given value is a plain object.
 ## Usage
 
 ```ts
-import { isPlainObject } from "@petr-ptacek/js-core"
+import { isPlainObject } from "@petr-ptacek/js-core";
 
 // Plain objects
-console.log(isPlainObject({}));              // true
-console.log(isPlainObject({ a: 1 }));       // true
+console.log(isPlainObject({})); // true
+console.log(isPlainObject({ a: 1 })); // true
 console.log(isPlainObject(Object.create({}))); // true
 
 // Not plain objects
-console.log(isPlainObject([]));              // false (array)
-console.log(isPlainObject(new Date()));      // false (Date instance)
-console.log(isPlainObject(null));            // false (null)
-console.log(isPlainObject(() => {}));        // false (function)
+console.log(isPlainObject([])); // false (array)
+console.log(isPlainObject(new Date())); // false (Date instance)
+console.log(isPlainObject(null)); // false (null)
+console.log(isPlainObject(() => {})); // false (function)
 
 // Type guard usage
 const value: unknown = { name: "John" };
@@ -52,7 +50,7 @@ JavaScript has many object-like types (arrays, Date, Map, functions, etc.). When
 ## Signature
 
 ```typescript
-function isPlainObject(value: unknown): value is Record<string, unknown>
+function isPlainObject(value: unknown): value is Record<string, unknown>;
 ```
 
 ## Parameters
@@ -80,6 +78,7 @@ return proto === Object.prototype || proto === null;
 ```
 
 This correctly identifies:
+
 - **Plain objects**: `{}`, `{ a: 1 }`, `Object.create(null)`
 - **Not plain**: arrays, Dates, Maps, Sets, DOM elements, class instances
 
@@ -107,9 +106,3 @@ Avoid when:
 `isPlainObject` provides a precise type guard for plain objects, distinguishing them from arrays, class instances, and other special object types.
 
 See also: `isObject` (any object including arrays and special types), `isArray` (arrays only).
-
-
-
-
-
-

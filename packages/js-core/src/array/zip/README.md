@@ -5,7 +5,7 @@ Combines two arrays element-wise into pairs or applies a mapping function to eac
 ## Usage
 
 ```ts
-import { zip } from "@petr-ptacek/js-core"
+import { zip } from "@petr-ptacek/js-core";
 
 // Basic pairing
 const numbers = [1, 2, 3];
@@ -28,17 +28,10 @@ transformation.
 
 ```ts
 // Without mapper - returns tuples
-function zip<T, U>(
-  arrayOne: readonly T[],
-  arrayTwo: readonly U[],
-): [T, U][]
+function zip<T, U>(arrayOne: readonly T[], arrayTwo: readonly U[]): [T, U][];
 
 // With mapper - returns transformed values
-function zip<T, U, R>(
-  arrayOne: readonly T[],
-  arrayTwo: readonly U[],
-  mapper: (a: T, b: U) => R,
-): R[]
+function zip<T, U, R>(arrayOne: readonly T[], arrayTwo: readonly U[], mapper: (a: T, b: U) => R): R[];
 ```
 
 ## Parameters

@@ -5,16 +5,16 @@ Checks whether the given value is a valid Date instance.
 ## Usage
 
 ```ts
-import { isValidDate } from "@petr-ptacek/js-core"
+import { isValidDate } from "@petr-ptacek/js-core";
 
 // Valid dates
-console.log(isValidDate(new Date()));              // true
+console.log(isValidDate(new Date())); // true
 console.log(isValidDate(new Date("2024-01-01"))); // true
 
 // Invalid dates
-console.log(isValidDate(new Date("invalid")));    // false
-console.log(isValidDate("2024-01-01"));           // false
-console.log(isValidDate(null));                   // false
+console.log(isValidDate(new Date("invalid"))); // false
+console.log(isValidDate("2024-01-01")); // false
+console.log(isValidDate(null)); // false
 
 // Type guard usage
 const value: unknown = new Date();
@@ -32,7 +32,7 @@ While `isDate` checks if a value is a `Date` instance, it doesn't verify that th
 ## Signature
 
 ```typescript
-function isValidDate(value: unknown): value is Date
+function isValidDate(value: unknown): value is Date;
 ```
 
 ## Parameters
@@ -80,4 +80,3 @@ Avoid when:
 `isValidDate` provides a type guard for valid `Date` instances, ensuring both instance type and value validity by checking that the internal time value is not `NaN`.
 
 See also: `isDate` (any Date instance, including invalid), `isNaNValue` (check for NaN specifically).
-

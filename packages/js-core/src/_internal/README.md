@@ -7,9 +7,7 @@
 `<param> must be <constraint>, got: <value>`
 
 ```ts
-throw new Error(
-  `${name} must be in range ${min}..${max}, got: ${value}`,
-);
+throw new Error(`${name} must be in range ${min}..${max}, got: ${value}`);
 ```
 
 ### Example

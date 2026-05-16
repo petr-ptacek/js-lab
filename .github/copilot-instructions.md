@@ -9,13 +9,13 @@
 
 This repository is a monorepo containing:
 
-* reusable `TypeScript utilities`
-* `Vue components` and `composables functions` for frontend applications
+- reusable `TypeScript utilities`
+- `Vue components` and `composables functions` for frontend applications
 
 Packages:
 
-* @petr-ptacek/js-core
-* @petr-ptacek/vue-core
+- @petr-ptacek/js-core
+- @petr-ptacek/vue-core
 
 ## Structure
 
@@ -32,8 +32,8 @@ Example:
 
 Purpose:
 
-* shared testing utilities for Vue components
-* used by packages inside the monorepo
+- shared testing utilities for Vue components
+- used by packages inside the monorepo
 
 These packages are **not published** and are intended only for **internal use**.
 
@@ -63,7 +63,7 @@ Detailed package architecture rules are documented inside each package.
 
 Example:
 
-* packages/js-core/internal/architecture
+- packages/js-core/internal/architecture
 
 # Code Quality Requirements
 

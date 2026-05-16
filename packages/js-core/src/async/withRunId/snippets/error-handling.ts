@@ -46,7 +46,7 @@ const loadDataStrict = withRunId(
 
     return response.json() as Promise<unknown>;
   },
-  { throwOnError: true },
+  { throwOnError: true }
 );
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -74,7 +74,7 @@ const fetchWithSignal = withRunId(
     const response = await fetch(url, { signal: controller.signal });
     return response.json() as Promise<unknown>;
   },
-  { signal: controller.signal },
+  { signal: controller.signal }
 );
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

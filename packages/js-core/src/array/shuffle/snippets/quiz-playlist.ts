@@ -47,7 +47,5 @@ console.log("\nShuffled playlist:");
 shuffledPlaylist.forEach((song, index) => {
   const minutes = Math.floor(song.duration / 60);
   const seconds = song.duration % 60;
-  console.log(
-    `${index + 1}. ${song.title} - ${song.artist} (${minutes}:${seconds.toString().padStart(2, "0")})`,
-  );
+  console.log(`${index + 1}. ${song.title} - ${song.artist} (${minutes}:${seconds.toString().padStart(2, "0")})`);
 });

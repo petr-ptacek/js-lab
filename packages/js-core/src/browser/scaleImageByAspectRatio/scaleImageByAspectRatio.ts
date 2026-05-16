@@ -5,12 +5,12 @@ import type { Dimensions, DimensionsTarget, RoundValueFn } from "../../type";
 export function scaleImageByAspectRatio(
   image: HTMLImageElement,
   { width }: { width: number },
-  roundFn?: RoundValueFn,
+  roundFn?: RoundValueFn
 ): HTMLImageElement;
 export function scaleImageByAspectRatio(
   image: HTMLImageElement,
   { height }: { height: number },
-  roundFn?: RoundValueFn,
+  roundFn?: RoundValueFn
 ): HTMLImageElement;
 
 /**
@@ -84,15 +84,13 @@ export function scaleImageByAspectRatio(
 export function scaleImageByAspectRatio(
   image: HTMLImageElement,
   target: DimensionsTarget,
-  roundFn?: RoundValueFn,
+  roundFn?: RoundValueFn
 ): HTMLImageElement {
   const hasWidth = typeof target.width === "number";
   const hasHeight = typeof target.height === "number";
 
   if (hasWidth === hasHeight) {
-    throw new Error(
-      "scaleImageByAspectRatio requires exactly one of target.width or target.height",
-    );
+    throw new Error("scaleImageByAspectRatio requires exactly one of target.width or target.height");
   }
 
   assertPositiveFinite("image.naturalWidth", image.naturalWidth);
@@ -115,7 +113,7 @@ export function scaleImageByAspectRatio(
       {
         height: target.height,
       },
-      roundFn,
+      roundFn
     );
   }
 

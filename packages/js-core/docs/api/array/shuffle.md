@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** array
 > **Since:** 1.0.0
 > **Tags:** array, shuffle, random, fisher-yates, immutable, randomize
-
 
 # shuffle
 
@@ -24,7 +22,7 @@ Returns a new array with elements shuffled in random order using the Fisher–Ya
 ## Usage
 
 ```ts
-import { shuffle } from "@petr-ptacek/js-core"
+import { shuffle } from "@petr-ptacek/js-core";
 
 const numbers = [1, 2, 3, 4, 5];
 const shuffled = shuffle(numbers);
@@ -39,7 +37,7 @@ JavaScript doesn't provide a built-in shuffle method, and common approaches like
 ## Signature
 
 ```ts
-function shuffle<T>(array: readonly T[]): T[]
+function shuffle<T>(array: readonly T[]): T[];
 ```
 
 ## Parameters
@@ -57,11 +55,11 @@ Returns a new array containing all elements from the input array in randomized o
 ## Design Notes
 
 The implementation uses the modern Fisher–Yates shuffle algorithm:
+
 - Creates a copy of the input array to maintain immutability
 - Iterates from the last element backward
 - For each position, selects a random element from the remaining unshuffled portion
 - Swaps the current element with the randomly selected one
-
 
 ## When To Use
 
@@ -85,7 +83,6 @@ Avoid when:
 
 `shuffle` provides a mathematically correct way to randomize array elements using the Fisher–Yates algorithm while preserving immutability and type safety.
 
-
 ## Snippets
 
 ### basic.ts
@@ -97,27 +94,26 @@ import { shuffle } from "@petr-ptacek/js-core";
 const numbers = [1, 2, 3, 4, 5];
 const shuffledNumbers = shuffle(numbers);
 
-console.log("Original:", numbers);        // [1, 2, 3, 4, 5]
+console.log("Original:", numbers); // [1, 2, 3, 4, 5]
 console.log("Shuffled:", shuffledNumbers); // e.g., [3, 1, 5, 2, 4]
 
 // String array
 const words = ["hello", "world", "foo", "bar"];
 const shuffledWords = shuffle(words);
 
-console.log("Original words:", words);         // ["hello", "world", "foo", "bar"]
+console.log("Original words:", words); // ["hello", "world", "foo", "bar"]
 console.log("Shuffled words:", shuffledWords); // e.g., ["bar", "hello", "foo", "world"]
 
 // Object array
 const users = [
   { id: 1, name: "Alice" },
   { id: 2, name: "Bob" },
-  { id: 3, name: "Charlie" }
+  { id: 3, name: "Charlie" },
 ];
 
 const shuffledUsers = shuffle(users);
 console.log("Shuffled users:", shuffledUsers);
 // e.g., [{ id: 3, name: "Charlie" }, { id: 1, name: "Alice" }, { id: 2, name: "Bob" }]
-
 ```
 
 ### card-game.ts
@@ -130,9 +126,7 @@ const suits = ["♠", "♥", "♦", "♣"];
 const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
 // Create full deck
-const deck = suits.flatMap(suit =>
-  ranks.map(rank => `${rank}${suit}`)
-);
+const deck = suits.flatMap((suit) => ranks.map((rank) => `${rank}${suit}`));
 
 console.log("Original deck (first 5):", deck.slice(0, 5));
 // ["A♠", "2♠", "3♠", "4♠", "5♠"]
@@ -150,7 +144,6 @@ const player3Hand = shuffledDeck.slice(10, 15);
 console.log("Player 1 hand:", player1Hand);
 console.log("Player 2 hand:", player2Hand);
 console.log("Player 3 hand:", player3Hand);
-
 ```
 
 ### quiz-playlist.ts
@@ -164,7 +157,7 @@ const questions = [
   { question: "What is 2 + 2?", answer: "4", difficulty: "easy" },
   { question: "Who wrote 'Romeo and Juliet'?", answer: "Shakespeare", difficulty: "medium" },
   { question: "What is the square root of 144?", answer: "12", difficulty: "medium" },
-  { question: "What is the atomic number of gold?", answer: "79", difficulty: "hard" }
+  { question: "What is the atomic number of gold?", answer: "79", difficulty: "hard" },
 ];
 
 // Randomize quiz order
@@ -180,7 +173,7 @@ const playlist = [
   { title: "Hotel California", artist: "Eagles", duration: 391 },
   { title: "Stairway to Heaven", artist: "Led Zeppelin", duration: 482 },
   { title: "Imagine", artist: "John Lennon", duration: 183 },
-  { title: "Billie Jean", artist: "Michael Jackson", duration: 294 }
+  { title: "Billie Jean", artist: "Michael Jackson", duration: 294 },
 ];
 
 // Shuffle playlist
@@ -189,11 +182,6 @@ console.log("\nShuffled playlist:");
 shuffledPlaylist.forEach((song, index) => {
   const minutes = Math.floor(song.duration / 60);
   const seconds = song.duration % 60;
-  console.log(`${index + 1}. ${song.title} - ${song.artist} (${minutes}:${seconds.toString().padStart(2, '0')})`);
+  console.log(`${index + 1}. ${song.title} - ${song.artist} (${minutes}:${seconds.toString().padStart(2, "0")})`);
 });
-
 ```
-
-
-
-

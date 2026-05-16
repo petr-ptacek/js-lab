@@ -11,14 +11,7 @@ export default mergeConfig(
       coverage: {
         provider: "v8", // nebo 'c8'
         reporter: ["text", "html", "json"],
-        exclude: [
-          "src/_internal/**",
-          "dist/**",
-          "node_modules/**",
-          "**/*.d.ts",
-          "**/*.config.*",
-          "**/coverage/**",
-        ],
+        exclude: ["src/_internal/**", "dist/**", "node_modules/**", "**/*.d.ts", "**/*.config.*", "**/coverage/**"],
         thresholds: {
           global: {
             branches: 80,
@@ -29,5 +22,5 @@ export default mergeConfig(
         },
       },
     },
-  }),
+  })
 );

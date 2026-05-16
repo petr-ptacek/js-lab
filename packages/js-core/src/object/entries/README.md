@@ -5,7 +5,7 @@ Returns the enumerable own property [key, value] pairs of an object with preserv
 ## Usage
 
 ```ts
-import { entries } from "@petr-ptacek/js-core"
+import { entries } from "@petr-ptacek/js-core";
 
 const user = {
   id: 1,
@@ -25,9 +25,11 @@ The native `Object.entries()` loses TypeScript type information, returning `[str
 ## Signature
 
 ```ts
-function entries<T extends object>(obj: T): {
+function entries<T extends object>(
+  obj: T
+): {
   [K in keyof T]: [K, T[K]];
-}[keyof T][]
+}[keyof T][];
 ```
 
 ## Parameters
@@ -41,7 +43,6 @@ function entries<T extends object>(obj: T): {
 ## Return Type
 
 Returns an array of tuples where each tuple contains a property key and its corresponding value, with full type preservation. Only enumerable own properties are included.
-
 
 ## Design Notes
 
@@ -63,7 +64,7 @@ Use `entries` when you need to:
 Avoid when:
 
 - you need all properties including non-enumerable ones (use `Object.getOwnPropertyNames`)
-- you need properties from the prototype chain (use `for...in` loop)  
+- you need properties from the prototype chain (use `for...in` loop)
 - you only need keys (use the `keys` utility)
 - you only need values (use the `values` utility)
 - working with objects where type safety is not a concern

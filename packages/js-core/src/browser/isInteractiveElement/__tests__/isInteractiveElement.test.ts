@@ -41,7 +41,7 @@ describe("isInteractiveElement", () => {
     expect(
       isInteractiveElement(div, {
         selectors: [".clickable"],
-      }),
+      })
     ).toBe(true);
   });
 
@@ -51,7 +51,7 @@ describe("isInteractiveElement", () => {
     expect(
       isInteractiveElement(button, {
         selectors: [".custom"],
-      }),
+      })
     ).toBe(false);
   });
 
@@ -61,7 +61,7 @@ describe("isInteractiveElement", () => {
     expect(
       isInteractiveElement(button, {
         selectors: [],
-      }),
+      })
     ).toBe(false);
   });
 
@@ -71,7 +71,7 @@ describe("isInteractiveElement", () => {
     expect(
       isInteractiveElement(input, {
         selectors: DEFAULT_INTERACTIVE_SELECTORS,
-      }),
+      })
     ).toBe(true);
   });
 
@@ -82,7 +82,7 @@ describe("isInteractiveElement", () => {
     expect(
       isInteractiveElement(div, {
         selectors: [...DEFAULT_INTERACTIVE_SELECTORS, "[role='button']"],
-      }),
+      })
     ).toBe(true);
   });
 });

@@ -5,7 +5,7 @@ Shrinks an image file before upload by limiting its maximum dimensions and optio
 ## Usage
 
 ```ts
-import { shrinkImageFile } from "@petr-ptacek/js-core"
+import { shrinkImageFile } from "@petr-ptacek/js-core";
 
 const input = document.querySelector<HTMLInputElement>("input[type='file']")!;
 const file = input.files![0];
@@ -36,7 +36,7 @@ This eliminates boilerplate and provides an intuitive API for the most common us
 ## Comparison to Related Utilities
 
 | Utility              | Input            | Output           | Use Case             |
-|----------------------|------------------|------------------|----------------------|
+| -------------------- | ---------------- | ---------------- | -------------------- |
 | `shrinkImage`        | HTMLImageElement | Blob             | Generic optimization |
 | `shrinkImageElement` | HTMLImageElement | HTMLImageElement | DOM display          |
 | `shrinkImageFile`    | File             | File             | Upload optimization  |
@@ -47,10 +47,7 @@ This eliminates boilerplate and provides an intuitive API for the most common us
 ## Signature
 
 ```typescript
-function shrinkImageFile(
-  file: File,
-  options?: ShrinkImageOptions,
-): Promise<File>
+function shrinkImageFile(file: File, options?: ShrinkImageOptions): Promise<File>;
 ```
 
 ## Parameters
@@ -74,7 +71,7 @@ type ShrinkImageOptions = {
   maxHeight?: number;
   quality?: number;
   mimeType?: string;
-}
+};
 ```
 
 ## Throws / Errors
@@ -145,4 +142,3 @@ optimizing file uploads. It accepts a `File`, handles all intermediate steps, an
 for upload with metadata preserved.
 
 See also: `shrinkImage` (generic optimization), `shrinkImageElement` (DOM display), `loadImage` (URL loading).
-

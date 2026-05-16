@@ -14,6 +14,4 @@ import type { Factory } from "../Factory";
  *
  * @since 1.0.0
  */
-export type ValueOrFactory<TResult, TArgs extends unknown[] = []> =
-  | TResult
-  | Factory<TResult, TArgs>;
+export type ValueOrFactory<TResult, TArgs extends unknown[] = []> = TResult | Factory<TResult, TArgs>;

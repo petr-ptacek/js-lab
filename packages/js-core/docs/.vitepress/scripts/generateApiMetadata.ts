@@ -1,7 +1,7 @@
+import fg from "fast-glob";
 import fs from "node:fs";
 import path, { dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import fg from "fast-glob";
 
 import type { Meta } from "../../../src/_internal/meta";
 
@@ -228,8 +228,8 @@ function writeUtilitiesJson(utilities: Meta[]) {
         categories,
       },
       null,
-      2,
-    ),
+      2
+    )
   );
 }
 
@@ -270,7 +270,7 @@ ${Object.entries(categories)
 <a class="vp-card" href="./${category}/">
 <h3>${category}</h3>
 <p>${utils.length} utilities</p>
-</a>`,
+</a>`
   )
   .join("\n")}
 

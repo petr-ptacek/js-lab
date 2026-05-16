@@ -7,14 +7,14 @@ export function scaleByAspectRatio(
   target: {
     width: number;
   },
-  round?: RoundValueFn,
+  round?: RoundValueFn
 ): Dimensions;
 export function scaleByAspectRatio(
   dimensions: Dimensions,
   target: {
     height: number;
   },
-  round?: RoundValueFn,
+  round?: RoundValueFn
 ): Dimensions;
 /**
  * Scales a dimensions while preserving its aspect ratio.
@@ -55,7 +55,7 @@ export function scaleByAspectRatio(
 export function scaleByAspectRatio(
   dimensions: Dimensions,
   target: DimensionsTarget,
-  round: RoundValueFn = Math.round,
+  round: RoundValueFn = Math.round
 ): Dimensions {
   assertPositiveFinite("dimensions.width", dimensions.width);
   assertPositiveFinite("dimensions.height", dimensions.height);

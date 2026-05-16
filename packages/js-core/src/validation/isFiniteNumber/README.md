@@ -5,24 +5,24 @@ Checks whether the given value is a finite number.
 ## Usage
 
 ```ts
-import { isFiniteNumber } from "@petr-ptacek/js-core"
+import { isFiniteNumber } from "@petr-ptacek/js-core";
 
 // Finite numbers
-console.log(isFiniteNumber(42));              // true
-console.log(isFiniteNumber(3.14));            // true
-console.log(isFiniteNumber(0));               // true
-console.log(isFiniteNumber(-100));            // true
+console.log(isFiniteNumber(42)); // true
+console.log(isFiniteNumber(3.14)); // true
+console.log(isFiniteNumber(0)); // true
+console.log(isFiniteNumber(-100)); // true
 
 // Not finite
-console.log(isFiniteNumber(NaN));             // false
-console.log(isFiniteNumber(Infinity));        // false
-console.log(isFiniteNumber(-Infinity));       // false
-console.log(isFiniteNumber("42"));            // false
+console.log(isFiniteNumber(NaN)); // false
+console.log(isFiniteNumber(Infinity)); // false
+console.log(isFiniteNumber(-Infinity)); // false
+console.log(isFiniteNumber("42")); // false
 
 // Type guard usage
 const value: unknown = 42;
 
-if ( isFiniteNumber(value) ) {
+if (isFiniteNumber(value)) {
   // value is now typed as number
   const doubled = value * 2;
 }
@@ -36,7 +36,7 @@ type to `number`. It specifically excludes `NaN`, `Infinity`, and `-Infinity` - 
 ## Signature
 
 ```typescript
-function isFiniteNumber(value: unknown): value is number
+function isFiniteNumber(value: unknown): value is number;
 ```
 
 ## Parameters
@@ -80,4 +80,3 @@ Avoid when:
 type narrowing in TypeScript.
 
 See also: `isNumber` (any number including NaN/Infinity), `isNaNValue` (specifically NaN).
-

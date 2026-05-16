@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** number
 > **Since:** 1.0.0
 > **Tags:** scaling, aspect-ratio, dimensions, responsive, image
-
 
 # scaleByAspectRatio
 
@@ -23,21 +21,15 @@ Scales dimensions while preserving aspect ratio to a target width or height.
 ## Usage
 
 ```ts
-import { scaleByAspectRatio } from "@petr-ptacek/js-core"
+import { scaleByAspectRatio } from "@petr-ptacek/js-core";
 
 // scale to specific width
-const scaled = scaleByAspectRatio(
-  { width: 400, height: 300 },
-  { width: 200 }
-)
-console.log(scaled) // { width: 200, height: 150 }
+const scaled = scaleByAspectRatio({ width: 400, height: 300 }, { width: 200 });
+console.log(scaled); // { width: 200, height: 150 }
 
 // scale to specific height
-const scaledHeight = scaleByAspectRatio(
-  { width: 800, height: 600 },
-  { height: 300 }
-)
-console.log(scaledHeight) // { width: 400, height: 300 }
+const scaledHeight = scaleByAspectRatio({ width: 800, height: 600 }, { height: 300 });
+console.log(scaledHeight); // { width: 400, height: 300 }
 ```
 
 ## Why This Utility Exists
@@ -47,17 +39,9 @@ When working with images, videos, or responsive layouts, maintaining aspect rati
 ## Signature
 
 ```ts
-function scaleByAspectRatio(
-  dimensions: Dimensions, 
-  target: { width: number }, 
-  round?: RoundValueFn
-): Dimensions
+function scaleByAspectRatio(dimensions: Dimensions, target: { width: number }, round?: RoundValueFn): Dimensions;
 
-function scaleByAspectRatio(
-  dimensions: Dimensions, 
-  target: { height: number }, 
-  round?: RoundValueFn
-): Dimensions
+function scaleByAspectRatio(dimensions: Dimensions, target: { height: number }, round?: RoundValueFn): Dimensions;
 ```
 
 ## Parameters
@@ -77,6 +61,7 @@ The utility uses these type definitions:
 ## Return Type
 
 Returns a `Dimensions` object with both `width` and `height` properties, where:
+
 - The specified target dimension matches the input
 - The other dimension is calculated to preserve the original aspect ratio
 - Both values are rounded using the provided rounding function
@@ -87,13 +72,11 @@ Returns a `Dimensions` object with both `width` and `height` properties, where:
 type Dimensions = {
   width: number;
   height: number;
-}
+};
 
-type DimensionsTarget = 
-  | { width: number; height?: never }
-  | { height: number; width?: never }
+type DimensionsTarget = { width: number; height?: never } | { height: number; width?: never };
 
-type RoundValueFn = (value: number) => number
+type RoundValueFn = (value: number) => number;
 ```
 
 ## Throws
@@ -136,7 +119,6 @@ Avoid when:
 
 `scaleByAspectRatio` provides type-safe dimension scaling with aspect ratio preservation, input validation, and customizable rounding for consistent results in responsive design and media processing scenarios.
 
-
 ## Snippets
 
 ### basic.ts
@@ -160,7 +142,6 @@ const portrait = { width: 600, height: 800 }; // 3:4 ratio
 
 const scaledPortrait = scaleByAspectRatio(portrait, { width: 300 });
 console.log(scaledPortrait); // { width: 300, height: 400 }
-
 ```
 
 ### custom-rounding.ts
@@ -202,14 +183,9 @@ const roundToDecimal = (decimals: number) => (value: number) => {
   return Math.round(value * factor) / factor;
 };
 
-const precisionRound = scaleByAspectRatio(
-  dimensions,
-  { width: 33.33 },
-  roundToDecimal(1)
-);
+const precisionRound = scaleByAspectRatio(dimensions, { width: 33.33 }, roundToDecimal(1));
 console.log("Precision round:", precisionRound);
 // Rounds to 1 decimal place
-
 ```
 
 ### responsive-images.ts
@@ -249,8 +225,8 @@ class ResponsiveImage {
 
   // generate multiple sizes for srcset
   generateSizes(widths: number[]) {
-    return widths.map(width => ({
-      ...scaleByAspectRatio(this.originalDimensions, { width })
+    return widths.map((width) => ({
+      ...scaleByAspectRatio(this.originalDimensions, { width }),
     }));
   }
 }
@@ -276,9 +252,4 @@ console.log("Srcset sizes:", sizes);
 //   { width: 1024, height: 768 },
 //   { width: 1920, height: 1440 }
 // ]
-
 ```
-
-
-
-

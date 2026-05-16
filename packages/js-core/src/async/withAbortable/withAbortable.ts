@@ -1,10 +1,5 @@
 import { withRunId } from "../withRunId";
-import type {
-  AbortableContext,
-  AbortableFn,
-  WithAbortableOptions,
-  WithAbortableReturn,
-} from "./types";
+import type { AbortableContext, AbortableFn, WithAbortableOptions, WithAbortableReturn } from "./types";
 
 /**
  * Wraps an asynchronous function with AbortController lifecycle management.
@@ -89,7 +84,7 @@ import type {
  */
 export function withAbortable<Args extends unknown[], TResult>(
   fn: AbortableFn<Args, TResult>,
-  options: WithAbortableOptions = {},
+  options: WithAbortableOptions = {}
 ): WithAbortableReturn<Args, TResult> {
   // Holds the AbortController of the currently active execution.
   // Managed inside the wrapped fn and cleared on completion or cancellation.
@@ -126,7 +121,7 @@ export function withAbortable<Args extends unknown[], TResult>(
         }
       }
     },
-    { strategy: "replace", throwOnError: true },
+    { strategy: "replace", throwOnError: true }
   );
 
   function cancel(): void {

@@ -17,5 +17,5 @@ export default mergeConfig(
         "@petr-ptacek/vue-test-utils": path.resolve(__dirname, "../vue-test-utils/src"),
       },
     },
-  }),
+  })
 );

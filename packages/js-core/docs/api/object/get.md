@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** object
 > **Since:** 1.0.0
 > **Tags:** object, nested, path, safe-access, typed, dot-notation
-
 
 # get
 
@@ -24,15 +22,15 @@ Safely gets a nested value from an object using a dot-separated path with full T
 ## Usage
 
 ```ts
-import { get } from "@petr-ptacek/js-core"
+import { get } from "@petr-ptacek/js-core";
 
 const user = {
   profile: {
     name: "John",
     contacts: {
-      email: "john@example.com"
-    }
-  }
+      email: "john@example.com",
+    },
+  },
 };
 
 const name = get(user, "profile.name");
@@ -47,17 +45,14 @@ Direct property access can throw runtime errors when intermediate properties are
 
 ```ts
 // Without default value
-function get<T extends object, P extends Path<T>>(
-  obj: T,
-  path: P,
-): PathValue<T, P> | undefined
+function get<T extends object, P extends Path<T>>(obj: T, path: P): PathValue<T, P> | undefined;
 
 // With default value
 function get<T extends object, P extends Path<T>, D>(
   obj: T,
   path: P,
-  defaultValue: D,
-): Exclude<PathValue<T, P>, undefined> | D
+  defaultValue: D
+): Exclude<PathValue<T, P>, undefined> | D;
 ```
 
 ## Parameters
@@ -104,7 +99,6 @@ Avoid when:
 
 `get` provides safe and type-safe access to nested object properties with compile-time path validation and graceful error handling.
 
-
 ## Snippets
 
 ### api-response.ts
@@ -119,11 +113,11 @@ const apiResponse = {
         id: 1,
         profile: {
           email: "alice@example.com",
-          preferences: { theme: "dark" }
-        }
-      }
-    ]
-  }
+          preferences: { theme: "dark" },
+        },
+      },
+    ],
+  },
 };
 
 // Safely access nested API data
@@ -136,7 +130,6 @@ console.log(userTheme); // "dark"
 // Handle missing data gracefully
 const missingUser = get(apiResponse, "data.users.1.profile.email", "No email");
 console.log(missingUser); // "No email"
-
 ```
 
 ### basic.ts
@@ -150,9 +143,9 @@ const user = {
     age: 30,
     contacts: {
       email: "john@example.com",
-      phones: ["+1234567890", "+0987654321"]
-    }
-  }
+      phones: ["+1234567890", "+0987654321"],
+    },
+  },
 };
 
 // Get nested object property
@@ -166,7 +159,6 @@ console.log(firstPhone); // "+1234567890"
 // Get with default value (existing property)
 const age = get(user, "profile.age", 25);
 console.log(age); // 30
-
 ```
 
 ### config.ts
@@ -183,10 +175,10 @@ const config = {
       host: "db.example.com",
       credentials: {
         username: "admin",
-        password: "secret123"
-      }
-    }
-  }
+        password: "secret123",
+      },
+    },
+  },
 };
 
 // Access configuration values with sensible defaults
@@ -203,11 +195,6 @@ console.log({
   host,
   sslEnabled,
   dbHost,
-  dbUser
+  dbUser,
 });
-
 ```
-
-
-
-

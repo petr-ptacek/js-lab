@@ -5,13 +5,13 @@ Represents a value that may be `undefined`.
 ## Usage
 
 ```ts
-import type { MaybeUndefined } from "@petr-ptacek/js-core"
+import type { MaybeUndefined } from "@petr-ptacek/js-core";
 
 function getConfig(key: string): MaybeUndefined<string> {
-  return process.env[key] // undefined if not set
+  return process.env[key]; // undefined if not set
 }
 
-const apiUrl: MaybeUndefined<string> = getConfig("API_URL")
+const apiUrl: MaybeUndefined<string> = getConfig("API_URL");
 // Type: string | undefined
 ```
 
@@ -22,7 +22,7 @@ In JavaScript/TypeScript, values are `undefined` when they haven't been initiali
 ## Type Declaration
 
 ```ts
-type MaybeUndefined<T> = T | undefined
+type MaybeUndefined<T> = T | undefined;
 ```
 
 ## Type Parameters
@@ -52,12 +52,12 @@ const config: AppConfig = {
   apiUrl: "https://api.example.com",
   timeout: 5000,
   debugMode: process.env.DEBUG === "true" ? true : undefined,
-  logLevel: process.env.LOG_LEVEL // undefined if not set
+  logLevel: process.env.LOG_LEVEL, // undefined if not set
 };
 
 // Array operations
-function findUser(users: Array<{id: string}>, id: string): MaybeUndefined<{id: string}> {
-  return users.find(user => user.id === id);
+function findUser(users: Array<{ id: string }>, id: string): MaybeUndefined<{ id: string }> {
+  return users.find((user) => user.id === id);
 }
 
 const foundUser = findUser(users, "123");
@@ -78,6 +78,7 @@ Avoid when:
 ## Design Notes
 
 This type follows the semantic distinction where:
+
 - `undefined` represents uninitialized, missing, or non-existent values
 - `null` represents intentional absence of a value
 - `MaybeUndefined<T>` specifically handles the `undefined` case

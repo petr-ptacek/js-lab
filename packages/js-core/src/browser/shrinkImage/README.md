@@ -5,7 +5,7 @@ Shrinks an image by limiting its maximum dimensions and optionally reducing outp
 ## Usage
 
 ```ts
-import { shrinkImage } from "@petr-ptacek/js-core"
+import { shrinkImage } from "@petr-ptacek/js-core";
 
 const img = document.querySelector("img")!;
 
@@ -25,10 +25,7 @@ utility handles canvas rendering, blob creation, and error handling in a single 
 ## Signature
 
 ```typescript
-function shrinkImage(
-  image: HTMLImageElement,
-  options?: ShrinkImageOptions,
-): Promise<Blob>
+function shrinkImage(image: HTMLImageElement, options?: ShrinkImageOptions): Promise<Blob>;
 ```
 
 ## Parameters
@@ -55,7 +52,7 @@ type ShrinkImageOptions = {
   maxHeight?: number;
   quality?: number;
   mimeType?: string;
-}
+};
 ```
 
 ## Throws / Errors
@@ -107,4 +104,3 @@ Avoid when:
 `shrinkImage` provides a simple, promise-based API for front-end image optimization. It reduces dimensions while
 preserving aspect ratio and allows optional quality control. The result is a `Blob` ready for upload or further
 processing.
-

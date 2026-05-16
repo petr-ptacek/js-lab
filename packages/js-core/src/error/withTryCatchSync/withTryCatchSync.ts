@@ -12,12 +12,12 @@ export function withTryCatchSync<TResult, TError = unknown>(
   fn: () => TResult,
   options: WithTryCatchOptions<TResult, TError> & {
     fallback: ValueOrFactory<TResult, [TError]>;
-  },
+  }
 ): TryCatchResultSuccess<TResult> | TryCatchResultFailureWithData<TResult, TError>;
 
 export function withTryCatchSync<TResult, TError = unknown>(
   fn: () => TResult,
-  options?: WithTryCatchOptions<TResult, TError>,
+  options?: WithTryCatchOptions<TResult, TError>
 ): TryCatchResultSuccess<TResult> | TryCatchResultFailureNoData<TError>;
 
 /**
@@ -111,7 +111,7 @@ export function withTryCatchSync<TResult, TError = unknown>(
  */
 export function withTryCatchSync<TResult, TError = unknown>(
   fn: () => TResult,
-  options: WithTryCatchOptions<TResult, TError> = {},
+  options: WithTryCatchOptions<TResult, TError> = {}
 ): TryCatchResult<TResult, TError> {
   let result: TryCatchResult<TResult, TError>;
 

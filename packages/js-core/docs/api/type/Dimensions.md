@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** type
 > **Since:** 1.0.0
 > **Tags:** type, dimensions, size, width, height, 2d
-
 
 # Dimensions
 
@@ -24,23 +22,23 @@ Represents a two-dimensional size defined by width and height.
 ## Usage
 
 ```ts
-import type { Dimensions } from "@petr-ptacek/js-core"
+import type { Dimensions } from "@petr-ptacek/js-core";
 
 const screenSize: Dimensions = {
   width: 1920,
-  height: 1080
-}
+  height: 1080,
+};
 
 const imageSize: Dimensions = {
   width: 800,
-  height: 600
-}
+  height: 600,
+};
 
 function calculateArea(dimensions: Dimensions): number {
-  return dimensions.width * dimensions.height
+  return dimensions.width * dimensions.height;
 }
 
-const area = calculateArea(screenSize) // 2073600
+const area = calculateArea(screenSize); // 2073600
 ```
 
 ## Why This Type Exists
@@ -53,7 +51,7 @@ Two-dimensional sizes are fundamental in graphics, UI layout, image processing, 
 type Dimensions = {
   width: number;
   height: number;
-}
+};
 ```
 
 ## When To Use
@@ -69,16 +67,16 @@ Use `Dimensions` when:
 ```ts
 // Image processing
 function resizeImage(original: Dimensions, maxSize: Dimensions): Dimensions {
-  const aspectRatio = original.width / original.height
-  
+  const aspectRatio = original.width / original.height;
+
   if (original.width > maxSize.width) {
     return {
       width: maxSize.width,
-      height: Math.round(maxSize.width / aspectRatio)
-    }
+      height: Math.round(maxSize.width / aspectRatio),
+    };
   }
-  
-  return original
+
+  return original;
 }
 
 // Viewport utilities
@@ -86,25 +84,25 @@ class ViewportManager {
   getViewportSize(): Dimensions {
     return {
       width: window.innerWidth,
-      height: window.innerHeight
-    }
+      height: window.innerHeight,
+    };
   }
-  
+
   isLandscape(dimensions: Dimensions): boolean {
-    return dimensions.width > dimensions.height
+    return dimensions.width > dimensions.height;
   }
 }
 
 // Layout calculations
 function fitInContainer(content: Dimensions, container: Dimensions): Dimensions {
-  const scaleX = container.width / content.width
-  const scaleY = container.height / content.height
-  const scale = Math.min(scaleX, scaleY)
-  
+  const scaleX = container.width / content.width;
+  const scaleY = container.height / content.height;
+  const scale = Math.min(scaleX, scaleY);
+
   return {
     width: Math.round(content.width * scale),
-    height: Math.round(content.height * scale)
-  }
+    height: Math.round(content.height * scale),
+  };
 }
 ```
 
@@ -131,8 +129,3 @@ The type serves as a foundation for more complex operations while maintaining si
 ## Summary
 
 `Dimensions` provides a standardized representation for two-dimensional sizes, enabling consistent width/height handling across image processing, responsive design, and layout calculations throughout the library.
-
-
-
-
-

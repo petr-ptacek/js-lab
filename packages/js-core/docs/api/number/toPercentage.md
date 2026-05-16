@@ -9,11 +9,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** number
 > **Since:** 1.0.0
 > **Tags:** percentage, math, calculation, conversion
-
 
 # toPercentage
 
@@ -22,13 +20,13 @@ Converts a numeric value to a percentage relative to a given base.
 ## Usage
 
 ```ts
-import { toPercentage } from "@petr-ptacek/js-core"
+import { toPercentage } from "@petr-ptacek/js-core";
 
-const percentage = toPercentage(25, 100)
-console.log(percentage) // 25
+const percentage = toPercentage(25, 100);
+console.log(percentage); // 25
 
-const result = toPercentage(3, 4)
-console.log(result) // 75
+const result = toPercentage(3, 4);
+console.log(result); // 75
 ```
 
 ## Why This Utility Exists
@@ -38,7 +36,7 @@ Converting values to percentages is a common operation in data visualization, pr
 ## Signature
 
 ```ts
-function toPercentage(value: number, base: number): number
+function toPercentage(value: number, base: number): number;
 ```
 
 ## Parameters
@@ -86,7 +84,6 @@ Avoid when:
 
 `toPercentage` provides a simple, safe way to convert numeric values to percentages with proper error handling for division by zero cases.
 
-
 ## Snippets
 
 ### basic.ts
@@ -103,7 +100,6 @@ console.log(`Progress: ${completion}%`); // Progress: 75%
 
 const ratio = toPercentage(1, 3);
 console.log(`Ratio: ${ratio}%`); // Ratio: 33.333333333333336%
-
 ```
 
 ### progress-tracking.ts
@@ -147,7 +143,6 @@ project.completeTask();
 project.completeTask();
 
 console.log(project.getProgressString()); // 3/10 (30.0%)
-
 ```
 
 ### statistics.ts
@@ -160,18 +155,18 @@ const surveyData = {
   totalResponses: 250,
   categories: {
     "Very Satisfied": 125,
-    "Satisfied": 75,
-    "Neutral": 30,
-    "Dissatisfied": 15,
-    "Very Dissatisfied": 5
-  }
+    Satisfied: 75,
+    Neutral: 30,
+    Dissatisfied: 15,
+    "Very Dissatisfied": 5,
+  },
 };
 
 // calculate percentage for each category
 const results = Object.entries(surveyData.categories).map(([category, count]) => ({
   category,
   count,
-  percentage: toPercentage(count, surveyData.totalResponses)
+  percentage: toPercentage(count, surveyData.totalResponses),
 }));
 
 console.log("Survey Results:");
@@ -194,9 +189,4 @@ console.log(`\nOverall Satisfaction Rate: ${satisfactionRate}%`);
 // Very Dissatisfied: 5 (2.0%)
 //
 // Overall Satisfaction Rate: 80%
-
 ```
-
-
-
-

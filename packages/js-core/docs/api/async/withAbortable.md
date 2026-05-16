@@ -11,11 +11,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** async
 > **Since:** 1.0.0
 > **Tags:** async, cancel, controller, cancellation, timeout, lifecycle
-
 
 # withAbortable
 
@@ -24,14 +22,12 @@ Wraps an asynchronous function with AbortController lifecycle management.
 ## Usage
 
 ```ts
-import { withAbortable } from "@petr-ptacek/js-core"
+import { withAbortable } from "@petr-ptacek/js-core";
 
-const getUser = withAbortable(
-  async ({ signal }, id: string) => {
-    const res = await fetch(`/api/users/${id}`, { signal });
-    return res.json();
-  }
-);
+const getUser = withAbortable(async ({ signal }, id: string) => {
+  const res = await fetch(`/api/users/${id}`, { signal });
+  return res.json();
+});
 
 const user = await getUser.execute("123");
 ```
@@ -46,7 +42,7 @@ JavaScript's native AbortController requires manual lifecycle management and cle
 function withAbortable<Args extends unknown[], R>(
   fn: AbortableFn<Args, R>,
   options?: WithAbortableOptions
-): WithAbortableReturn<Args, R>
+): WithAbortableReturn<Args, R>;
 ```
 
 ## Parameters
@@ -64,6 +60,7 @@ function withAbortable<Args extends unknown[], R>(
 ## Return Type
 
 Returns an object containing:
+
 - `execute(...args)`  executes the wrapped function with the provided arguments.
 - `cancel()`  cancels the currently active execution.
 - `signal`  the current AbortSignal or null if idle.
@@ -76,22 +73,21 @@ The utility exports several TypeScript types for proper integration:
 ```ts
 type AbortableContext = {
   signal: AbortSignal;
-}
+};
 
-type AbortableFn<Args extends unknown[], R> = 
-  (context: AbortableContext, ...args: Args) => Promise<R>
+type AbortableFn<Args extends unknown[], R> = (context: AbortableContext, ...args: Args) => Promise<R>;
 
 type WithAbortableOptions = {
   autoAbort?: boolean;
   timeoutMs?: number;
-}
+};
 
 type WithAbortableReturn<Args extends unknown[], R> = {
   execute: (...args: Args) => Promise<R>;
   cancel: () => void;
   readonly signal: AbortSignal | null;
   readonly isRunning: boolean;
-}
+};
 ```
 
 These types enable proper TypeScript integration and ensure type safety when using the utility.
@@ -126,7 +122,6 @@ Avoid when:
 
 `withAbortable` provides robust AbortController lifecycle management with automatic cleanup, timeout support, and deterministic cancellation semantics for async functions.
 
-
 ## Snippets
 
 ### basic.ts
@@ -135,18 +130,16 @@ Avoid when:
 import { withAbortable } from "@petr-ptacek/js-core";
 
 // Basic API call with automatic cancel
-const getUser = withAbortable(
-  async ({ signal }, id: string) => {
-    console.log(`Fetching user ${id}...`);
-    const response = await fetch(`/api/users/${id}`, { signal });
+const getUser = withAbortable(async ({ signal }, id: string) => {
+  console.log(`Fetching user ${id}...`);
+  const response = await fetch(`/api/users/${id}`, { signal });
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch user: ${response.status}`);
-    }
-
-    return response.json();
+  if (!response.ok) {
+    throw new Error(`Failed to fetch user: ${response.status}`);
   }
-);
+
+  return response.json();
+});
 
 // Execute the function
 
@@ -173,7 +166,6 @@ async function _example() {
       const err = error as Error;
       console.log("Promise1 was canceled:", err.name === "AbortError");
     }
-
   } catch (error) {
     const err = error as Error;
     console.error("Error:", err.message);
@@ -192,7 +184,6 @@ promise.finally(() => {
 });
 
 // example();
-
 ```
 
 ### real-world-usage.ts
@@ -201,28 +192,26 @@ promise.finally(() => {
 import { withAbortable } from "@petr-ptacek/js-core";
 
 // Search with debouncing - cancel previous searches
-const searchUsers = withAbortable(
-  async ({ signal }, query: string) => {
-    if (!query.trim()) {
-      return [];
-    }
-
-    console.log(`Searching for: "${query}"`);
-
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`, {
-      signal
-    });
-
-    if (!response.ok) {
-      throw new Error(`Search failed: ${response.status}`);
-    }
-
-    return response.json();
+const searchUsers = withAbortable(async ({ signal }, query: string) => {
+  if (!query.trim()) {
+    return [];
   }
-);
+
+  console.log(`Searching for: "${query}"`);
+
+  // Simulate API delay
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
+  const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`, {
+    signal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Search failed: ${response.status}`);
+  }
+
+  return response.json();
+});
 
 // Image loading with fallback
 const loadImage = withAbortable(
@@ -234,9 +223,9 @@ const loadImage = withAbortable(
       img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
 
       // Handle abort
-      signal.addEventListener('abort', () => {
-        img.src = ''; // Stop loading
-        reject(new DOMException('Image loading cancelled', 'AbortError'));
+      signal.addEventListener("abort", () => {
+        img.src = ""; // Stop loading
+        reject(new DOMException("Image loading cancelled", "AbortError"));
       });
 
       img.src = src;
@@ -246,49 +235,46 @@ const loadImage = withAbortable(
 );
 
 // Data fetching with retry logic
-const fetchWithRetry = withAbortable(
-  async ({ signal }, url: string, maxRetries: number = 3) => {
-    let lastError: Error = new Error('No attempts made');
+const fetchWithRetry = withAbortable(async ({ signal }, url: string, maxRetries: number = 3) => {
+  let lastError: Error = new Error("No attempts made");
 
-    for (let attempt = 1; attempt <= maxRetries; attempt++) {
-      try {
-        console.log(`Attempt ${attempt}/${maxRetries} for ${url}`);
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      console.log(`Attempt ${attempt}/${maxRetries} for ${url}`);
 
-        const response = await fetch(url, { signal });
+      const response = await fetch(url, { signal });
 
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-
-        return await response.json();
-
-      } catch (error) {
-        lastError = error as Error;
-
-        // Don't retry if aborted
-        if (signal.aborted || (error as Error).name === 'AbortError') {
-          throw error;
-        }
-
-        // Don't retry on last attempt
-        if (attempt === maxRetries) {
-          break;
-        }
-
-        // Exponential backoff
-        const delay = Math.pow(2, attempt - 1) * 1000;
-        console.log(`Retry ${attempt} failed, waiting ${delay}ms...`);
-        await new Promise(resolve => setTimeout(resolve, delay));
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-    }
 
-    throw lastError;
+      return await response.json();
+    } catch (error) {
+      lastError = error as Error;
+
+      // Don't retry if aborted
+      if (signal.aborted || (error as Error).name === "AbortError") {
+        throw error;
+      }
+
+      // Don't retry on last attempt
+      if (attempt === maxRetries) {
+        break;
+      }
+
+      // Exponential backoff
+      const delay = Math.pow(2, attempt - 1) * 1000;
+      console.log(`Retry ${attempt} failed, waiting ${delay}ms...`);
+      await new Promise((resolve) => setTimeout(resolve, delay));
+    }
   }
-);
+
+  throw lastError;
+});
 
 // Simulated UI component behavior
 class SearchComponent {
-  private currentQuery = '';
+  private currentQuery = "";
 
   async handleSearch(query: string) {
     this.currentQuery = query;
@@ -305,10 +291,9 @@ class SearchComponent {
         console.log(`Discarding stale results for "${query}"`);
         return [];
       }
-
     } catch (error) {
       const err = error as Error;
-      if (err.name === 'AbortError') {
+      if (err.name === "AbortError") {
         console.log(`Search for "${query}" was cancelled`);
         return [];
       }
@@ -325,9 +310,7 @@ class ImageGallery {
     console.log(`Loading ${urls.length} images...`);
 
     // Load images concurrently, but allow cancellation of the whole batch
-    const results = await Promise.allSettled(
-      urls.map(url => loadImage.execute(url))
-    );
+    const results = await Promise.allSettled(urls.map((url) => loadImage.execute(url)));
 
     const successful: HTMLImageElement[] = [];
     const failed: string[] = [];
@@ -336,7 +319,7 @@ class ImageGallery {
       const url = urls[index];
       if (!url) return;
 
-      if (result.status === 'fulfilled') {
+      if (result.status === "fulfilled") {
         const img = result.value;
         this.loadedImages.set(url, img);
         successful.push(img);
@@ -370,7 +353,7 @@ async function _demonstratePatterns() {
 
   // Simulate rapid typing - previous searches get cancelled
   searchComponent.handleSearch("jo");
-  searchComponent.handleSearch("joh");  // cancels "jo"
+  searchComponent.handleSearch("joh"); // cancels "jo"
   await searchComponent.handleSearch("john"); // cancels "joh"
 
   console.log("\n=== Image Loading Pattern ===");
@@ -379,7 +362,7 @@ async function _demonstratePatterns() {
   const imageUrls = [
     "https://picsum.photos/200/200?random=1",
     "https://picsum.photos/200/200?random=2",
-    "https://picsum.photos/200/200?random=3"
+    "https://picsum.photos/200/200?random=3",
   ];
 
   try {
@@ -399,7 +382,6 @@ async function _demonstratePatterns() {
 }
 
 // _demonstratePatterns();
-
 ```
 
 ### timeout-abort.ts
@@ -418,9 +400,9 @@ const longTask = withAbortable(
       }, duration);
 
       // Handle abort signal
-      signal.addEventListener('abort', () => {
+      signal.addEventListener("abort", () => {
         clearTimeout(timeoutId);
-        reject(new DOMException('Task was aborted', 'AbortError'));
+        reject(new DOMException("Task was aborted", "AbortError"));
       });
     });
   },
@@ -428,23 +410,21 @@ const longTask = withAbortable(
 );
 
 // Manual abort example
-const downloadFile = withAbortable(
-  async ({ signal }, url: string) => {
-    console.log(`Downloading ${url}...`);
+const downloadFile = withAbortable(async ({ signal }, url: string) => {
+  console.log(`Downloading ${url}...`);
 
-    // Simulate file download with progress
-    for (let i = 0; i <= 100; i += 10) {
-      if (signal.aborted) {
-        throw new DOMException('Download cancelled', 'AbortError');
-      }
-
-      console.log(`Download progress: ${i}%`);
-      await new Promise(resolve => setTimeout(resolve, 200));
+  // Simulate file download with progress
+  for (let i = 0; i <= 100; i += 10) {
+    if (signal.aborted) {
+      throw new DOMException("Download cancelled", "AbortError");
     }
 
-    return `Downloaded ${url} successfully`;
+    console.log(`Download progress: ${i}%`);
+    await new Promise((resolve) => setTimeout(resolve, 200));
   }
-);
+
+  return `Downloaded ${url} successfully`;
+});
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -457,7 +437,7 @@ async function _timeoutExample() {
     console.log(result);
   } catch (error) {
     const err = error as Error;
-    if (err.name === 'AbortError') {
+    if (err.name === "AbortError") {
       console.log("Task was aborted due to timeout");
     } else {
       console.error("Unexpected error:", error);
@@ -483,7 +463,7 @@ async function _manualAbortExample() {
     console.log(result);
   } catch (error) {
     const err = error as Error;
-    if (err.name === 'AbortError') {
+    if (err.name === "AbortError") {
       console.log("Download was manually cancelled");
     }
   }
@@ -494,10 +474,10 @@ const concurrentTask = withAbortable(
   async ({ signal }, taskId: number) => {
     console.log(`Starting concurrent task ${taskId}...`);
 
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     if (signal.aborted) {
-      throw new DOMException(`Task ${taskId} was aborted`, 'AbortError');
+      throw new DOMException(`Task ${taskId} was aborted`, "AbortError");
     }
 
     return `Task ${taskId} completed`;
@@ -511,16 +491,12 @@ async function _concurrentExample() {
   console.log("\n=== Concurrent Example ===");
 
   // Start multiple tasks concurrently
-  const promises = [
-    concurrentTask.execute(1),
-    concurrentTask.execute(2),
-    concurrentTask.execute(3)
-  ];
+  const promises = [concurrentTask.execute(1), concurrentTask.execute(2), concurrentTask.execute(3)];
 
   // Wait for all to complete
   const results = await Promise.allSettled(promises);
   results.forEach((result, index) => {
-    if (result.status === 'fulfilled') {
+    if (result.status === "fulfilled") {
       console.log(`Result ${index + 1}:`, result.value);
     } else {
       console.log(`Task ${index + 1} failed:`, result.reason.message);
@@ -532,5 +508,4 @@ async function _concurrentExample() {
 // _timeoutExample();
 // _manualAbortExample();
 // _concurrentExample();
-
 ```

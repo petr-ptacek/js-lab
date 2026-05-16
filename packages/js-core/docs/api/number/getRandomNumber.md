@@ -10,11 +10,9 @@ tags:
 since: 1.0.0
 ---
 
-
 > **Category:** number
 > **Since:** 1.0.0
 > **Tags:** random, integer, range, generation, math
-
 
 # getRandomNumber
 
@@ -23,19 +21,19 @@ Returns a random integer within the given inclusive range.
 ## Usage
 
 ```ts
-import { getRandomNumber } from "@petr-ptacek/js-core"
+import { getRandomNumber } from "@petr-ptacek/js-core";
 
 // random number between 1 and 6 (dice roll)
-const dice = getRandomNumber(1, 6)
-console.log(dice) // 1, 2, 3, 4, 5, or 6
+const dice = getRandomNumber(1, 6);
+console.log(dice); // 1, 2, 3, 4, 5, or 6
 
 // random number from 0 to 100
-const percentage = getRandomNumber(0, 100)
-console.log(percentage) // 0 to 100
+const percentage = getRandomNumber(0, 100);
+console.log(percentage); // 0 to 100
 
 // using defaults (0 to MAX_SAFE_INTEGER)
-const largeRandom = getRandomNumber()
-console.log(largeRandom) // 0 to 9007199254740991
+const largeRandom = getRandomNumber();
+console.log(largeRandom); // 0 to 9007199254740991
 ```
 
 ## Why This Utility Exists
@@ -45,7 +43,7 @@ JavaScript's `Math.random()` returns floating-point values between 0 and 1, requ
 ## Signature
 
 ```ts
-function getRandomNumber(from?: number, to?: number): number
+function getRandomNumber(from?: number, to?: number): number;
 ```
 
 ## Parameters
@@ -66,7 +64,7 @@ Returns a `number` representing a random integer within the specified range (inc
 The implementation uses the standard formula for converting `Math.random()` to an integer range:
 
 ```ts
-Math.floor(Math.random() * (to - from + 1)) + from
+Math.floor(Math.random() * (to - from + 1)) + from;
 ```
 
 Key design decisions:
@@ -101,7 +99,6 @@ Avoid when:
 
 `getRandomNumber` provides a simple, validated way to generate random integers within inclusive bounds, eliminating the need for manual range conversion and ensuring consistent behavior across different random number generation scenarios.
 
-
 ## Snippets
 
 ### basic.ts
@@ -126,7 +123,6 @@ console.log("Temperature:", temperature, "°C"); // -10 to 35
 // single value range
 const constant = getRandomNumber(5, 5);
 console.log("Always 5:", constant); // always 5
-
 ```
 
 ### gaming.ts
@@ -177,7 +173,7 @@ class GameMechanics {
   getRandomSpawnPoint(mapWidth: number, mapHeight: number) {
     return {
       x: getRandomNumber(0, mapWidth - 1),
-      y: getRandomNumber(0, mapHeight - 1)
+      y: getRandomNumber(0, mapHeight - 1),
     };
   }
 }
@@ -200,7 +196,6 @@ for (let i = 0; i < 100; i++) {
   rarityCount[rarity as keyof typeof rarityCount]++;
 }
 console.log("Rarity distribution (100 drops):", rarityCount);
-
 ```
 
 ### test-data.ts
@@ -245,7 +240,7 @@ class TestDataGenerator {
       firstName: firstNames[this.generateArrayIndex(firstNames.length)],
       lastName: lastNames[this.generateArrayIndex(lastNames.length)],
       age: this.generateAge(),
-      score: this.generateScore()
+      score: this.generateScore(),
     };
   }
 
@@ -258,7 +253,7 @@ class TestDataGenerator {
       product: products[this.generateArrayIndex(products.length)],
       quantity: this.generateQuantity(),
       price: getRandomNumber(10, 1500), // $10 to $1500
-      timestamp: Date.now() - getRandomNumber(0, 30 * 24 * 60 * 60 * 1000) // last 30 days
+      timestamp: Date.now() - getRandomNumber(0, 30 * 24 * 60 * 60 * 1000), // last 30 days
     };
   }
 
@@ -290,7 +285,7 @@ async function simulateApiCall(endpoint: string) {
   const delay = generator.generateDelay();
   console.log(`Calling ${endpoint}... (${delay}ms delay)`);
 
-  await new Promise(resolve => setTimeout(resolve, delay));
+  await new Promise((resolve) => setTimeout(resolve, delay));
 
   // simulate success/error (90% success rate)
   const success = getRandomNumber(1, 100) <= 90;
@@ -298,17 +293,12 @@ async function simulateApiCall(endpoint: string) {
     success,
     data: success ? { result: "Data loaded" } : null,
     error: success ? null : "Network error",
-    responseTime: delay
+    responseTime: delay,
   };
 }
 
 // example usage
-simulateApiCall("/api/users").then(result => {
+simulateApiCall("/api/users").then((result) => {
   console.log("API result:", result);
 });
-
 ```
-
-
-
-

@@ -65,7 +65,7 @@ describe("withRunId - drop", () => {
       async () => {
         throw new Error("fail");
       },
-      { throwOnError: true },
+      { throwOnError: true }
     );
 
     await expect(ctrl.execute()).rejects.toThrow("fail");

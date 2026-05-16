@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "js_changes=$(git status --porcelain -- packages/js-core/ 2>/dev/null | wc -l | tr -d ' '); new_changeset=$(git status --porcelain -- .changeset/ 2>/dev/null | grep -c '\\.md$' || true); if [ \"$js_changes\" -gt 0 ] && [ \"$new_changeset\" -eq 0 ]; then echo '{\"hookSpecificOutput\": {\"hookEventName\": \"Stop\", \"additionalContext\": \"REMINDER: packages/js-core/ has uncommitted changes but no new changeset file in .changeset/. Consider creating one with: pnpm changeset\"}}'; fi"
+          }
+        ]
+      }
+    ]
+  }
+}

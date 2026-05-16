@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.node.base.json",
   "include": [
     "./src/_internal/meta.ts",
-    "./vite.config.ts",
+    "./tsdown.config.ts",
     "./vitest.config.ts",
     "./docs/.vitepress/**/*.ts",
     "./docs/**/*.ts"

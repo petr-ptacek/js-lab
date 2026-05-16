@@ -6,9 +6,7 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "prebuild": "pnpm clean",
-    "build": "vite build",
-    "build:types": "tsc -b ./tsconfig.types.json",
+    "build": "tsdown",
     "typecheck": "tsc -b ./tsconfig.app.json",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -19,7 +17,7 @@
     "docs:dev": "pnpm docs:meta && vitepress dev docs",
     "docs:build": "pnpm docs:meta && vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "release:check": "pnpm typecheck && pnpm test && pnpm build && pnpm build:types",
+    "release:check": "pnpm typecheck && pnpm test && pnpm build",
     "release:dry": "pnpm release:check && npm publish --dry-run",
     "prepublishOnly": "pnpm clean && pnpm release:check"
   },
@@ -51,19 +49,19 @@
     "LICENSE"
   ],
   "main": "./dist/index.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     }
   },
   "sideEffects": false,
-  "devDependencies": {
-    "vite": "^8.0.3"
-  },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "tsdown": "^0.22.0"
   }
 }

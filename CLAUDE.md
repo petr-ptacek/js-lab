@@ -272,6 +272,7 @@ Commits are enforced via commitlint (Husky pre-commit hook).
 2. **Add utility file** with TSDoc and export `meta` object
 3. **Write tests** in `src/domain/utility.test.ts` targeting 80%+ coverage
 4. **Export from index** in `src/domain/index.ts` and `src/index.ts`
-5. **Create changeset** for release tracking
-6. **Update documentation** if public API is significant
-7. **Run full checks:** `pnpm typecheck`, `pnpm test`, `pnpm lint`
+5. **Write `README.md`** following the standard section order defined in `packages/js-core/CLAUDE.md`
+6. **Add snippets** in `src/domain/utility/snippets/` if `meta.snippets = true`
+7. **Create changeset** for release tracking
+8. **Run full checks:** `pnpm typecheck`, `pnpm test`, `pnpm lint`

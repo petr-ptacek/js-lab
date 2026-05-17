@@ -1,6 +1,7 @@
 # has
 
-Checks whether a nested value exists at a given dot-separated path in an object with full TypeScript type safety.
+Checks whether a nested path exists in a plain object using own-property existence checks with full TypeScript type
+safety.
 
 ## Usage
 
@@ -38,43 +39,47 @@ path, mirroring the behaviour of `lodash/has`.
 ## Signature
 
 ```ts
-function has<T extends object, P extends Path<T>>(obj: T, path: P): boolean;
+function has<T extends object, P extends DotPathKeys<T>>(obj: T, path: P): boolean;
 ```
 
 ## Parameters
 
-- `obj` (`T extends object`): The object to check.
-- `path` (`P extends Path<T>`): The dot-separated path string.
+- `obj` (`T extends object`): The plain object to check.
+- `path` (`P extends DotPathKeys<T>`): The dot-separated path string.
 
 ## Type Parameters
 
 - `<T extends object>`: The type of the input object.
-- `<P extends Path<T>>`: The valid path type derived from the object structure.
+- `<P extends DotPathKeys<T>>`: The valid path type derived from the object structure.
 
 ## Return Type
 
 Returns `true` if every key in the path exists as an **own property** on the intermediate object. Returns `false` if any
-key is missing.
+key is missing or if a path segment reaches a non-plain-object value.
 
 ## Key Existence Behaviour
 
-| Situation                         | `has` returns |
-| --------------------------------- | ------------- |
-| Key present, value `"hello"`      | `true`        |
-| Key present, value `0`            | `true`        |
-| Key present, value `false`        | `true`        |
-| Key present, value `""`           | `true`        |
-| Key present, value `null`         | `true`        |
-| Key present, value `undefined`    | `true`        |
-| Key **not present** on the object | `false`       |
-| Intermediate key missing          | `false`       |
+| Situation                             | `has` returns |
+| ------------------------------------- | ------------- |
+| Key present, value `"hello"`          | `true`        |
+| Key present, value `0`                | `true`        |
+| Key present, value `false`            | `true`        |
+| Key present, value `""`               | `true`        |
+| Key present, value `null`             | `true`        |
+| Key present, value `undefined`        | `true`        |
+| Key **not present** on the object     | `false`       |
+| Intermediate key missing              | `false`       |
+| Intermediate value is array or `Date` | `false`       |
 
 ## Design Notes
 
-The utility uses the same `Path<T>` type as `get`, ensuring consistent compile-time path validation across both
-utilities. Each path segment is checked with `Object.hasOwn`, which tests whether the key physically exists on the
-object — regardless of what value is stored at that key. This mirrors the behaviour of `lodash/has` and is distinct from
-`get`, which reads the value and returns `undefined` for missing paths.
+The utility uses `DotPathKeys<T>` from the `type` category for compile-time path validation. Each path segment is
+checked with `Object.hasOwn`, which tests whether the key physically exists on the object — regardless of what value is
+stored at that key. This mirrors the behaviour of `lodash/has` and is distinct from `get`, which reads the value and
+returns `undefined` for missing paths.
+
+Only plain objects are traversed. Arrays, `Date`, `Map`, `Set`, functions, and other non-plain-object values are treated
+as leaves — `false` is returned when a path segment reaches such a value.
 
 ## When To Use
 
@@ -90,10 +95,10 @@ Use `has` when you need to:
 Avoid when:
 
 - you also need the value — use `get` instead
-- the path is dynamic and unknown at compile time
+- the path goes through an array or non-plain-object value — those are not traversed
 - shallow access where `key in obj` is sufficient
 
 ## Summary
 
-`has` provides a type-safe way to check whether a path exists in a nested object, correctly handling falsy values and
-ensuring only `undefined` is treated as missing.
+`has` provides a type-safe way to check whether a path exists in a nested plain object, correctly handling falsy values
+and treating only absent keys as missing.

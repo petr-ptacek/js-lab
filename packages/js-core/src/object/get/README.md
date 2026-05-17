@@ -1,6 +1,6 @@
 # get
 
-Safely gets a nested value from an object using a dot-separated path with full TypeScript type safety.
+Safely gets a nested value from a plain object using a dot-separated path with full TypeScript type safety.
 
 ## Usage
 
@@ -10,14 +10,20 @@ import { get } from "@petr-ptacek/js-core";
 const user = {
   profile: {
     name: "John",
-    contacts: {
-      email: "john@example.com",
+    address: {
+      city: "Prague",
     },
   },
 };
 
 const name = get(user, "profile.name");
 console.log(name); // "John"
+
+const city = get(user, "profile.address.city");
+console.log(city); // "Prague"
+
+const age = get(user, "profile.age" as any, 0);
+console.log(age); // 0
 ```
 
 ## Why This Utility Exists
@@ -28,26 +34,26 @@ Direct property access can throw runtime errors when intermediate properties are
 
 ```ts
 // Without default value
-function get<T extends object, P extends Path<T>>(obj: T, path: P): PathValue<T, P> | undefined;
+function get<T extends object, P extends DotPathKeys<T>>(obj: T, path: P): DotPathValue<T, P> | undefined;
 
 // With default value
-function get<T extends object, P extends Path<T>, D>(
+function get<T extends object, P extends DotPathKeys<T>, D>(
   obj: T,
   path: P,
   defaultValue: D
-): Exclude<PathValue<T, P>, undefined> | D;
+): Exclude<DotPathValue<T, P>, undefined> | D;
 ```
 
 ## Parameters
 
-- `obj` (`T extends object`): The object to access.
-- `path` (`P extends Path<T>`): The dot-separated path string.
+- `obj` (`T extends object`): The plain object to access.
+- `path` (`P extends DotPathKeys<T>`): The dot-separated path string.
 - `defaultValue` (`D`, optional): Value to return if the path resolves to `undefined`.
 
 ## Type Parameters
 
 - `<T extends object>`: The type of the input object.
-- `<P extends Path<T>>`: The valid path type derived from the object structure.
+- `<P extends DotPathKeys<T>>`: The valid path type derived from the object structure.
 - `<D>`: The type of the default value (when provided).
 
 ## Return Type
@@ -56,9 +62,9 @@ Returns the value at the specified path, or `undefined` if the path doesn't exis
 
 ## Design Notes
 
-The utility uses TypeScript's template literal types to validate paths at compile time. Only valid paths that exist in the object structure are accepted. The path traversal uses dot notation exclusively and supports array access via numeric indices.
+The utility uses `DotPathKeys<T>` and `DotPathValue<T, P>` from the `type` category to validate paths at compile time. Only valid paths that exist in the plain object structure are accepted.
 
-The implementation uses `reduce()` for path traversal with graceful handling of missing properties.
+Only plain objects are traversed. Arrays, `Date`, `Map`, `Set`, functions, and other non-plain-object values are treated as leaves — traversal stops and `undefined` is returned when a path segment reaches such a value.
 
 ## When To Use
 
@@ -67,17 +73,16 @@ Use `get` when you need:
 - safe deep property access without runtime errors
 - type-safe path strings validated at compile time
 - fallback values for missing properties
-- array element access via dot notation
 
 ## When Not To Use
 
 Avoid when:
 
 - shallow access where optional chaining (`obj?.prop`) is sufficient
+- the path goes through an array or non-plain-object value — those are not traversed
 - dynamic paths that cannot be known at compile time
-- performance critical code where direct access is faster
-- complex path syntax beyond simple dot notation
+- performance-critical code where direct access is faster
 
 ## Summary
 
-`get` provides safe and type-safe access to nested object properties with compile-time path validation and graceful error handling.
+`get` provides safe and type-safe access to nested plain object properties with compile-time path validation and graceful handling of missing values.

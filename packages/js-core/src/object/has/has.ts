@@ -1,16 +1,17 @@
-import type { Path } from "../get/types";
+import { isPlainObject } from "../../validation";
+import type { DotPathKeys } from "../../type";
 
 /**
- * Checks whether a nested path exists in an object using own-property existence checks.
+ * Checks whether a dot-separated path exists in a plain object using own-property existence checks.
  *
- * Each segment of the dot-separated path is tested with {@link Object.hasOwn},
- * not by inspecting the value. A key explicitly set to `undefined` is therefore
- * considered **existing**.
+ * Each segment of the path is tested with {@link Object.hasOwn}, not by inspecting the value.
+ * A key explicitly set to `undefined` is therefore considered **existing**.
  *
- * The path is strongly typed and validated at compile time.
- * Supports nested objects and arrays via numeric indices.
+ * The path is strongly typed — only valid keys of the object (and its nested plain objects)
+ * are accepted. Arrays, `Date`, `Map`, and other non-plain-object values are treated as leaves
+ * and cannot be traversed further.
  *
- * @param obj - The object to check.
+ * @param obj - The plain object to check.
  * @param path - Dot-separated path to check.
  *
  * @returns `true` if every key in the path exists as an own property, `false` otherwise.
@@ -42,16 +43,16 @@ import type { Path } from "../get/types";
  * // → false  (key does not exist)
  * ```
  *
- * @since 1.2.0
+ * @since 2.0.0
  */
-export function has<T extends object, P extends Path<T>>(obj: T, path: P): boolean {
+export function has<T extends object, P extends DotPathKeys<T>>(obj: T, path: P): boolean {
   const keys = (path as string).split(".");
   let current: unknown = obj;
 
   for (const key of keys) {
-    if (current === null || typeof current !== "object") return false;
-    if (!Object.hasOwn(current as object, key)) return false;
-    current = (current as Record<string, unknown>)[key];
+    if (!isPlainObject(current)) return false;
+    if (!Object.hasOwn(current, key)) return false;
+    current = current[key];
   }
 
   return true;

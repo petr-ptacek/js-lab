@@ -2,25 +2,29 @@ import { get } from "@petr-ptacek/js-core";
 
 const apiResponse = {
   data: {
-    users: [
-      {
-        id: 1,
-        profile: {
-          email: "alice@example.com",
-          preferences: { theme: "dark" },
-        },
+    user: {
+      id: 1,
+      profile: {
+        email: "alice@example.com",
+        preferences: { theme: "dark" },
       },
-    ],
+    },
+    meta: {
+      pagination: {
+        total: 42,
+        page: 1,
+      },
+    },
   },
 };
 
 // Safely access nested API data
-const userEmail = get(apiResponse, "data.users.0.profile.email");
+const userEmail = get(apiResponse, "data.user.profile.email");
 console.log(userEmail); // "alice@example.com"
 
-const userTheme = get(apiResponse, "data.users.0.profile.preferences.theme", "light");
+const userTheme = get(apiResponse, "data.user.profile.preferences.theme", "light");
 console.log(userTheme); // "dark"
 
-// Handle missing data gracefully
-const missingUser = get(apiResponse, "data.users.1.profile.email", "No email");
-console.log(missingUser); // "No email"
+// Access meta information with defaults
+const total = get(apiResponse, "data.meta.pagination.total", 0);
+console.log(total); // 42

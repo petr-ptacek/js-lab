@@ -8,7 +8,6 @@ const config = {
     auth: null,
     timeout: undefined,
   },
-  features: ["auth", "logging"],
 };
 
 // Check if top-level key exists
@@ -29,10 +28,6 @@ has(config, "server.auth");
 // Key explicitly set to undefined — key still exists
 has(config, "server.timeout");
 // → true  (key present, value undefined)
-
-// Array element access
-has(config, "features.0");
-// → true
 
 // Key not present on the object at all
 has(config, "server.retries" as any);

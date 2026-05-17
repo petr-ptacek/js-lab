@@ -160,6 +160,16 @@ Each utility needs a `README.md`. Standard section order (omit non-applicable):
 
 Max ~200–300 lines. No marketing language.
 
+## When Modifying Existing Utilities
+
+After any change to a utility's behavior, signature, or supported input types, always update:
+
+1. **`README.md`** — signatures, parameters, Design Notes, When To Use / When Not To Use
+2. **`snippets/*.ts`** — examples must reflect current behavior (remove examples of removed features)
+3. **`__tests__/*.test.ts`** — remove tests for removed behavior, add tests for new behavior
+
+These are part of the definition of done, not optional.
+
 ## What Does NOT Belong in js-core
 
 - UI helpers or DOM manipulation

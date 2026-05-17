@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { get } from "../get";
 
 describe("get", () => {
-  it("object has path", () => {
+  it("returns value for shallow path", () => {
     const obj = { a: 1, b: { c: { d: { e: { f: "f" } } } } } as const;
 
     expect(get(obj, "a")).toBe(1);
@@ -21,13 +21,13 @@ describe("get", () => {
     expect(get(obj, path as any)).toBe(expected);
   });
 
-  it("object has not path", () => {
+  it("returns undefined for non-existing path", () => {
     const obj = { a: 1, b: { c: { d: { e: { f: "f" } } } } } as const;
 
     expect(get(obj, "foo.bar.baz" as any)).toBe(undefined);
   });
 
-  it("test default value", () => {
+  it("returns default value for non-existing path", () => {
     const obj = { a: 1, b: { c: { d: { e: { f: "f" } } } } } as const;
 
     expect(get(obj, "b.c.d", "default")).not.toBe("default");
@@ -72,34 +72,10 @@ describe("get", () => {
     expect(get(obj, "c", "x")).toBe("");
   });
 
-  it("supports array index in path", () => {
-    const obj = {
-      a: [{ b: "x" }],
-    } as const;
+  it("returns undefined when traversing into a non-plain-object value", () => {
+    const obj = { a: new Date(), b: [1, 2, 3] } as const;
 
-    expect(get(obj, "a.0.b")).toBe("x");
-  });
-
-  it("returns undefined for invalid array index", () => {
-    const obj = {
-      a: [{ b: "x" }],
-    } as const;
-
-    expect(get(obj, "a.1.b")).toBeUndefined();
-    expect(get(obj, "a.foo.b" as any)).toBeUndefined();
-  });
-
-  it("supports array index at root", () => {
-    const obj = [{ a: 1 }, { a: 2 }] as const;
-
-    expect(get(obj, "0.a")).toBe(1);
-    expect(get(obj, "1.a")).toBe(2);
-  });
-
-  it("returns undefined for invalid root index", () => {
-    const obj = [{ a: 1 }] as const;
-
-    expect(get(obj, "1.a")).toBeUndefined();
-    expect(get(obj, "foo" as any)).toBeUndefined();
+    expect(get(obj, "a.toISOString" as any)).toBeUndefined();
+    expect(get(obj, "b.0" as any)).toBeUndefined();
   });
 });

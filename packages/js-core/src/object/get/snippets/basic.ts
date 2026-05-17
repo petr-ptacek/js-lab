@@ -4,9 +4,9 @@ const user = {
   profile: {
     name: "John",
     age: 30,
-    contacts: {
-      email: "john@example.com",
-      phones: ["+1234567890", "+0987654321"],
+    address: {
+      city: "Prague",
+      zip: "110 00",
     },
   },
 };
@@ -15,10 +15,14 @@ const user = {
 const name = get(user, "profile.name");
 console.log(name); // "John"
 
-// Get array element
-const firstPhone = get(user, "profile.contacts.phones.0");
-console.log(firstPhone); // "+1234567890"
+// Get deeply nested value
+const city = get(user, "profile.address.city");
+console.log(city); // "Prague"
 
 // Get with default value (existing property)
 const age = get(user, "profile.age", 25);
 console.log(age); // 30
+
+// Get with default value (missing property)
+const nickname = get(user, "profile.nickname" as any, "anonymous");
+console.log(nickname); // "anonymous"

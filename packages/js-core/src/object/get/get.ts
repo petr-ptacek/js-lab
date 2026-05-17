@@ -1,24 +1,24 @@
-import { isArray, isObject } from "../../validation";
-import type { Path, PathValue } from "./types";
+import { isPlainObject } from "../../validation";
+import type { DotPathKeys, DotPathValue } from "../../type";
 
-export function get<T extends object, P extends Path<T>>(obj: T, path: P): PathValue<T, P> | undefined;
+export function get<T extends object, P extends DotPathKeys<T>>(obj: T, path: P): DotPathValue<T, P> | undefined;
 
-export function get<T extends object, P extends Path<T>, D>(
+export function get<T extends object, P extends DotPathKeys<T>, D>(
   obj: T,
   path: P,
   defaultValue: D
-): Exclude<PathValue<T, P>, undefined> | D;
+): Exclude<DotPathValue<T, P>, undefined> | D;
 
 /**
- * Safely gets a nested value from an object using a dot-separated path.
+ * Safely gets a nested value from a plain object using a dot-separated path.
  *
- * The path is strongly typed and validated at compile time.
- * Supports nested objects and arrays via numeric indices.
+ * The path is strongly typed — only valid keys of the object (and its nested plain objects)
+ * are accepted. Arrays, `Date`, `Map`, and other non-plain-object values are treated as leaves
+ * and cannot be traversed further.
  *
- * If the resolved value is `undefined`, the provided default value
- * is returned instead.
+ * If the resolved value is `undefined`, the provided default value is returned instead.
  *
- * @param obj - The object to read from.
+ * @param obj - The plain object to read from.
  * @param path - Dot-separated path to the value.
  * @param defaultValue - Value returned when the resolved value is `undefined`.
  *
@@ -33,15 +33,15 @@ export function get<T extends object, P extends Path<T>, D>(
  * const obj = {
  *   user: {
  *     name: "John",
- *     roles: ["admin", "editor"],
+ *     address: { city: "Prague" },
  *   },
  * };
  *
  * get(obj, "user.name");
  * // → "John"
  *
- * get(obj, "user.roles.0");
- * // → "admin"
+ * get(obj, "user.address.city");
+ * // → "Prague"
  *
  * get(obj, "user.age", 30);
  * // → 30
@@ -51,18 +51,8 @@ export function get<T extends object, P extends Path<T>, D>(
  */
 export function get(obj: object, path: string, defaultValue?: unknown) {
   const result = path.split(".").reduce<unknown>((acc, key) => {
-    if (acc == null) return undefined;
-
-    if (isArray(acc)) {
-      const index = Number(key);
-      return Number.isInteger(index) ? acc[index] : undefined;
-    }
-
-    if (isObject(acc)) {
-      return (acc as Record<string, unknown>)[key];
-    }
-
-    return undefined;
+    if (!isPlainObject(acc)) return undefined;
+    return acc[key];
   }, obj);
 
   return typeof result === "undefined" ? defaultValue : result;

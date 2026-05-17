@@ -58,24 +58,16 @@ describe("has", () => {
     expect(has(obj, "a.b.c" as any)).toBe(false);
   });
 
-  it("supports array index in path", () => {
-    const obj = { items: ["x", "y", "z"] } as const;
-
-    expect(has(obj, "items.0")).toBe(true);
-    expect(has(obj, "items.2")).toBe(true);
-    expect(has(obj, "items.99" as any)).toBe(false);
-  });
-
-  it("supports nested object inside array", () => {
-    const obj = { list: [{ name: "Alice" }] } as const;
-
-    expect(has(obj, "list.0.name")).toBe(true);
-    expect(has(obj, "list.0.age" as any)).toBe(false);
-  });
-
   it("returns false for empty object on non-existing key", () => {
     const obj: Record<string, unknown> = {};
 
     expect(has(obj, "anything")).toBe(false);
+  });
+
+  it("returns false when traversing into a non-plain-object value", () => {
+    const obj = { items: [1, 2, 3], date: new Date() } as const;
+
+    expect(has(obj, "items.0" as any)).toBe(false);
+    expect(has(obj, "date.toISOString" as any)).toBe(false);
   });
 });

@@ -9,5 +9,5 @@ export const meta: Meta = {
   tags: ["object", "nested", "path", "existence", "typed", "dot-notation"],
   demo: false,
   snippets: true,
-  since: "1.2.0",
+  since: "2.0.0",
 };

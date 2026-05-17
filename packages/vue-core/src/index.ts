@@ -1,3 +1,4 @@
 export * from "./components";
 export * from "./composables";
-export * from "./types";
+export * from "./type";
+export * from "./utils";

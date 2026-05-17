@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.app.base.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.snippets.tsbuildinfo",
+    "lib": ["ESNext", "DOM"],
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": false,
+    "emitDeclarationOnly": true,
+    "outDir": "node_modules/.tmp/tsc-snippets-out",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "baseUrl": ".",
+    "paths": {
+      "@petr-ptacek/vue-core": ["./src/index.ts"],
+      "@petr-ptacek/js-core": ["../js-core/src/index.ts"]
+    }
+  },
+  "include": ["./src/**/snippets/**/*.ts", "./src/**/snippets/**/*.vue"],
+  "references": [{ "path": "./tsconfig.app.json" }]
+}

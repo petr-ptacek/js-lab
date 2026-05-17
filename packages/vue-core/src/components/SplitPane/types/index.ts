@@ -1,5 +1,5 @@
 import type { UsePointerDragReturn } from "../../../composables";
-import type { CSSClassValue } from "../../../types";
+import type { CSSClassValue } from "../../../type";
 
 export type SizeValueUnit = `${number}%` | `${number}px`;
 

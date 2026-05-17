@@ -1,4 +1,4 @@
-import type { CSSClassValue } from "../../types";
+import type { CSSClassValue } from "../../type";
 
 export type UI = {
   root?: CSSClassValue;

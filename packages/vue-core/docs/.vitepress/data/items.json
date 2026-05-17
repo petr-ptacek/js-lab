@@ -1,0 +1,206 @@
+{
+  "items": [
+    {
+      "id": "ContentFrame",
+      "name": "ContentFrame",
+      "kind": "component",
+      "description": "Layout wrapper providing named slots for overlay, header, content, and footer with optional scroll behavior.",
+      "tags": ["layout", "frame", "header", "footer", "scroll", "slots"],
+      "snippets": false,
+      "demo": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "createEmitter",
+      "name": "createEmitter",
+      "kind": "utility",
+      "description": "Creates a Vue-aware event emitter that automatically removes registered handlers when the host component unmounts.",
+      "tags": ["event", "emitter", "lifecycle", "cleanup", "pubsub"],
+      "snippets": false,
+      "demo": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "CSSClassAtom",
+      "name": "CSSClassAtom",
+      "kind": "type",
+      "description": "A single CSS class binding unit — string, conditional object, or null/undefined.",
+      "tags": ["css", "class", "binding", "normalizeClass"],
+      "since": "1.0.0"
+    },
+    {
+      "id": "CSSClassValue",
+      "name": "CSSClassValue",
+      "kind": "type",
+      "description": "A full CSS class binding value — a single CSSClassAtom or an array of atoms.",
+      "tags": ["css", "class", "binding", "normalizeClass", "array"],
+      "since": "1.0.0"
+    },
+    {
+      "id": "Preloader",
+      "name": "Preloader",
+      "kind": "component",
+      "description": "Loading overlay component with a spinner, supporting visibility control and configurable size variants.",
+      "tags": ["loading", "spinner", "overlay", "preloader", "ux"],
+      "snippets": false,
+      "demo": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "SplitPane",
+      "name": "SplitPane",
+      "kind": "component",
+      "description": "Resizable split panel layout with a drag handle, collapse/expand support, and configurable horizontal/vertical orientation.",
+      "tags": ["layout", "split", "resize", "drag", "panel", "collapsible", "pane"],
+      "snippets": false,
+      "demo": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "useElementOverflow",
+      "name": "useElementOverflow",
+      "kind": "composable",
+      "description": "Reactively detects whether a DOM element overflows its bounds, tracking horizontal, vertical, or both directions.",
+      "tags": ["overflow", "scroll", "dom", "layout", "resize", "observer"],
+      "snippets": true,
+      "demo": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "usePointerDrag",
+      "name": "usePointerDrag",
+      "kind": "composable",
+      "description": "Reactive composable for pointer-based drag interactions with axis control, threshold, inversion, and velocity tracking.",
+      "tags": ["drag", "pointer", "gesture", "interaction", "touch", "resize"],
+      "snippets": false,
+      "demo": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "useProxyValue",
+      "name": "useProxyValue",
+      "kind": "composable",
+      "description": "Creates a buffered proxy ref that stages changes before committing back to a source ref, with optional auto-sync and debounce.",
+      "tags": ["model", "v-model", "proxy", "buffer", "form", "controlled", "debounce"],
+      "snippets": true,
+      "demo": false,
+      "since": "1.0.0"
+    },
+    {
+      "id": "useStableLoading",
+      "name": "useStableLoading",
+      "kind": "composable",
+      "description": "Stabilizes a boolean loading state to prevent UI flicker by introducing a configurable delay and minimum visible duration.",
+      "tags": ["loading", "async", "ux", "flicker", "spinner", "delay", "debounce"],
+      "snippets": false,
+      "demo": false,
+      "since": "1.0.0"
+    }
+  ],
+  "kinds": {
+    "component": [
+      {
+        "id": "ContentFrame",
+        "name": "ContentFrame",
+        "kind": "component",
+        "description": "Layout wrapper providing named slots for overlay, header, content, and footer with optional scroll behavior.",
+        "tags": ["layout", "frame", "header", "footer", "scroll", "slots"],
+        "snippets": false,
+        "demo": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "Preloader",
+        "name": "Preloader",
+        "kind": "component",
+        "description": "Loading overlay component with a spinner, supporting visibility control and configurable size variants.",
+        "tags": ["loading", "spinner", "overlay", "preloader", "ux"],
+        "snippets": false,
+        "demo": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "SplitPane",
+        "name": "SplitPane",
+        "kind": "component",
+        "description": "Resizable split panel layout with a drag handle, collapse/expand support, and configurable horizontal/vertical orientation.",
+        "tags": ["layout", "split", "resize", "drag", "panel", "collapsible", "pane"],
+        "snippets": false,
+        "demo": false,
+        "since": "1.0.0"
+      }
+    ],
+    "utility": [
+      {
+        "id": "createEmitter",
+        "name": "createEmitter",
+        "kind": "utility",
+        "description": "Creates a Vue-aware event emitter that automatically removes registered handlers when the host component unmounts.",
+        "tags": ["event", "emitter", "lifecycle", "cleanup", "pubsub"],
+        "snippets": false,
+        "demo": false,
+        "since": "1.0.0"
+      }
+    ],
+    "type": [
+      {
+        "id": "CSSClassAtom",
+        "name": "CSSClassAtom",
+        "kind": "type",
+        "description": "A single CSS class binding unit — string, conditional object, or null/undefined.",
+        "tags": ["css", "class", "binding", "normalizeClass"],
+        "since": "1.0.0"
+      },
+      {
+        "id": "CSSClassValue",
+        "name": "CSSClassValue",
+        "kind": "type",
+        "description": "A full CSS class binding value — a single CSSClassAtom or an array of atoms.",
+        "tags": ["css", "class", "binding", "normalizeClass", "array"],
+        "since": "1.0.0"
+      }
+    ],
+    "composable": [
+      {
+        "id": "useElementOverflow",
+        "name": "useElementOverflow",
+        "kind": "composable",
+        "description": "Reactively detects whether a DOM element overflows its bounds, tracking horizontal, vertical, or both directions.",
+        "tags": ["overflow", "scroll", "dom", "layout", "resize", "observer"],
+        "snippets": true,
+        "demo": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "usePointerDrag",
+        "name": "usePointerDrag",
+        "kind": "composable",
+        "description": "Reactive composable for pointer-based drag interactions with axis control, threshold, inversion, and velocity tracking.",
+        "tags": ["drag", "pointer", "gesture", "interaction", "touch", "resize"],
+        "snippets": false,
+        "demo": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "useProxyValue",
+        "name": "useProxyValue",
+        "kind": "composable",
+        "description": "Creates a buffered proxy ref that stages changes before committing back to a source ref, with optional auto-sync and debounce.",
+        "tags": ["model", "v-model", "proxy", "buffer", "form", "controlled", "debounce"],
+        "snippets": true,
+        "demo": false,
+        "since": "1.0.0"
+      },
+      {
+        "id": "useStableLoading",
+        "name": "useStableLoading",
+        "kind": "composable",
+        "description": "Stabilizes a boolean loading state to prevent UI flicker by introducing a configurable delay and minimum visible duration.",
+        "tags": ["loading", "async", "ux", "flicker", "spinner", "delay", "debounce"],
+        "snippets": false,
+        "demo": false,
+        "since": "1.0.0"
+      }
+    ]
+  }
+}

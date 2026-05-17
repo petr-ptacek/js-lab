@@ -4,6 +4,7 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
+      "@petr-ptacek/vue-core": ["./src/index.ts"],
       "@petr-ptacek/js-core": ["../js-core/src/index.ts"]
     }
   },
@@ -12,5 +13,6 @@
       "path": "../js-core"
     }
   ],
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["**/snippets/**"]
 }

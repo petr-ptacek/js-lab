@@ -14,9 +14,10 @@
     "coverage": "vitest run --coverage",
     "coverage:ui": "vitest --ui --coverage",
     "clean": "rimraf ./dist ./node_modules/.tmp",
-    "docs:dev": "echo 'docs not yet configured'",
-    "docs:build": "echo 'docs not yet configured'",
-    "docs:preview": "echo 'docs not yet configured'",
+    "docs:meta": "tsx docs/.vitepress/scripts/generateApiMetadata.ts",
+    "docs:dev": "pnpm docs:meta && vitepress dev docs",
+    "docs:build": "pnpm docs:meta && vitepress build docs",
+    "docs:preview": "vitepress preview docs",
     "release:check": "echo 'not publish ready'",
     "release:dry": "echo 'not publish ready'",
     "prepublishOnly": "echo 'not publish ready'"

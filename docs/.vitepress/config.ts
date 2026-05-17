@@ -8,7 +8,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: "js-core", link: "/js-core/" },
-      // { text: "vue-core", link: "/vue-core/" },
+      // { text: "vue-core", link: "/vue-core/" }, // enabled in production deployment only
       { text: "GitHub", link: "https://github.com/petr-ptacek/js-lab" },
     ],
   },

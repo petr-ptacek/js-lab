@@ -10,7 +10,7 @@ Collection of JavaScript libraries.
 
 [//]: # '  <a class="vp-card" href="./vue-core/">'
 [//]: # "    <h3>@petr-ptacek/vue-core</h3>"
-[//]: # "    <p>Vue composables and components</p>"
+[//]: # "    <p>Vue composables & components library</p>"
 [//]: # "  </a>"
 
 </div>

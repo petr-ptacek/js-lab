@@ -2,12 +2,9 @@ import { useElementSize } from "@vueuse/core";
 import type { Ref } from "vue";
 import { computed, useTemplateRef, watch } from "vue";
 
-import type { ModelValue, Props } from "../types";
-import { clampPercentWithLimits, normalizeSizeToPercent } from "../utils";
-import { useResizeActions } from "./useResizeActions";
-import { useResizeDrag } from "./useResizeDrag";
-import { useResizeSizes } from "./useResizeSizes";
-import { useResizeValue } from "./useResizeValue";
+import type { ModelValue, Props } from "./types";
+import { useResizeActions, useResizeDrag, useResizeSizes, useResizeValue } from "./use";
+import { clampPercentWithLimits, normalizeSizeToPercent } from "./utils";
 
 export type UseControllerOptions = {
   modelValue: Ref<ModelValue>;

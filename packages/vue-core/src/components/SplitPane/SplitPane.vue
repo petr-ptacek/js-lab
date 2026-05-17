@@ -3,7 +3,7 @@ import { isUndefined } from "@petr-ptacek/js-core";
 import { computed, normalizeClass } from "vue";
 import { useProxyValue } from "../../composables";
 import type { Emits, Expose, ModelValue, Props, Slots } from "./types";
-import { useController } from "./use/useController";
+import { useController } from "./useController";
 
 const props = withDefaults(defineProps<Props>(), {
   modelValue: undefined,

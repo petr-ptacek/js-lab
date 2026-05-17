@@ -71,5 +71,5 @@ const { loading, isHolding, isDelaying, hasMessageSlot } = useController({
 </template>
 
 <style>
-@import "./styles.css";
+@import "./style/styles.css";
 </style>

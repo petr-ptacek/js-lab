@@ -1,7 +1,3 @@
-<style>
-@import "./styles.css";
-</style>
-
 <script setup lang="ts">
 import { normalizeClass } from "vue";
 
@@ -52,3 +48,7 @@ defineSlots<Slots>();
     </div>
   </div>
 </template>
+
+<style>
+@import "./style/styles.css";
+</style>
